@@ -575,7 +575,33 @@
   var rafPlan = 0;
   // La zone visible est #zone-carte ; le SVG déborde d'une demi-largeur/hauteur de chaque côté (voir rendreApercu)
   var zoneCarte = document.getElementById('zone-carte');
-  function taille() { var r = zoneCarte.getBoundingClientRect(); return { w: r.width || 800, h: r.height || 600, l: r.left, t: r.top }; }
+  // Mesures de l'interface gardées en mémoire : les relire à chaque image (getBoundingClientRect) forçait le navigateur
+  // à recalculer toute la carte juste après l'avoir déplacée. Elles sont invalidées quand l'interface change.
+  var tailleMem = null, cachesMem = null;
+  function invaliderMesures() { tailleMem = null; cachesMem = null; }
+  function taille() {
+    if (!tailleMem) { var r = zoneCarte.getBoundingClientRect(); tailleMem = { w: r.width || 800, h: r.height || 600, l: r.left, t: r.top }; }
+    return tailleMem;
+  }
+  window.addEventListener('resize', invaliderMesures);
+  if (window.ResizeObserver) new ResizeObserver(invaliderMesures).observe(zoneCarte);
+  if (window.MutationObserver) {
+    var obsUI = new MutationObserver(function () { cachesMem = null; });
+    ['#cadre-mini', '#controles', '#volet', '#barre', '#ariane', '#quitter-focus'].forEach(function (sel) {
+      var x = document.querySelector(sel); if (x) obsUI.observe(x, { attributes: true, childList: true, subtree: true, characterData: true });
+    });
+    obsUI.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  }
+  function rectsInterface() { // rectangles écran (en pixels) des éléments d'interface posés sur la carte
+    if (cachesMem) return cachesMem;
+    var T = taille(); cachesMem = [];
+    ['#cadre-mini', '#controles', '#volet', '#barre', '#ariane', '#quitter-focus'].forEach(function (sel) {
+      var x = document.querySelector(sel); if (!x || x.hidden) return;
+      var r = x.getBoundingClientRect(); if (!r.width || !r.height) return;
+      cachesMem.push({ l: r.left - T.l, r: r.right - T.l, t: r.top - T.t, b: r.bottom - T.t });
+    });
+    return cachesMem;
+  }
   /* Fluidité : pendant un geste (glisser, pincer, molette, vol animé), on ne redessine pas la carte.
      On déplace et on agrandit l'image déjà dessinée (transformation CSS, faite par la carte graphique),
      puis on redessine en net à la fin du geste, ou dès que l'image déjà dessinée ne suffit plus. */
@@ -588,7 +614,7 @@
     var T = taille(), s = cam.k / camR.k, tx = cam.x - camR.x * s, ty = cam.y - camR.y * s;
     // l'image dessinée couvre [-W/2, 1,5 W] × [-H/2, 1,5 H] ; elle doit toujours recouvrir l'écran, sans trop s'étirer
     var couvre = tx - s * T.w / 2 <= 0 && tx + s * 1.5 * T.w >= T.w && ty - s * T.h / 2 <= 0 && ty + s * 1.5 * T.h >= T.h;
-    if (!couvre || s < 0.67 || s > 1.5) return rendreCamera();
+    if (!couvre || s < 0.6 || s > 1.8) return rendreCamera();
     svg.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
     majVueMinicarte();
   }
@@ -658,10 +684,28 @@
   /* ======================= Zoom sémantique ======================= */
   // Niveau de détail d'un nœud selon sa taille à l'écran (px par unité locale)
   var niveauxPrec = {};
+  // Culling : ce qui est loin de l'écran n'est plus du tout traité par le navigateur (display:none).
+  // La zone gardée couvre l'écran et sa marge (le SVG déborde d'une demi-largeur de chaque côté pour les gestes).
+  function majCulling() {
+    var T = taille(), k = cam.k;
+    var vx0 = (-T.w - cam.x) / k, vx1 = (2 * T.w - cam.x) / k, vy0 = (-T.h - cam.y) / k, vy1 = (2 * T.h - cam.y) / k;
+    noeuds.forEach(function (nd) {
+      var o = elems[nd.id], p = courant.pos[nd.id], m = (nd.sp ? 260 : 220) * p.s;
+      var dehors = p.x + m < vx0 || p.x - m > vx1 || p.y + m < vy0 || p.y - m > vy1;
+      if (o.horsEcran !== dehors) { o.g.classList.toggle('hors-ecran', dehors); if (o.gE) o.gE.classList.toggle('hors-ecran', dehors); o.horsEcran = dehors; }
+      if (o.arete) {
+        var e = courant.aret[nd.id];
+        var ax0 = Math.min(e[0], e[2], e[4], e[6]), ax1 = Math.max(e[0], e[2], e[4], e[6]), ay0 = Math.min(e[1], e[3], e[5], e[7]), ay1 = Math.max(e[1], e[3], e[5], e[7]);
+        var aDehors = ax1 < vx0 || ax0 > vx1 || ay1 < vy0 || ay0 > vy1;
+        if (o.areteHors !== aDehors) { o.arete.classList.toggle('hors-ecran', aDehors); o.areteHors = aDehors; }
+      }
+    });
+  }
   function majLOD(force) {
     var k = cam.k;
     var loin = k < 0.08;
     if (force || loin !== majLOD.loin) { monde.classList.toggle('loin', loin); majLOD.loin = loin; }
+    majCulling();
     noeuds.forEach(function (nd) {
       var o = elems[nd.id], p = courant.pos[nd.id], px = p.s * k, n;
       if (nd.sp) n = px * 48 < 5 ? 0 : px * 14 < 6 ? 1 : px * 11 < 8 ? 2 : px * 10 < 9.5 ? 3 : 4;
@@ -707,11 +751,8 @@
     var T = taille(), k = cam.k, m = 8 / k;
     var vx0 = -cam.x / k, vy0 = -cam.y / k, vx1 = vx0 + T.w / k, vy1 = vy0 + T.h / k;
     // zones de l'écran couvertes par l'interface (mini-carte, en-tête, volet) : pas de réponse dessous
-    var caches = [];
-    ['#cadre-mini', '#controles', '#volet', '#barre', '#ariane', '#quitter-focus'].forEach(function (sel) {
-      var x = document.querySelector(sel); if (!x || x.hidden) return;
-      var r = x.getBoundingClientRect(); if (!r.width || !r.height) return;
-      caches.push({ x0: (r.left - T.l - cam.x) / k, x1: (r.right - T.l - cam.x) / k, y0: (r.top - T.t - cam.y) / k, y1: (r.bottom - T.t - cam.y) / k });
+    var caches = rectsInterface().map(function (r) {
+      return { x0: (r.l - cam.x) / k, x1: (r.r - cam.x) / k, y0: (r.t - cam.y) / k, y1: (r.b - cam.y) / k };
     });
     // cartes de question visibles : aucune réponse ne doit les couvrir
     noeuds.forEach(function (n) {
@@ -1932,6 +1973,7 @@
     disposition: changerDispo,
     recentrer: function () { recentrer(); },
     zone: function () { var z = zoneUtile(); delete z.T; return z; }, bornes: function (id) { return id ? bornesNoeud(parId[id]) : courant.bornes; },
+    redessiner: function (f) { cam.k *= f || 1; rendreCamera(); },
     nbNoeuds: noeuds.length, nbFeuilles: feuilles.length, nbSosies: paires.length
   };
 })();

@@ -1,0 +1,7 @@
+{
+  "appId": "fr.mycelium.carte",
+  "appName": "mycélium",
+  "webDir": "www",
+  "backgroundColor": "#0C120F",
+  "android": { "backgroundColor": "#0C120F", "allowMixedContent": false }
+}

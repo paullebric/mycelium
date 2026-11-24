@@ -1,0 +1,82 @@
+/* Styles de la carte (aussi intégrés dans l'export SVG) — DA mycélium */
+.courbe{fill:none;stroke:#8DF5C0;stroke-opacity:.06;stroke-width:1.2px;vector-effect:non-scaling-stroke;pointer-events:none}
+.courbe.maitresse{stroke-opacity:.15}
+.arete{fill:none;stroke:#8DF5C0;stroke-linecap:round;opacity:.32}
+.arete.chemin{stroke:#8DF5C0;opacity:1}
+.rep-txt{font:500 13px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8DF5C0;paint-order:stroke;stroke:#0C120F;stroke-width:5px;stroke-linejoin:round}
+.rep-bourgeon{fill:#8DF5C0;stroke:#0C120F;stroke-width:3px}
+.rep-num{font:700 13px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#0C120F}
+.rep:hover .rep-bourgeon{fill:#c6ffe2}
+.rep.chemin .rep-bourgeon{fill:#FFB547}
+.rep.chemin .rep-txt{fill:#FFB547;font-weight:600}
+.region{font:italic 400 55.4px 'Literata',Georgia,serif;fill:#8DF5C0;letter-spacing:.04em;pointer-events:none}
+.sosie{fill:none;stroke:#FF5A3C;stroke-width:4;stroke-dasharray:14 12;stroke-linecap:round;opacity:.42;pointer-events:none}
+.sosie:not(.mortel){stroke:#FF9F1C}
+.sosie{display:none}
+.sosie.actif{display:inline;opacity:.95;stroke-width:4.5}
+.noeud{cursor:pointer}
+.noeud:focus{outline:none}
+.pastille{fill:#0C120F;stroke:#8DF5C0;stroke-width:3}
+.fond-q{fill:#121A15;stroke:#8DF5C0;stroke-opacity:.55;stroke-width:1.6}
+.ombre-q{fill:rgba(0,0,0,.35)}
+.question:hover .fond-q,.question:focus .fond-q{stroke-opacity:1}
+.question.chemin .fond-q{stroke:#8DF5C0;stroke-opacity:1;stroke-width:2.4}
+.question.sel .fond-q{stroke:#FFB547;stroke-opacity:1;stroke-width:3}
+.q-txt{font:italic 400 18.5px 'Literata',Georgia,serif;fill:#E6EEE8}
+.q-groupe{font:500 11px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8DF5C0;letter-spacing:.14em}
+.q-aide{font:400 10.5px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8FA39A}
+.q-nb{font:500 10px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8FA39A;letter-spacing:.08em}
+.bouton-aide{cursor:help}
+.bouton-aide circle{fill:#8DF5C0}
+.bouton-aide text{font:700 17px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#0C120F}
+.bouton-aide:hover circle{fill:#c6ffe2}
+.disque{stroke:none}
+.anneau{fill:none;stroke-width:5}
+.anneau2{fill:none;stroke-width:2.5}
+.feuille:hover .anneau,.feuille:focus .anneau{stroke-width:8}
+.feuille-etiq{cursor:pointer}
+.feuille.sel .anneau{stroke-width:9}
+.feuille.sel .disque{stroke:#FFB547;stroke-width:18;stroke-opacity:.45}
+.marque-carnet{display:none}
+.avec-carnet .trouve .marque-carnet{display:inline}
+.marque-carnet circle{fill:none;stroke:#FFB547;stroke-width:3;stroke-dasharray:3 5}
+.nom{font:italic 400 16px 'Literata',Georgia,serif;fill:#E6EEE8;paint-order:stroke;stroke:#0C120F;stroke-width:5px;stroke-linejoin:round}
+.latin{font:400 10.5px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8FA39A;paint-order:stroke;stroke:#0C120F;stroke-width:4px}
+.st-txt{font:600 9px 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.12em;paint-order:stroke;stroke:#0C120F;stroke-width:4px}
+.crit{font:400 10px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#b9c7c0;paint-order:stroke;stroke:#0C120F;stroke-width:4px}
+.estompe{opacity:.1}
+.hors-focus{opacity:.06;pointer-events:none}
+.noeud.hors-focus{opacity:.2;pointer-events:auto}
+.noeud.hors-focus:hover{opacity:.6}
+.sosie.estompe{display:none}
+.masque{display:none}
+[data-n="0"] .v1,[data-n="0"] .v2,[data-n="0"] .v3,[data-n="0"] .v4,[data-n="0"] .carte-q,
+[data-n="1"] .v2,[data-n="1"] .v3,[data-n="1"] .v4,
+[data-n="2"] .v3,[data-n="2"] .v4,
+[data-n="3"] .v4{display:none}
+.rep-f{display:none !important}
+.rep-feuille{font:500 10px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#8DF5C0}
+.cercle-principal{fill:none;stroke:#8FA39A;stroke-width:3px;stroke-dasharray:2 9;stroke-linecap:round;opacity:.7;pointer-events:none}
+.titre-cercle{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;letter-spacing:.3em;fill:#8FA39A;pointer-events:none}
+.rep{transition:opacity .25s;cursor:pointer}
+.rep.rep-cachee{opacity:0 !important}
+.feuille[data-n="0"] .disque,.feuille[data-n="1"] .disque{fill:var(--c)}
+.feuille[data-n="0"] .disque{transform:scale(1.5)}
+.loin .arete{stroke-width:1.4px;vector-effect:non-scaling-stroke;opacity:.5}
+.loin .arete.chemin{stroke-width:2.6px;opacity:1}
+.loin .hors-focus{opacity:.05}
+.loin .noeud.hors-focus{opacity:.15}
+.ancetre-focus .carte-q{opacity:.22}
+.feuille.dans-arc[data-n="0"] .v1,.feuille.dans-arc[data-n="0"] .badge{display:inline}
+.feuille.dans-arc[data-n="0"] .disque{transform:none;fill:#141c17}
+.feuille-etiq.dans-arc[data-n="0"] .nom,.feuille-etiq.dans-arc[data-n="1"] .nom{display:inline}
+.feuille-etiq.dans-arc .nom,.feuille-etiq.dans-arc .rep-feuille{display:inline}
+.feuille-etiq.dans-arc .st-txt{display:none}
+.arc-actif .region,.arc-actif .titre-cercle{display:none}
+.feuille-etiq.dans-arc .crit:not(.rep-feuille),.feuille-etiq.dans-arc .latin{display:none}
+.feuille-etiq.dans-arc .rep-feuille{font-size:11px;fill:#FFB547}
+.rep.rep-arriere{opacity:.18 !important;pointer-events:none}
+.rep.rep-arriere.rep-cachee{opacity:0 !important}
+.rep.rep-entrant{transition:opacity .6s}
+.rep.rep-entrant.rep-arrivee{opacity:0 !important}
+.rep.rep-off{display:none !important}

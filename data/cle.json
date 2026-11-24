@@ -1,0 +1,2545 @@
+{
+ "id": "racine",
+ "question": "Quelle est la forme générale du champignon ?",
+ "aide": "Observez le champignon entier, y compris la base du pied : déterrez-le délicatement.",
+ "options": [
+  {
+   "reponse": "Chapeau et pied bien distincts",
+   "suite": {
+    "id": "dessous",
+    "question": "Que voit-on sous le chapeau ?",
+    "options": [
+     {
+      "reponse": "Des lames (feuillets minces rayonnants)",
+      "suite": {
+       "id": "volve",
+       "question": "Le pied sort-il d'une volve (sac membraneux) ou d'un bulbe à rebord ?",
+       "aide": "Déterrez le pied entier : la volve reste souvent dans le sol. En cas de doute, considérez qu'il y en a une.",
+       "groupe": "Champignons à lames",
+       "options": [
+        {
+         "reponse": "Oui : volve ou bulbe à la base",
+         "suite": {
+          "id": "volve-sporee",
+          "question": "Couleur de la sporée et habitat ?",
+          "options": [
+           {
+            "reponse": "Rose saumon (lames blanches puis roses) ; au sol",
+            "suite": {
+             "espece": "volvopluteus-gloiocephalus"
+            }
+           },
+           {
+            "reponse": "Rose saumon ; sur un tronc d'arbre ; chapeau soyeux blanc",
+            "suite": {
+             "espece": "volvariella-bombycina"
+            }
+           },
+           {
+            "reponse": "Blanche (lames restant blanches ou jaunes)",
+            "suite": {
+             "id": "amanites",
+             "question": "Quelle est la forme de la base du pied ?",
+             "aide": "Toutes les amanites sont à laisser aux spécialistes : plusieurs sont mortelles.",
+             "groupe": "Amanites",
+             "options": [
+              {
+               "reponse": "Volve en sac membraneux, libre autour du pied",
+               "suite": {
+                "id": "amanites-sac",
+                "question": "Couleur du chapeau et des lames ?",
+                "options": [
+                 {
+                  "reponse": "Chapeau orange vif, lames et pied jaunes ; anneau jaune",
+                  "suite": {
+                   "espece": "amanita-caesarea"
+                  }
+                 },
+                 {
+                  "reponse": "Chapeau vert olive à jaunâtre (parfois blanchâtre), fibrilles rayonnantes, lames blanches ; anneau",
+                  "suite": {
+                   "espece": "amanita-phalloides"
+                  }
+                 },
+                 {
+                  "reponse": "Entièrement blanc (chapeau, lames, pied)",
+                  "suite": {
+                   "id": "amanites-blanches",
+                   "question": "Forme du chapeau, aspect du pied, saison ?",
+                   "aide": "Toutes les amanites blanches sont à rejeter : plusieurs sont mortelles.",
+                   "options": [
+                    {
+                     "reponse": "Chapeau conique, souvent asymétrique ; pied pelucheux ; été-automne",
+                     "suite": {
+                      "espece": "amanita-virosa"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau convexe puis plat, régulier ; pied lisse ; printemps",
+                     "suite": {
+                      "espece": "amanita-verna"
+                     }
+                    },
+                    {
+                     "reponse": "Très grand et massif (10 à 25 cm), marge du chapeau floconneuse, volve épaisse",
+                     "suite": {
+                      "id": "amanites-ovoides",
+                      "question": "Couleur de la volve ?",
+                      "aide": "Grandes amanites blanches du Midi : l'amanite à volve rousse détruit les reins.",
+                      "options": [
+                       {
+                        "reponse": "Volve blanche ; anneau crémeux qui s'effiloche",
+                        "suite": {
+                         "espece": "amanita-ovoidea"
+                        }
+                       },
+                       {
+                        "reponse": "Volve orangée à rousse ; anneau membraneux persistant",
+                        "suite": {
+                         "espece": "amanita-proxima"
+                        }
+                       }
+                      ]
+                     }
+                    }
+                   ]
+                  }
+                 },
+                 {
+                  "reponse": "Chapeau gris, fauve ou orangé à marge striée ; pas d'anneau",
+                  "suite": {
+                   "id": "amanites-vaginees",
+                   "question": "Couleur du chapeau ?",
+                   "groupe": "Amanites vaginées",
+                   "options": [
+                    {
+                     "reponse": "Gris souris à gris-brun ; volve blanche",
+                     "suite": {
+                      "espece": "amanita-vaginata"
+                     }
+                    },
+                    {
+                     "reponse": "Fauve roux à brun-orangé ; volve tachée de roux",
+                     "suite": {
+                      "espece": "amanita-fulva"
+                     }
+                    },
+                    {
+                     "reponse": "Orange safran ; pied chiné d'orange",
+                     "suite": {
+                      "espece": "amanita-crocea"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Bulbe arrondi, avec bourrelets ou un rebord, sans sac",
+               "suite": {
+                "id": "amanites-bulbe",
+                "question": "Couleur du chapeau ?",
+                "aide": "Les verrues peuvent être lavées par la pluie : ne vous fiez jamais à leur absence.",
+                "options": [
+                 {
+                  "reponse": "Rouge à orange, couvert de verrues blanches",
+                  "suite": {
+                   "espece": "amanita-muscaria"
+                  }
+                 },
+                 {
+                  "reponse": "Brun, verrues blanc pur ; bulbe à rebord net « en chaussette » ; anneau lisse",
+                  "suite": {
+                   "espece": "amanita-pantherina"
+                  }
+                 },
+                 {
+                  "reponse": "Brun rosé, verrues grisâtres ; chair qui rougit lentement",
+                  "suite": {
+                   "espece": "amanita-rubescens"
+                  }
+                 },
+                 {
+                  "reponse": "Jaune pâle à blanc, larges plaques ; gros bulbe marginé ; odeur de rave",
+                  "suite": {
+                   "espece": "amanita-citrina"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "amanites-bulbe-autres",
+                   "question": "Couleur du chapeau et des verrues ?",
+                   "options": [
+                    {
+                     "reponse": "Jaune jonquille, verrues blanches ; bulbe à petite collerette",
+                     "suite": {
+                      "espece": "amanita-gemmata"
+                     }
+                    },
+                    {
+                     "reponse": "Gris-brun, verrues grises ; chair qui ne rougit pas ; anneau strié",
+                     "suite": {
+                      "espece": "amanita-excelsa"
+                     }
+                    },
+                    {
+                     "reponse": "Gris-brun violacé ; anneau grisâtre ; odeur de rave",
+                     "suite": {
+                      "espece": "amanita-porphyria"
+                     }
+                    },
+                    {
+                     "reponse": "Brun-jaunâtre, verrues jaunes ; anneau jaune",
+                     "suite": {
+                      "espece": "amanita-franchetii"
+                     }
+                    },
+                    {
+                     "reponse": "Grand, blanc, couvert de larges écailles plates ; bulbe en fuseau enfoncé",
+                     "suite": {
+                      "espece": "amanita-strobiliformis"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Non : pied sans volve ni bulbe à rebord",
+         "suite": {
+          "id": "sporee",
+          "question": "Couleur de la sporée ?",
+          "aide": "Sporée : posez le chapeau, lames en bas, sur une feuille mi-blanche mi-noire, sous un verre, 4 à 12 h.",
+          "options": [
+           {
+            "reponse": "Blanche à crème",
+            "suite": {
+             "id": "blanche-chair",
+             "question": "Comment se casse la chair du pied ?",
+             "groupe": "Sporée blanche",
+             "options": [
+              {
+               "reponse": "Il en coule un lait (latex)",
+               "suite": {
+                "id": "lactaires",
+                "question": "Couleur du lait et arbre voisin ?",
+                "groupe": "Lactaires",
+                "options": [
+                 {
+                  "reponse": "Orange carotte ; chair qui verdit ; sous les pins",
+                  "suite": {
+                   "espece": "lactarius-deliciosus"
+                  }
+                 },
+                 {
+                  "reponse": "Blanc ; chapeau rose saumon à marge laineuse ; sous les bouleaux",
+                  "suite": {
+                   "espece": "lactarius-torminosus"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "lactaires-autres",
+                   "question": "Couleur du lait ?",
+                   "options": [
+                    {
+                     "reponse": "Orange",
+                     "suite": {
+                      "id": "lactaires-orange",
+                      "question": "Arbre voisin et aspect ?",
+                      "options": [
+                       {
+                        "reponse": "Sous les épicéas ; chapeau orange taché de vert",
+                        "suite": {
+                         "espece": "lactarius-deterrimus"
+                        }
+                       },
+                       {
+                        "reponse": "Sous les sapins ; chapeau orange saumon pâle, peu zoné",
+                        "suite": {
+                         "espece": "lactarius-salmonicolor"
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Rouge vineux ; sous les pins",
+                     "suite": {
+                      "espece": "lactarius-sanguifluus"
+                     }
+                    },
+                    {
+                     "reponse": "Blanc qui jaunit vivement à l'air",
+                     "suite": {
+                      "espece": "lactarius-chrysorrheus"
+                     }
+                    },
+                    {
+                     "reponse": "Rouge sang, sur un petit champignon conique poussant sur bois",
+                     "suite": {
+                      "espece": "mycena-haematopus"
+                     }
+                    },
+                    {
+                     "reponse": "Blanc, immuable",
+                     "suite": {
+                      "id": "lactaires-blancs",
+                      "question": "Aspect du chapeau ?",
+                      "options": [
+                       {
+                        "reponse": "Orange-fauve ; lait très abondant ; odeur de hareng en vieillissant",
+                        "suite": {
+                         "espece": "lactifluus-volemus"
+                        }
+                       },
+                       {
+                        "reponse": "Blanc ; lames très serrées ; lait très âcre",
+                        "suite": {
+                         "espece": "lactifluus-piperatus"
+                        }
+                       },
+                       {
+                        "reponse": "Blanc, velouté ; lames espacées",
+                        "suite": {
+                         "espece": "lactifluus-vellereus"
+                        }
+                       },
+                       {
+                        "reponse": "Brun-roux zoné ; odeur de punaise ; sous les chênes",
+                        "suite": {
+                         "espece": "lactarius-quietus"
+                        }
+                       },
+                       {
+                        "reponse": "Olive-noir, visqueux ; sous les bouleaux",
+                        "suite": {
+                         "espece": "lactarius-turpis"
+                        }
+                       }
+                      ]
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Net, comme de la craie, sans fibres",
+               "suite": {
+                "id": "russules",
+                "question": "Couleur du chapeau ?",
+                "aide": "Ne goûtez pas : recrachez et lavez-vous la bouche si vous le faites.",
+                "groupe": "Russules",
+                "options": [
+                 {
+                  "reponse": "Rouge vif ; lames blanches cassantes ; sous conifères ou dans les mousses",
+                  "suite": {
+                   "espece": "russula-emetica"
+                  }
+                 },
+                 {
+                  "reponse": "Vert-de-gris, cuticule craquelée en petites plaques",
+                  "suite": {
+                   "espece": "russula-virescens"
+                  }
+                 },
+                 {
+                  "reponse": "Violet, vert ou mêlé ; lames souples, grasses au toucher",
+                  "suite": {
+                   "espece": "russula-cyanoxantha"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "russules-autres",
+                   "question": "Couleur dominante du chapeau ?",
+                   "aide": "Ne goûtez pas : recrachez et lavez-vous la bouche si vous le faites.",
+                   "options": [
+                    {
+                     "reponse": "Rouge, rose ou pourpre",
+                     "suite": {
+                      "id": "russules-rouges",
+                      "question": "Aspect et lames ?",
+                      "options": [
+                       {
+                        "reponse": "Rouge vif, petit ; lames blanches ; sous les hêtres",
+                        "suite": {
+                         "espece": "russula-mairei"
+                        }
+                       },
+                       {
+                        "reponse": "Rouge-violacé ; lames jaune citron ; saveur très âcre ; sous les pins",
+                        "suite": {
+                         "espece": "russula-sardonia"
+                        }
+                       },
+                       {
+                        "reponse": "Pourpre à brun-rouge ; odeur de hareng ; chair qui brunit",
+                        "suite": {
+                         "espece": "russula-xerampelina"
+                        }
+                       },
+                       {
+                        "reponse": "Brun-rouge ; lames crème puis jaune ; saveur douce",
+                        "suite": {
+                         "espece": "russula-integra"
+                        }
+                       },
+                       {
+                        "reponse": "Rose-brun ; cuticule qui n'atteint pas le bord (« montre les dents »)",
+                        "suite": {
+                         "espece": "russula-vesca"
+                        }
+                       },
+                       {
+                        "reponse": "Grand, olive-pourpre ; lames jaunes ; pied rosé",
+                        "suite": {
+                         "espece": "russula-olivacea"
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Jaune ou ocre",
+                     "suite": {
+                      "id": "russules-jaunes",
+                      "question": "Saveur et odeur ?",
+                      "options": [
+                       {
+                        "reponse": "Jaune paille ; saveur amère et piquante ; odeur de pomme cuite",
+                        "suite": {
+                         "espece": "russula-fellea"
+                        }
+                       },
+                       {
+                        "reponse": "Jaune ocre ; pied blanc ; saveur douce à un peu âcre",
+                        "suite": {
+                         "espece": "russula-ochroleuca"
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Vert à brun-olive, lisse (non craquelé)",
+                     "suite": {
+                      "espece": "russula-heterophylla"
+                     }
+                    },
+                    {
+                     "reponse": "Blanc ou noircissant",
+                     "suite": {
+                      "id": "russules-blanches",
+                      "question": "Aspect ?",
+                      "options": [
+                       {
+                        "reponse": "Blanc sale en entonnoir ; lames à reflet vert-bleuté",
+                        "suite": {
+                         "espece": "russula-delica"
+                        }
+                       },
+                       {
+                        "reponse": "Gris-brun puis noir ; lames épaisses espacées ; chair rougit puis noircit",
+                        "suite": {
+                         "espece": "russula-nigricans"
+                        }
+                       }
+                      ]
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Fibreuse, se déchire en long",
+               "suite": {
+                "id": "blanche-anneau",
+                "question": "Le pied porte-t-il un anneau ?",
+                "options": [
+                 {
+                  "reponse": "Oui",
+                  "suite": {
+                   "id": "blanche-anneau-oui",
+                   "question": "Taille et port ?",
+                   "options": [
+                    {
+                     "reponse": "Grand (chapeau > 10 cm), chapeau écailleux, pied élancé",
+                     "suite": {
+                      "id": "coulemelles",
+                      "question": "Pied et chair ?",
+                      "aide": "Ne récoltez que les grands exemplaires (chapeau > 10 cm, pied > 15 cm).",
+                      "groupe": "Coulemelles",
+                      "options": [
+                       {
+                        "reponse": "Très grand (15 à 30 cm) ; pied chiné de brun ; anneau double coulissant ; chair immuable",
+                        "suite": {
+                         "espece": "macrolepiota-procera"
+                        }
+                       },
+                       {
+                        "reponse": "Pied lisse blanchâtre, bulbe arrondi ; chair rougissant orangé ; dans les bois",
+                        "suite": {
+                         "espece": "chlorophyllum-rhacodes"
+                        }
+                       },
+                       {
+                        "reponse": "Aucune de ces descriptions (autres espèces)",
+                        "suite": {
+                         "id": "coulemelles-autres",
+                         "question": "Aspect ?",
+                         "options": [
+                          {
+                           "reponse": "Chapeau 8 à 12 cm à mamelon pointu ; pied finement chiné",
+                           "suite": {
+                            "espece": "macrolepiota-mastoidea"
+                           }
+                          },
+                          {
+                           "reponse": "Bulbe très marginé « en marche d'escalier » ; chair rougissante ; jardins, composts",
+                           "suite": {
+                            "espece": "chlorophyllum-brunneum"
+                           }
+                          },
+                          {
+                           "reponse": "Écailles pointues dressées brun foncé ; lames serrées ; odeur de caoutchouc",
+                           "suite": {
+                            "espece": "echinoderma-asperum"
+                           }
+                          }
+                         ]
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Petit (chapeau < 8 cm), au sol",
+                     "suite": {
+                      "id": "lepiotes",
+                      "question": "Aspect des écailles du chapeau ?",
+                      "aide": "Toute petite lépiote est à rejeter : plusieurs sont mortelles et difficiles à distinguer.",
+                      "groupe": "Petites lépiotes",
+                      "options": [
+                       {
+                        "reponse": "Brun-lilas à brun-rose, en cercles concentriques ; pied méché de rose-brun",
+                        "suite": {
+                         "espece": "lepiota-brunneoincarnata"
+                        }
+                       },
+                       {
+                        "reponse": "Rose chair à brun rosé, fines écailles ; anneau fugace",
+                        "suite": {
+                         "espece": "lepiota-subincarnata"
+                        }
+                       },
+                       {
+                        "reponse": "Brun-rougeâtre ; anneau membraneux bien formé",
+                        "suite": {
+                         "espece": "lepiota-helveola"
+                        }
+                       },
+                       {
+                        "reponse": "Disque brun, écailles brunes sur fond blanc ; odeur forte de caoutchouc",
+                        "suite": {
+                         "espece": "lepiota-cristata"
+                        }
+                       },
+                       {
+                        "reponse": "Aucune de ces descriptions (autres espèces)",
+                        "suite": {
+                         "id": "lepiotes-autres",
+                         "question": "Aspect ?",
+                         "options": [
+                          {
+                           "reponse": "Chapeau brun châtain uniforme, écailles fines ; lames se tachant de roux",
+                           "suite": {
+                            "espece": "lepiota-castanea"
+                           }
+                          },
+                          {
+                           "reponse": "Chapeau et pied couverts de flocons laineux blanc-crème",
+                           "suite": {
+                            "espece": "lepiota-clypeolaria"
+                           }
+                          },
+                          {
+                           "reponse": "Entièrement jaune citron ; dans les pots de fleurs et serres",
+                           "suite": {
+                            "espece": "leucocoprinus-birnbaumii"
+                           }
+                          }
+                         ]
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "En touffes sur bois ou souches",
+                     "suite": {
+                      "id": "touffes-blanches",
+                      "question": "Couleur et aspect du chapeau ?",
+                      "options": [
+                       {
+                        "reponse": "Jaune miel, petites mèches sombres au centre",
+                        "suite": {
+                         "espece": "armillaria-mellea"
+                        }
+                       },
+                       {
+                        "reponse": "Aucune de ces descriptions (autres espèces)",
+                        "suite": {
+                         "id": "touffes-blanches-autres",
+                         "question": "Aspect ?",
+                         "options": [
+                          {
+                           "reponse": "Brun-rosé, mèches brunes ; anneau épais ; souvent sous conifères",
+                           "suite": {
+                            "espece": "armillaria-ostoyae"
+                           }
+                          },
+                          {
+                           "reponse": "Blanc translucide, très visqueux ; sur hêtre",
+                           "suite": {
+                            "espece": "oudemansiella-mucida"
+                           }
+                          }
+                         ]
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau blanc et lisse, sans écailles ; au sol",
+                     "suite": {
+                      "espece": "leucoagaricus-leucothites"
+                     }
+                    }
+                   ]
+                  }
+                 },
+                 {
+                  "reponse": "Non",
+                  "suite": {
+                   "id": "blanche-lames",
+                   "question": "Comment les lames s'attachent-elles au pied ?",
+                   "options": [
+                    {
+                     "reponse": "Elles descendent le long du pied (décurrentes)",
+                     "suite": {
+                      "id": "decurrentes",
+                      "question": "Où pousse-t-il ?",
+                      "options": [
+                       {
+                        "reponse": "Sur bois (tronc, souche)",
+                        "suite": {
+                         "id": "decurrentes-bois",
+                         "question": "Aspect ?",
+                         "options": [
+                          {
+                           "reponse": "Chapeau gris en forme d'huître, pied court et latéral, en étages",
+                           "suite": {
+                            "espece": "pleurotus-ostreatus"
+                           }
+                          },
+                          {
+                           "reponse": "Orange vif, en grosses touffes, pied central, lames orange",
+                           "suite": {
+                            "espece": "omphalotus-olearius"
+                           }
+                          },
+                          {
+                           "reponse": "Aucune de ces descriptions (autres espèces)",
+                           "suite": {
+                            "id": "decurrentes-bois-autres",
+                            "question": "Aspect ?",
+                            "options": [
+                             {
+                              "reponse": "Crème, en corne d'abondance ; pied central ; en touffes sur feuillus",
+                              "suite": {
+                               "espece": "pleurotus-cornucopiae"
+                              }
+                             },
+                             {
+                              "reponse": "Petit (1 à 3 cm), brun clair, en éventail ; saveur très âcre",
+                              "suite": {
+                               "espece": "panellus-stipticus"
+                              }
+                             },
+                             {
+                              "reponse": "Petit éventail gris velu ; lames fendues en deux sur la longueur",
+                              "suite": {
+                               "espece": "schizophyllum-commune"
+                              }
+                             },
+                             {
+                              "reponse": "Jaune miel, en touffes ; sans anneau ; dans le Midi",
+                              "suite": {
+                               "espece": "desarmillaria-tabescens"
+                              }
+                             }
+                            ]
+                           }
+                          }
+                         ]
+                        }
+                       },
+                       {
+                        "reponse": "Au sol",
+                        "suite": {
+                         "id": "clitocybes",
+                         "question": "Taille, couleur, odeur ?",
+                         "groupe": "Clitocybes",
+                         "options": [
+                          {
+                           "reponse": "Orange, lames orange serrées et fourchues",
+                           "suite": {
+                            "espece": "hygrophoropsis-aurantiaca"
+                           }
+                          },
+                          {
+                           "reponse": "Bleu-vert, forte odeur d'anis",
+                           "suite": {
+                            "espece": "clitocybe-odora"
+                           }
+                          },
+                          {
+                           "reponse": "Blanc, petit (< 5 cm), lames serrées et minces ; dans l'herbe des prés",
+                           "suite": {
+                            "espece": "clitocybe-rivulosa"
+                           }
+                          },
+                          {
+                           "reponse": "Gris, grand et charnu, odeur forte ; en troupes dans les bois",
+                           "suite": {
+                            "espece": "clitocybe-nebularis"
+                           }
+                          },
+                          {
+                           "reponse": "Crème-chamois, très grand, en entonnoir avec mamelon, pied haut",
+                           "suite": {
+                            "espece": "infundibulicybe-geotropa"
+                           }
+                          },
+                          {
+                           "reponse": "Aucune de ces descriptions (autres espèces)",
+                           "suite": {
+                            "id": "clitocybes-autres",
+                            "question": "Aspect et odeur ?",
+                            "options": [
+                             {
+                              "reponse": "Petit entonnoir chamois-rosé ; pied fin ; odeur d'amande",
+                              "suite": {
+                               "espece": "infundibulicybe-gibba"
+                              }
+                             },
+                             {
+                              "reponse": "Blanc givré, 4 à 10 cm ; dans les feuilles mortes ; odeur aromatique",
+                              "suite": {
+                               "espece": "clitocybe-phyllophila"
+                              }
+                             },
+                             {
+                              "reponse": "Gris-brun ; pied renflé en massue à la base",
+                              "suite": {
+                               "espece": "ampulloclitocybe-clavipes"
+                              }
+                             },
+                             {
+                              "reponse": "Énorme (15 à 40 cm), blanc-crème, en entonnoir ; pied court ; en ronds dans les prés",
+                              "suite": {
+                               "espece": "leucopaxillus-giganteus"
+                              }
+                             },
+                             {
+                              "reponse": "Roux-orangé en entonnoir ; odeur faible",
+                              "suite": {
+                               "espece": "lepista-flaccida"
+                              }
+                             },
+                             {
+                              "reponse": "Chamois-orangé en entonnoir ; très forte odeur florale (jasmin, poire) ; montagne",
+                              "suite": {
+                               "espece": "paralepistopsis-amoenolens"
+                              }
+                             },
+                             {
+                              "reponse": "Lames épaisses et espacées, cireuses ; dans les prés",
+                              "suite": {
+                               "id": "hygrophores-pres",
+                               "question": "Couleur ?",
+                               "options": [
+                                {
+                                 "reponse": "Orange-saumon",
+                                 "suite": {
+                                  "espece": "cuphophyllus-pratensis"
+                                 }
+                                },
+                                {
+                                 "reponse": "Blanc ivoire",
+                                 "suite": {
+                                  "espece": "cuphophyllus-virgineus"
+                                 }
+                                }
+                               ]
+                              }
+                             },
+                             {
+                              "reponse": "Gris-brun ; au pied des panicauts (chardon bleu), en terrain ouvert",
+                              "suite": {
+                               "espece": "pleurotus-eryngii"
+                              }
+                             }
+                            ]
+                           }
+                          }
+                         ]
+                        }
+                       }
+                      ]
+                     }
+                    },
+                    {
+                     "reponse": "Attachées au pied, échancrées ou presque libres",
+                     "suite": {
+                      "id": "tricholomes",
+                      "question": "Aspect général ?",
+                      "groupe": "Tricholomes et mousserons",
+                      "options": [
+                       {
+                        "reponse": "Petit ; pied fin et coriace (se tord sans casser) ; en ronds dans l'herbe",
+                        "suite": {
+                         "espece": "marasmius-oreades"
+                        }
+                       },
+                       {
+                        "reponse": "Blanc-crème, charnu, odeur de farine ; au printemps",
+                        "suite": {
+                         "espece": "calocybe-gambosa"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau jaune verdâtre à centre brunâtre, lames jaune soufre ; sous pins, dans le sable",
+                        "suite": {
+                         "espece": "tricholoma-equestre"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau gris couvert de mèches sombres (tigré), trapu",
+                        "suite": {
+                         "espece": "tricholoma-pardinum"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau gris fibrilleux strié de noir ; lames blanches jaunissantes",
+                        "suite": {
+                         "espece": "tricholoma-portentosum"
+                        }
+                       },
+                       {
+                        "reponse": "Aucune de ces descriptions (autres espèces)",
+                        "suite": {
+                         "id": "tricholomes-autres",
+                         "question": "Où pousse-t-il et comment ?",
+                         "options": [
+                          {
+                           "reponse": "Sur bois (souches, troncs, branches)",
+                           "suite": {
+                            "id": "tricho-bois",
+                            "question": "Aspect ?",
+                            "options": [
+                             {
+                              "reponse": "Chapeau orange-roux visqueux ; pied velouté brun-noir ; en touffes, en hiver",
+                              "suite": {
+                               "espece": "flammulina-velutipes"
+                              }
+                             },
+                             {
+                              "reponse": "Chapeau couvert de fines mèches pourpres sur fond jaune ; sur souches de conifères",
+                              "suite": {
+                               "espece": "tricholomopsis-rutilans"
+                              }
+                             },
+                             {
+                              "reponse": "Minuscule « parapluie » blanc ; lames attachées à un collier ; sur brindilles",
+                              "suite": {
+                               "espece": "marasmius-rotula"
+                              }
+                             }
+                            ]
+                           }
+                          },
+                          {
+                           "reponse": "Au sol, en grosses touffes serrées",
+                           "suite": {
+                            "id": "tricho-touffes",
+                            "question": "Aspect ?",
+                            "options": [
+                             {
+                              "reponse": "Chapeau gris-brun lisse ; chair élastique ; bords de chemins",
+                              "suite": {
+                               "espece": "lyophyllum-decastes"
+                              }
+                             },
+                             {
+                              "reponse": "Chapeau roux ; pied en fuseau cannelé enraciné ; au pied des chênes",
+                              "suite": {
+                               "espece": "gymnopus-fusipes"
+                              }
+                             }
+                            ]
+                           }
+                          },
+                          {
+                           "reponse": "Au sol, isolé ou en groupes",
+                           "suite": {
+                            "id": "tricho-sol",
+                            "question": "Couleur du chapeau ?",
+                            "options": [
+                             {
+                              "reponse": "Gris à noir",
+                              "suite": {
+                               "id": "tricho-gris",
+                               "question": "Aspect ?",
+                               "options": [
+                                {
+                                 "reponse": "Gris souris, feutré, petit ; sans odeur de farine ; sous pins",
+                                 "suite": {
+                                  "espece": "tricholoma-terreum"
+                                 }
+                                },
+                                {
+                                 "reponse": "Gris argenté, conique pointu, strié ; saveur amère",
+                                 "suite": {
+                                  "espece": "tricholoma-virgatum"
+                                 }
+                                },
+                                {
+                                 "reponse": "Vert-olive à gris ; odeur de savon ; chair rosissant à la base",
+                                 "suite": {
+                                  "espece": "tricholoma-saponaceum"
+                                 }
+                                },
+                                {
+                                 "reponse": "Brun très foncé, plat à petit mamelon ; lames blanches serrées",
+                                 "suite": {
+                                  "espece": "melanoleuca-melaleuca"
+                                 }
+                                },
+                                {
+                                 "reponse": "Gris-noir ; lames grises épaisses ; au printemps, à la fonte des neiges, en montagne",
+                                 "suite": {
+                                  "espece": "hygrophorus-marzuolus"
+                                 }
+                                }
+                               ]
+                              }
+                             },
+                             {
+                              "reponse": "Blanc soyeux ; taches bleu-vert au pied ; en automne",
+                              "suite": {
+                               "espece": "tricholoma-columbetta"
+                              }
+                             },
+                             {
+                              "reponse": "Entièrement jaune soufre ; odeur forte de gaz d'éclairage ; sous feuillus",
+                              "suite": {
+                               "espece": "tricholoma-sulphureum"
+                              }
+                             },
+                             {
+                              "reponse": "Rouge, orange, rose ou violet",
+                              "suite": {
+                               "id": "tricho-couleurs",
+                               "question": "Aspect ?",
+                               "options": [
+                                {
+                                 "reponse": "Rouge écarlate, visqueux ; dans les prés",
+                                 "suite": {
+                                  "espece": "hygrocybe-punicea"
+                                 }
+                                },
+                                {
+                                 "reponse": "Orange-rose ; lames roses épaisses et espacées",
+                                 "suite": {
+                                  "espece": "laccaria-laccata"
+                                 }
+                                },
+                                {
+                                 "reponse": "Entièrement violet améthyste",
+                                 "suite": {
+                                  "espece": "laccaria-amethystina"
+                                 }
+                                },
+                                {
+                                 "reponse": "Rose-lilas, petit (2 à 5 cm) ; odeur de radis",
+                                 "suite": {
+                                  "espece": "mycena-pura"
+                                 }
+                                },
+                                {
+                                 "reponse": "Rose, plus grand (3 à 6 cm) ; odeur de radis ; sous les hêtres",
+                                 "suite": {
+                                  "espece": "mycena-rosea"
+                                 }
+                                }
+                               ]
+                              }
+                             },
+                             {
+                              "reponse": "Brun clair",
+                              "suite": {
+                               "id": "tricho-bruns",
+                               "question": "Pied ?",
+                               "options": [
+                                {
+                                 "reponse": "Pied fin, lisse, creux ; petit ; dans la litière",
+                                 "suite": {
+                                  "espece": "gymnopus-dryophilus"
+                                 }
+                                },
+                                {
+                                 "reponse": "Pied très long, enraciné profondément ; chapeau ridé, visqueux",
+                                 "suite": {
+                                  "espece": "hymenopellis-radicata"
+                                 }
+                                }
+                               ]
+                              }
+                             }
+                            ]
+                           }
+                          }
+                         ]
+                        }
+                       }
+                      ]
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           },
+           {
+            "reponse": "Rose à rose saumon",
+            "suite": {
+             "id": "rose",
+             "question": "Lames et couleur ?",
+             "groupe": "Sporée rose",
+             "options": [
+              {
+               "reponse": "Lames décurrentes ; chapeau blanc mat ; forte odeur de farine",
+               "suite": {
+                "espece": "clitopilus-prunulus"
+               }
+              },
+              {
+               "reponse": "Lames échancrées ; tout violet-lilas",
+               "suite": {
+                "espece": "lepista-nuda"
+               }
+              },
+              {
+               "reponse": "Lames échancrées jaunâtres puis roses ; grand chapeau gris-crème",
+               "suite": {
+                "espece": "entoloma-sinuatum"
+               }
+              },
+              {
+               "reponse": "Aucune de ces descriptions (autres espèces)",
+               "suite": {
+                "id": "rose-autres",
+                "question": "Aspect ?",
+                "options": [
+                 {
+                  "reponse": "Chapeau beige-crème ; pied violet ; dans les prés",
+                  "suite": {
+                   "espece": "lepista-saeva"
+                  }
+                 },
+                 {
+                  "reponse": "Petit, lilas-brun ; jardins, composts",
+                  "suite": {
+                   "espece": "lepista-sordida"
+                  }
+                 },
+                 {
+                  "reponse": "Gris-brun ; au printemps, sous les rosacées (aubépine, prunier) ; odeur de farine",
+                  "suite": {
+                   "espece": "entoloma-clypeatum"
+                  }
+                 },
+                 {
+                  "reponse": "Gris-brun pâlissant en séchant ; en automne, dans les bois",
+                  "suite": {
+                   "espece": "entoloma-rhodopolium"
+                  }
+                 },
+                 {
+                  "reponse": "Lames libres ; sur bois mort ; chapeau brun fibrilleux",
+                  "suite": {
+                   "espece": "pluteus-cervinus"
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           },
+           {
+            "reponse": "Brun rouille, ocre ou tabac",
+            "suite": {
+             "id": "brune",
+             "question": "Particularité la plus visible ?",
+             "groupe": "Sporée brune",
+             "options": [
+              {
+               "reponse": "Lames décurrentes, se détachant facilement au doigt ; marge enroulée",
+               "suite": {
+                "espece": "paxillus-involutus"
+               }
+              },
+              {
+               "reponse": "En touffes sur bois, anneau sur le pied",
+               "suite": {
+                "id": "touffes-brunes",
+                "question": "Pied sous l'anneau et chapeau ?",
+                "aide": "Distinction difficile, même pour des connaisseurs : la galère est mortelle.",
+                "options": [
+                 {
+                  "reponse": "Couvert de petites écailles brunes retroussées ; chapeau bicolore",
+                  "suite": {
+                   "espece": "kuehneromyces-mutabilis"
+                  }
+                 },
+                 {
+                  "reponse": "Lisse, à fibrilles argentées, sans écailles",
+                  "suite": {
+                   "espece": "galerina-marginata"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "touffes-brunes-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Chapeau et pied hérissés de grosses écailles brunes sur fond jaune paille",
+                     "suite": {
+                      "espece": "pholiota-squarrosa"
+                     }
+                    },
+                    {
+                     "reponse": "Grand (8 à 15 cm), orange doré ; saveur amère",
+                     "suite": {
+                      "espece": "gymnopilus-junonius"
+                     }
+                    },
+                    {
+                     "reponse": "Beige-brun, souvent craquelé ; sur peupliers et saules",
+                     "suite": {
+                      "espece": "agrocybe-cylindracea"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Au sol ; voile en toile d'araignée (cortine) chez le jeune",
+               "suite": {
+                "id": "cortinaires",
+                "question": "Forme et couleur ?",
+                "groupe": "Cortinaires",
+                "options": [
+                 {
+                  "reponse": "Chapeau convexe puis plat, fauve orangé ; pied sans bracelets",
+                  "suite": {
+                   "espece": "cortinarius-orellanus"
+                  }
+                 },
+                 {
+                  "reponse": "Chapeau conique à mamelon, roux ; pied à bracelets jaunes",
+                  "suite": {
+                   "espece": "cortinarius-rubellus"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "cortinaires-autres",
+                   "question": "Couleur ?",
+                   "options": [
+                    {
+                     "reponse": "Entièrement violet foncé, velouté",
+                     "suite": {
+                      "espece": "cortinarius-violaceus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau brun-olive ; lames rouge sang",
+                     "suite": {
+                      "espece": "cortinarius-semisanguineus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau ocre ridé ; anneau membraneux blanc",
+                     "suite": {
+                      "espece": "cortinarius-caperatus"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Au sol ; chapeau conique fibrilleux, souvent fendu (inocybes)",
+               "suite": {
+                "id": "inocybes",
+                "question": "Couleur ?",
+                "groupe": "Inocybes",
+                "options": [
+                 {
+                  "reponse": "Blanc à crème, rougissant ; au printemps",
+                  "suite": {
+                   "espece": "inocybe-erubescens"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "inocybes-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Petit, blanc soyeux (ou lilas) ; ne rougit pas",
+                     "suite": {
+                      "espece": "inocybe-geophylla"
+                     }
+                    },
+                    {
+                     "reponse": "Jaune paille à brun ; chapeau très fendu radialement",
+                     "suite": {
+                      "espece": "inocybe-rimosa"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Aucune de ces descriptions (autres espèces)",
+               "suite": {
+                "id": "brune-autres",
+                "question": "Habitat et aspect ?",
+                "options": [
+                 {
+                  "reponse": "Au sol ; odeur de radis ; lames qui pleurent des gouttelettes",
+                  "suite": {
+                   "id": "hebelomes",
+                   "question": "Taille ?",
+                   "options": [
+                    {
+                     "reponse": "Moyen (3 à 8 cm), crème à beige",
+                     "suite": {
+                      "espece": "hebeloma-crustuliniforme"
+                     }
+                    },
+                    {
+                     "reponse": "Grand (8 à 15 cm) ; pied creux avec une « mèche » à l'intérieur",
+                     "suite": {
+                      "espece": "hebeloma-sinapizans"
+                     }
+                    }
+                   ]
+                  }
+                 },
+                 {
+                  "reponse": "Petit et fragile ; anneau ; sur copeaux, gazons",
+                  "suite": {
+                   "espece": "conocybe-rugosa"
+                  }
+                 },
+                 {
+                  "reponse": "Petit, brun ; sans anneau ; sur brindilles, en hiver",
+                  "suite": {
+                   "espece": "tubaria-furfuracea"
+                  }
+                 },
+                 {
+                  "reponse": "Beige ; anneau ; au printemps, dans les jardins et prés",
+                  "suite": {
+                   "espece": "agrocybe-praecox"
+                  }
+                 },
+                 {
+                  "reponse": "Orange-roux ; sans anneau ; sur bois de conifères",
+                  "suite": {
+                   "espece": "gymnopilus-penetrans"
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           },
+           {
+            "reponse": "Brun pourpre, chocolat ou noire",
+            "suite": {
+             "id": "noire",
+             "question": "Particularité la plus visible ?",
+             "groupe": "Sporée sombre",
+             "options": [
+              {
+               "reponse": "Lames qui se liquéfient en encre noire",
+               "suite": {
+                "id": "coprins",
+                "question": "Forme du chapeau ?",
+                "groupe": "Coprins",
+                "options": [
+                 {
+                  "reponse": "Haut cylindre blanc couvert de mèches",
+                  "suite": {
+                   "espece": "coprinus-comatus"
+                  }
+                 },
+                 {
+                  "reponse": "Cloche grise lisse, en touffes",
+                  "suite": {
+                   "espece": "coprinopsis-atramentaria"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "coprins-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Chapeau noir couvert de plaques blanches (comme une pie)",
+                     "suite": {
+                      "espece": "coprinopsis-picacea"
+                     }
+                    },
+                    {
+                     "reponse": "Petit, ocre, couvert de granules brillants ; en touffes sur bois",
+                     "suite": {
+                      "espece": "coprinellus-micaceus"
+                     }
+                    },
+                    {
+                     "reponse": "Minuscule parapluie gris plissé ; dans les pelouses",
+                     "suite": {
+                      "espece": "parasola-plicatilis"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Lames libres, roses puis chocolat ; anneau ; au sol",
+               "suite": {
+                "id": "agarics",
+                "question": "Réaction au grattage, odeur, habitat ?",
+                "aide": "Les lames d'une amanite blanche restent blanches : en cas de doute, rejetez.",
+                "groupe": "Agarics (rosés)",
+                "options": [
+                 {
+                  "reponse": "Ne jaunit pas ; anneau mince ; odeur agréable ; prés pâturés",
+                  "suite": {
+                   "espece": "agaricus-campestris"
+                  }
+                 },
+                 {
+                  "reponse": "Jaunit légèrement ; odeur d'anis ; anneau ample en roue dentée ; dans les prés",
+                  "suite": {
+                   "espece": "agaricus-arvensis"
+                  }
+                 },
+                 {
+                  "reponse": "Chapeau blanc ; jaunit vivement à la base du pied ; odeur d'encre (phénol)",
+                  "suite": {
+                   "espece": "agaricus-xanthodermus"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "agarics-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Grand ; écailles brun doré ; odeur d'amande",
+                     "suite": {
+                      "espece": "agaricus-augustus"
+                     }
+                    },
+                    {
+                     "reponse": "Écailles brunes ; chair qui rougit ; sous conifères",
+                     "suite": {
+                      "espece": "agaricus-sylvaticus"
+                     }
+                    },
+                    {
+                     "reponse": "Blanc ; jaunit un peu ; odeur d'anis ; dans les bois",
+                     "suite": {
+                      "espece": "agaricus-sylvicola"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau aplati ; double anneau ; trottoirs, bords de routes",
+                     "suite": {
+                      "espece": "agaricus-bitorquis"
+                     }
+                    },
+                    {
+                     "reponse": "Brun à petites écailles ; fumiers, jardins",
+                     "suite": {
+                      "espece": "agaricus-bisporus"
+                     }
+                    },
+                    {
+                     "reponse": "Fines écailles gris-noir ; jaunit à la base ; odeur d'encre",
+                     "suite": {
+                      "espece": "agaricus-moelleri"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "En touffes sur bois ou souches",
+               "suite": {
+                "id": "touffes-sombres",
+                "question": "Couleur du chapeau et des lames ?",
+                "options": [
+                 {
+                  "reponse": "Jaune soufre ; lames verdâtres ; très amer",
+                  "suite": {
+                   "espece": "hypholoma-fasciculare"
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "touffes-sombres-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Rouge brique ; lames grises",
+                     "suite": {
+                      "espece": "hypholoma-lateritium"
+                     }
+                    },
+                    {
+                     "reponse": "Ocre ; lames gris pâle ; sur souches de conifères",
+                     "suite": {
+                      "espece": "hypholoma-capnoides"
+                     }
+                    },
+                    {
+                     "reponse": "Brun, pâlissant en séchant ; lames brunes",
+                     "suite": {
+                      "espece": "psathyrella-piluliformis"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Aucune de ces descriptions (autres espèces)",
+               "suite": {
+                "id": "noire-autres",
+                "question": "Aspect ?",
+                "options": [
+                 {
+                  "reponse": "Vert-bleu, visqueux ; anneau",
+                  "suite": {
+                   "espece": "stropharia-aeruginosa"
+                  }
+                 },
+                 {
+                  "reponse": "Grand, brun-vineux ; anneau épais denté ; sur paillages",
+                  "suite": {
+                   "espece": "stropharia-rugosoannulata"
+                  }
+                 },
+                 {
+                  "reponse": "Crème, marge ornée de lambeaux blancs ; pelouses",
+                  "suite": {
+                   "espece": "psathyrella-candolleana"
+                  }
+                 },
+                 {
+                  "reponse": "Brun-jaune fibrilleux ; lames qui « pleurent » des gouttes noires",
+                  "suite": {
+                   "espece": "lacrymaria-lacrymabunda"
+                  }
+                 },
+                 {
+                  "reponse": "Petit, conique pointu à mamelon ; dans les prés",
+                  "suite": {
+                   "espece": "psilocybe-semilanceata"
+                  }
+                 },
+                 {
+                  "reponse": "Lames décurrentes épaisses ; chapeau visqueux",
+                  "suite": {
+                   "id": "gomphides",
+                   "question": "Couleur et arbre ?",
+                   "options": [
+                    {
+                     "reponse": "Orange-cuivré ; sous les pins",
+                     "suite": {
+                      "espece": "chroogomphus-rutilus"
+                     }
+                    },
+                    {
+                     "reponse": "Gris-violet, très visqueux ; sous les épicéas",
+                     "suite": {
+                      "espece": "gomphidius-glutinosus"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Des tubes terminés par des pores (éponge)",
+      "suite": {
+       "id": "bolets",
+       "question": "Le chapeau est-il gluant, avec un anneau sur le pied ?",
+       "groupe": "Bolets",
+       "options": [
+        {
+         "reponse": "Oui",
+         "suite": {
+          "id": "suillus-anneau",
+          "question": "Couleur et arbre ?",
+          "options": [
+           {
+            "reponse": "Brun chocolat ; sous les pins",
+            "suite": {
+             "espece": "suillus-luteus"
+            }
+           },
+           {
+            "reponse": "Jaune d'or à orange ; sous les mélèzes",
+            "suite": {
+             "espece": "suillus-grevillei"
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Non",
+         "suite": {
+          "id": "bolets-pied",
+          "question": "Le pied est-il couvert de petites mèches noires (scabres) ?",
+          "options": [
+           {
+            "reponse": "Oui, pied rugueux",
+            "suite": {
+             "id": "leccinum",
+             "question": "Couleur du chapeau et arbre ?",
+             "options": [
+              {
+               "reponse": "Brun grisâtre ; sous les bouleaux",
+               "suite": {
+                "espece": "leccinum-scabrum"
+               }
+              },
+              {
+               "reponse": "Aucune de ces descriptions (autres espèces)",
+               "suite": {
+                "id": "leccinum-autres",
+                "question": "Aspect ?",
+                "options": [
+                 {
+                  "reponse": "Orange ; sous les bouleaux ; chair noircissant",
+                  "suite": {
+                   "espece": "leccinum-versipelle"
+                  }
+                 },
+                 {
+                  "reponse": "Rouge-orangé ; sous les trembles et peupliers",
+                  "suite": {
+                   "espece": "leccinum-aurantiacum"
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           },
+           {
+            "reponse": "Non",
+            "suite": {
+             "id": "bolets-bleuit",
+             "question": "La chair bleuit-elle à la coupe ?",
+             "options": [
+              {
+               "reponse": "Non, elle reste blanche ou jaune",
+               "suite": {
+                "id": "cepes-pores",
+                "question": "Couleur des pores et du réseau du pied ?",
+                "options": [
+                 {
+                  "reponse": "Pores roses ; réseau brun foncé ; chair très amère",
+                  "suite": {
+                   "espece": "tylopilus-felleus"
+                  }
+                 },
+                 {
+                  "reponse": "Pores blancs puis jaune-vert ; pied plein avec réseau clair",
+                  "suite": {
+                   "id": "cepes",
+                   "question": "Couleur du chapeau ?",
+                   "groupe": "Cèpes",
+                   "options": [
+                    {
+                     "reponse": "Brun noisette, marge plus claire ; pied ventru",
+                     "suite": {
+                      "espece": "boletus-edulis"
+                     }
+                    },
+                    {
+                     "reponse": "Brun-noir bronzé ; réseau brunâtre",
+                     "suite": {
+                      "espece": "boletus-aereus"
+                     }
+                    },
+                    {
+                     "reponse": "Brun clair, mat ; réseau sur tout le pied ; dès le printemps",
+                     "suite": {
+                      "espece": "boletus-reticulatus"
+                     }
+                    },
+                    {
+                     "reponse": "Brun-rouge acajou ; sous pins",
+                     "suite": {
+                      "espece": "boletus-pinophilus"
+                     }
+                    }
+                   ]
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "bolets-immuables-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Chapeau gluant sans anneau ; pores jaunes avec gouttelettes ; sous pins",
+                     "suite": {
+                      "espece": "suillus-granulatus"
+                     }
+                    },
+                    {
+                     "reponse": "Pores larges et anguleux ; chapeau orangé ; sous pins",
+                     "suite": {
+                      "espece": "suillus-bovinus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau jaune-ocre granuleux ; odeur de chlore ; sous pins",
+                     "suite": {
+                      "espece": "suillus-variegatus"
+                     }
+                    },
+                    {
+                     "reponse": "Petit ; pores couleur rouille ; saveur poivrée",
+                     "suite": {
+                      "espece": "chalciporus-piperatus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau ocre velouté ; pores jaunes ; odeur d'iode",
+                     "suite": {
+                      "espece": "hemileccinum-impolitum"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau marron velouté ; pores blancs ; pied creux et cassant",
+                     "suite": {
+                      "espece": "gyroporus-castaneus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau couvert de grosses écailles noires (pomme de pin)",
+                     "suite": {
+                      "espece": "strobilomyces-strobilaceus"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              },
+              {
+               "reponse": "Oui, elle bleuit",
+               "suite": {
+                "id": "bolets-bleus",
+                "question": "Couleur des pores ?",
+                "options": [
+                 {
+                  "reponse": "Jaunes ; chapeau brun bai lisse, visqueux par temps humide ; pied sans réseau",
+                  "suite": {
+                   "espece": "imleria-badia"
+                  }
+                 },
+                 {
+                  "reponse": "Rouges",
+                  "suite": {
+                   "id": "pores-rouges",
+                   "question": "Chapeau, pied et chair ?",
+                   "options": [
+                    {
+                     "reponse": "Chapeau blanc grisâtre ; pied ventru, rouge en bas, à réseau rouge ; odeur forte",
+                     "suite": {
+                      "espece": "rubroboletus-satanas"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau brun foncé velouté ; pied ponctué de rouge, sans réseau ; chair jaune",
+                     "suite": {
+                      "espece": "neoboletus-erythropus"
+                     }
+                    },
+                    {
+                     "reponse": "Aucune de ces descriptions (autres espèces)",
+                     "suite": {
+                      "id": "pores-rouges-autres",
+                      "question": "Aspect ?",
+                      "options": [
+                       {
+                        "reponse": "Chapeau olive-brun ; pied à réseau rouge ; chair rouge à la base du pied",
+                        "suite": {
+                         "espece": "suillellus-luridus"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau orange-brique ; pied sans réseau ; chair rouge betterave à la base",
+                        "suite": {
+                         "espece": "suillellus-queletii"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau blanc rosé ; pied jaune vif à réseau rouge",
+                        "suite": {
+                         "espece": "rubroboletus-rhodoxanthus"
+                        }
+                       }
+                      ]
+                     }
+                    }
+                   ]
+                  }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "bolets-bleus-autres",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Cuticule craquelée laissant voir du rouge ; pores jaunes",
+                     "suite": {
+                      "espece": "xerocomellus-chrysenteron"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau velouté olive ; pores larges jaune vif",
+                     "suite": {
+                      "espece": "xerocomus-subtomentosus"
+                     }
+                    },
+                    {
+                     "reponse": "Pores jaune citron ; pied à réseau jaune ; chair bleuit peu",
+                     "suite": {
+                      "espece": "butyriboletus-appendiculatus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau gris ; pied rouge à réseau ; chair amère",
+                     "suite": {
+                      "espece": "caloboletus-calopus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau blanc-gris ; pied jaune profondément enraciné ; amer",
+                     "suite": {
+                      "espece": "caloboletus-radicans"
+                     }
+                    },
+                    {
+                     "reponse": "Pores blanchâtres ; chair bleu bleuet intense et immédiat",
+                     "suite": {
+                      "espece": "gyroporus-cyanescens"
+                     }
+                    }
+                   ]
+                  }
+                 }
+                ]
+               }
+              }
+             ]
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Des aiguillons (petits picots)",
+      "suite": {
+       "id": "hydnes",
+       "question": "Couleur et taille ?",
+       "groupe": "Pieds-de-mouton",
+       "options": [
+        {
+         "reponse": "Crème à orangé pâle ; chair épaisse ; assez grand",
+         "suite": {
+          "espece": "hydnum-repandum"
+         }
+        },
+        {
+         "reponse": "Roux orangé ; plus petit et plus fin",
+         "suite": {
+          "espece": "hydnum-rufescens"
+         }
+        },
+        {
+         "reponse": "Aucune de ces descriptions (autres espèces)",
+         "suite": {
+          "id": "hydnes-autres",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Grand, chapeau couvert de grosses écailles brunes retroussées",
+            "suite": {
+             "espece": "sarcodon-imbricatus"
+            }
+           },
+           {
+            "reponse": "Blanc, couvert de gouttes rouge sang",
+            "suite": {
+             "espece": "hydnellum-peckii"
+            }
+           },
+           {
+            "reponse": "Minuscule, brun, pied latéral ; sur cônes de pin",
+            "suite": {
+             "espece": "auriscalpium-vulgare"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Des plis épais et fourchus, ou une surface lisse",
+      "suite": {
+       "id": "chanterelles",
+       "question": "Le dessous du chapeau porte :",
+       "groupe": "Chanterelles et trompettes",
+       "options": [
+        {
+         "reponse": "Des plis épais, fourchus, descendant sur le pied",
+         "suite": {
+          "id": "plis",
+          "question": "Couleur ?",
+          "options": [
+           {
+            "reponse": "Jaune d'œuf partout, chapeau lisse ; chair pleine ; odeur fruitée",
+            "suite": {
+             "espece": "cantharellus-cibarius"
+            }
+           },
+           {
+            "reponse": "Chapeau brun en entonnoir ; plis grisâtres ; pied creux jaune",
+            "suite": {
+             "espece": "craterellus-tubaeformis"
+            }
+           },
+           {
+            "reponse": "Aucune de ces descriptions (autres espèces)",
+            "suite": {
+             "id": "plis-autres",
+             "question": "Aspect ?",
+             "options": [
+              {
+               "reponse": "Jaune, chapeau couvert de fines mèches lilas",
+               "suite": {
+                "espece": "cantharellus-amethysteus"
+               }
+              },
+              {
+               "reponse": "Violet, en massue tronquée ; plis violets",
+               "suite": {
+                "espece": "gomphus-clavatus"
+               }
+              }
+             ]
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Une surface presque lisse ou faiblement veinée",
+         "suite": {
+          "id": "lisse",
+          "question": "Couleur ?",
+          "options": [
+           {
+            "reponse": "Gris-noir, en forme de trompette creuse",
+            "suite": {
+             "espece": "craterellus-cornucopioides"
+            }
+           },
+           {
+            "reponse": "Chapeau brun ; pied orange vif ; dessous rosé-orangé",
+            "suite": {
+             "espece": "craterellus-lutescens"
+            }
+           },
+           {
+            "reponse": "Gris, petit, chapeau ondulé ; pied gris",
+            "suite": {
+             "espece": "pseudocraterellus-undulatus"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "Tête alvéolée, en cervelle ou en selle",
+   "suite": {
+    "id": "ascos",
+    "question": "Forme de la tête ?",
+    "groupe": "Morilles et apparentés",
+    "options": [
+     {
+      "reponse": "Alvéolée en nid d'abeilles, creuse, soudée au pied",
+      "suite": {
+       "id": "morilles",
+       "question": "Forme de la tête ?",
+       "groupe": "Morilles",
+       "options": [
+        {
+         "reponse": "Arrondie ; alvéoles irrégulières jaunâtres à grises",
+         "suite": {
+          "espece": "morchella-esculenta"
+         }
+        },
+        {
+         "reponse": "Conique ; alvéoles en rangées verticales, arêtes sombres",
+         "suite": {
+          "espece": "morchella-elata"
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Plissée en cervelle, brun-rouge, intérieur cloisonné ; au printemps",
+      "suite": {
+       "espece": "gyromitra-esculenta"
+      }
+     },
+     {
+      "reponse": "En forme de selle blanchâtre ; pied creusé de côtes",
+      "suite": {
+       "espece": "helvella-crispa"
+      }
+     },
+     {
+      "reponse": "Aucune de ces descriptions (autres espèces)",
+      "suite": {
+       "id": "ascos-autres",
+       "question": "Aspect ?",
+       "options": [
+        {
+         "reponse": "Tête alvéolée, libre du pied sur sa moitié inférieure (« jupe »)",
+         "suite": {
+          "espece": "morchella-semilibera"
+         }
+        },
+        {
+         "reponse": "Petit « dé à coudre » ridé, entièrement libre du pied",
+         "suite": {
+          "espece": "verpa-bohemica"
+         }
+        },
+        {
+         "reponse": "Selle gris-noir ; pied gris côtelé",
+         "suite": {
+          "espece": "helvella-lacunosa"
+         }
+        },
+        {
+         "reponse": "Selle ou turban brun-roux ; pied lisse ; en automne, sur bois pourri",
+         "suite": {
+          "espece": "gyromitra-infula"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "En boule ou en poire, sans chapeau",
+   "suite": {
+    "id": "boules",
+    "question": "Coupé en deux de haut en bas, l'intérieur est :",
+    "aide": "Si la coupe montre la silhouette d'un champignon (chapeau, lames, pied), c'est un œuf d'amanite : DANGER.",
+    "groupe": "Vesses-de-loup",
+    "options": [
+     {
+      "reponse": "Blanc et homogène ; enveloppe couverte de petites perles",
+      "suite": {
+       "espece": "lycoperdon-perlatum"
+      }
+     },
+     {
+      "reponse": "Blanc et homogène ; boule énorme (15 à 50 cm), lisse",
+      "suite": {
+       "espece": "calvatia-gigantea"
+      }
+     },
+     {
+      "reponse": "Noir violacé marbré de blanc ; enveloppe épaisse, écailleuse, jaunâtre",
+      "suite": {
+       "espece": "scleroderma-citrinum"
+      }
+     },
+     {
+      "reponse": "Aucune de ces descriptions (autres espèces)",
+      "suite": {
+       "id": "boules-autres",
+       "question": "Aspect ?",
+       "options": [
+        {
+         "reponse": "En groupes serrés sur bois pourri ; en forme de poire",
+         "suite": {
+          "espece": "lycoperdon-pyriforme"
+         }
+        },
+        {
+         "reponse": "Grand, en forme de quille, avec un long pied",
+         "suite": {
+          "espece": "lycoperdon-excipuliforme"
+         }
+        },
+        {
+         "reponse": "Petite boule lisse blanche puis gris plomb, sans pied ; prés",
+         "suite": {
+          "espece": "bovista-plumbea"
+         }
+        },
+        {
+         "reponse": "Enveloppe mince brune ; base plissée en pied ; intérieur noir",
+         "suite": {
+          "espece": "scleroderma-verrucosum"
+         }
+        },
+        {
+         "reponse": "Enterré ; boule noire à verrues pyramidales ; intérieur veiné de blanc",
+         "suite": {
+          "id": "truffes",
+          "question": "Intérieur et saison ?",
+          "options": [
+           {
+            "reponse": "Noir violacé veiné de blanc ; en hiver",
+            "suite": {
+             "espece": "tuber-melanosporum"
+            }
+           },
+           {
+            "reponse": "Beige à brun veiné de blanc ; en été et automne",
+            "suite": {
+             "espece": "tuber-aestivum"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "Ramifié comme un corail ou un chou-fleur",
+   "suite": {
+    "id": "coraux",
+    "question": "Aspect ?",
+    "groupe": "Clavaires",
+    "options": [
+     {
+      "reponse": "Boule de lames ondulées crème, comme une éponge ; au pied des pins",
+      "suite": {
+       "espece": "sparassis-crispa"
+      }
+     },
+     {
+      "reponse": "Rameaux dressés",
+      "suite": {
+       "id": "ramaires",
+       "question": "Couleur des rameaux ?",
+       "options": [
+        {
+         "reponse": "Blancs à extrémités rose-violacé",
+         "suite": {
+          "espece": "ramaria-botrytis"
+         }
+        },
+        {
+         "reponse": "Rose saumon à extrémités jaunes",
+         "suite": {
+          "espece": "ramaria-formosa"
+         }
+        },
+        {
+         "reponse": "Aucune de ces descriptions (autres espèces)",
+         "suite": {
+          "id": "ramaires-autres",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Petits rameaux blancs à pointes en crête",
+            "suite": {
+             "espece": "clavulina-cristata"
+            }
+           },
+           {
+            "reponse": "Jaune d'or, caoutchouteux ; sur bois de conifères",
+            "suite": {
+             "espece": "calocera-viscosa"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Une massue unique jaune-ocre (sans rameaux)",
+      "suite": {
+       "espece": "clavariadelphus-pistillaris"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "En console sur un tronc, sans vrai pied",
+   "suite": {
+    "id": "consoles",
+    "question": "Aspect ?",
+    "groupe": "Polypores",
+    "options": [
+     {
+      "reponse": "En étages jaune soufre et orange vif ; chair tendre",
+      "suite": {
+       "espece": "laetiporus-sulphureus"
+      }
+     },
+     {
+      "reponse": "Rouge sang, en forme de langue ; chair qui « saigne »",
+      "suite": {
+       "espece": "fistulina-hepatica"
+      }
+     },
+     {
+      "reponse": "Aucune de ces descriptions (autres espèces)",
+      "suite": {
+       "id": "consoles-autres",
+       "question": "Texture ?",
+       "options": [
+        {
+         "reponse": "Molle à charnue",
+         "suite": {
+          "id": "consoles-molles",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Touffe de nombreux lobes gris-brun ; au pied des chênes",
+            "suite": {
+             "espece": "grifola-frondosa"
+            }
+           },
+           {
+            "reponse": "Énorme rosette de lobes bruns qui noircissent au toucher ; au pied des hêtres",
+            "suite": {
+             "espece": "meripilus-giganteus"
+            }
+           },
+           {
+            "reponse": "Grand éventail crème à écailles brunes ; pied latéral noir",
+            "suite": {
+             "espece": "polyporus-squamosus"
+            }
+           },
+           {
+            "reponse": "Cascade blanche de longs aiguillons pendants",
+            "suite": {
+             "espece": "hericium-erinaceus"
+            }
+           },
+           {
+            "reponse": "Brun-roux, très velu ; sur frênes et arbres fruitiers",
+            "suite": {
+             "espece": "inonotus-hispidus"
+            }
+           },
+           {
+            "reponse": "Petites consoles grises ; pores gris foncé",
+            "suite": {
+             "espece": "bjerkandera-adusta"
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Dure, ligneuse",
+         "suite": {
+          "id": "consoles-dures",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "En forme de sabot de cheval, gris",
+            "suite": {
+             "espece": "fomes-fomentarius"
+            }
+           },
+           {
+            "reponse": "Grande plaque brune ; pores blancs qui gardent la trace d'un dessin",
+            "suite": {
+             "espece": "ganoderma-applanatum"
+            }
+           },
+           {
+            "reponse": "Rouge laqué brillant, avec un pied",
+            "suite": {
+             "espece": "ganoderma-lucidum"
+            }
+           },
+           {
+            "reponse": "Marge rouge-orange ; sur conifères",
+            "suite": {
+             "espece": "fomitopsis-pinicola"
+            }
+           },
+           {
+            "reponse": "Blanc, en coussin ; uniquement sur bouleaux",
+            "suite": {
+             "espece": "fomitopsis-betulina"
+            }
+           },
+           {
+            "reponse": "Pores en labyrinthe ; sur chênes",
+            "suite": {
+             "espece": "daedalea-quercina"
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Mince et coriace, en rosettes ou en croûtes",
+         "suite": {
+          "id": "consoles-minces",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Zones concentriques multicolores, veloutées",
+            "suite": {
+             "espece": "trametes-versicolor"
+            }
+           },
+           {
+            "reponse": "Blanc, bosselé, épais",
+            "suite": {
+             "espece": "trametes-gibbosa"
+            }
+           },
+           {
+            "reponse": "Jaune-orange velu ; dessous lisse, sans pores",
+            "suite": {
+             "espece": "stereum-hirsutum"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "Gélatineux, mou et tremblotant",
+   "suite": {
+    "id": "gelatineux",
+    "question": "Forme et couleur ?",
+    "groupe": "Gélatineux",
+    "options": [
+     {
+      "reponse": "En forme d'oreille brune, lisse",
+      "suite": {
+       "espece": "auricularia-auricula-judae"
+      }
+     },
+     {
+      "reponse": "Oreilles grises zonées et velues, en étages",
+      "suite": {
+       "espece": "auricularia-mesenterica"
+      }
+     },
+     {
+      "reponse": "Masse plissée jaune d'or, comme une cervelle",
+      "suite": {
+       "espece": "tremella-mesenterica"
+      }
+     },
+     {
+      "reponse": "Feuilles brunes ondulées, en touffe",
+      "suite": {
+       "espece": "tremella-foliacea"
+      }
+     },
+     {
+      "reponse": "Masses noires plissées, sur bois mort",
+      "suite": {
+       "espece": "exidia-glandulosa"
+      }
+     },
+     {
+      "reponse": "Translucide, avec des aiguillons dessous",
+      "suite": {
+       "espece": "pseudohydnum-gelatinosum"
+      }
+     },
+     {
+      "reponse": "Cornet rose-orangé, en touffes",
+      "suite": {
+       "espece": "tremiscus-helvelloides"
+      }
+     },
+     {
+      "reponse": "Petit chapeau vert-olive gélatineux sur un pied jaune ; au sol",
+      "suite": {
+       "espece": "leotia-lubrica"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "reponse": "Forme étrange : coupe, étoile, cage, œuf, nid…",
+   "suite": {
+    "id": "etranges",
+    "question": "Laquelle de ces formes ?",
+    "groupe": "Formes étranges",
+    "options": [
+     {
+      "reponse": "Une coupe, une oreille ou un disque",
+      "suite": {
+       "id": "coupes",
+       "question": "Couleur et habitat ?",
+       "groupe": "Pézizes",
+       "options": [
+        {
+         "reponse": "Orange vif ; au sol, sur terre nue",
+         "suite": {
+          "espece": "aleuria-aurantia"
+         }
+        },
+        {
+         "reponse": "Rouge écarlate, extérieur blanchâtre ; sur bois mort, en hiver",
+         "suite": {
+          "espece": "sarcoscypha-coccinea"
+         }
+        },
+        {
+         "reponse": "Oreille jaune-orangé fendue d'un côté",
+         "suite": {
+          "espece": "otidea-onotica"
+         }
+        },
+        {
+         "reponse": "Minuscules coupes bleu-vert ; bois teinté de turquoise",
+         "suite": {
+          "espece": "chlorociboria-aeruginascens"
+         }
+        },
+        {
+         "reponse": "Grande coupe brune veinée ; odeur d'eau de Javel ; au printemps",
+         "suite": {
+          "espece": "disciotis-venosa"
+         }
+        },
+        {
+         "reponse": "Coupe brune sur un pied blanc à côtes saillantes",
+         "suite": {
+          "espece": "helvella-acetabulum"
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Un pied blanc sortant d'un « œuf », tête gluante et puante",
+      "suite": {
+       "id": "phalles",
+       "question": "Taille et couleur ?",
+       "options": [
+        {
+         "reponse": "Grand, tête verdâtre alvéolée, odeur de charogne",
+         "suite": {
+          "espece": "phallus-impudicus"
+         }
+        },
+        {
+         "reponse": "Petit et fin, pointe orange",
+         "suite": {
+          "espece": "mutinus-caninus"
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Une cage rouge en treillis",
+      "suite": {
+       "espece": "clathrus-ruber"
+      }
+     },
+     {
+      "reponse": "Des bras rouges étalés en étoile (pieuvre)",
+      "suite": {
+       "espece": "clathrus-archeri"
+      }
+     },
+     {
+      "reponse": "Une étoile brune portant une boule au centre",
+      "suite": {
+       "espece": "geastrum-triplex"
+      }
+     },
+     {
+      "reponse": "Un petit nid contenant des « œufs »",
+      "suite": {
+       "espece": "cyathus-striatus"
+      }
+     },
+     {
+      "reponse": "Noir et dur, sur bois",
+      "suite": {
+       "id": "noirs-bois",
+       "question": "Forme ?",
+       "options": [
+        {
+         "reponse": "Petit « bois de cerf » noir à pointes blanches",
+         "suite": {
+          "espece": "xylaria-hypoxylon"
+         }
+        },
+        {
+         "reponse": "Doigts noirs en massue",
+         "suite": {
+          "espece": "xylaria-polymorpha"
+         }
+        },
+        {
+         "reponse": "Boule noire dure ; zones concentriques à la coupe",
+         "suite": {
+          "espece": "daldinia-concentrica"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

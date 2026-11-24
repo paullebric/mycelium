@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C120F">
+<!--ICONES-->
+<!--PWA-->
+<title>mycélium · carte des champignons de France</title>
+<meta name="description" content="Carte interactive d'identification des champignons de France, utilisable hors ligne. Outil pédagogique.">
+<style>/*POLICES*/</style>
+<style>/*CSS_PAGE*/</style>
+<style id="css-carte">/*CSS_CARTE*/</style>
+</head>
+<body>
+<header id="barre">
+  <button id="btn-avert" class="carre rouge" aria-label="Avertissement : outil pédagogique" title="Avertissement">!</button>
+  <div class="logo" aria-label="mycélium">mycélium<span>.</span></div>
+  <div class="zone-recherche">
+    <svg class="loupe" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="recherche" type="search" placeholder="Chercher" autocomplete="off" aria-label="Rechercher une espèce" aria-controls="resultats">
+    <ul id="resultats" role="listbox" hidden></ul>
+  </div>
+  <button id="pastille-mois" class="pastille-mois" title="Filtrer par mois"></button>
+</header>
+<nav id="ariane" aria-label="Chemin dans la clé" hidden></nav>
+<main id="zone-carte">
+  <svg id="carte" role="application" aria-label="Carte zoomable de la clé d'identification">
+    <defs id="defs-carte"><clipPath id="clip-feuille"><circle r="48"/></clipPath></defs>
+    <g id="monde"></g>
+  </svg>
+  <div id="controles">
+    <button id="zoom-plus" class="carre bureau" aria-label="Zoomer">+</button>
+    <button id="zoom-moins" class="carre bureau" aria-label="Dézoomer">−</button>
+  </div>
+  <div id="cadre-mini" aria-label="Mini-carte de position">
+    <svg id="minicarte" preserveAspectRatio="xMidYMid meet"><g id="mini-monde"></g><rect id="mini-vue" fill="rgba(255,181,71,.1)" stroke="#FFB547"/></svg>
+    <button id="recentrer" aria-label="Recentrer la carte" title="Recentrer (touche 0)">◎ RECENTRER</button>
+  </div>
+  <button id="commencer" hidden aria-label="Commencer l'identification : première question"><span>▶</span> IDENTIFICATION</button>
+  <button id="quitter-focus" hidden>✕ QUITTER LE FOCUS</button>
+  <section id="volet" aria-live="polite"></section>
+  <section id="comparaison" aria-label="Comparaison avec les sosies" hidden>
+    <div class="cmp-entete"><span id="cmp-titre">Ne pas confondre avec :</span><button id="cmp-fermer" aria-label="Masquer la comparaison">✕</button></div>
+    <div id="cmp-liste"></div>
+  </section>
+</main>
+<nav id="nav" aria-label="Navigation principale">
+  <button data-vue="carte" aria-current="true">CARTE</button>
+  <button data-vue="carnet">CARNET</button>
+  <button data-vue="filtres">FILTRES</button>
+  <button data-vue="legende">LÉGENDE</button>
+</nav>
+
+<aside id="fiche" class="panneau" aria-label="Fiche de l'espèce" hidden></aside>
+
+<section id="p-filtres" class="panneau demi" aria-label="Filtres" hidden>
+  <div class="p-tete"><div><div class="sur-titre">FILTRES</div><h2>Que montrer ?</h2><p id="compte" class="p-sous" aria-live="polite"></p></div><button class="p-fermer carre" aria-label="Fermer">✕</button></div>
+  <h3 class="rubrique">MOIS DE CUEILLETTE</h3>
+  <div id="mois" role="group" aria-label="Filtrer par mois de pousse"></div>
+  <p class="note">Tranches larges : la pousse varie selon la météo, l'altitude et la région.</p>
+  <h3 class="rubrique">STATUT</h3>
+  <div id="filtres" role="group" aria-label="Filtrer par statut"></div>
+  <h3 class="rubrique">AFFICHAGE</h3>
+  <div class="opts">
+    <button id="opt-secondaires" class="opt-ligne" aria-pressed="true"><span>Espèces hors du cercle (<span id="nb-sec"></span>)</span><span class="etat"></span></button>
+    <button id="opt-carnet" class="opt-ligne" aria-pressed="true"><span>Surligner mon carnet</span><span class="etat"></span></button>
+  </div>
+</section>
+
+<section id="p-carnet" class="panneau" aria-label="Carnet" hidden></section>
+
+<section id="p-legende" class="panneau demi" aria-label="Légende" hidden>
+  <div class="p-tete"><div><div class="sur-titre">LÉGENDE</div><h2>Lire la carte</h2></div><button class="p-fermer carre" aria-label="Fermer">✕</button></div>
+  <ul id="legende-statuts"></ul>
+  <p class="leg-l"><svg width="40" height="10" aria-hidden="true"><path d="M2 5h36" stroke="#FF5A3C" stroke-width="2.5" stroke-dasharray="6 4"/></svg> Sosies de l'espèce sélectionnée</p>
+  <p class="leg-l"><svg width="22" height="22" viewBox="-11 -11 22 22" aria-hidden="true"><circle r="9" fill="#0C120F" stroke="#FFB547" stroke-width="2"/><path d="M0 -5v5" stroke="#FFB547" stroke-width="2.4" stroke-linecap="round"/><circle cy="4.2" r="1.4" fill="#FFB547"/></svg> Comestible seulement avec précautions</p>
+  <p class="leg-l"><svg width="22" height="22" viewBox="-11 -11 22 22" aria-hidden="true"><circle r="9" fill="none" stroke="#FFB547" stroke-width="2"/><path d="M0-5l1.5 3.2 3.4.4-2.5 2.3.7 3.4L0 2.6-3.1 4.3l.7-3.4-2.5-2.3 3.4-.4z" fill="#FFB547"/></svg> Espèce de mon carnet (trouvée)</p>
+  <p class="leg-l"><svg width="40" height="22" aria-hidden="true"><path d="M2 11 Q20 2 38 11 M2 17 Q20 8 38 17" fill="none" stroke="#8DF5C0" stroke-opacity=".5"/></svg> Courbes de niveau : plus elles se resserrent et s'écartent, plus la branche compte d'espèces</p>
+  <h3 class="rubrique">NAVIGUER</h3>
+  <p class="note">Glisser : se déplacer. Pincer ou molette : zoomer. Double-toucher : zoomer ici. Toucher une question : focus sur sa branche, et « ? » pour savoir comment regarder. Toucher une espèce : aperçu, puis fiche. Touche 0 : tout voir.</p>
+  <h3 class="rubrique">AUTRES DISPOSITIONS</h3>
+  <div class="opts"><label class="opt-ligne"><span>Disposition</span><select id="disposition"></select></label>
+  <button id="exporter" class="opt-ligne"><span>Exporter la carte en poster (SVG)</span><span class="etat">↓</span></button></div>
+  <p class="note" id="credits"></p>
+</section>
+
+<div id="aide-q" class="feuille-bas" role="dialog" aria-modal="true" aria-label="Comment regarder" hidden></div>
+
+<div id="avert" class="modale" role="dialog" aria-modal="true" aria-labelledby="avert-titre" hidden>
+  <div class="logo-grand">mycélium<span>.</span></div>
+  <div class="sous-logo">CARTE D'IDENTIFICATION · <span id="avert-nb"></span> ESPÈCES</div>
+  <section class="avert-boite">
+    <div class="avert-tete"><span class="avert-ico">!</span><span>AVANT DE COMMENCER</span></div>
+    <div class="avert-corps">
+      <p id="avert-titre" class="avert-gros">Outil pédagogique. Ne mangez jamais un champignon sur la base de cette carte.</p>
+      <p class="avert-txt">Faites vérifier toute récolte par un pharmacien ou un mycologue.</p>
+      <div class="rubrique">LA MÉTHODE EN 4 GESTES</div>
+      <ol class="methode">
+        <li><span>01</span>Cueillir le pied entier, base comprise</li>
+        <li><span>02</span>Ne pas mélanger les espèces dans le panier</li>
+        <li><span>03</span>Observer chapeau, dessous, pied, odeur</li>
+        <li><span>04</span>Faire vérifier avant toute consommation</li>
+      </ol>
+    </div>
+    <label class="avert-case"><input type="checkbox" id="avert-plus"> Ne plus m'avertir à l'ouverture</label>
+    <button id="avert-ok" class="gros-bouton">J'AI COMPRIS · EXPLORER</button>
+  </section>
+  <p class="avert-pied">L'avertissement reste accessible à tout moment par le bouton <b>!</b> en haut à gauche.</p>
+</div>
+
+<div id="confirme" class="modale petite" role="alertdialog" aria-modal="true" aria-labelledby="conf-q" hidden>
+  <section class="avert-boite">
+    <div class="avert-tete vert"><span class="avert-ico">✓</span><span id="conf-esp">MANGÉ !</span></div>
+    <div class="avert-corps"><p id="conf-q" class="avert-gros">Votre récolte a-t-elle été vérifiée par un pharmacien ou un mycologue ?</p><p id="conf-msg" class="avert-txt" hidden></p></div>
+    <div class="deux-boutons"><button id="conf-non" class="bouton-ligne">NON</button><button id="conf-oui" class="gros-bouton">OUI</button></div>
+  </section>
+</div>
+
+<div id="visionneuse" role="dialog" aria-modal="true" aria-label="Illustration en grand" hidden>
+  <div id="vis-barre">
+    <div id="vis-titre"></div>
+    <div class="vis-boutons">
+      <button id="vis-photo" class="bascule" aria-pressed="false">PHOTO</button>
+      <button id="vis-schema" class="bascule" aria-pressed="false">SCHÉMA</button>
+      <button id="vis-fermer" class="carre" aria-label="Fermer">✕</button>
+    </div>
+  </div>
+  <div id="vis-contenu"></div>
+  <p id="vis-credit"></p>
+  <div id="vis-nav"></div>
+  <p class="vis-aide">Pincer, molette ou double-toucher pour zoomer · Échap pour fermer</p>
+</div>
+<script>/*DONNEES*/</script>
+<script>/*JS*/</script>
+<!--SW-->
+</body>
+</html>

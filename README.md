@@ -2,54 +2,51 @@
 
 **Carte interactive d'identification des champignons de France, utilisable hors ligne.**
 
-> ⚠️ **Outil pédagogique.** Ne mangez jamais un champignon sur la base de cette carte : faites vérifier toute récolte par un pharmacien ou un mycologue.
+> ⚠️ **Outil pédagogique.** Ne mangez jamais un champignon sur la base de cette carte : faites vérifier toute récolte par un pharmacien ou un mycologue. En cas d'intoxication : **15** ou un centre antipoison.
 
-👉 **Ouvrir l'app : https://paullebric.github.io/mycelium/**
+👉 **Ouvrir l'app : https://paullebric.github.io/mycelium/** · Android : voir les [Releases](https://github.com/paullebric/mycelium/releases)
 
-## Ce que c'est
+mycélium présente la clé d'identification comme une **carte que l'on explore** : on part de la forme générale du champignon, on touche une question, on suit la réponse le long de sa branche, jusqu'à l'espèce.
 
-mycélium présente la clé d'identification des champignons comme une **carte que l'on explore** : on part de la forme générale du champignon, on touche une question, on suit la réponse qui correspond le long de sa branche, jusqu'à l'espèce.
+- **263 espèces** (76 principales, 187 secondaires), fiches complètes avec sources
+- **Sosies** reliés sur la carte, comparaison photo contre photo
+- **« Comment regarder ? »** : schéma et photo réelle pour chaque réponse
+- Filtres par **mois** et par **statut** (les mortels restent toujours visibles)
+- **Carnet** « Trouvé ! » / « Mangé ! », exportable
+- **Hors ligne** : web installable (PWA) et application Android
 
-- **263 espèces** de France : 76 principales au centre, 187 secondaires autour.
-- **Fiches complètes** : critères clés, habitat, saison, sporée, toxicité, sources.
-- **Sosies** : les confusions possibles sont reliées sur la carte et comparables photo contre photo, avec ce qui les sépare.
-- **« Comment regarder ? »** : chaque question a un schéma et une photo réelle par réponse.
-- **Filtres** par mois de cueillette et par statut. Les espèces mortelles restent toujours affichées.
-- **Carnet** : on note ses trouvailles (« Trouvé ! ») et, pour les comestibles vérifiés, « Mangé ! ». Le carnet s'exporte et s'importe.
-- **Photos** : 233 photos Wikimedia Commons, avec auteur et licence dans chaque fiche.
-- **Hors ligne** : une fois ouverte une première fois, l'app fonctionne sans réseau, en forêt comprise.
+## Organisation du dépôt
 
-## Installer l'app
-
-| Appareil | Comment |
+| Dossier / fichier | Contenu |
 |---|---|
-| iPhone / iPad | Safari → bouton Partager → **Sur l'écran d'accueil** |
-| Mac | Safari → Fichier → **Ajouter au Dock** (ou l'icône d'installation de Chrome / Edge) |
-| Android | Chrome → menu ⋮ → **Installer l'application** (ou l'APK) |
-| Ordinateur | Chrome / Edge : icône d'installation dans la barre d'adresse |
+| `src/` | l'app : moteur de carte (`app.js`), schémas (`schema.js`), styles, gabarit HTML, polices, pages annexes |
+| `data/` | `cle.json` (arbre de la clé), `especes.json` (fiches), `reponses_courtes.json`, photos (`photos/` miniatures, `photos-hd/`) et crédits (`photos.json`) |
+| `scripts/` | génération de la clé (`gen_cle.py`), réponses courtes, téléchargement des photos, icônes, tests navigateur |
+| `cache/` | textes Wikipédia mis en cache, utilisés par `verifier.js` |
+| `icones/` | icônes de l'app (générées par `scripts/icones.js`) |
+| `build.js` | construit l'app |
+| `verifier.js` | vérifie la cohérence des données (statuts, sosies réciproques, mois, sources) |
+| `app-android/` | projet Android (Capacitor), fiche Play Store, guides |
+| `.github/workflows/pages.yml` | publie automatiquement la version web sur GitHub Pages |
 
-Au premier lancement, l'app télécharge en arrière-plan les photos haute définition (environ 23 Mo).
+## Construire
 
-## Contenu de ce dépôt
+Node 20 ou plus, sans autre dépendance :
 
-Ce dépôt contient **la version publiée** (générée) de l'app, servie par GitHub Pages :
+```
+node verifier.js            # contrôle des données
+node build.js               # dist/carte-champignons.html (un seul fichier, schémas)
+node build.js --photos      # dist/carte-champignons-photos.html (un seul fichier, ~30 Mo, avec photos)
+node build.js --pwa         # dist/pwa/ (version web installable, celle de GitHub Pages)
+```
 
-| Fichier | Rôle |
-|---|---|
-| `index.html` | l'application : carte, données, miniatures, polices et icônes intégrées |
-| `hd/` | photos haute définition, chargées à la demande |
-| `icones/` | icônes de l'app |
-| `manifest.webmanifest` | nom, couleurs et icônes de l'app installée |
-| `sw.js` | service worker : garde tout en cache pour le hors ligne |
+**Publication web** : chaque envoi sur `main` reconstruit et publie la PWA (GitHub Actions → Pages).
 
-Pour mettre à jour : regénérer la version (`node build.js --pwa` dans le projet source) puis remplacer ces fichiers.
+**Android** : voir [`app-android/LISEZMOI-APK.md`](app-android/LISEZMOI-APK.md) et [`app-android/GUIDE-PLAY-STORE.md`](app-android/GUIDE-PLAY-STORE.md). Les fichiers `.aab` / `.apk` sont publiés dans les **Releases**, pas dans le dépôt. La clé de signature n'est **jamais** versionnée.
 
-## Sources et crédits
+## Crédits
 
-- **Données mycologiques** : guides de référence et articles Wikipédia ; les sources de chaque espèce sont citées dans sa fiche. Les statuts de toxicité sont volontairement prudents.
-- **Photos** : Wikimedia Commons, sous licences CC BY, CC BY-SA ou domaine public. Auteur et licence sont indiqués dans chaque fiche.
-- **Polices** : Literata et IBM Plex Mono, sous SIL Open Font License.
-
-## Avertissement
-
-Cette carte est un outil d'apprentissage, pas un outil de décision. Beaucoup d'espèces mortelles ressemblent à des comestibles, et un seul exemplaire d'Amanite phalloïde peut tuer. En cas d'intoxication, appelez le **15** ou un **centre antipoison**.
+- **Données** : guides de référence et Wikipédia ; sources citées dans chaque fiche.
+- **Photos** : Wikimedia Commons (CC BY, CC BY-SA, domaine public) ; auteur et licence dans chaque fiche.
+- **Polices** : Literata, IBM Plex Mono (SIL Open Font License).
+- [Politique de confidentialité](https://paullebric.github.io/mycelium/confidentialite.html) : aucune donnée collectée.

@@ -1,0 +1,21 @@
+# Fichiers générés (reconstruits par build.js / GitHub Actions)
+dist/
+
+# Dépendances
+node_modules/
+
+# Android : sorties de compilation et copies générées
+app-android/www/
+app-android/android/app/src/main/assets/public/
+*.apk
+*.aab
+
+# ⚠ Clé de signature Android : ne JAMAIS la versionner
+app-android/signature/
+*.jks
+*.keystore
+keystore.properties
+
+# Divers
+.DS_Store
+__pycache__/

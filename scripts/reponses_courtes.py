@@ -1,0 +1,127 @@
+"""Versions courtes des réponses de la clé, affichées sur la carte et dans le volet.
+Le texte complet reste dans data/cle.json (page « ? », fiche, fil d'Ariane).
+Écrit data/reponses_courtes.json : { "id-question": ["court 1", "court 2", ...] } (même ordre que les options)."""
+import json, os
+A = "Autres"
+C = {
+ "racine": ["Chapeau et pied", "Tête alvéolée ou en selle", "Forme de boule ou de poire", "Ramifié, en corail", "Console sur tronc", "Gélatineux", "Forme étrange"],
+ "dessous": ["Lames", "Tubes / pores", "Aiguillons", "Plis ou lisse"],
+ "volve": ["Volve ou bulbe", "Ni volve ni bulbe"],
+ "volve-sporee": ["Sporée rose, au sol", "Sporée rose, sur tronc", "Sporée blanche"],
+ "amanites": ["Volve en sac", "Bulbe à rebord"],
+ "amanites-sac": ["Orange, lames jaunes", "Vert olive, lames blanches", "Tout blanc", "Gris à orangé, sans anneau"],
+ "amanites-blanches": ["Conique, été-automne", "Régulier, printemps", "Très grand et massif"],
+ "amanites-ovoides": ["Volve blanche", "Volve orangée"],
+ "amanites-vaginees": ["Gris", "Fauve roux", "Orange safran"],
+ "amanites-bulbe": ["Rouge, verrues blanches", "Brun, verrues blanches", "Brun rosé, rougit", "Jaune pâle, odeur de rave", A],
+ "amanites-bulbe-autres": ["Jaune jonquille", "Gris-brun, ne rougit pas", "Gris-violacé, odeur de rave", "Brun-jaune, verrues jaunes", "Grand blanc écailleux"],
+ "sporee": ["Sporée blanche", "Sporée rose", "Sporée brun rouille", "Sporée pourpre à noire"],
+ "blanche-chair": ["Lait (latex)", "Cassante comme la craie", "Fibreuse"],
+ "lactaires": ["Lait orange, sous pins", "Lait blanc, sous bouleaux", A],
+ "lactaires-autres": ["Lait orange", "Lait rouge vineux", "Lait qui jaunit", "Lait rouge sang, sur bois", "Lait blanc immuable"],
+ "lactaires-orange": ["Sous épicéas", "Sous sapins"],
+ "lactaires-blancs": ["Orange-fauve, lait abondant", "Blanc, lames serrées", "Blanc, lames espacées", "Brun-roux, sous chênes", "Olive-noir, sous bouleaux"],
+ "russules": ["Rouge vif", "Vert-de-gris craquelé", "Violet ou vert", A],
+ "russules-autres": ["Rouge, rose ou pourpre", "Jaune ou ocre", "Vert à olive, lisse", "Blanc ou noircissant"],
+ "russules-rouges": ["Rouge vif, sous hêtres", "Rouge-violacé, lames citron", "Pourpre, odeur de hareng", "Brun-rouge, saveur douce", "Rose-brun, bord dénudé", "Grand, olive-pourpre"],
+ "russules-jaunes": ["Jaune paille, amère", "Jaune ocre, douce"],
+ "russules-blanches": ["Blanc en entonnoir", "Gris puis noir"],
+ "blanche-anneau": ["Anneau", "Pas d'anneau"],
+ "blanche-anneau-oui": ["Grand, écailleux", "Petit, au sol", "En touffes sur bois", "Blanc et lisse"],
+ "coulemelles": ["Très grand, pied chiné", "Chair qui rougit", A],
+ "coulemelles-autres": ["Mamelon pointu", "Bulbe en escalier", "Écailles pointues brunes"],
+ "lepiotes": ["Écailles brun-lilas", "Écailles rose chair", "Brun-rougeâtre, anneau net", "Odeur de caoutchouc", A],
+ "lepiotes-autres": ["Brun châtain", "Floconneux blanc", "Jaune citron, en pot"],
+ "touffes-blanches": ["Jaune miel", A],
+ "touffes-blanches-autres": ["Brun-rosé, anneau épais", "Blanc visqueux, sur hêtre"],
+ "blanche-lames": ["Lames décurrentes", "Lames attachées ou libres"],
+ "decurrentes": ["Sur bois", "Au sol"],
+ "decurrentes-bois": ["Gris, en huître", "Orange vif, en touffes", A],
+ "decurrentes-bois-autres": ["Crème, en corne", "Petit éventail brun", "Éventail gris velu", "Jaune miel, Midi"],
+ "clitocybes": ["Orange, lames fourchues", "Bleu-vert, anisé", "Petit blanc des prés", "Gris, odeur forte", "Grand en entonnoir", A],
+ "clitocybes-autres": ["Entonnoir chamois", "Blanc givré", "Pied en massue", "Énorme, en ronds", "Roux en entonnoir", "Odeur de jasmin", "Lames cireuses", "Sous panicauts"],
+ "hygrophores-pres": ["Orange-saumon", "Blanc ivoire"],
+ "tricholomes": ["Petit, pied coriace", "Blanc, printemps", "Jaune-vert, sous pins", "Gris tigré", "Gris strié de noir", A],
+ "tricholomes-autres": ["Sur bois", "En grosses touffes", "Isolé ou en groupes"],
+ "tricho-bois": ["Orange, pied velouté", "Mèches pourpres", "Minuscule parapluie"],
+ "tricho-touffes": ["Gris-brun, élastique", "Roux, pied enraciné"],
+ "tricho-sol": ["Gris à noir", "Blanc soyeux", "Jaune soufre, odeur de gaz", "Rouge, rose ou violet", "Brun clair"],
+ "tricho-gris": ["Gris souris, sous pins", "Gris conique, amer", "Olive, odeur de savon", "Brun très foncé", "Gris-noir, montagne"],
+ "tricho-couleurs": ["Rouge écarlate", "Orange-rose", "Violet améthyste", "Rose-lilas, petit", "Rose, sous hêtres"],
+ "tricho-bruns": ["Pied fin et creux", "Pied très enraciné"],
+ "rose": ["Blanc mat, farine", "Tout violet", "Grand gris-crème", A],
+ "rose-autres": ["Pied violet, prés", "Petit lilas-brun", "Printemps, sous rosacées", "Automne, dans les bois", "Sur bois mort"],
+ "brune": ["Lames qui se détachent", "Touffes sur bois, anneau", "Cortine", "Conique fendu", A],
+ "touffes-brunes": ["Pied écailleux", "Pied lisse", A],
+ "touffes-brunes-autres": ["Hérissé d'écailles", "Grand orange doré", "Sur peupliers"],
+ "cortinaires": ["Fauve orangé", "Roux, bracelets jaunes", A],
+ "cortinaires-autres": ["Violet foncé", "Lames rouge sang", "Ocre ridé, anneau"],
+ "inocybes": ["Blanc qui rougit", A],
+ "inocybes-autres": ["Petit blanc soyeux", "Jaune paille, fendu"],
+ "brune-autres": ["Odeur de radis", "Petit, anneau", "Petit, sur brindilles", "Beige, printemps", "Orange-roux, sur bois"],
+ "hebelomes": ["Moyen, crème", "Grand, pied à mèche"],
+ "noire": ["Lames en encre", "Lames roses, anneau", "Touffes sur bois", A],
+ "coprins": ["Haut cylindre blanc", "Cloche grise", A],
+ "coprins-autres": ["Noir et blanc (pie)", "Petit ocre granuleux", "Minuscule, pelouses"],
+ "agarics": ["Ne jaunit pas, prés", "Jaunit, odeur d'anis", "Jaunit fort, odeur d'encre", A],
+ "agarics-autres": ["Grand, odeur d'amande", "Écailles, chair rougit", "Blanc anisé, bois", "Double anneau", "Fumiers, jardins", "Gris-noir, odeur d'encre"],
+ "touffes-sombres": ["Jaune soufre", A],
+ "touffes-sombres-autres": ["Rouge brique", "Ocre, sur conifères", "Brun hygrophane"],
+ "noire-autres": ["Vert-bleu visqueux", "Grand brun-vineux", "Marge à lambeaux", "Lames qui pleurent", "Petit conique, prés", "Lames décurrentes"],
+ "gomphides": ["Orange-cuivré, pins", "Gris-violet, épicéas"],
+ "bolets": ["Gluant, avec anneau", "Non"],
+ "suillus-anneau": ["Brun, sous pins", "Jaune, sous mélèzes"],
+ "bolets-pied": ["Pied rugueux", "Pied lisse"],
+ "leccinum": ["Brun-gris, bouleaux", A],
+ "leccinum-autres": ["Orange, bouleaux", "Rouge-orangé, trembles"],
+ "bolets-bleuit": ["Ne bleuit pas", "Bleuit"],
+ "cepes-pores": ["Pores roses, amer", "Pores blancs puis verts", A],
+ "cepes": ["Brun noisette", "Brun-noir bronzé", "Brun clair, printemps", "Brun-rouge, pins"],
+ "bolets-immuables-autres": ["Gluant sans anneau", "Pores larges anguleux", "Odeur de chlore", "Pores rouille, poivré", "Odeur d'iode", "Pied creux cassant", "Écailles noires"],
+ "bolets-bleus": ["Pores jaunes, brun bai", "Pores rouges", A],
+ "pores-rouges": ["Blanc grisâtre, réseau rouge", "Brun, pied ponctué", A],
+ "pores-rouges-autres": ["Olive-brun, réseau rouge", "Orange-brique, sans réseau", "Blanc rosé, pied jaune"],
+ "bolets-bleus-autres": ["Cuticule craquelée", "Velouté olive", "Pores jaune citron", "Gris, pied rouge, amer", "Pied enraciné, amer", "Bleu bleuet intense"],
+ "hydnes": ["Crème, assez grand", "Roux, plus petit", A],
+ "hydnes-autres": ["Grosses écailles brunes", "Gouttes rouge sang", "Minuscule, sur cônes"],
+ "chanterelles": ["Plis fourchus", "Presque lisse"],
+ "plis": ["Jaune d'œuf", "Brun en entonnoir", A],
+ "plis-autres": ["Jaune, mèches lilas", "Violet en massue"],
+ "lisse": ["Trompette gris-noir", "Pied orange vif", "Petit gris ondulé"],
+ "ascos": ["Alvéolée", "Cervelle brun-rouge", "Selle blanchâtre", A],
+ "morilles": ["Arrondie", "Conique"],
+ "ascos-autres": ["Tête à « jupe »", "Dé à coudre", "Selle gris-noir", "Selle brun-roux"],
+ "boules": ["Blanc, petites perles", "Blanc, énorme", "Noir marbré", A],
+ "boules-autres": ["Poires sur bois", "En quille", "Petite, sans pied", "Base plissée", "Enterrée, noire"],
+ "truffes": ["Noire, en hiver", "Brune, été-automne"],
+ "coraux": ["Boule de lames", "Rameaux dressés", "Massue unique"],
+ "ramaires": ["Bouts rose-violacé", "Rose saumon", A],
+ "ramaires-autres": ["Petits rameaux blancs", "Jaune d'or, sur bois"],
+ "consoles": ["Jaune soufre en étages", "Rouge sang, en langue", A],
+ "consoles-autres": ["Molle", "Dure", "Mince et coriace"],
+ "consoles-molles": ["Lobes gris, chênes", "Rosette brune, hêtres", "Éventail écailleux", "Cascade d'aiguillons", "Brun-roux velu", "Petites consoles grises"],
+ "consoles-dures": ["Sabot de cheval", "Plaque brune", "Rouge laqué", "Marge rouge-orange", "Blanc, sur bouleaux", "Pores en labyrinthe"],
+ "consoles-minces": ["Zones multicolores", "Blanc bosselé", "Jaune-orange velu"],
+ "gelatineux": ["Oreille brune", "Oreilles grises", "Cervelle jaune d'or", "Feuilles brunes", "Masses noires", "Translucide à aiguillons", "Cornet rose-orangé", "Chapeau vert gélatineux"],
+ "etranges": ["Coupe ou disque", "Œuf puant", "Cage rouge", "Étoile rouge (pieuvre)", "Étoile brune", "Petit nid", "Noir et dur"],
+ "coupes": ["Orange vif", "Rouge écarlate", "Oreille orangée", "Bleu-vert", "Grande coupe brune", "Coupe sur pied côtelé"],
+ "phalles": ["Grand, tête verte", "Petit, pointe orange"],
+ "noirs-bois": ["Bois de cerf", "Doigts noirs", "Boule noire dure"],
+}
+root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+cle = json.load(open(os.path.join(root, "data", "cle.json"), encoding="utf-8"))
+err = []
+def verif(q):
+    if "espece" in q: return
+    n = len(q["options"]); c = C.get(q["id"])
+    if c is None: err.append("absente : " + q["id"])
+    elif len(c) != n: err.append("%s : %d réponses courtes pour %d options" % (q["id"], len(c), n))
+    else:
+        for x in c:
+            if len(x) > 30: err.append("%s : trop long « %s »" % (q["id"], x))
+        if len(set(c)) != n: err.append("%s : doublon" % q["id"])
+    for o in q["options"]: verif(o["suite"])
+verif(cle)
+if err: print("\n".join(err)); raise SystemExit(1)
+json.dump(C, open(os.path.join(root, "data", "reponses_courtes.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("reponses_courtes.json écrit :", sum(len(v) for v in C.values()), "réponses")

@@ -21,7 +21,7 @@ Android 6 (2015) ou plus récent.
 
 ## Reconstruire l'APK après une modification
 
-Prérequis : Node 20+, JDK 21, SDK Android (platform 35, build-tools 35) — ou Android Studio.
+Prérequis : Node 20+, JDK 21, SDK Android (platform 36, build-tools 36) — ou Android Studio.
 
 ```
 cd app-android

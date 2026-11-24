@@ -4,7 +4,7 @@
 
 > ⚠️ **Outil pédagogique.** Ne mangez jamais un champignon sur la base de cette carte : faites vérifier toute récolte par un pharmacien ou un mycologue.
 
-👉 **Ouvrir l'app : https://VOTRE-NOM.github.io/mycelium/**
+👉 **Ouvrir l'app : https://paullebric.github.io/mycelium/**
 
 ## Ce que c'est
 

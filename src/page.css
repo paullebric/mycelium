@@ -376,3 +376,6 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
   #resultats li em{max-width:45%}
   #resultats li .ico-grp{flex:none}
 }
+
+/* numéro de version, discret, en bas à gauche juste au-dessus de la barre de navigation */
+#version-app{position:fixed;left:6px;bottom:calc(var(--nav-h) + var(--sab) + 3px);z-index:31;font:500 8.5px var(--mono);letter-spacing:.06em;color:var(--gris2);opacity:.75;pointer-events:none}

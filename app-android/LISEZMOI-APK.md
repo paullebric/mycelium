@@ -28,13 +28,14 @@ cd app-android
 npm install
 npm run www          # reconstruit la version web puis la copie dans www/
 npx cap sync android
+python3 personnaliser.py   # icônes, écran de démarrage, signature, numéro de version (version.json)
 cd android
 ./gradlew assembleRelease
 ```
 
-L'APK signé est dans `android/app/build/outputs/apk/release/app-release.apk`.
-Avant chaque nouvelle version, augmenter `versionCode` (et `versionName`) dans `android/app/build.gradle` :
-Android refuse une mise à jour qui n'a pas un `versionCode` plus grand.
+L'APK signé est dans `android/app/build/outputs/apk/release/app-release.apk` (`./gradlew bundleRelease` donne le `.aab` du Play Store).
+Avant chaque nouvelle version, augmenter `version` et `versionCode` dans `version.json` (à la racine du projet) :
+ce numéro s'affiche en bas à gauche de l'app, et Android refuse une mise à jour qui n'a pas un `versionCode` plus grand.
 
 ## ⚠ La clé de signature
 

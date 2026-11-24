@@ -1874,7 +1874,7 @@
     }[s] + '</span></li>';
   }).join('');
   $('#credits').textContent = (PHOTOS ? 'Photos : Wikimedia Commons (licences CC BY, CC BY-SA ou domaine public) ; auteur et licence dans chaque fiche. ' : '') +
-    'Polices : Literata et IBM Plex Mono (SIL Open Font License). ' + (D.meta && D.meta.version ? 'Version du ' + D.meta.version + '.' : '');
+    'Polices : Literata et IBM Plex Mono (SIL Open Font License). ' + (D.meta && D.meta.app ? 'Version ' + D.meta.app + ' ' : '') + (D.meta && D.meta.version ? '(données du ' + D.meta.version + ').' : '');
 
   /* ======================= Export SVG (poster) ======================= */
   $('#exporter').addEventListener('click', exporterSVG);
@@ -1900,6 +1900,7 @@
     enregistrerFichier('mycelium-poster-' + dispoActuelle + '.svg', s, 'image/svg+xml');
   }
 
+  if (D.meta && D.meta.app) $('#version-app').textContent = 'v' + D.meta.app;
   /* ======================= Démarrage ======================= */
   majAriane(null);
   majMarquesCarnet();

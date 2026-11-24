@@ -41,7 +41,9 @@ if (avecPhotos) {
     }
   }
 }
-const pkg = { version: new Date().toISOString().slice(0, 10) };
+// Numéro de version unique (affiché dans l'app, repris par l'application Android) : version.json
+const versionApp = fs.existsSync(R('version.json')) ? JSON.parse(fs.readFileSync(R('version.json'), 'utf8')) : { version: '0', versionCode: 0 };
+const pkg = { version: new Date().toISOString().slice(0, 10), app: versionApp.version };
 const donnees = { cle, especes, photos, meta: pkg };
 const js = fs.readFileSync(R('src/schema.js'), 'utf8') + '\n' + fs.readFileSync(R('src/app.js'), 'utf8');
 // Échappement pour inclusion dans <script> : « </ » et séparateurs de ligne Unicode

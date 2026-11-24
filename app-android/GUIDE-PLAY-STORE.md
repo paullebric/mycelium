@@ -95,7 +95,7 @@ Quand les 14 jours sont passés avec 12 testeurs :
 
 ## Mettre à jour l'application plus tard
 
-1. Dans le projet : `cd app-android`, `npm run www`, `npx cap sync android`, puis `python3 personnaliser.py 3 1.2` (le **versionCode** doit toujours augmenter : 3, 4, 5…).
+1. Dans le projet : `cd app-android`, `npm run www`, `npx cap sync android`, puis `python3 personnaliser.py` (après avoir augmenté `version` et `versionCode` dans `version.json` à la racine : le **versionCode** doit toujours augmenter).
 2. `cd android && ./gradlew bundleRelease` → `android/app/build/outputs/bundle/release/app-release.aab`.
 3. Play Console → le canal voulu → **Créer une release** → importer le nouveau `.aab`.
 

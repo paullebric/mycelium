@@ -1,7 +1,7 @@
 """Applique l'identité de mycélium au projet Android généré par Capacitor :
 icônes (classique, ronde, adaptative), écran de démarrage, couleur de fond, signature et numéro de version.
 À relancer après un `npx cap add android` ; sans effet de bord si on le relance plusieurs fois.
-Usage : python3 personnaliser.py [versionCode] [versionName]"""
+Usage : python3 personnaliser.py   (versionCode et versionName lus dans ../version.json)"""
 import os, re, sys
 from PIL import Image
 
@@ -59,8 +59,10 @@ android {""", 1)
     open(GRADLE, 'w').write(s)
 
 if __name__ == '__main__':
-    code = int(sys.argv[1]) if len(sys.argv) > 1 else 1
-    nom = sys.argv[2] if len(sys.argv) > 2 else '1.0'
+    import json
+    v = json.load(open(os.path.join(ICI, '..', 'version.json')))  # source unique du numéro de version
+    code = int(sys.argv[1]) if len(sys.argv) > 1 else v['versionCode']
+    nom = sys.argv[2] if len(sys.argv) > 2 else v['version']
     icones(); demarrage(); signature_et_version(code, nom)
     with open(os.path.join(ICI, 'android', 'local.properties'), 'w') as f:
         f.write('sdk.dir=' + os.environ.get('ANDROID_HOME', '/opt/android-sdk') + '\n')

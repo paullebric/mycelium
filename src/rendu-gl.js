@@ -415,18 +415,28 @@
     }
 
     /* ---- netteté des textes : résolution selon le zoom, recalculée quand la caméra s'arrête ---- */
-    var minuterieNet = 0;
-    function ajusterNettete() {
-      var k = ctx.cam().k, dpr = Math.min(window.devicePixelRatio || 1, 2.5);
-      monde.children.forEach(function visiter(o) {
-        if (!o.visible) return;
+    // Les textes sont préparés une marche au-dessus de leur taille à l'écran : un zoom avant jusqu'à ×2 reste net.
+    // Pendant un geste, on les met à jour peu à peu (quelques-uns par image) ; à l'arrêt, tous d'un coup.
+    var minuterieNet = 0, dernierNet = 0;
+    function ajusterNettete(budget) {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2.5), n = 0, reste = false;
+      dernierNet = performance.now();
+      var T = ctx.taille();
+      (function visiter(o) {
+        if (!o.visible || reste) return;
         if (o instanceof PIXI.Text) {
-          var s = Math.hypot(o.worldTransform.a, o.worldTransform.b); // échelle écran du texte (y compris s'il est tourné)
-          var r = Math.pow(2, Math.round(Math.log2(Math.max(0.25, Math.min(8, s * dpr)))));
-          if (o.resolution !== r) o.resolution = r;
+          var wt = o.worldTransform, sx = wt.tx, sy = wt.ty;
+          if (sx < -T.w || sx > 2 * T.w || sy < -T.h || sy > 2 * T.h) return; // hors de l'écran : inutile
+          var s = Math.hypot(wt.a, wt.b); // échelle écran du texte (y compris s'il est tourné)
+          var r = Math.pow(2, Math.ceil(Math.log2(Math.max(0.25, Math.min(8, s * dpr * 1.25)))));
+          if (o.resolution !== r && (!o.__resMax || r <= o.__resMax)) {
+            if (budget && n >= budget) { reste = true; return; }
+            o.resolution = r; n++;
+          }
         } else if (o.children) o.children.forEach(visiter);
-      });
-      demander();
+      })(monde);
+      if (n) demander();
+      return reste;
     }
 
     /* ---- boucle de dessin ---- */
@@ -459,7 +469,9 @@
       });
       app.render();
       if (animer.size) demander();
-      clearTimeout(minuterieNet); minuterieNet = setTimeout(ajusterNettete, 140);
+      clearTimeout(minuterieNet);
+      if (performance.now() - dernierNet > 200 && ajusterNettete(12)) demander(); // pendant le mouvement : quelques textes par image
+      minuterieNet = setTimeout(function () { ajusterNettete(0); }, 140);         // à l'arrêt : tous
     }
 
     /* ---- désignation au doigt : quel élément est sous le point (x, y) ? ---- */

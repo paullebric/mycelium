@@ -640,7 +640,7 @@
   }
   // Vol fluide (interpolation de van Wijk & Nuij, comme d3.interpolateZoom)
   var anim = null;
-  function arreterAnim() { if (anim) { cancelAnimationFrame(anim.raf); anim = null; } }
+  function arreterAnim() { if (anim) { cancelAnimationFrame(anim.raf); var el = anim.elan; anim = null; if (el) finGeste(); } }
   function volerVers(cible, dureeMax) {
     arreterAnim();
     var T = taille();
@@ -892,7 +892,7 @@
   svg.addEventListener('pointerdown', function (e) {
     arreterAnim();
     svg.setPointerCapture(e.pointerId);
-    if (!pointeurs.size) debutGeste();
+    if (!pointeurs.size) { debutGeste(); vitesse.x = vitesse.y = 0; vitesse.t = 0; pince = false; }
     pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointeurs.size === 1) {
       glisse = 0;
@@ -909,6 +909,9 @@
     if (pointeurs.size === 1) {
       cam.x += cur.x - prev.x; cam.y += cur.y - prev.y;
       glisse += Math.abs(cur.x - prev.x) + Math.abs(cur.y - prev.y);
+      // vitesse du doigt (px/ms), lissée, pour l'élan au lâcher
+      var tn = performance.now(), dt = Math.max(1, tn - (vitesse.t || tn - 16));
+      vitesse.x = vitesse.x * 0.2 + 0.8 * (cur.x - prev.x) / dt; vitesse.y = vitesse.y * 0.2 + 0.8 * (cur.y - prev.y) / dt; vitesse.t = tn;
       pointeurs.set(e.pointerId, cur); planifier();
     } else if (pointeurs.size === 2) {
       pointeurs.set(e.pointerId, cur);
@@ -919,13 +922,34 @@
         cam.x += mx - pinchPrec.mx; cam.y += my - pinchPrec.my;
         zoomerEn(mx, my, d / pinchPrec.d);
       }
-      pinchPrec = { mx: mx, my: my, d: d }; glisse = 99;
+      pinchPrec = { mx: mx, my: my, d: d }; glisse = 99; pince = true;
     }
   });
+  // Élan : après un glissement rapide, la carte continue sur sa lancée et ralentit doucement
+  var vitesse = { x: 0, y: 0, t: 0 }, pince = false;
+  function lancerElan() {
+    var vx = vitesse.x, vy = vitesse.y;
+    if (performance.now() - vitesse.t > 80 || Math.hypot(vx, vy) < 0.25) return false; // doigt arrêté avant de lâcher
+    arreterAnim(); debutGeste();
+    var tp = performance.now();
+    anim = {};
+    (function pas() {
+      var tn = performance.now(), dt = Math.min(40, tn - tp); tp = tn;
+      var amort = Math.pow(0.995, dt); // ralentissement par milliseconde
+      vx *= amort; vy *= amort;
+      cam.x += vx * dt; cam.y += vy * dt;
+      if (Math.hypot(vx, vy) < 0.02) { anim = null; finGeste(); return; }
+      rendreApercu();
+      anim.raf = requestAnimationFrame(pas);
+    })();
+    anim.elan = true;
+    return true;
+  }
   function finPointeur(e) {
     if (!pointeurs.has(e.pointerId)) return;
+    var dernier = pointeurs.size === 1;
     pointeurs.delete(e.pointerId);
-    if (!pointeurs.size) finGeste();
+    if (!pointeurs.size) { if (!(dernier && glisse >= 7 && !pince && e.type === 'pointerup' && lancerElan())) finGeste(); }
     if (pointeurs.size < 2) pinchPrec = null;
     if (pointeurs.size === 0 && glisse < 7 && e.type === 'pointerup') {
       var maintenant = performance.now(), T = taille();

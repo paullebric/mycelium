@@ -9,7 +9,7 @@ const R = (...p) => path.join(__dirname, ...p);
 const args = process.argv.slice(2);
 const pwa = args.includes('--pwa');            // version web installable (GitHub Pages) : HD en fichiers séparés
 const avecPhotos = args.includes('--photos') || pwa;
-const fichiersHD = [];
+const fichiersHD = [], fichiersMini = [];
 const factice = args.includes('--factice');
 
 function lireJSON(f) { return JSON.parse(fs.readFileSync(R(f), 'utf8')); }
@@ -32,7 +32,9 @@ if (avecPhotos) {
   for (const [id, p] of Object.entries(meta)) {
     const f = R('data', 'photos', id + '.jpg');
     if (!fs.existsSync(f)) continue;
-    photos[id] = { src: 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64'), auteur: p.auteur, licence: p.licence, url: p.url, fichier: p.fichier };
+    // version web : miniatures en fichiers séparés (chargées à la demande, puis gardées hors ligne) -> démarrage plus léger
+    if (pwa) fichiersMini.push([f, id + '.jpg']);
+    photos[id] = { src: pwa ? 'mini/' + id + '.jpg' : 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64'), auteur: p.auteur, licence: p.licence, url: p.url, fichier: p.fichier };
     // la HD est stockée à part (blocs de texte lus seulement à l'ouverture d'une photo en grand)
     for (const [ext, mime] of [['webp', 'image/webp'], ['jpg', 'image/jpeg']]) {
       const fhd = R('data', 'photos-hd', id + '.' + ext);
@@ -72,7 +74,7 @@ html = html.replace('</body>', blocsHD.join('\n') + '\n</body>');
 const reseau = html.match(/(?:src|href)\s*=\s*["'](?:https?:)?\/\/[^"']+/gi);
 if (reseau) { console.error('Ressource externe détectée :', reseau.slice(0, 5)); process.exit(1); }
 const sortie = factice ? 'dist/carte-factice.html' : pwa ? 'dist/pwa/index.html' : avecPhotos ? 'dist/carte-champignons-photos.html' : 'dist/carte-champignons.html';
-if (pwa) fs.mkdirSync(R('dist/pwa/hd'), { recursive: true });
+if (pwa) { fs.rmSync(R('dist/pwa'), { recursive: true, force: true }); fs.mkdirSync(R('dist/pwa/hd'), { recursive: true }); }
 fs.mkdirSync(R('dist'), { recursive: true });
 fs.writeFileSync(R(sortie), html);
 if (pwa) ecrirePWA();
@@ -107,6 +109,8 @@ function genererFactice(nFeuilles) {
 function ecrirePWA() {
   const D = (...p) => R('dist/pwa', ...p);
   for (const [src, nom] of fichiersHD) fs.copyFileSync(src, D('hd', nom));
+  fs.mkdirSync(D('mini'), { recursive: true });
+  for (const [src, nom] of fichiersMini) fs.copyFileSync(src, D('mini', nom));
   fs.mkdirSync(D('icones'), { recursive: true });
   for (const f of ['icone-192.png', 'icone-512.png', 'maskable-192.png', 'maskable-512.png', 'apple-touch-icon.png', 'favicon-64.png']) fs.copyFileSync(R('icones', f), D('icones', f));
   fs.writeFileSync(D('manifest.webmanifest'), JSON.stringify({
@@ -124,7 +128,7 @@ function ecrirePWA() {
   // le numéro de version change à chaque construction : l'app se met à jour à la visite suivante
   const version = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 12);
   const coeur = ['./', 'index.html', 'manifest.webmanifest'].concat(fs.readdirSync(D('icones')).map(f => 'icones/' + f));
-  const hd = fichiersHD.map(([, nom]) => 'hd/' + nom);
+  const hd = fichiersMini.map(([, nom]) => 'mini/' + nom).concat(fichiersHD.map(([, nom]) => 'hd/' + nom)); // miniatures d'abord
   fs.writeFileSync(D('sw.js'), `// Service worker de mycélium : tout est mis en cache pour fonctionner hors ligne.
 const VERSION = 'mycelium-${version}';
 const COEUR = ${JSON.stringify(coeur)};

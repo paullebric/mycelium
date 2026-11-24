@@ -606,11 +606,12 @@
      On déplace et on agrandit l'image déjà dessinée (transformation CSS, faite par la carte graphique),
      puis on redessine en net à la fin du geste, ou dès que l'image déjà dessinée ne suffit plus. */
   var camR = null, enGeste = 0, finMolette = 0;
+  var GL = null; // rendu WebGL (rendu-gl.js) ; null tant qu'il n'est pas prêt ou s'il est indisponible
   function planifier() { if (!rafPlan) rafPlan = requestAnimationFrame(function () { rafPlan = 0; if (enGeste) rendreApercu(); else rendreCamera(); }); }
   function debutGeste() { enGeste++; }
   function finGeste() { enGeste = Math.max(0, enGeste - 1); if (!enGeste) { cancelAnimationFrame(rafPlan); rafPlan = 0; rendreCamera(); } }
   function rendreApercu() {
-    if (!camR) return rendreCamera();
+    if (!camR || (GL && GL.actif())) return rendreCamera(); // en WebGL, redessiner coûte peu : pas besoin d'aperçu
     var T = taille(), s = cam.k / camR.k, tx = cam.x - camR.x * s, ty = cam.y - camR.y * s;
     // l'image dessinée couvre [-W/2, 1,5 W] × [-H/2, 1,5 H] ; elle doit toujours recouvrir l'écran, sans trop s'étirer
     var couvre = tx - s * T.w / 2 <= 0 && tx + s * 1.5 * T.w >= T.w && ty - s * T.h / 2 <= 0 && ty + s * 1.5 * T.h >= T.h;
@@ -882,6 +883,7 @@
     var sw = bas ? 0 : 1;
     arcP.setAttribute('d', 'M' + r1(xs) + ' ' + r1(ys) + 'A' + r1(rt) + ' ' + r1(rt) + ' 0 0 ' + sw + ' ' + r1(xm) + ' ' + r1(ym) + 'A' + r1(rt) + ' ' + r1(rt) + ' 0 0 ' + sw + ' ' + r1(xs) + ' ' + r1(ys));
     titreP.setAttribute('font-size', r1(fs));
+    titreP.setAttribute('data-gl', [a0, rt, bas ? 1 : 0].map(function (v) { return v.toFixed ? v.toFixed(4) : v; }).join(' '));
     titreP.style.display = '';
   }
 
@@ -892,7 +894,13 @@
     svg.setPointerCapture(e.pointerId);
     if (!pointeurs.size) debutGeste();
     pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    if (pointeurs.size === 1) { glisse = 0; cibleDown = e.target.closest ? e.target.closest('[data-id]') : null; aideDown = e.target.closest ? e.target.closest('[data-aide]') : null; repDown = e.target.closest ? e.target.closest('[data-rep]') : null; }
+    if (pointeurs.size === 1) {
+      glisse = 0;
+      if (GL && GL.actif()) { // carte dessinée en WebGL : on cherche l'élément sous le doigt par le calcul
+        var h = GL.designer(e.clientX, e.clientY) || {};
+        cibleDown = h.cible || null; aideDown = h.aide || null; repDown = h.rep || null;
+      } else { cibleDown = e.target.closest ? e.target.closest('[data-id]') : null; aideDown = e.target.closest ? e.target.closest('[data-aide]') : null; repDown = e.target.closest ? e.target.closest('[data-rep]') : null; }
+    }
     else { cibleDown = null; aideDown = null; pinchPrec = null; }
   });
   svg.addEventListener('pointermove', function (e) {
@@ -1924,7 +1932,7 @@
     }[s] + '</span></li>';
   }).join('');
   $('#credits').textContent = (PHOTOS ? 'Photos : Wikimedia Commons (licences CC BY, CC BY-SA ou domaine public) ; auteur et licence dans chaque fiche. ' : '') +
-    'Polices : Literata et IBM Plex Mono (SIL Open Font License). ' + (D.meta && D.meta.app ? 'Version ' + D.meta.app + ' ' : '') + (D.meta && D.meta.version ? '(données du ' + D.meta.version + ').' : '');
+    'Polices : Literata et IBM Plex Mono (SIL Open Font License). Rendu de la carte : PixiJS (licence MIT). ' + (D.meta && D.meta.app ? 'Version ' + D.meta.app + ' ' : '') + (D.meta && D.meta.version ? '(données du ' + D.meta.version + ').' : '');
 
   /* ======================= Export SVG (poster) ======================= */
   $('#exporter').addEventListener('click', exporterSVG);
@@ -1951,6 +1959,31 @@
   }
 
   if (D.meta && D.meta.app) $('#version-app').textContent = 'v' + D.meta.app;
+
+  // Réglage (Légende) : rendu rapide WebGL ou rendu classique SVG ; le changement recharge l'app
+  (function () {
+    var b = $('#opt-rendu'), svgChoisi = stockage('mycelium-rendu') === 'svg';
+    b.setAttribute('aria-pressed', !svgChoisi);
+    b.addEventListener('click', function () { stockage('mycelium-rendu', svgChoisi ? 'gl' : 'svg'); location.reload(); });
+  })();
+  /* ======================= Rendu WebGL ======================= */
+  if (window.installerRenduGL) {
+    GL = window.installerRenduGL({
+      noeuds: noeuds, parId: parId, elems: elems, paires: paires, elSosies: elSosies, STATUTS: STATUTS, PHOTOS: PHOTOS,
+      illustration: illustration, mondeSVG: monde, gCourbes: gCourbes, gRepsFond: gRepsFond, cercleP: cercleP, titreP: titreP,
+      zoneCarte: zoneCarte, taille: taille,
+      cam: function () { return cam; }, courant: function () { return courant; },
+      badgesSVG: function () {
+        var st = {}; ORDRE_STATUTS.forEach(function (s) { st[s] = '<circle cx="12" cy="12" r="13" fill="#0C120F"/><circle cx="12" cy="12" r="11" fill="' + STATUTS[s].couleur + '"/>' + ICONES[s]; });
+        return {
+          statuts: st,
+          prec: '<circle r="11" fill="#0C120F" stroke="#FFB547" stroke-width="2"/><path d="M0 -6v6.5" stroke="#FFB547" stroke-width="2.6" stroke-linecap="round"/><circle cy="5.2" r="1.6" fill="#FFB547"/>',
+          etoile: '<circle r="12" fill="#0C120F" stroke="#FFB547" stroke-width="2"/><path d="M0-7l2.1 4.4 4.8.6-3.5 3.3.9 4.8L0 3.7-4.3 6.1l.9-4.8-3.5-3.3 4.8-.6z" fill="#FFB547"/>'
+        };
+      },
+      surPret: function () { invaliderMesures(); rendreCamera(); }
+    });
+  }
   /* ======================= Démarrage ======================= */
   majAriane(null);
   majMarquesCarnet();

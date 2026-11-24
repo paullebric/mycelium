@@ -19,7 +19,7 @@ mycélium présente la clé d'identification comme une **carte que l'on explore*
 
 | Dossier / fichier | Contenu |
 |---|---|
-| `src/` | l'app : moteur de carte (`app.js`), schémas (`schema.js`), styles, gabarit HTML, polices, pages annexes |
+| `src/` | l'app : moteur de carte (`app.js`), rendu WebGL (`rendu-gl.js`, PixiJS dans `vendor/`), schémas (`schema.js`), styles, gabarit HTML, polices, pages annexes |
 | `data/` | `cle.json` (arbre de la clé), `especes.json` (fiches), `reponses_courtes.json`, photos (`photos/` miniatures, `photos-hd/`) et crédits (`photos.json`) |
 | `scripts/` | génération de la clé (`gen_cle.py`), réponses courtes, téléchargement des photos, icônes, tests navigateur |
 | `cache/` | textes Wikipédia mis en cache, utilisés par `verifier.js` |
@@ -49,4 +49,5 @@ node build.js --pwa         # dist/pwa/ (version web installable, celle de GitHu
 - **Données** : guides de référence et Wikipédia ; sources citées dans chaque fiche.
 - **Photos** : Wikimedia Commons (CC BY, CC BY-SA, domaine public) ; auteur et licence dans chaque fiche.
 - **Polices** : Literata, IBM Plex Mono (SIL Open Font License).
+- **Rendu de la carte** : [PixiJS](https://pixijs.com) (licence MIT), intégré dans `src/vendor/`.
 - [Politique de confidentialité](https://paullebric.github.io/mycelium/confidentialite.html) : aucune donnée collectée.

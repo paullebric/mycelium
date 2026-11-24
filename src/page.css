@@ -378,3 +378,8 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
 #rep-volante{position:absolute;left:0;top:0;z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;margin:-11px 0 0 -70px;width:140px;text-align:center;will-change:transform}
 #rep-volante b{width:22px;height:22px;border-radius:50%;background:var(--ambre);color:var(--nuit);display:grid;place-items:center;font:700 11.5px var(--mono);box-shadow:0 0 0 3px var(--nuit)}
 #rep-volante span{font:600 11.5px/1.25 var(--mono);color:var(--ambre);text-shadow:0 0 4px var(--nuit),0 0 4px var(--nuit),0 0 4px var(--nuit)}
+
+/* Carte dessinée en WebGL : le SVG reste en place (invisible) pour recevoir les gestes */
+.mode-gl #carte{left:0;top:0;width:100%;height:100%;background:transparent;transform:none !important}
+.mode-gl #monde{display:none}
+#carte-gl{position:absolute;inset:0;width:100% !important;height:100% !important;display:block;background:var(--nuit)}

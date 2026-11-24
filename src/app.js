@@ -1535,10 +1535,14 @@
     'sans-volve': '<path d="M40 26 Q75 0 110 26 Z" fill="none" stroke="#E6EEE8" stroke-width="1.6"/><path d="M69 26 V80 M81 26 V80 M69 80 H81" fill="none" stroke="#E6EEE8" stroke-width="1.6"/><path d="M20 82 H130" stroke="#5f7269" stroke-dasharray="2 3"/><circle cx="75" cy="80" r="12" fill="none" stroke="#8DF5C0" stroke-dasharray="3 3"/>'
   };
   // Exemples photo choisis à la main (recadrage sur le détail à observer) ; à valider
-  var AIDE_SPECIALE = {
-    dessous: [{ s: 'lames', p: 'marasmius-oreades', pos: '80% 45%', t: '300%' }, { s: 'tubes', p: 'suillus-granulatus', pos: '97% 62%', t: '420%' }, { s: 'aiguillons', p: 'hydnum-repandum', pos: '42% 62%', t: '260%' }, { s: 'plis', p: 'cantharellus-cibarius', pos: '88% 50%', t: '260%' }],
-    volve: [{ s: 'volve', p: 'amanita-phalloides' }, { s: 'sans-volve', p: 'agaricus-campestris' }]
-  };
+  // Photos d'aide choisies (data/aide_photos.json) : par question, par numéro de réponse, l'espèce à montrer,
+  // le schéma « ce qu'il faut repérer » (s) et un recadrage facultatif (pos, t). p = null : aucune photo, le schéma seul.
+  var AIDE_SPECIALE = {};
+  Object.keys(D.aide || {}).forEach(function (qid) {
+    var a = D.aide[qid], t = [];
+    Object.keys(a).forEach(function (i) { t[+i] = a[i]; });
+    AIDE_SPECIALE[qid] = t;
+  });
   // Espèce représentative d'une réponse : une espèce principale avec photo de la branche, sinon la première
   function representant(nd) {
     var fs = []; (function m(n) { if (n.sp) fs.push(n.sp); else n.enfants.forEach(m); })(nd);
@@ -1549,7 +1553,7 @@
     var spec = AIDE_SPECIALE[nd.id];
     return nd.enfants.map(function (c, i) {
       var x = spec && spec[i], sp = x && ESP[x.p] ? ESP[x.p] : representant(c);
-      return { enfant: c, sp: sp, sch: x && SCH[x.s], pos: x && x.pos, t: x && x.t };
+      return { enfant: c, sp: sp, sch: x && SCH[x.s], pos: x && x.pos, t: x && x.t, sansPhoto: !!x && x.p === null };
     });
   }
   function schemaAide(ex, pre) {
@@ -1564,7 +1568,7 @@
     var h = '<div class="a-tete"><span class="a-ico">?</span><div><div class="sur-titre">COMMENT REGARDER' + (q.groupe ? ' · ' + escHTML(q.groupe.toUpperCase()) : '') + '</div><h2>' + escHTML(q.question) + '</h2></div><button class="carre" data-act="fermer" aria-label="Fermer">✕</button></div>';
     h += '<p class="a-txt">' + escHTML(q.aide || 'Comparez votre champignon à chaque réponse. Le schéma montre ce qu\'il faut repérer ; la photo, un exemple réel tiré de la branche.') + '</p>';
     h += '<div class="a-grille' + (court ? '' : ' une') + '">' + ex.map(function (e, i) {
-      var ph = PHOTOS && PHOTOS[e.sp.id];
+      var ph = !e.sansPhoto && PHOTOS && PHOTOS[e.sp.id];
       return '<div class="a-case"><div class="a-schema">' + schemaAide(e, 'ah' + i) + '</div>' +
         (ph ? '<button class="a-photo" data-ai="' + i + '" aria-label="Agrandir la photo : ' + escHTML(e.enfant.reponse) + '"><img src="' + ph.src + '" alt="" style="' + (e.pos ? 'object-position:' + e.pos + ';transform:scale(' + (parseFloat(e.t) / 100 / 1.6).toFixed(2) + ');transform-origin:' + e.pos : '') + '"></button>' : '') +
         '<div class="a-rep">' + escHTML(e.enfant.court) + '</div>' + (e.enfant.court !== e.enfant.reponse ? '<div class="a-detail">' + escHTML(e.enfant.reponse) + '</div>' : '') + '<div class="a-ex">ex. : ' + escHTML(e.sp.nom) + ' · ' + nbEspeces(e.enfant) + '</div>' +

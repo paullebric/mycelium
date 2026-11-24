@@ -1,0 +1,38 @@
+{
+ "dessous": {
+  "0": {
+   "p": "marasmius-oreades",
+   "s": "lames",
+   "pos": "80% 45%",
+   "t": "300%"
+  },
+  "1": {
+   "p": "suillus-granulatus",
+   "s": "tubes",
+   "pos": "97% 62%",
+   "t": "420%"
+  },
+  "2": {
+   "p": "hydnum-repandum",
+   "s": "aiguillons",
+   "pos": "42% 62%",
+   "t": "260%"
+  },
+  "3": {
+   "p": "cantharellus-cibarius",
+   "s": "plis",
+   "pos": "88% 50%",
+   "t": "260%"
+  }
+ },
+ "volve": {
+  "0": {
+   "p": "amanita-phalloides",
+   "s": "volve"
+  },
+  "1": {
+   "p": "agaricus-campestris",
+   "s": "sans-volve"
+  }
+ }
+}

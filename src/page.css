@@ -51,7 +51,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 
 /* ---------- Carte ---------- */
 #zone-carte{position:relative;flex:1;min-height:0;overflow:hidden}
-#carte{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;background:var(--nuit)}
+#carte{position:absolute;left:-50%;top:-50%;width:200%;height:200%;transform-origin:25% 25%;will-change:transform;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;background:var(--nuit)}
 #carte:active{cursor:grabbing}
 #controles{position:absolute;right:12px;top:110px;display:flex;flex-direction:column;gap:6px;z-index:5}
 #cadre-mini{position:absolute;right:10px;top:110px;width:72px;z-index:5}

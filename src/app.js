@@ -573,10 +573,30 @@
   var cam = { x: 0, y: 0, k: 1 };
   var K_MIN = 0.008, K_MAX = 12;
   var rafPlan = 0;
-  function taille() { var r = svg.getBoundingClientRect(); return { w: r.width || 800, h: r.height || 600, l: r.left, t: r.top }; }
-  function planifier() { if (!rafPlan) rafPlan = requestAnimationFrame(function () { rafPlan = 0; rendreCamera(); }); }
+  // La zone visible est #zone-carte ; le SVG déborde d'une demi-largeur/hauteur de chaque côté (voir rendreApercu)
+  var zoneCarte = document.getElementById('zone-carte');
+  function taille() { var r = zoneCarte.getBoundingClientRect(); return { w: r.width || 800, h: r.height || 600, l: r.left, t: r.top }; }
+  /* Fluidité : pendant un geste (glisser, pincer, molette, vol animé), on ne redessine pas la carte.
+     On déplace et on agrandit l'image déjà dessinée (transformation CSS, faite par la carte graphique),
+     puis on redessine en net à la fin du geste, ou dès que l'image déjà dessinée ne suffit plus. */
+  var camR = null, enGeste = 0, finMolette = 0;
+  function planifier() { if (!rafPlan) rafPlan = requestAnimationFrame(function () { rafPlan = 0; if (enGeste) rendreApercu(); else rendreCamera(); }); }
+  function debutGeste() { enGeste++; }
+  function finGeste() { enGeste = Math.max(0, enGeste - 1); if (!enGeste) { cancelAnimationFrame(rafPlan); rafPlan = 0; rendreCamera(); } }
+  function rendreApercu() {
+    if (!camR) return rendreCamera();
+    var T = taille(), s = cam.k / camR.k, tx = cam.x - camR.x * s, ty = cam.y - camR.y * s;
+    // l'image dessinée couvre [-W/2, 1,5 W] × [-H/2, 1,5 H] ; elle doit toujours recouvrir l'écran, sans trop s'étirer
+    var couvre = tx - s * T.w / 2 <= 0 && tx + s * 1.5 * T.w >= T.w && ty - s * T.h / 2 <= 0 && ty + s * 1.5 * T.h >= T.h;
+    if (!couvre || s < 0.67 || s > 1.5) return rendreCamera();
+    svg.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+    majVueMinicarte(); placerCommencer();
+  }
   function rendreCamera() {
-    monde.setAttribute('transform', 'translate(' + cam.x.toFixed(2) + ' ' + cam.y.toFixed(2) + ') scale(' + cam.k.toFixed(5) + ')');
+    var T0 = taille();
+    camR = { x: cam.x, y: cam.y, k: cam.k };
+    svg.style.transform = '';
+    monde.setAttribute('transform', 'translate(' + (cam.x + T0.w / 2).toFixed(2) + ' ' + (cam.y + T0.h / 2).toFixed(2) + ') scale(' + cam.k.toFixed(5) + ')');
     majLOD(false); placerReponses(); placerTitreCercle(); majVueMinicarte(); placerCommencer();
   }
   // Bouton « Commencer l'identification » posé sur la première question quand la carte est vue de loin
@@ -631,8 +651,7 @@
       var e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       var v = interp(e), k = T.w / v[2];
       cam.k = k; cam.x = T.w / 2 - v[0] * k; cam.y = T.h / 2 - v[1] * k;
-      rendreCamera();
-      if (t < 1) anim.raf = requestAnimationFrame(pas); else anim = null;
+      if (t < 1) { rendreApercu(); anim.raf = requestAnimationFrame(pas); } else { anim = null; rendreCamera(); }
     })();
   }
   function recentrer(instant) { var c = camPour(courant.bornes, 0.02); if (instant) { cam = c; rendreCamera(); } else volerVers(c); }
@@ -838,6 +857,7 @@
   svg.addEventListener('pointerdown', function (e) {
     arreterAnim();
     svg.setPointerCapture(e.pointerId);
+    if (!pointeurs.size) debutGeste();
     pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointeurs.size === 1) { glisse = 0; cibleDown = e.target.closest ? e.target.closest('[data-id]') : null; aideDown = e.target.closest ? e.target.closest('[data-aide]') : null; repDown = e.target.closest ? e.target.closest('[data-rep]') : null; }
     else { cibleDown = null; aideDown = null; pinchPrec = null; }
@@ -864,6 +884,7 @@
   function finPointeur(e) {
     if (!pointeurs.has(e.pointerId)) return;
     pointeurs.delete(e.pointerId);
+    if (!pointeurs.size) finGeste();
     if (pointeurs.size < 2) pinchPrec = null;
     if (pointeurs.size === 0 && glisse < 7 && e.type === 'pointerup') {
       var maintenant = performance.now(), T = taille();
@@ -878,6 +899,8 @@
   svg.addEventListener('pointercancel', finPointeur);
   svg.addEventListener('wheel', function (e) {
     e.preventDefault(); arreterAnim();
+    if (!finMolette) debutGeste();
+    clearTimeout(finMolette); finMolette = setTimeout(function () { finMolette = 0; finGeste(); }, 180);
     var T = taille();
     var dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaMode === 2 ? e.deltaY * 400 : e.deltaY;
     zoomerEn(e.clientX - T.l, e.clientY - T.t, Math.exp(-dy * (e.ctrlKey ? 0.01 : 0.0022)));

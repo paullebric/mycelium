@@ -140,6 +140,15 @@ self.addEventListener('activate', e => {
 });
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  // La page elle-même : d'abord le réseau (pour voir tout de suite la dernière version), sinon le cache (hors ligne)
+  if (e.request.mode === 'navigate') {
+    e.respondWith(fetch(e.request).then(rep => {
+      if (rep.ok) { const copie = rep.clone(); caches.open(VERSION).then(c => c.put('index.html', copie)); }
+      return rep;
+    }).catch(() => caches.match('index.html')));
+    return;
+  }
+  // Le reste (photos, icônes) : d'abord le cache, sinon le réseau
   e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(r => r || fetch(e.request).then(rep => {
     if (rep.ok && new URL(e.request.url).origin === location.origin) { const copie = rep.clone(); caches.open(VERSION).then(c => c.put(e.request, copie)); }
     return rep;

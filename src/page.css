@@ -50,7 +50,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 .sep{color:var(--gris2)}
 
 /* ---------- Carte ---------- */
-#zone-carte{position:relative;flex:1;min-height:0;overflow:hidden}
+#zone-carte{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip}
 #carte{position:absolute;left:-50%;top:-50%;width:200%;height:200%;transform-origin:25% 25%;will-change:transform;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;background:var(--nuit)}
 #carte:active{cursor:grabbing}
 #controles{position:absolute;right:12px;top:110px;display:flex;flex-direction:column;gap:6px;z-index:5}
@@ -61,11 +61,6 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 .bureau{display:none}
 #quitter-focus{position:absolute;left:50%;transform:translateX(-50%);top:112px;z-index:6;height:36px;padding:0 14px;border:1px solid var(--ambre);background:var(--nuit);color:var(--ambre);font:600 11px var(--mono);letter-spacing:.08em;box-shadow:0 6px 20px rgba(0,0,0,.5)}
 
-#commencer{position:absolute;z-index:4;transform:translate(-50%,-50%);height:38px;padding:0 14px;border:1px solid rgba(141,245,192,.7);border-radius:19px;background:rgba(12,18,15,.88);color:var(--menthe);font:600 10.5px var(--mono);letter-spacing:.1em;white-space:nowrap;box-shadow:0 0 0 6px rgba(141,245,192,.07),0 0 30px rgba(141,245,192,.18);animation:respire 3.2s ease-in-out infinite}
-#commencer span{font-size:9px;margin-right:4px}
-#commencer:hover{background:var(--panneau2)}
-@keyframes respire{50%{box-shadow:0 0 0 10px rgba(141,245,192,.03),0 0 40px rgba(141,245,192,.28)}}
-@media (prefers-reduced-motion:reduce){#commencer{animation:none}}
 
 /* ---------- Volet B (arc) ---------- */
 #volet{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,560px);z-index:8;pointer-events:none}
@@ -360,7 +355,6 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
   .feuille-bas::before{display:none}
   #nav{grid-template-columns:repeat(4,minmax(0,160px));justify-content:center}
 }
-@media (max-width:820px){#commencer{height:28px;padding:0 10px;font-size:9px;letter-spacing:.08em;box-shadow:0 0 0 4px rgba(141,245,192,.06),0 0 18px rgba(141,245,192,.15)}}
 @media (max-width:380px){.logo{font-size:22px}.pastille-mois{padding:0 7px;font-size:9.5px}}
 
 .en-focus #monde .region{display:none}
@@ -379,3 +373,8 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
 
 /* numéro de version, discret, en bas à gauche juste au-dessus de la barre de navigation */
 #version-app{position:fixed;left:6px;bottom:calc(var(--nav-h) + var(--sab) + 3px);z-index:31;font:500 8.5px var(--mono);letter-spacing:.06em;color:var(--gris2);opacity:.75;pointer-events:none}
+
+/* réponse qui suit la branche pendant le trajet vers la question suivante */
+#rep-volante{position:absolute;left:0;top:0;z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;margin:-11px 0 0 -70px;width:140px;text-align:center;will-change:transform}
+#rep-volante b{width:22px;height:22px;border-radius:50%;background:var(--ambre);color:var(--nuit);display:grid;place-items:center;font:700 11.5px var(--mono);box-shadow:0 0 0 3px var(--nuit)}
+#rep-volante span{font:600 11.5px/1.25 var(--mono);color:var(--ambre);text-shadow:0 0 4px var(--nuit),0 0 4px var(--nuit),0 0 4px var(--nuit)}

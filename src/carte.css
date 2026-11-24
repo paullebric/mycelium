@@ -80,3 +80,4 @@
 .rep.rep-entrant{transition:opacity .6s}
 .rep.rep-entrant.rep-arrivee{opacity:0 !important}
 .rep.rep-off{display:none !important}
+.rep.rep-en-trajet{display:none !important}

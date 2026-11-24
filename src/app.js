@@ -590,22 +590,14 @@
     var couvre = tx - s * T.w / 2 <= 0 && tx + s * 1.5 * T.w >= T.w && ty - s * T.h / 2 <= 0 && ty + s * 1.5 * T.h >= T.h;
     if (!couvre || s < 0.67 || s > 1.5) return rendreCamera();
     svg.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
-    majVueMinicarte(); placerCommencer();
+    majVueMinicarte();
   }
   function rendreCamera() {
     var T0 = taille();
     camR = { x: cam.x, y: cam.y, k: cam.k };
     svg.style.transform = '';
     monde.setAttribute('transform', 'translate(' + (cam.x + T0.w / 2).toFixed(2) + ' ' + (cam.y + T0.h / 2).toFixed(2) + ') scale(' + cam.k.toFixed(5) + ')');
-    majLOD(false); placerReponses(); placerTitreCercle(); majVueMinicarte(); placerCommencer();
-  }
-  // Bouton « Commencer l'identification » posé sur la première question quand la carte est vue de loin
-  function placerCommencer() {
-    var b = document.getElementById('commencer'); if (!b || !courant) return;
-    var P = courant.pos[racine.id], loin = cam.k * P.s * 264 < 170;
-    var vis = loin && !selection;
-    b.hidden = !vis; if (!vis) return;
-    b.style.left = r1(cam.x + P.x * cam.k) + 'px'; b.style.top = r1(cam.y + P.y * cam.k) + 'px';
+    majLOD(false); placerReponses(); placerTitreCercle(); majVueMinicarte();
   }
   function zoomerEn(px, py, facteur) {
     var k2 = Math.max(K_MIN, Math.min(K_MAX, cam.k * facteur));
@@ -1009,12 +1001,28 @@
       var wx = q[0] + (1 - u) * (s0[0] - b0[0]) + u * (s1[0] - b1[0]), wy = q[1] + (1 - u) * (s0[1] - b0[1]) + u * (s1[1] - b1[1]);
       var k = Math.exp(lerp(Math.log(k0), Math.log(k1), u)) * (1 - recul * Math.sin(Math.PI * u));
       cam.k = k; cam.x = cx - wx * k; cam.y = cy - wy * k;
-      glisseRep = t < 1 ? { id: nd.id, u: u } : null; // la réponse suivie roule avec la caméra le long de la branche
-      rendreCamera();
-      if (t < 1) anim.raf = requestAnimationFrame(pas);
-      else { anim = null; if (elems[nd.id].rep) elems[nd.id].rep.classList.add('rep-arrivee'); } // arrivée : la réponse s'efface derrière la question
+      if (t < 1) {
+        // fluidité : on déplace l'image déjà dessinée, et la réponse suivie est une étiquette HTML légère posée sur la branche
+        rendreApercu();
+        volante.style.transform = 'translate(' + (cam.x + q[0] * cam.k).toFixed(1) + 'px,' + (cam.y + q[1] * cam.k).toFixed(1) + 'px)';
+        anim.raf = requestAnimationFrame(pas);
+      } else {
+        anim = null; volante.hidden = true;
+        if (elems[nd.id].rep) elems[nd.id].rep.classList.remove('rep-en-trajet');
+        if (elems[nd.id].rep) elems[nd.id].rep.classList.add('rep-arrivee'); // arrivée : la réponse s'efface derrière la question
+        rendreCamera();
+        if (arcEnAttente) { animerGeometrie(arcEnAttente, 650); arcEnAttente = null; } // puis les espèces se mettent en arc
+      }
     })();
+    // étiquette de la réponse suivie pendant le trajet
+    var num = nd.parent ? nd.parent.enfants.indexOf(nd) + 1 : '';
+    volante.innerHTML = '<b>' + num + '</b><span>' + escHTML(nd.court || '') + '</span>';
+    volante.hidden = !nd.parent;
+    if (elems[nd.id].rep) elems[nd.id].rep.classList.add('rep-en-trajet'); // l'étiquette HTML la remplace pendant le trajet
   }
+  var volante = document.createElement('div');
+  volante.id = 'rep-volante'; volante.hidden = true; volante.setAttribute('aria-hidden', 'true');
+  document.getElementById('zone-carte').appendChild(volante);
   function majRepsFeuilles() { // aussi appelée sans sélection : toutes les réponses masquées
     var qCour = selection && (selection.sp ? selection.parent : selection);
     feuilles.forEach(function (f) { var o = elems[f.id]; o.rep.classList.toggle('rep-f', f.parent !== qCour || aDesFeuilles(qCour)); o.tCur = null; });
@@ -1110,7 +1118,8 @@
       if (t < 1) animArc = requestAnimationFrame(pas);
     })();
   }
-  function majArc(nd) { // nd : question dont les espèces finales doivent être en arc (ou null)
+  var arcEnAttente = null;
+  function majArc(nd, differer) { // nd : question dont les espèces finales doivent être en arc (ou null) ; differer : après le trajet
     if (!aDesFeuilles(nd)) nd = null;
     if (nd && arcNd && nd !== arcNd) { arcNd = null; appliquerGeometrie(dispo(dispoActuelle)); }
     if (nd === arcNd) return courant;
@@ -1118,7 +1127,8 @@
     monde.classList.toggle('arc-actif', !!nd);
     feuilles.forEach(function (f) { var on = !!nd && f.parent === nd; elems[f.id].g.classList.toggle('dans-arc', on); elems[f.id].gE.classList.toggle('dans-arc', on); });
     var L = nd ? dispositionArc(nd) : dispo(dispoActuelle);
-    animerGeometrie(L, 650);
+    arcEnAttente = null;
+    if (differer) arcEnAttente = L; else animerGeometrie(L, 650);
     return L;
   }
   function bornesArc(nd, L) {
@@ -1146,11 +1156,11 @@
 
   function selectionnerQuestion(nd, glisser) {
     selection = nd; marquerChemin(nd); majAriane(nd); fermerFiche(); surbrillanceSosies(null);
-    classe('esp-sel', false); placerCommencer();
+    classe('esp-sel', false);
     if (elems[nd.id].rep) elems[nd.id].rep.classList.toggle('rep-arrivee', !glisser); // sans trajet : la réponse d'arrivée s'efface tout de suite
     appliquerFocus(nd.prof > 0 ? nd : null);
     rendreVolet();
-    var Lc = majArc(nd);
+    var Lc = majArc(nd, glisser);
     if (arcNd === nd) { // question qui mène à des espèces : on cadre la question et toutes ses espèces
       var ca = camDans(bornesArc(nd, Lc), 0.04);
       if (glisser) glisserVers(nd, ca); else volerVers(ca);
@@ -1171,7 +1181,7 @@
     var nd = parId['sp:' + id]; if (!nd) return;
     if (!dansFocus(nd)) appliquerFocus(null);
     var Lc = arcNd === nd.parent ? courant : majArc(null); // garder l'arc si on choisit une de ses espèces
-    selection = nd; marquerChemin(nd); majAriane(nd); surbrillanceSosies(id); placerCommencer();
+    selection = nd; marquerChemin(nd); majAriane(nd); surbrillanceSosies(id);
     classe('esp-sel', true);
     rendreVolet(); afficherComparaison(nd.sp);
     if (document.body.classList.contains('fiche-ouverte')) ouvrirFiche(nd.sp);
@@ -1206,7 +1216,6 @@
     activerNoeud(b.getAttribute('data-id'));
   });
   $('#quitter-focus').addEventListener('click', quitterFocus);
-  $('#commencer').addEventListener('click', function () { selectionnerQuestion(racine); });
 
   /* ======================= Volet B (arc en bas de la carte) ======================= */
   function photoOuSchema(sp, pre) {

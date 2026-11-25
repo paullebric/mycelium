@@ -426,6 +426,7 @@
     el('circle', { r: 48, 'class': 'anneau', stroke: st.couleur, 'stroke-dasharray': st.dash }, g);
     if (sp.statut === 'mortel') el('circle', { r: 55, 'class': 'anneau2', stroke: st.couleur }, g);
     var mc = el('g', { 'class': 'marque-carnet' }, g);
+    elems[nd.id].mc = mc;
     mc.innerHTML = '<circle r="63"/><g transform="translate(-40 38)"><circle r="12" fill="#0C120F" stroke="#FFB547" stroke-width="2"/><path d="M0-7l2.1 4.4 4.8.6-3.5 3.3.9 4.8L0 3.7-4.3 6.1l.9-4.8-3.5-3.3 4.8-.6z" fill="#FFB547"/></g>';
     var b = el('g', { 'class': 'badge v1', transform: 'translate(34 -34) scale(1.25) translate(-12 -12)' }, g);
     b.innerHTML = '<circle cx="12" cy="12" r="13" fill="#0C120F"/><circle cx="12" cy="12" r="11" fill="' + st.couleur + '"/>' + ICONES[sp.statut];
@@ -702,6 +703,17 @@
       }
     });
   }
+  // Cercle « trouvé » : garde une taille lisible à l'écran (≥ 6 px de rayon) même dézoomé au maximum,
+  // pour voir d'un coup d'œil la part de la carte déjà trouvée
+  function majMarqueCarnet(o, px) {
+    var cle = px * 63 >= 6 ? 0 : Math.round(Math.log(px) * 12);
+    if (o.mcCle === cle) return; o.mcCle = cle;
+    var c = o.mc.firstChild, et = o.mc.lastChild;
+    if (!cle) { c.setAttribute('r', 63); c.removeAttribute('style'); et.removeAttribute('display'); return; }
+    var r = 6 / px, w = 1.6 / px;
+    c.setAttribute('r', r.toFixed(1)); c.setAttribute('style', 'stroke-width:' + w.toFixed(1) + 'px;stroke-dasharray:' + (2.4 / px).toFixed(1) + ' ' + (2.4 / px).toFixed(1));
+    et.setAttribute('display', 'none');
+  }
   function majLOD(force) {
     var k = cam.k;
     var loin = k < 0.08;
@@ -712,6 +724,7 @@
       if (nd.sp) n = px * 48 < 5 ? 0 : px * 14 < 6 ? 1 : px * 11 < 8 ? 2 : px * 10 < 9.5 ? 3 : 4;
       else n = px * 17 < 6 ? 0 : px * 10 < 8.5 ? 2 : 4;
       if (force || niveauxPrec[nd.id] !== n) { o.g.setAttribute('data-n', n); if (o.gE) o.gE.setAttribute('data-n', n); niveauxPrec[nd.id] = n; }
+      if (o.mc && carnet[nd.sp.id]) majMarqueCarnet(o, px);
       if (nd.sp && arcNd && nd.parent === arcNd) { // espèces en arc : étiquettes toujours lisibles (≈ 12 px)
         var sc = Math.min(2, Math.max(1, 12 / (19 * px)));
         if (Math.abs((o.scArc || 0) - sc) > 0.02) { o.etiq.setAttribute('transform', 'scale(' + sc.toFixed(2) + ')'); o.scArc = sc; }
@@ -1335,8 +1348,7 @@
     else if (act === 'rep') activerNoeud(b.getAttribute('data-rep'));
     else if (act === 'fiche') ouvrirFiche(sp);
     else if (act === 'agrandir') ouvrirVisionneuse(sp, PHOTOS && PHOTOS[sp.id] ? 'photo' : 'schema');
-    else if (act === 'trouve') basculerTrouve(sp.id);
-    else if (act === 'mange') demanderMange(sp.id);
+    else if (act === 'trouve' || act === 'mange') animerCarnet(act, b, sp.id);
     else if (act === 'sosies') ouvrirComparaison(sp, null);
   });
 
@@ -1401,8 +1413,7 @@
       if (act === 'fermer') fermerFiche();
       else if (act === 'mode') { ficheMode = b.getAttribute('data-mode'); ouvrirFiche(sp); }
       else if (act === 'agrandir') ouvrirVisionneuse(sp, PHOTOS && PHOTOS[sp.id] && ficheMode === 'photo' ? 'photo' : 'schema');
-      else if (act === 'trouve') basculerTrouve(sp.id);
-      else if (act === 'mange') demanderMange(sp.id);
+      else if (act === 'trouve' || act === 'mange') animerCarnet(act, b, sp.id);
       return;
     }
     var c = e.target.closest('[data-cmp]'); if (c) { ouvrirComparaison(sp, ESP[c.getAttribute('data-cmp')]); return; }
@@ -1620,23 +1631,100 @@
     } else carnet[id] = { t: jour() };
     sauverCarnet();
   }
-  var confId = null;
   function demanderMange(id) {
-    if (carnet[id] && carnet[id].m) { delete carnet[id].m; sauverCarnet(); return; }
-    confId = id;
-    $('#conf-esp').textContent = 'MANGÉ ! · ' + ESP[id].nom.toUpperCase();
-    $('#conf-msg').hidden = true; $('#conf-oui').hidden = false; $('#conf-non').textContent = 'NON';
-    $('#confirme').hidden = false; $('#conf-oui').focus();
+    if (carnet[id] && carnet[id].m) delete carnet[id].m;
+    else carnet[id] = { t: (carnet[id] && carnet[id].t) || jour(), m: jour() };
+    sauverCarnet();
   }
-  $('#conf-oui').addEventListener('click', function () {
-    if (confId) { carnet[confId] = { t: (carnet[confId] && carnet[confId].t) || jour(), m: jour() }; sauverCarnet(); }
-    $('#confirme').hidden = true; confId = null;
-  });
-  $('#conf-non').addEventListener('click', function () {
-    if (!$('#conf-msg').hidden) { $('#confirme').hidden = true; confId = null; return; }
-    $('#conf-msg').textContent = 'Alors ne le mangez pas pour l\'instant : montrez votre récolte à un pharmacien ou à un mycologue avant toute consommation. Vous pouvez la noter comme « Trouvé ! ».';
-    $('#conf-msg').hidden = false; $('#conf-oui').hidden = true; $('#conf-non').textContent = 'COMPRIS';
-  });
+  /* Petites animations du carnet : mycélium qui pousse (Trouvé !), chapeaux qui s'envolent (Mangé !) */
+  var mouvReduit = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, coucheFx = null;
+  function animerCarnet(act, b, id) {
+    var r = b.getBoundingClientRect(), etat = function () { return act === 'trouve' ? !!carnet[id] : !!(carnet[id] && carnet[id].m); }, avant = etat();
+    if (act === 'trouve') basculerTrouve(id); else demanderMange(id);
+    if (avant || !etat() || mouvReduit || !r.width || !document.body.animate) return;
+    var x = r.left + r.width / 2, y = r.top + r.height / 2;
+    if (!coucheFx) { coucheFx = document.createElement('div'); coucheFx.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden'; document.body.appendChild(coucheFx); }
+    [].forEach.call(document.querySelectorAll('[data-act="' + act + '"]'), function (n) { // le bouton redessiné au même endroit rebondit
+      var q = n.getBoundingClientRect(); if (Math.abs(q.left + q.width / 2 - x) < 30 && Math.abs(q.top + q.height / 2 - y) < 30)
+        n.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.2)' }, { transform: 'scale(1)' }], { duration: 360, easing: 'cubic-bezier(.3,1.6,.5,1)' });
+    });
+    (act === 'trouve' ? fxMycelium : fxChapeaux)(x, y);
+  }
+  function fxMycelium(x, y) {
+    var NS = 'http://www.w3.org/2000/svg', s = document.createElementNS(NS, 'svg');
+    s.setAttribute('width', '100%'); s.setAttribute('height', '100%'); s.style.cssText = 'position:absolute;inset:0'; coucheFx.appendChild(s);
+    function branche(x0, y0, a, l, n) {
+      var x2 = x0 + Math.cos(a) * l, y2 = y0 + Math.sin(a) * l, p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', 'M' + x0 + ' ' + y0 + ' Q' + (x0 + Math.cos(a + .35) * l * .5) + ' ' + (y0 + Math.sin(a + .35) * l * .5) + ' ' + x2 + ' ' + y2);
+      p.setAttribute('fill', 'none'); p.setAttribute('stroke', n > 1 ? '#FFB547' : '#8DF5C0'); p.setAttribute('stroke-width', n * .6 + .4); p.setAttribute('stroke-linecap', 'round');
+      s.appendChild(p); var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 260, delay: (3 - n) * 170, fill: 'forwards', easing: 'ease-out' });
+      if (n > 1) { branche(x2, y2, a - .5, l * .62, n - 1); branche(x2, y2, a + .55, l * .55, n - 1); }
+    }
+    for (var i = 0; i < 6; i++) branche(x, y, i / 6 * Math.PI * 2 + .3, 26 + (i % 2) * 6, 3);
+    s.animate([{ opacity: 1 }, { opacity: 1, offset: .65 }, { opacity: 0 }], { duration: 1150 }).onfinish = function () { s.remove(); };
+  }
+  function fxChapeaux(x, y) {
+    ['#46D17D', '#8DF5C0', '#FFB547', '#46D17D', '#E6EEE8', '#46D17D', '#8DF5C0'].forEach(function (col, i) {
+      var m = document.createElement('span'), z = 12 + Math.random() * 8, a = -Math.PI / 2 + (i - 3) * .38 + (Math.random() - .5) * .2, d = 55 + Math.random() * 30;
+      m.innerHTML = '<svg viewBox="0 0 20 20" width="' + z + '" height="' + z + '"><path d="M2 10 Q10 0 18 10 Z" fill="' + col + '"/><rect x="8" y="10" width="4" height="7" rx="1.5" fill="' + col + '" opacity=".75"/></svg>';
+      m.style.cssText = 'position:absolute;line-height:0;left:' + (x - z / 2) + 'px;top:' + (y - z / 2) + 'px';
+      coucheFx.appendChild(m);
+      var dx = Math.cos(a) * d, dy = Math.sin(a) * d, rot = (Math.random() - .5) * 220;
+      m.animate([
+        { transform: 'translate(0,0) rotate(0) scale(.3)', opacity: 0 },
+        { transform: 'translate(' + dx * .8 + 'px,' + dy * .8 + 'px) rotate(' + rot * .6 + 'deg) scale(1)', opacity: 1, offset: .45 },
+        { transform: 'translate(' + dx + 'px,' + (dy + 40) + 'px) rotate(' + rot + 'deg) scale(.9)', opacity: 0 }], { duration: 1000 + Math.random() * 200, easing: 'cubic-bezier(.2,.6,.4,1)' }).onfinish = function () { m.remove(); };
+    });
+  }
+  /* Onglet STATS du carnet : chiffres clés, courbe des découvertes, nouvelles espèces par mois, statuts */
+  function joursDe(d) { var p = d.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 864e5; }
+  function statsCarnet(ids) {
+    if (!ids.length) return '<p class="c-vide">Les statistiques apparaîtront dès votre première trouvaille.<br>Sur la carte, touchez une espèce puis « ★ Trouvé ! ».</p>';
+    var M3 = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+    var tri = ids.slice().sort(function (a, b) { return carnet[a].t.localeCompare(carnet[b].t); });
+    var parJour = {}; tri.forEach(function (i) { parJour[carnet[i].t] = (parJour[carnet[i].t] || 0) + 1; });
+    var jours = Object.keys(parJour).sort(), record = jours.reduce(function (r, d) { return parJour[d] > parJour[r] ? d : r; }, jours[0]);
+    var nbM = ids.filter(function (i) { return carnet[i].m; }).length, pct = Math.round(100 * ids.length / feuilles.length);
+    var der = ESP[tri[tri.length - 1]];
+    var h = '<div class="s-chiffres">' +
+      '<div><b>' + pct + '<small> %</small></b><span>de la carte trouvée</span></div>' +
+      '<div><b>' + jours.length + '</b><span>jour' + (jours.length > 1 ? 's' : '') + ' de cueillette</span></div>' +
+      '<div><b>' + parJour[record] + '</b><span>record en un jour · ' + dateLisible(record) + '</span></div>' +
+      '<div><b class="v">' + nbM + '</b><span>espèce' + (nbM > 1 ? 's' : '') + ' mangée' + (nbM > 1 ? 's' : '') + '</span></div></div>';
+    h += '<p class="s-der">Dernière trouvaille : <b>' + escHTML(der.nom) + '</b>, le ' + dateLisible(carnet[der.id].t) + '</p>';
+    // Courbe cumulée (trouvées et mangées) du premier jour à aujourd'hui
+    var W = 300, H = 120, g = 26, d0 = joursDe(jours[0]), d1 = Math.max(joursDe(jour()), d0 + 1), ymax = Math.max(5, ids.length);
+    var X = function (d) { return g + (W - g - 8) * (d - d0) / (d1 - d0); }, Y = function (n) { return H - 16 - (H - 28) * n / ymax; };
+    function escalier(dates) {
+      var n = 0, pts = [[X(d0), Y(0)]];
+      dates.sort().forEach(function (d) { var x = X(joursDe(d)); pts.push([x, Y(n)]); n++; pts.push([x, Y(n)]); });
+      pts.push([X(d1), Y(n)]);
+      return pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
+    }
+    var lt = escalier(ids.map(function (i) { return carnet[i].t; })), lm = nbM ? escalier(ids.filter(function (i) { return carnet[i].m; }).map(function (i) { return carnet[i].m; })) : null;
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="s-svg" role="img" aria-label="Nombre d\'espèces trouvées au fil du temps : ' + ids.length + ' aujourd\'hui">';
+    [0, .5, 1].forEach(function (f) { var n = Math.round(ymax * f), y = Y(n); svg += '<line x1="' + g + '" x2="' + (W - 8) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" class="s-grille"/><text x="' + (g - 4) + '" y="' + (y + 3).toFixed(1) + '" text-anchor="end">' + n + '</text>'; });
+    svg += '<path d="M' + lt + ' L' + X(d1).toFixed(1) + ' ' + Y(0).toFixed(1) + 'Z" class="s-aire"/><path d="M' + lt + '" class="s-ligne"/>';
+    if (lm) svg += '<path d="M' + lm + '" class="s-ligne v"/>';
+    svg += '<circle cx="' + X(d1).toFixed(1) + '" cy="' + Y(ids.length).toFixed(1) + '" r="3" class="s-point"/>';
+    svg += '<text x="' + g + '" y="' + (H - 3) + '">' + dateLisible(jours[0]) + '</text><text x="' + (W - 8) + '" y="' + (H - 3) + '" text-anchor="end">aujourd\'hui</text></svg>';
+    h += '<h3 class="s-titre">Espèces au fil du temps</h3><div class="s-leg"><span class="a">★ trouvées · ' + ids.length + '</span>' + (nbM ? '<span class="v">mangées · ' + nbM + '</span>' : '') + '</div>' + svg;
+    // Nouvelles espèces par mois (12 derniers mois)
+    var auj = new Date(), mois = [];
+    for (var k = 11; k >= 0; k--) { var dm = new Date(auj.getFullYear(), auj.getMonth() - k, 1); mois.push({ cle: dm.getFullYear() + '-' + ('0' + (dm.getMonth() + 1)).slice(-2), lib: M3[dm.getMonth()], n: 0 }); }
+    ids.forEach(function (i) { var c = carnet[i].t.slice(0, 7); mois.forEach(function (m) { if (m.cle === c) m.n++; }); });
+    var mmax = Math.max(1, Math.max.apply(null, mois.map(function (m) { return m.n; })));
+    h += '<h3 class="s-titre">Nouvelles espèces par mois</h3><div class="s-mois">' + mois.map(function (m) {
+      return '<div title="' + m.lib + ' : ' + m.n + '"><em>' + (m.n || '') + '</em><i style="height:' + (m.n ? Math.max(6, Math.round(100 * m.n / mmax)) : 0) + '%"></i><span>' + ['jan', 'fév', 'mar', 'avr', 'mai', 'jun', 'jul', 'aoû', 'sep', 'oct', 'nov', 'déc'][M3.indexOf(m.lib)] + '</span></div>';
+    }).join('') + '</div>';
+    // Par statut : trouvées / total
+    h += '<h3 class="s-titre">Par statut</h3><div class="s-statuts">' + ['comestible', 'sans-interet', 'toxique', 'mortel'].map(function (st) {
+      var tot = feuilles.filter(function (f) { return f.sp.statut === st; }).length, n = ids.filter(function (i) { return ESP[i].statut === st; }).length;
+      return '<div><span>' + STATUTS[st].pluriel + '</span><div class="b"><i style="width:' + (100 * n / tot).toFixed(1) + '%;background:' + STATUTS[st].couleur + '"></i></div><em>' + n + '<small>/' + tot + '</small></em></div>';
+    }).join('') + '</div>';
+    return h;
+  }
   // Branches de premier niveau pour la jauge du carnet
   var LIB_BRANCHES = { volve: 'LAMES', bolets: 'TUBES', hydnes: 'AIGUIL.', chanterelles: 'PLIS', ascos: 'MORILLES', boules: 'BOULES', coraux: 'CORAUX', consoles: 'CONSOLES', gelatineux: 'GÉLAT.', etranges: 'ÉTRANGES' };
   var branchesCarnet = [];
@@ -1650,8 +1738,9 @@
       var lib = LIB_BRANCHES[b.id] || (b.q && b.q.groupe) || couper(b.reponse || '', 8)[0];
       return '<div class="c-barre" title="' + escHTML(lib) + ' : ' + n + ' / ' + b.nF + '"><div class="b"><i style="height:' + (n ? Math.max(4, Math.round(100 * n / b.nF)) : 0) + '%"></i></div><span>' + escHTML(lib) + '</span></div>';
     }).join('') + '</div>';
-    h += '<div class="c-onglets" role="group"><button data-onglet="trouves" aria-pressed="' + (ongletCarnet === 'trouves') + '">★ TROUVÉS ' + nbT + '</button><button class="mg" data-onglet="manges" aria-pressed="' + (ongletCarnet === 'manges') + '">MANGÉS ' + nbM + '</button><button data-onglet="atrouver" aria-pressed="' + (ongletCarnet === 'atrouver') + '">À TROUVER ' + (feuilles.length - nbT) + '</button></div>';
+    h += '<div class="c-onglets" role="group"><button data-onglet="trouves" aria-pressed="' + (ongletCarnet === 'trouves') + '">★ TROUVÉS ' + nbT + '</button><button class="mg" data-onglet="manges" aria-pressed="' + (ongletCarnet === 'manges') + '">MANGÉS ' + nbM + '</button><button data-onglet="atrouver" aria-pressed="' + (ongletCarnet === 'atrouver') + '">À TROUVER ' + (feuilles.length - nbT) + '</button><button data-onglet="stats" aria-pressed="' + (ongletCarnet === 'stats') + '">▤ STATS</button></div>';
     var liste;
+    if (ongletCarnet === 'stats') { h += statsCarnet(ids) + '<div class="c-actions"><button data-act="exporter">↑ EXPORTER</button><button data-act="importer">↓ IMPORTER</button></div>'; $('#p-carnet').innerHTML = h; return; }
     if (ongletCarnet === 'atrouver') {
       liste = feuilles.map(function (f) { return f.sp; }).filter(function (s) { return !carnet[s.id]; });
       liste.sort(function (a, b) { return (enSaison(b) - enSaison(a)) || ((a.rang === 'secondaire') - (b.rang === 'secondaire')) || a.nom.localeCompare(b.nom); });
@@ -1849,7 +1938,6 @@
 
   // Échap : ferme ce qui est au premier plan
   function echap() { // renvoie false s'il n'y avait plus rien à fermer
-    if (!$('#confirme').hidden) { $('#confirme').hidden = true; return true; }
     if (!$('#avert').hidden) { $('#avert').hidden = true; return true; }
     if (!vis.hidden) { fermerVisionneuse(); return true; }
     if (!$('#aide-q').hidden) { fermerAide(); return true; }
@@ -1949,7 +2037,7 @@
   /* ======================= Boutons, légende ======================= */
   $('#zoom-plus').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1.8); });
   $('#zoom-moins').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1 / 1.8); });
-  $('#recentrer').addEventListener('click', function () { recentrer(); });
+  $('#recentrer').addEventListener('click', function () { quitterFocus(); }); // recentre et désélectionne tout
   $('#legende-statuts').innerHTML = ORDRE_STATUTS.map(function (s) {
     var st = STATUTS[s];
     return '<li><svg width="34" height="34" viewBox="-17 -17 34 34" aria-hidden="true"><circle r="12" fill="' + st.clair + '" stroke="' + st.couleur + '" stroke-width="3" stroke-dasharray="' + (st.dash ? st.dash.split(' ').map(function (v) { return v / 3; }).join(' ') : '') + '"/>' + (s === 'mortel' ? '<circle r="15.5" fill="none" stroke="' + st.couleur + '" stroke-width="1.4"/>' : '') + '<g transform="translate(-7 -7) scale(.58)">' + '<circle cx="12" cy="12" r="12" fill="' + st.couleur + '"/>' + ICONES[s] + '</g></svg> <span><strong>' + st.label + '</strong><br>' + {

@@ -184,7 +184,11 @@
       var dash = st.dash ? nombres(st.dash) : null, larg = sel ? 9 : 5;
       if (dash) cercleTirete(a, 48, dash[0], dash[1], larg, couleur(st.couleur), 1); else a.circle(0, 0, 48).stroke({ width: larg, color: couleur(st.couleur) });
       if (sp.statut === 'mortel') a.circle(0, 0, 55).stroke({ width: 2.5, color: couleur(st.couleur) });
-      if (cl(el, 'trouve') && cl(document.body, 'avec-carnet')) cercleTirete(a, 63, 3, 5, 3, AMBRE, 1);
+      if (cl(el, 'trouve') && cl(document.body, 'avec-carnet')) {
+        var mcc = el.querySelector('.marque-carnet circle'), mr = +mcc.getAttribute('r') || 63;
+        if (mr > 63) { var mw = parseFloat(mcc.style.strokeWidth) || 3, md = parseFloat((mcc.style.strokeDasharray || '').split(/[ ,]+/)[0]) || 3; cercleTirete(a, mr, md, md, mw, AMBRE, 1); }
+        else cercleTirete(a, 63, 3, 5, 3, AMBRE, 1);
+      }
       // pastilles
       var montrerBadge = n >= 1 || arc;
       if (montrerBadge && tex.badges[sp.statut]) {
@@ -195,7 +199,7 @@
         if (!ob.prec) { ob.prec = new PIXI.Sprite(tex.prec); ob.prec.anchor.set(0.5); ob.prec.width = ob.prec.height = 24; ob.prec.position.set(-34, -34); c.addChild(ob.prec); }
         ob.prec.visible = n >= 1;
       }
-      var trouve = cl(el, 'trouve') && cl(document.body, 'avec-carnet');
+      var trouve = cl(el, 'trouve') && cl(document.body, 'avec-carnet') && el.querySelector('.marque-carnet g').getAttribute('display') !== 'none';
       if (trouve && tex.etoile) {
         if (!ob.etoile) { ob.etoile = new PIXI.Sprite(tex.etoile); ob.etoile.anchor.set(0.5); ob.etoile.width = ob.etoile.height = 28; ob.etoile.position.set(-40, 38); c.addChild(ob.etoile); }
         ob.etoile.visible = true;

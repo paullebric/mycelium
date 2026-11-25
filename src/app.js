@@ -502,25 +502,22 @@
     for (k in B.sos) { var sa = A.sos[k], sb = B.sos[k], s2 = []; for (var j = 0; j < 6; j++) s2.push(lerp(sa[j], sb[j], t)); R.sos[k] = s2; }
     return R;
   }
-  // Démarrage : le mycélium pousse depuis le centre, profondeur par profondeur (croissance de 0 à 1)
-  var croissance = null;
-  function fracPousse(nd) { return Math.max(0, Math.min(1, croissance * (PROF_MAX + 0.6) - (nd.prof - 1))); }
-  function aretePartielle(nd, e) {
-    var t = fracPousse(nd); if (t >= 1) return e;
-    var x01 = lerp(e[0], e[2], t), y01 = lerp(e[1], e[3], t), x12 = lerp(e[2], e[4], t), y12 = lerp(e[3], e[5], t), x23 = lerp(e[4], e[6], t), y23 = lerp(e[5], e[7], t);
-    var xa = lerp(x01, x12, t), ya = lerp(y01, y12, t), xb = lerp(x12, x23, t), yb = lerp(y12, y23, t);
-    return [e[0], e[1], x01, y01, xa, ya, lerp(xa, xb, t), lerp(ya, yb, t)];
-  }
+  // Démarrage : la carte se révèle depuis le centre, en cercle qui s'élargit.
+  // Une seule valeur change par image (le rayon d'un masque), au lieu de redessiner chaque branche.
   function lancerPousse() {
     if (mouvReduit || lancerPousse.fait) return; lancerPousse.fait = true;
-    var t0 = performance.now(), D = 1400;
-    croissance = 0;
+    var P = courant.pos[racine.id], B = courant.bornes, cx = P.x, cy = P.y;
+    var Rmax = Math.max(Math.hypot(B.x - cx, B.y - cy), Math.hypot(B.x + B.w - cx, B.y - cy), Math.hypot(B.x - cx, B.y + B.h - cy), Math.hypot(B.x + B.w - cx, B.y + B.h - cy)) * 1.05;
+    var NS = 'http://www.w3.org/2000/svg', defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(NS, 'defs'), svg.firstChild);
+    var cp = document.createElementNS(NS, 'clipPath'); cp.id = 'revele'; cp.setAttribute('clipPathUnits', 'userSpaceOnUse');
+    var cc = document.createElementNS(NS, 'circle'); cc.setAttribute('cx', cx); cc.setAttribute('cy', cy); cc.setAttribute('r', 0); cp.appendChild(cc); defs.appendChild(cp);
+    monde.setAttribute('clip-path', 'url(#revele)');
+    var t0 = performance.now(), D = 1300;
     (function pas() {
-      croissance = Math.min(1, (performance.now() - t0) / D);
-      noeuds.forEach(function (nd) { if (nd.prof) { var on = fracPousse(nd) < 1, o = elems[nd.id]; if (o.pousse !== on) { o.pousse = on; o.g.classList.toggle('pousse', on); if (o.gE) o.gE.classList.toggle('pousse', on); } } });
-      if (croissance >= 1) croissance = null;
-      appliquerGeometrie(courant);
-      if (croissance != null) requestAnimationFrame(pas);
+      var k = Math.min(1, (performance.now() - t0) / D), u = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, r = Rmax * u;
+      if (GL && GL.actif()) GL.revelation(cx, cy, r); else cc.setAttribute('r', r.toFixed(1));
+      if (k < 1) requestAnimationFrame(pas);
+      else { monde.removeAttribute('clip-path'); cp.remove(); if (GL && GL.revelation) GL.revelation(null); }
     })();
   }
   function appliquerGeometrie(L) {
@@ -538,7 +535,7 @@
         placerEtiquette(nd, modeE);
       }
       if (o.arete) {
-        var e = croissance == null ? L.aret[nd.id] : aretePartielle(nd, L.aret[nd.id]);
+        var e = L.aret[nd.id];
         o.arete.setAttribute('d', 'M' + r1(e[0]) + ' ' + r1(e[1]) + 'C' + r1(e[2]) + ' ' + r1(e[3]) + ' ' + r1(e[4]) + ' ' + r1(e[5]) + ' ' + r1(e[6]) + ' ' + r1(e[7]));
         var rp = L.rep[nd.id];
         o.rep.setAttribute('transform', 'translate(' + r1(rp.x) + ' ' + r1(rp.y) + ') scale(' + rp.s.toFixed(3) + ')');
@@ -1152,7 +1149,7 @@
         if (elems[nd.id].rep) elems[nd.id].rep.classList.remove('rep-en-trajet');
         if (elems[nd.id].rep) elems[nd.id].rep.classList.add('rep-arrivee'); // arrivée : la réponse s'efface derrière la question
         rendreCamera();
-        if (arcEnAttente) { animerGeometrie(arcEnAttente, 650, arcNd); arcEnAttente = null; } // puis les espèces se mettent en arc
+        if (arcEnAttente) { animerGeometrie(arcEnAttente, 650); arcEnAttente = null; } // puis les espèces se mettent en arc
       }
     })();
     // étiquette de la réponse suivie pendant le trajet
@@ -1250,27 +1247,13 @@
     L.arc = nd.id;
     return L;
   }
-  function animerGeometrie(L, duree, eventail) { // eventail : question dont les espèces se déploient une à une depuis sa carte
+  function animerGeometrie(L, duree) {
     cancelAnimationFrame(animArc);
-    var A = courant, t0 = performance.now(), fe = [], PAS = 45;
-    if (eventail && !mouvReduit) fe = eventail.enfants.filter(function (c) { return c.sp; });
-    var total = duree + Math.max(0, fe.length - 1) * PAS;
-    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    var A = courant, t0 = performance.now();
     (function pas() {
-      var ms = performance.now() - t0, t = Math.min(1, ms / duree), R = t < 1 ? interpoler(A, L, ease(t)) : L;
-      if (fe.length && ms < total) {
-        if (R === L) R = interpoler(A, L, 0.999999);
-        var Q = L.pos[eventail.id];
-        fe.forEach(function (c, i) {
-          var ti = Math.max(0, Math.min(1, (ms - i * PAS) / duree)), u = 1 - Math.pow(1 - ti, 3), b = L.pos[c.id], eb = L.aret[c.id];
-          R.pos[c.id] = { x: lerp(Q.x, b.x, u), y: lerp(Q.y, b.y, u), s: lerp(b.s * 0.25, b.s, u), d: b.d };
-          if (eb) { var e2 = []; for (var j = 0; j < 8; j++) e2.push(lerp(j % 2 ? Q.y : Q.x, eb[j], u)); R.aret[c.id] = e2; }
-          if (L.rep[c.id]) { var rb = L.rep[c.id]; R.rep[c.id] = { x: lerp(Q.x, rb.x, u), y: lerp(Q.y, rb.y, u), s: rb.s * u }; }
-        });
-      }
-      appliquerGeometrie(R);
-      if (ms < Math.max(duree, fe.length ? total : 0)) animArc = requestAnimationFrame(pas);
-      else if (R !== L) appliquerGeometrie(L);
+      var t = Math.min(1, (performance.now() - t0) / duree), e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      appliquerGeometrie(t < 1 ? interpoler(A, L, e) : L);
+      if (t < 1) animArc = requestAnimationFrame(pas);
     })();
   }
   var arcEnAttente = null;
@@ -1283,7 +1266,7 @@
     feuilles.forEach(function (f) { var on = !!nd && f.parent === nd; elems[f.id].g.classList.toggle('dans-arc', on); elems[f.id].gE.classList.toggle('dans-arc', on); });
     var L = nd ? dispositionArc(nd) : dispo(dispoActuelle);
     arcEnAttente = null;
-    if (differer) arcEnAttente = L; else animerGeometrie(L, 650, nd);
+    if (differer) arcEnAttente = L; else animerGeometrie(L, 650);
     return L;
   }
   function bornesArc(nd, L) {
@@ -1346,7 +1329,7 @@
     })();
   }
   function selectionnerEspece(id, voler, glisser) {
-    marquerDemarre();
+    marquerDemarre(); signalTuto('espece');
     var nd = parId['sp:' + id]; if (!nd) return;
     if (!dansFocus(nd)) appliquerFocus(null);
     var Lc = arcNd === nd.parent ? courant : majArc(null); // garder l'arc si on choisit une de ses espèces
@@ -1393,6 +1376,8 @@
     if (ph) return '<img src="' + ph.src + '" alt="">';
     return '<svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#141c17"/>' + Schema.dessiner(sp.schema, sp.id).replace(/sc[0-9a-z]+_/g, function (m) { return pre + m; }) + '</svg>';
   }
+  // Icône du bouton « Mangé ! » : fourchette et couteau au trait
+  function ICO_COUVERTS(t) { return '<svg width="' + t + '" height="' + t + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 3v7M4.5 3v4.5a2.5 2.5 0 0 0 5 0V3M7 10v11"/><path d="M17 21V3c-2.2 1.3-3.2 4-3.2 7.2 0 1.6.9 2.8 3.2 2.8"/></svg>'; }
   function rendreVolet() {
     var v = $('#volet'), h;
     if (!selection) {
@@ -1417,7 +1402,7 @@
         '<button class="v-rond" style="left:6%;top:72px" data-act="fiche" aria-label="Ouvrir la fiche">FICHE</button>' +
         '<button class="v-photo" data-act="agrandir" aria-label="Voir en grand">' + photoOuSchema(sp, 'vl') + '</button>' +
         '<button class="v-rond trouve" style="right:' + (sp.statut === 'comestible' ? '22%' : '6%') + ';top:' + (sp.statut === 'comestible' ? 52 : 72) + 'px" data-act="trouve" aria-pressed="' + !!c + '" aria-label="Trouvé !" title="Trouvé !">★</button>' +
-        (sp.statut === 'comestible' ? '<button class="v-rond mange" style="right:5%;top:70px" data-act="mange" aria-pressed="' + !!(c && c.m) + '" aria-label="Mangé !" title="Mangé !">MAN-<br>GÉ !</button>' : '') +
+        (sp.statut === 'comestible' ? '<button class="v-rond mange" style="right:6%;top:72px" data-act="mange" aria-pressed="' + !!(c && c.m) + '" aria-label="Mangé !" title="Mangé !">' + ICO_COUVERTS(22) + '</button>' : '') +
         '<div class="vs-corps"><div class="vs-meta">' + numero(sp) + ' · <span style="color:' + st.couleur + '">' + st.label.toUpperCase() + (sp.precaution ? ' ⚠' : '') + '</span>' + (sp.rang === 'secondaire' ? ' · HORS CERCLE' : '') + '</div>' +
         '<h2 class="vs-nom" data-act="fiche">' + escHTML(sp.nom) + '</h2><div class="vs-lat">' + escHTML(sp.latin) + '</div>' +
         '<div class="vs-info">' + info + '</div>' + (sos ? '<div class="vs-sos">' + sos + '</div>' : '') + '</div></div>';
@@ -1455,6 +1440,7 @@
   /* ======================= Fiche ======================= */
   var ficheMode = 'photo';
   function ouvrirFiche(sp) {
+    signalTuto('fiche');
     montrerVue('carte', true);
     var st = STATUTS[sp.statut], f = $('#fiche'), ph = PHOTOS && PHOTOS[sp.id], c = carnet[sp.id] || null;
     var nd = parId['sp:' + sp.id], chemin = ancetres(nd);
@@ -1494,7 +1480,7 @@
     if (ph) h += '<p class="f-credit">Photo : ' + escHTML(ph.auteur) + ' — ' + escHTML(ph.licence) + ', via <a href="' + escHTML(ph.url) + '" target="_blank" rel="noopener">Wikimedia Commons</a> (' + escHTML(ph.fichier) + ')</p>';
     h += '<p class="f-avert">Outil pédagogique : ne consommez jamais un champignon sur la base de cette fiche.</p></div>';
     h += '<div class="f-pied"><button class="trouve" data-act="trouve" aria-pressed="' + !!c + '">★ TROUVÉ !</button>' +
-      (sp.statut === 'comestible' ? '<button class="mange" data-act="mange" aria-pressed="' + !!(c && c.m) + '">' + (c && c.m ? '✓ MANGÉ' : 'MANGÉ !') + '</button>' : '') +
+      (sp.statut === 'comestible' ? '<button class="mange" data-act="mange" aria-pressed="' + !!(c && c.m) + '">' + ICO_COUVERTS(16) + (c && c.m ? 'MANGÉ ✓' : 'MANGÉ !') + '</button>' : '') +
       '<button class="fermer" data-act="fermer" aria-label="Fermer la fiche">✕</button></div>';
     var deja = !f.hidden && f.getAttribute('data-esp') === sp.id, haut = f.scrollTop;
     f.innerHTML = h; f.hidden = false; f.setAttribute('data-esp', sp.id);
@@ -1741,14 +1727,19 @@
   function animerCarnet(act, b, id) {
     var r = b.getBoundingClientRect(), etat = function () { return act === 'trouve' ? !!carnet[id] : !!(carnet[id] && carnet[id].m); }, avant = etat();
     if (act === 'trouve') basculerTrouve(id); else demanderMange(id);
+    if (!avant && etat()) signalTuto(act);
     if (avant || !etat() || mouvReduit || !r.width || !document.body.animate) return;
     var x = r.left + r.width / 2, y = r.top + r.height / 2;
-    if (!coucheFx) { coucheFx = document.createElement('div'); coucheFx.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden'; document.body.appendChild(coucheFx); }
+    coucheEffets();
     [].forEach.call(document.querySelectorAll('[data-act="' + act + '"]'), function (n) { // le bouton redessiné au même endroit rebondit
       var q = n.getBoundingClientRect(); if (Math.abs(q.left + q.width / 2 - x) < 30 && Math.abs(q.top + q.height / 2 - y) < 30)
         n.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.2)' }, { transform: 'scale(1)' }], { duration: 360, easing: 'cubic-bezier(.3,1.6,.5,1)' });
     });
     (act === 'trouve' ? fxMycelium : fxChapeaux)(x, y, r.width / 2);
+  }
+  function coucheEffets() {
+    if (!coucheFx) { coucheFx = document.createElement('div'); coucheFx.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden'; document.body.appendChild(coucheFx); }
+    return coucheFx;
   }
   function fxMycelium(x, y, r0) {
     var NS = 'http://www.w3.org/2000/svg', s = document.createElementNS(NS, 'svg');
@@ -2050,7 +2041,7 @@
   var CLE_AVERT = 'mycelium-avert-off';
   $('#avert-nb').textContent = feuilles.length;
   function ouvrirAvert() { $('#avert-plus').checked = stockage(CLE_AVERT) === '1'; $('#avert').hidden = false; $('#avert-ok').focus(); }
-  $('#avert-ok').addEventListener('click', function () { stockage(CLE_AVERT, $('#avert-plus').checked ? '1' : '0'); $('#avert').hidden = true; lancerPousse(); });
+  $('#avert-ok').addEventListener('click', function () { stockage(CLE_AVERT, $('#avert-plus').checked ? '1' : '0'); $('#avert').hidden = true; apresAccueil(); });
   $('#btn-avert').addEventListener('click', ouvrirAvert);
 
   // Échap : ferme ce qui est au premier plan
@@ -2154,7 +2145,7 @@
   /* ======================= Boutons, légende ======================= */
   $('#zoom-plus').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1.8); });
   $('#zoom-moins').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1 / 1.8); });
-  $('#recentrer').addEventListener('click', function () { quitterFocus(); }); // recentre et désélectionne tout
+  $('#recentrer').addEventListener('click', function () { quitterFocus(); reinitDepart(); }); // recentre, désélectionne tout et remet « Démarrer »
   $('#legende-statuts').innerHTML = ORDRE_STATUTS.map(function (s) {
     var st = STATUTS[s];
     return '<li><svg width="34" height="34" viewBox="-17 -17 34 34" aria-hidden="true"><circle r="12" fill="' + st.clair + '" stroke="' + st.couleur + '" stroke-width="3" stroke-dasharray="' + (st.dash ? st.dash.split(' ').map(function (v) { return v / 3; }).join(' ') : '') + '"/>' + (s === 'mortel' ? '<circle r="15.5" fill="none" stroke="' + st.couleur + '" stroke-width="1.4"/>' : '') + '<g transform="translate(-7 -7) scale(.58)">' + '<circle cx="12" cy="12" r="12" fill="' + st.couleur + '"/>' + ICONES[s] + '</g></svg> <span><strong>' + st.label + '</strong><br>' + {
@@ -2229,19 +2220,90 @@
   }
   function marquerDemarre() {
     if (demarre) return; demarre = true;
-    elems[racine.id].g.classList.remove('avant-depart'); placerCommencer();
+    elems[racine.id].g.classList.remove('avant-depart'); placerCommencer(); signalTuto('demarre');
   }
+  function reinitDepart() { demarre = false; elems[racine.id].g.classList.add('avant-depart'); var b = $('#commencer'); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = mouvReduit ? 'none' : 'apparait .4s ease-out .5s both, respire 3.2s ease-in-out 1s infinite'; placerCommencer(); }
   function demarrerIdentification() {
     var b = $('#commencer');
     if (mouvReduit || !b.animate) { marquerDemarre(); selectionnerQuestion(racine); return; }
     b.disabled = true; b.style.animation = 'none';
     animDemarrer(b, function () { b.disabled = false; b.style.animation = ''; marquerDemarre(); selectionnerQuestion(racine); });
   }
-  // Animation au toucher (provisoire : en attente du choix entre les propositions A, B et C)
+  // Animation au toucher : le bouton se resserre en une spore, qui éclate en trois ondes ; la carte part vers la question
   function animDemarrer(b, fin) {
-    b.animate([{ opacity: 1, transform: 'translate(-50%,-50%) scale(1)' }, { opacity: 0, transform: 'translate(-50%,-50%) scale(.8)' }], { duration: 220, easing: 'ease-in', fill: 'forwards' }).onfinish = function () { b.getAnimations().forEach(function (a) { a.cancel(); }); fin(); };
+    var r = b.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, C = coucheEffets();
+    b.animate([{ transform: 'translate(-50%,-50%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-50%) scale(.2)', opacity: 1, offset: .55 }, { transform: 'translate(-50%,-50%) scale(.05)', opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.5,0,.8,.4)', fill: 'forwards' })
+      .onfinish = function () { b.getAnimations().forEach(function (a) { a.cancel(); }); fin(); };
+    [0, 110, 220].forEach(function (t, i) {
+      var o = document.createElement('i');
+      o.style.cssText = 'position:absolute;left:' + (x - 10) + 'px;top:' + (y - 10) + 'px;width:20px;height:20px;border-radius:50%;border:1.5px solid ' + (i ? '#8DF5C0' : '#FFB547');
+      C.appendChild(o);
+      o.animate([{ transform: 'scale(.3)', opacity: 1 }, { transform: 'scale(' + (8 + i * 3) + ')', opacity: 0 }], { duration: 850, delay: 330 + t, easing: 'cubic-bezier(.2,.6,.3,1)', fill: 'backwards' }).onfinish = function () { o.remove(); };
+    });
   }
   $('#commencer').addEventListener('click', demarrerIdentification);
+
+
+  /* ======================= Tutoriel (première ouverture, relançable depuis Légende) ======================= */
+  // Il guide jusqu'à une espèce, puis montre la fiche, « Trouvé ! » et « Mangé ! ». On peut le passer à tout moment.
+  var CLE_TUTO = 'mycelium-tuto-vu', tuto = null;
+  var ETAPES_TUTO = [
+    { titre: 'Bienvenue dans mycélium', texte: 'Identifions un champignon ensemble. Cela prend moins d\'une minute.', ok: 'C\'EST PARTI' },
+    { titre: 'Démarrez', texte: 'Touchez « Démarrer l\'identification ».', cible: function () { var b = $('#commencer'); return b && !b.hidden ? b : null; }, attend: 'demarre' },
+    { titre: 'Répondez aux questions', texte: 'Touchez la réponse qui décrit votre champignon, question après question, jusqu\'à une espèce.<br><small>Pas de champignon sous la main ? Prenez un exemple.</small>',
+      cible: function () { return $('#volet .vq-reps'); }, attend: 'espece', autre: 'PRENDRE UN EXEMPLE', faireAutre: function () { selectionnerEspece('boletus-edulis', true); } },
+    { titre: 'Votre espèce', texte: 'Touchez « FICHE » pour tout savoir : critères, saison, sosies à ne pas confondre.', cible: function () { return $('#volet [data-act="fiche"]'); }, attend: 'fiche', ok: 'SUIVANT' },
+    { titre: 'Trouvé !', texte: 'Vous l\'avez trouvé ? Touchez l\'étoile : il rejoint votre carnet.', cible: function () { return $('#fiche').hidden ? $('#volet [data-act="trouve"]') : $('#fiche [data-act="trouve"]'); }, attend: 'trouve', ok: 'SUIVANT' },
+    { titre: 'Mangé !', texte: function () { return selection && selection.sp && selection.sp.statut === 'comestible' ? 'Pour une espèce comestible, touchez « Mangé ! » une fois dégustée.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>' : 'Pour une espèce comestible, un bouton « Mangé ! » apparaît à côté de l\'étoile.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>'; },
+      cible: function () { return $('#fiche').hidden ? $('#volet [data-act="mange"]') : $('#fiche [data-act="mange"]'); }, attend: 'mange', ok: 'SUIVANT' },
+    { titre: 'C\'est tout !', texte: 'Retrouvez vos trouvailles et vos statistiques dans CARNET. Ce guide se relance depuis LÉGENDE.', ok: 'TERMINER', avant: function () { fermerFiche(); } }
+  ];
+  function lancerTuto() {
+    stockage(CLE_TUTO, '1');
+    tuto = { i: 0 }; $('#tuto').hidden = false; etapeTuto(0);
+    (function suivre() { if (!tuto) return; placerTuto(); requestAnimationFrame(suivre); })();
+  }
+  function finirTuto() { tuto = null; $('#tuto').hidden = true; }
+  function etapeTuto(i) {
+    if (i >= ETAPES_TUTO.length) { finirTuto(); return; }
+    var E = ETAPES_TUTO[i]; tuto.i = i;
+    if (E.avant) E.avant();
+    if (i === 1 && demarre) { etapeTuto(2); return; } // déjà démarré : on passe aux questions
+    if (i === 2 && selection && selection.sp) { etapeTuto(3); return; }
+    var txt = typeof E.texte === 'function' ? E.texte() : E.texte;
+    $('#tuto-bulle').innerHTML = '<div class="t-etape">GUIDE · ' + (i + 1) + ' / ' + ETAPES_TUTO.length + '</div><h3>' + E.titre + '</h3><p>' + txt + '</p>' +
+      '<div class="t-actions">' + (E.ok ? '<button class="t-ok" data-t="ok">' + E.ok + '</button>' : '') + (E.autre ? '<button data-t="autre">' + E.autre + '</button>' : '') +
+      (i < ETAPES_TUTO.length - 1 ? '<button class="t-passer" data-t="passer">✕ PASSER LE GUIDE</button>' : '') + '</div>' +
+      '<div class="t-points">' + ETAPES_TUTO.map(function (x, k) { return '<i class="' + (k <= i ? 'on' : '') + '"></i>'; }).join('') + '</div>';
+    if (!mouvReduit && $('#tuto-bulle').animate) $('#tuto-bulle').animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 240, easing: 'ease-out' });
+    placerTuto();
+  }
+  function placerTuto() {
+    var E = ETAPES_TUTO[tuto.i], c = E.cible && E.cible(), v = $('#tuto-voile'), b = $('#tuto-bulle'), W = window.innerWidth, H = window.innerHeight, bh = b.offsetHeight, bw = b.offsetWidth;
+    var r = c && c.getBoundingClientRect();
+    if (!r || !r.width) { v.classList.add('sans'); v.style.left = W / 2 + 'px'; v.style.top = H / 2 + 'px'; v.style.width = v.style.height = '0px'; b.style.left = (W - bw) / 2 + 'px'; b.style.top = Math.max(16, (H - bh) / 2) + 'px'; return; }
+    var m = 6; v.classList.remove('sans');
+    v.style.left = (r.left - m) + 'px'; v.style.top = (r.top - m) + 'px'; v.style.width = (r.width + 2 * m) + 'px'; v.style.height = (r.height + 2 * m) + 'px';
+    var haut = r.top + r.height / 2 > H / 2, y = haut ? r.top - m - 14 - bh : r.bottom + m + 14;
+    y = Math.max(12, Math.min(H - bh - 12, y));
+    b.style.left = Math.max(16, Math.min(W - bw - 16, r.left + r.width / 2 - bw / 2)) + 'px'; b.style.top = y + 'px';
+  }
+  function signalTuto(nom) {
+    if (!tuto || tuto.att || ETAPES_TUTO[tuto.i].attend !== nom) return;
+    tuto.att = true; var i = tuto.i;
+    setTimeout(function () { if (tuto && tuto.i === i) { tuto.att = false; etapeTuto(i + 1); } }, nom === 'espece' ? 900 : 450);
+  }
+  $('#tuto-bulle').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-t]'); if (!b || !tuto) return;
+    var t = b.getAttribute('data-t'), E = ETAPES_TUTO[tuto.i];
+    if (t === 'passer') finirTuto(); else if (t === 'ok') { tuto.att = false; etapeTuto(tuto.i + 1); } else if (t === 'autre' && E.faireAutre) E.faireAutre();
+  });
+  $('#relancer-tuto').addEventListener('click', function () {
+    montrerVue('carte'); quitterFocus(); reinitDepart();
+    setTimeout(lancerTuto, 500);
+  });
+  // Après l'avertissement (ou directement) : le mycélium pousse, puis le guide s'ouvre la première fois
+  function apresAccueil() { lancerPousse(); if (stockage(CLE_TUTO) !== '1') setTimeout(lancerTuto, mouvReduit ? 300 : 1800); }
 
   /* ======================= Démarrage ======================= */
   majAriane(null);
@@ -2251,7 +2313,7 @@
   rendreVolet();
   appliquerGeometrie(dispo(dispoActuelle));
   recentrer(true); placerCommencer();
-  if (stockage(CLE_AVERT) !== '1') ouvrirAvert(); else lancerPousse();
+  if (stockage(CLE_AVERT) !== '1') ouvrirAvert(); else apresAccueil();
   window.addEventListener('resize', function () { planifier(); });
   // API minimale pour les tests automatisés
   window.CARTE = {
@@ -2259,6 +2321,7 @@
     zoomer: function (f) { var T = taille(); zoomerEn(T.w / 2, T.h / 2, f); },
     selectionner: function (id) { selectionnerEspece(id, true); },
     question: function (id) { selectionnerQuestion(parId[id]); },
+    pousse: function () { lancerPousse.fait = false; lancerPousse(); },
     aide: function (id) { ouvrirAide(parId[id]); },
     fiche: function (id) { selectionnerEspece(id, false); ouvrirFiche(ESP[id]); },
     vue: montrerVue,

@@ -162,7 +162,7 @@
       if (Math.abs(d.alpha - a) < 0.01) { d.alpha = a; fondus.delete(d); return; }
       fondus.set(d, a);
     }
-    function cache(el) { return cl(el, 'masque') || cl(el, 'pousse') || cl(el, 'avant-depart') || cl(el, 'hors-ecran') || el.style.display === 'none'; }
+    function cache(el) { return cl(el, 'masque') || cl(el, 'avant-depart') || cl(el, 'hors-ecran') || el.style.display === 'none'; }
 
     /* ---- espèces (disque, photo, anneaux, pastilles) ---- */
     function photoDe(nd) {
@@ -530,6 +530,12 @@
     var GL = {
       actif: function () { return pret; },
       _debug: function () { return { objs: objs, C: C, monde: monde }; },
+      // Démarrage : révélation circulaire de la carte (un seul masque, coût quasi nul par image)
+      revelation: function (cx, cy, r) {
+        if (r == null) { if (monde.mask) { var m0 = monde.mask; monde.mask = null; m0.destroy(); } demander(); return; }
+        if (!monde.mask) { var g = new PIXI.Graphics(); g.circle(0, 0, 1).fill(0xffffff); monde.addChild(g); monde.mask = g; }
+        monde.mask.position.set(cx, cy); monde.mask.scale.set(Math.max(0.001, r)); sale = true; demander();
+      },
       designer: designer,
       demander: demander,
       app: app

@@ -45,7 +45,7 @@
 .st-txt{font:600 9px 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.12em;paint-order:stroke;stroke:#0C120F;stroke-width:4px}
 .crit{font:400 10px 'IBM Plex Mono',ui-monospace,Menlo,monospace;fill:#b9c7c0;paint-order:stroke;stroke:#0C120F;stroke-width:4px}
 .estompe{opacity:.1}
-.pousse,.avant-depart{display:none} /* démarrage : pas encore atteint par le mycélium */
+.avant-depart{display:none} /* première question cachée avant « Démarrer l'identification » */
 .noeud,.arete{transition:opacity .35s ease} /* fondu des filtres et du focus (mode SVG) */
 @media (prefers-reduced-motion:reduce){.noeud,.arete{transition:none}}
 .hors-focus{opacity:.06;pointer-events:none}

@@ -34,5 +34,216 @@
    "p": "agaricus-campestris",
    "s": "sans-volve"
   }
+ },
+ "amanites-ovoides": {
+  "1": {
+   "p": null
+  }
+ },
+ "bolets-bleuit": {
+  "0": {
+   "p": "boletus-edulis"
+  },
+  "1": {
+   "p": null
+  }
+ },
+ "boules": {
+  "3": {
+   "p": "tuber-melanosporum"
+  }
+ },
+ "blanche-lames": {
+  "0": {
+   "p": "omphalotus-olearius"
+  },
+  "1": {
+   "p": "marasmius-oreades"
+  }
+ },
+ "coulemelles": {
+  "2": {
+   "p": "chlorophyllum-brunneum"
+  }
+ },
+ "lactaires": {
+  "1": {
+   "p": null
+  }
+ },
+ "sporee": {
+  "0": {
+   "p": null
+  },
+  "1": {
+   "p": "lepista-sordida"
+  },
+  "2": {
+   "p": "cortinarius-rubellus"
+  },
+  "3": {
+   "p": "agaricus-xanthodermus"
+  }
+ },
+ "chanterelles": {
+  "0": {
+   "p": "craterellus-tubaeformis"
+  },
+  "1": {
+   "p": "pseudocraterellus-undulatus"
+  }
+ },
+ "brune-autres": {
+  "0": {
+   "p": "hebeloma-sinapizans"
+  }
+ },
+ "plis": {
+  "2": {
+   "p": "gomphus-clavatus"
+  }
+ },
+ "lactaires-autres": {
+  "0": {
+   "p": null
+  },
+  "1": {
+   "p": null
+  },
+  "2": {
+   "p": null
+  },
+  "3": {
+   "p": null
+  },
+  "4": {
+   "p": "lactarius-quietus"
+  }
+ },
+ "noire": {
+  "0": {
+   "p": null
+  },
+  "1": {
+   "p": "agaricus-arvensis"
+  },
+  "2": {
+   "p": "psathyrella-piluliformis"
+  }
+ },
+ "russules-autres": {
+  "1": {
+   "p": "russula-ochroleuca"
+  }
+ },
+ "bolets": {
+  "1": {
+   "p": "boletus-edulis"
+  }
+ },
+ "bolets-bleus": {
+  "1": {
+   "p": "neoboletus-erythropus"
+  }
+ },
+ "bolets-pied": {
+  "1": {
+   "p": "boletus-aereus"
+  }
+ },
+ "amanites": {
+  "0": {
+   "p": "amanita-phalloides"
+  },
+  "1": {
+   "p": "amanita-pantherina"
+  }
+ },
+ "cepes-pores": {
+  "1": {
+   "p": null
+  },
+  "2": {
+   "p": null
+  }
+ },
+ "consoles-autres": {
+  "0": {
+   "p": "hericium-erinaceus"
+  },
+  "1": {
+   "p": "fomes-fomentarius"
+  }
+ },
+ "lepiotes": {
+  "4": {
+   "p": "lepiota-clypeolaria"
+  }
+ },
+ "ascos": {
+  "3": {
+   "p": "verpa-bohemica"
+  }
+ },
+ "brune": {
+  "2": {
+   "p": "cortinarius-violaceus"
+  },
+  "3": {
+   "p": "inocybe-geophylla"
+  }
+ },
+ "racine": {
+  "0": {
+   "p": "amanita-caesarea"
+  },
+  "2": {
+   "p": "scleroderma-verrucosum"
+  },
+  "3": {
+   "p": "ramaria-formosa"
+  },
+  "4": {
+   "p": "fistulina-hepatica"
+  },
+  "5": {
+   "p": "tremella-foliacea"
+  }
+ },
+ "hydnes": {
+  "2": {
+   "p": "hydnellum-peckii"
+  }
+ },
+ "tricho-sol": {
+  "0": {
+   "p": "tricholoma-virgatum"
+  },
+  "3": {
+   "p": "laccaria-amethystina"
+  }
+ },
+ "tricholomes-autres": {
+  "1": {
+   "p": "gymnopus-fusipes"
+  },
+  "2": {
+   "p": "hygrocybe-punicea"
+  }
+ },
+ "coraux": {
+  "1": {
+   "p": "ramaria-formosa"
+  }
+ },
+ "ramaires": {
+  "2": {
+   "p": "calocera-viscosa"
+  }
+ },
+ "blanche-anneau": {
+  "1": {
+   "p": "omphalotus-olearius"
+  }
  }
 }

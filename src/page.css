@@ -452,3 +452,4 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
 
 /* Démarrage : carte invisible jusqu'à son apparition animée */
 .avant-pousse #carte,.avant-pousse #carte-gl{opacity:0}
+.opt-sous{display:block;font-size:10px;color:var(--gris);margin-top:2px}

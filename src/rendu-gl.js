@@ -158,7 +158,7 @@
     // Changement d'opacité d'un nœud ou d'une branche (filtres, focus) : fondu sur quelques images au lieu d'un saut
     var fondus = new Map();
     function alphaDouce(ob, d, a) {
-      if (!ob.alphaVu || ctx.mouvReduit) { ob.alphaVu = true; d.alpha = a; fondus.delete(d); return; }
+      if (!ob.alphaVu || ctx.mouvReduit || eco) { ob.alphaVu = true; d.alpha = a; fondus.delete(d); return; }
       if (Math.abs(d.alpha - a) < 0.01) { d.alpha = a; fondus.delete(d); return; }
       fondus.set(d, a);
     }
@@ -435,7 +435,7 @@
     // Pendant un geste, on les met à jour peu à peu (quelques-uns par image) ; à l'arrêt, tous d'un coup.
     var minuterieNet = 0, dernierNet = 0;
     function ajusterNettete(budget) {
-      var dpr = Math.min(window.devicePixelRatio || 1, 2), n = 0, reste = false;
+      var dpr = resCible(), n = 0, reste = false;
       dernierNet = performance.now();
       var T = ctx.taille();
       (function visiter(o) {
@@ -534,9 +534,17 @@
 
     /* ---- démarrage ---- */
     var toile = null;
+    // Mode économie : carte calculée en 1,25x au lieu de 2x (environ 2,5 fois moins de pixels), fondus coupés
+    var eco = !!(ctx.eco && ctx.eco());
+    function resCible() { return Math.min(window.devicePixelRatio || 1, eco ? 1.25 : 2); }
     var GL = {
       actif: function () { return pret; },
       _debug: function () { return { objs: objs, C: C, monde: monde }; },
+      regler: function (e) {
+        eco = !!e; if (!pret) return;
+        app.renderer.resize(ctx.zoneCarte.clientWidth, ctx.zoneCarte.clientHeight, resCible());
+        tout = true; ajusterNettete(0); demander();
+      },
 
       designer: designer,
       demander: demander,
@@ -544,7 +552,7 @@
     };
     var badgesSVG = ctx.badgesSVG();
     Promise.all([
-      app.init({ backgroundAlpha: 0, antialias: (window.devicePixelRatio || 1) < 2, autoDensity: true, resolution: Math.min(window.devicePixelRatio || 1, 2), // écrans très denses : 2x suffit, sans lissage MSAA (bien moins de pixels à calculer)
+      app.init({ backgroundAlpha: 0, antialias: (window.devicePixelRatio || 1) < 2, autoDensity: true, resolution: resCible(), // écrans très denses : 2x suffit (1,25x en mode économie), sans lissage MSAA
         resizeTo: ctx.zoneCarte, autoStart: false, preference: 'webgl' }),
       document.fonts ? Promise.all(["italic 400 16px 'Literata'", "400 16px 'Literata'", "400 16px 'IBM Plex Mono'", "500 16px 'IBM Plex Mono'", "600 16px 'IBM Plex Mono'"].map(function (f) { return document.fonts.load(f); })) : null
     ].concat(Object.keys(badgesSVG.statuts).map(function (s) {

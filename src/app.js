@@ -683,6 +683,7 @@
       };
     }
     var duree = Math.max(350, Math.min(dureeMax || 1600, Math.abs(S) * 650));
+    setTimeout(mesurerFluidite, 0);
     if (!isFinite(duree)) duree = 500;
     var t0 = performance.now();
     anim = {};
@@ -783,7 +784,7 @@
   // Réponses de la question choisie : elles apparaissent l'une après l'autre (fondu en éventail)
   var apparRep = { q: null, t0: 0 };
   function lancerApparition(nd, retard) {
-    if (mouvReduit) return;
+    if (effetsReduits()) { apparRep = { q: null, t0: 0 }; return; }
     apparRep = { q: nd, t0: performance.now() + retard };
     var fin = apparRep.t0 + nd.enfants.length * 70 + 300;
     (function pas() { lisser(); if (performance.now() < fin && apparRep.q === nd) requestAnimationFrame(pas); })();
@@ -1050,7 +1051,7 @@
     return 'M' + r1(x0) + ' ' + r1(y0) + 'Q' + r1(cx) + ' ' + r1(cy) + ' ' + r1(x2) + ' ' + r1(y2);
   }
   function tracerSosies(liste, id) {
-    if (mouvReduit || !liste.length) return;
+    if (effetsReduits() || !liste.length) return;
     var t0 = performance.now() + 250, D = 650;
     liste.forEach(function (p) { traceSos[p.cle] = { t: 0, depuisB: p.b === id }; elSosies[p.cle].setAttribute('d', dSosie(p, courant.sos[p.cle])); });
     (function pas() {
@@ -1139,6 +1140,7 @@
     var recul = Math.min(0.45, dist / 2500); // léger dézoom au milieu si la branche est longue
     var duree = Math.max(700, Math.min(1700, 500 + dist * 0.9)), t0 = performance.now();
     anim = {};
+    mesurerFluidite();
     (function pas() {
       var t = Math.min(1, (performance.now() - t0) / duree), u = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       var q = bez(e, u);
@@ -1338,6 +1340,7 @@
     if (!nd || mouvReduit) return;
     blocage.minut = setTimeout(function () {
       classe('bloque', true);
+      if (enEco()) return; // économie : seul le « ? » du bas gigote (animation CSS, quasi gratuite)
       var t0 = performance.now(), K = [[0, 0, 1], [.06, -14, 1.1], [.12, 11, 1.1], [.18, -8, 1.06], [.24, 5, 1.03], [.30, 0, 1], [1, 0, 1]];
       (function pas() {
         var u = ((performance.now() - t0) / 2600) % 1, i = 0; while (K[i + 1][0] < u) i++;
@@ -1374,7 +1377,7 @@
   }
   // Espèce mortelle sélectionnée : le double cercle rouge s'élargit une fois, lentement (rappel discret)
   function pulserMortel(nd) {
-    var c = elems[nd.id].g.querySelector('.anneau2'); if (!c || mouvReduit) return;
+    var c = elems[nd.id].g.querySelector('.anneau2'); if (!c || effetsReduits()) return;
     var t0 = performance.now() + 350, D = 1300;
     cancelAnimationFrame(pulserMortel.raf);
     (function pas() {
@@ -2246,10 +2249,39 @@
     b.setAttribute('aria-pressed', !svgChoisi);
     b.addEventListener('click', function () { stockage('mycelium-rendu', svgChoisi ? 'gl' : 'svg'); location.reload(); });
   })();
+  /* ======================= Qualité : automatique, haute ou économie ======================= */
+  // Économie : carte en résolution réduite et effets décoratifs coupés (réponses en éventail, pulsation des mortels,
+  // trait des sosies, « ? » de la carte qui gigote, fondus). En automatique, l'app mesure la fluidité des trajets
+  // animés et passe d'elle-même en économie si les images sont trop lentes (choix gardé pour les prochains lancements).
+  var qualite = ['auto', 'haute', 'eco'].indexOf(stockage('mycelium-qualite')) >= 0 ? stockage('mycelium-qualite') : 'auto';
+  var ecoAuto = stockage('mycelium-qualite-auto') === 'eco';
+  function enEco() { return qualite === 'eco' || (qualite === 'auto' && ecoAuto); }
+  function effetsReduits() { return mouvReduit || enEco(); }
+  var mesures = { vols: 0, images: [] };
+  function mesurerFluidite() {
+    if (qualite !== 'auto' || ecoAuto || !GL || !GL.actif()) return;
+    if (++mesures.vols < 2) return; // le premier trajet charge photos et textes : on ne le compte pas
+    var l = performance.now();
+    (function pas(n) {
+      mesures.images.push(n - l); l = n;
+      if (anim) { requestAnimationFrame(pas); return; }
+      var total = mesures.images.reduce(function (x, y) { return x + y; }, 0);
+      if (total < 1500) return; // moins de 1,5 s de trajet mesurée : on attend d'autres trajets
+      var t = mesures.images.slice().sort(function (a, b) { return a - b; }), p75 = t[Math.floor(t.length * 0.75)];
+      mesures.images = [];
+      if (p75 > 24) { ecoAuto = true; stockage('mycelium-qualite-auto', 'eco'); appliquerQualite(); } // un quart des images sous ~40 images/s : saccades visibles
+    })(l);
+  }
+  function appliquerQualite() {
+    if (GL && GL.regler) GL.regler(enEco());
+    var s = $('#qualite'); if (s) s.value = qualite;
+    var e = $('#qualite-etat'); if (e) e.textContent = qualite === 'auto' ? (ecoAuto ? 'économie activée (téléphone moins rapide)' : 'haute qualité (fluide sur cet appareil)') : '';
+  }
+
   /* ======================= Rendu WebGL ======================= */
   if (window.installerRenduGL) {
     GL = window.installerRenduGL({
-      mouvReduit: mouvReduit, noeuds: noeuds, parId: parId, elems: elems, paires: paires, elSosies: elSosies, STATUTS: STATUTS, PHOTOS: PHOTOS,
+      mouvReduit: mouvReduit, eco: enEco, noeuds: noeuds, parId: parId, elems: elems, paires: paires, elSosies: elSosies, STATUTS: STATUTS, PHOTOS: PHOTOS,
       illustration: illustration, mondeSVG: monde, gCourbes: gCourbes, gRepsFond: gRepsFond, cercleP: cercleP, titreP: titreP,
       zoneCarte: zoneCarte, taille: taille,
       cam: function () { return cam; }, courant: function () { return courant; },
@@ -2369,6 +2401,12 @@
     var t = b.getAttribute('data-t'), E = ETAPES_TUTO[tuto.i];
     if (t === 'passer') finirTuto(); else if (t === 'ok') { tuto.att = false; etapeTuto(tuto.i + 1); } else if (t === 'autre' && E.faireAutre) E.faireAutre();
   });
+  $('#qualite').addEventListener('change', function () {
+    qualite = this.value; stockage('mycelium-qualite', qualite);
+    if (qualite !== 'auto') { ecoAuto = false; stockage('mycelium-qualite-auto', ''); mesures = { vols: 0, images: [] }; }
+    appliquerQualite();
+  });
+  appliquerQualite();
   $('#relancer-tuto').addEventListener('click', function () {
     montrerVue('carte'); quitterFocus(); recentrer(); reinitDepart();
     setTimeout(lancerTuto, 500);
@@ -2393,6 +2431,7 @@
     selectionner: function (id) { selectionnerEspece(id, true); },
     question: function (id) { selectionnerQuestion(parId[id]); },
     pousse: function () { lancerPousse.fait = false; lancerPousse(); },
+    qualite: function () { return { qualite: qualite, ecoAuto: ecoAuto, vols: mesures.vols, images: mesures.images.length }; },
     aide: function (id) { ouvrirAide(parId[id]); },
     fiche: function (id) { selectionnerEspece(id, false); ouvrirFiche(ESP[id]); },
     vue: montrerVue,

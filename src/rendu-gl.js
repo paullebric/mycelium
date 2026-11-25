@@ -141,7 +141,7 @@
       }
       demander();
     });
-    obs.observe(ctx.mondeSVG, { attributes: true, childList: true, subtree: true, characterData: true, attributeFilter: ['class', 'transform', 'd', 'data-n', 'style', 'r', 'stroke-width', 'font-size', 'data-gl'] });
+    obs.observe(ctx.mondeSVG, { attributes: true, childList: true, subtree: true, characterData: true, attributeFilter: ['class', 'transform', 'd', 'data-n', 'style', 'r', 'stroke-width', 'stroke-opacity', 'font-size', 'data-gl'] });
     new MutationObserver(function () { tout = true; demander(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     function demander() { sale = true; if (pret && !rafId) rafId = requestAnimationFrame(dessiner); }
@@ -155,7 +155,14 @@
       if (cl(el, 'hors-focus')) return loin() ? 0.15 : 0.2;
       return 1;
     }
-    function cache(el) { return cl(el, 'masque') || cl(el, 'hors-ecran') || el.style.display === 'none'; }
+    // Changement d'opacité d'un nœud ou d'une branche (filtres, focus) : fondu sur quelques images au lieu d'un saut
+    var fondus = new Map();
+    function alphaDouce(ob, d, a) {
+      if (!ob.alphaVu || ctx.mouvReduit) { ob.alphaVu = true; d.alpha = a; fondus.delete(d); return; }
+      if (Math.abs(d.alpha - a) < 0.01) { d.alpha = a; fondus.delete(d); return; }
+      fondus.set(d, a);
+    }
+    function cache(el) { return cl(el, 'masque') || cl(el, 'pousse') || cl(el, 'avant-depart') || cl(el, 'hors-ecran') || el.style.display === 'none'; }
 
     /* ---- espèces (disque, photo, anneaux, pastilles) ---- */
     function photoDe(nd) {
@@ -183,7 +190,7 @@
       var a = ob.anneaux; a.clear();
       var dash = st.dash ? nombres(st.dash) : null, larg = sel ? 9 : 5;
       if (dash) cercleTirete(a, 48, dash[0], dash[1], larg, couleur(st.couleur), 1); else a.circle(0, 0, 48).stroke({ width: larg, color: couleur(st.couleur) });
-      if (sp.statut === 'mortel') a.circle(0, 0, 55).stroke({ width: 2.5, color: couleur(st.couleur) });
+      if (sp.statut === 'mortel') { var a2 = el.querySelector('.anneau2'), r2 = a2 && +a2.getAttribute('r') || 55, w2 = a2 && parseFloat(a2.getAttribute('stroke-width')) || 2.5; a.circle(0, 0, r2).stroke({ width: w2, color: couleur(st.couleur), alpha: a2 && a2.getAttribute('stroke-opacity') ? +a2.getAttribute('stroke-opacity') : 1 }); }
       if (cl(el, 'trouve') && cl(document.body, 'avec-carnet')) {
         var mcc = el.querySelector('.marque-carnet circle'), mr = +mcc.getAttribute('r') || 63;
         if (mr > 63) { var mw = parseFloat(mcc.style.strokeWidth) || 3, md = parseFloat((mcc.style.strokeDasharray || '').split(/[ ,]+/)[0]) || 3; cercleTirete(a, mr, md, md, mw, AMBRE, 1); }
@@ -261,7 +268,7 @@
       if (cache(el)) { if (ob) ob.c.visible = false; return; }
       ob = objNoeud(nd);
       var p = ctx.courant().pos[id];
-      ob.c.visible = true; ob.c.position.set(p.x, p.y); ob.c.scale.set(p.s); ob.c.alpha = alphaNoeud(el);
+      ob.c.visible = true; ob.c.position.set(p.x, p.y); ob.c.scale.set(p.s); alphaDouce(ob, ob.c, alphaNoeud(el));
       if (nd.sp) majFeuille(nd, ob); else majQuestion(nd, ob);
     }
 
@@ -289,7 +296,7 @@
         ob.mode = mode;
       }
       var p = ctx.courant().pos[id], te = transformation(o.etiq);
-      ob.c.visible = true; ob.c.position.set(p.x, p.y); ob.c.scale.set(p.s); ob.c.alpha = alphaNoeud(el);
+      ob.c.visible = true; ob.c.position.set(p.x, p.y); ob.c.scale.set(p.s); alphaDouce(ob, ob.c, alphaNoeud(el));
       ob.in.scale.set(te.s);
       ob.lignes.forEach(function (tx) {
         var vis = !tx.__niv || tx.__niv <= n;
@@ -314,7 +321,7 @@
         ob.cle = cle;
       }
       ob.g.visible = true;
-      ob.g.alpha = (cl(el, 'estompe') ? 0.1 : cl(el, 'hors-focus') ? (lo ? 0.05 / 0.5 : 0.06 / 0.32) : 1) * (ch ? 1 : lo ? 0.5 : 0.32);
+      alphaDouce(ob, ob.g, (cl(el, 'estompe') ? 0.1 : cl(el, 'hors-focus') ? (lo ? 0.05 / 0.5 : 0.06 / 0.32) : 1) * (ch ? 1 : lo ? 0.5 : 0.32));
     }
 
     /* ---- réponses ---- */
@@ -446,7 +453,7 @@
     /* ---- boucle de dessin ---- */
     function dessiner() {
       rafId = 0;
-      if (!sale && !animer.size) return;
+      if (!sale && !animer.size && !fondus.size) return;
       sale = false;
       var cam = ctx.cam();
       monde.position.set(cam.x, cam.y); monde.scale.set(cam.k);
@@ -471,8 +478,9 @@
         var d = ob.cible - ob.c.alpha; ob.c.alpha += d * 0.25;
         if (Math.abs(d) < 0.01) { ob.c.alpha = ob.cible; animer.delete(ob); }
       });
+      fondus.forEach(function (a, d) { var x = a - d.alpha; d.alpha += x * 0.22; if (Math.abs(x) < 0.01) { d.alpha = a; fondus.delete(d); } });
       app.render();
-      if (animer.size) demander();
+      if (animer.size || fondus.size) demander();
       clearTimeout(minuterieNet);
       if (performance.now() - dernierNet > 200 && ajusterNettete(12)) demander(); // pendant le mouvement : quelques textes par image
       minuterieNet = setTimeout(function () { ajusterNettete(0); }, 140);         // à l'arrêt : tous

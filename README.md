@@ -8,7 +8,7 @@
 
 mycélium présente la clé d'identification comme une **carte que l'on explore** : on part de la forme générale du champignon, on touche une question, on suit la réponse le long de sa branche, jusqu'à l'espèce.
 
-- **263 espèces** (76 principales, 187 secondaires), fiches complètes avec sources
+- **278 espèces** (76 principales, 202 secondaires), fiches complètes avec sources
 - **Sosies** reliés sur la carte, comparaison photo contre photo
 - **« Comment regarder ? »** : schéma et photo réelle pour chaque réponse
 - Filtres par **mois** et par **statut** (les mortels restent toujours visibles)

@@ -433,6 +433,12 @@
                         "suite": {
                          "espece": "russula-ochroleuca"
                         }
+                       },
+                       {
+                        "reponse": "Brun-ocre, visqueux, marge cannelée ; odeur rance et désagréable",
+                        "suite": {
+                         "espece": "russula-foetens"
+                        }
                        }
                       ]
                      }
@@ -886,6 +892,18 @@
                               "suite": {
                                "espece": "marasmius-rotula"
                               }
+                             },
+                             {
+                              "reponse": "Petite cloche gris-brun ridée ; pied lisse et raide ; en touffes sur souches",
+                              "suite": {
+                               "espece": "mycena-galericulata"
+                              }
+                             },
+                             {
+                              "reponse": "Chapeau gris-brun fibrilleux ; lames très larges et espacées ; cordons blancs à la base",
+                              "suite": {
+                               "espece": "megacollybia-platyphylla"
+                              }
                              }
                             ]
                            }
@@ -975,7 +993,7 @@
                                "question": "Aspect ?",
                                "options": [
                                 {
-                                 "reponse": "Rouge écarlate, visqueux ; dans les prés",
+                                 "reponse": "Rouge écarlate, visqueux, ne noircit pas ; dans les prés",
                                  "suite": {
                                   "espece": "hygrocybe-punicea"
                                  }
@@ -1003,15 +1021,27 @@
                                  "suite": {
                                   "espece": "mycena-rosea"
                                  }
+                                },
+                                {
+                                 "reponse": "Orange-rouge, conique pointu ; noircit en vieillissant ou au toucher ; dans les prés",
+                                 "suite": {
+                                  "espece": "hygrocybe-conica"
+                                 }
+                                },
+                                {
+                                 "reponse": "Grand et charnu, blanc taché de rouge vineux ; sous les chênes",
+                                 "suite": {
+                                  "espece": "hygrophorus-russula"
+                                 }
                                 }
                                ]
                               }
                              },
                              {
-                              "reponse": "Brun clair",
+                              "reponse": "Brun",
                               "suite": {
                                "id": "tricho-bruns",
-                               "question": "Pied ?",
+                               "question": "Chapeau et pied ?",
                                "options": [
                                 {
                                  "reponse": "Pied fin, lisse, creux ; petit ; dans la litière",
@@ -1023,6 +1053,18 @@
                                  "reponse": "Pied très long, enraciné profondément ; chapeau ridé, visqueux",
                                  "suite": {
                                   "espece": "hymenopellis-radicata"
+                                 }
+                                },
+                                {
+                                 "reponse": "Chapeau gras au toucher (« beurré ») ; pied renflé en massue à la base",
+                                 "suite": {
+                                  "espece": "rhodocollybia-butyracea"
+                                 }
+                                },
+                                {
+                                 "reponse": "Chapeau brun-roux visqueux ; lames se tachant de roux ; sous les hêtres",
+                                 "suite": {
+                                  "espece": "tricholoma-ustale"
                                  }
                                 }
                                ]
@@ -1217,6 +1259,12 @@
                      "suite": {
                       "espece": "cortinarius-caperatus"
                      }
+                    },
+                    {
+                     "reponse": "Très grand (10 à 20 cm), brun-violacé ; marge givrée de voile blanc",
+                     "suite": {
+                      "espece": "cortinarius-praestans"
+                     }
                     }
                    ]
                   }
@@ -1253,6 +1301,12 @@
                      "reponse": "Jaune paille à brun ; chapeau très fendu radialement",
                      "suite": {
                       "espece": "inocybe-rimosa"
+                     }
+                    },
+                    {
+                     "reponse": "Brun-roux fendu ; petit bulbe arrondi à rebord net à la base du pied",
+                     "suite": {
+                      "espece": "inocybe-asterospora"
                      }
                     }
                    ]
@@ -1483,6 +1537,12 @@
                      "suite": {
                       "espece": "psathyrella-piluliformis"
                      }
+                    },
+                    {
+                     "reponse": "Minuscules chapeaux crème-gris plissés, par centaines ; ne se liquéfient pas",
+                     "suite": {
+                      "espece": "coprinellus-disseminatus"
+                     }
                     }
                    ]
                   }
@@ -1622,6 +1682,12 @@
                   "suite": {
                    "espece": "leccinum-aurantiacum"
                   }
+                 },
+                 {
+                  "reponse": "Brun-rouge orangé ; sous les chênes",
+                  "suite": {
+                   "espece": "leccinum-quercinum"
+                  }
                  }
                 ]
                }
@@ -1688,7 +1754,7 @@
                    "question": "Aspect ?",
                    "options": [
                     {
-                     "reponse": "Chapeau gluant sans anneau ; pores jaunes avec gouttelettes ; sous pins",
+                     "reponse": "Chapeau brun-jaune gluant sans anneau ; pores jaunes avec gouttelettes ; sous pins",
                      "suite": {
                       "espece": "suillus-granulatus"
                      }
@@ -1727,6 +1793,12 @@
                      "reponse": "Chapeau couvert de grosses écailles noires (pomme de pin)",
                      "suite": {
                       "espece": "strobilomyces-strobilaceus"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau blanchâtre à centre brun, gluant ; pied court ; pins du Midi",
+                     "suite": {
+                      "espece": "suillus-bellinii"
                      }
                     }
                    ]
@@ -1814,7 +1886,7 @@
                      }
                     },
                     {
-                     "reponse": "Pores jaune citron ; pied à réseau jaune ; chair bleuit peu",
+                     "reponse": "Chapeau brun ; pores jaune citron ; pied à réseau jaune ; chair bleuit peu",
                      "suite": {
                       "espece": "butyriboletus-appendiculatus"
                      }
@@ -1835,6 +1907,12 @@
                      "reponse": "Pores blanchâtres ; chair bleu bleuet intense et immédiat",
                      "suite": {
                       "espece": "gyroporus-cyanescens"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau rose à rouge ; pores jaunes ; pied jaune à réseau",
+                     "suite": {
+                      "espece": "butyriboletus-regius"
                      }
                     }
                    ]
@@ -1942,6 +2020,12 @@
                "reponse": "Violet, en massue tronquée ; plis violets",
                "suite": {
                 "espece": "gomphus-clavatus"
+               }
+              },
+              {
+               "reponse": "Jaune très pâle, givré de blanc ; jaunit à orangé au toucher",
+               "suite": {
+                "espece": "cantharellus-pallens"
                }
               }
              ]
@@ -2461,6 +2545,12 @@
          "reponse": "Coupe brune sur un pied blanc à côtes saillantes",
          "suite": {
           "espece": "helvella-acetabulum"
+         }
+        },
+        {
+         "reponse": "Coupe beige-crème, bord enroulé ; sur fumier ou compost",
+         "suite": {
+          "espece": "peziza-vesiculosa"
          }
         }
        ]

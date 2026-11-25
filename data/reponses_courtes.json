@@ -117,7 +117,8 @@
  ],
  "russules-jaunes": [
   "Jaune paille, amère",
-  "Jaune ocre, douce"
+  "Jaune ocre, douce",
+  "Brun-ocre, odeur rance"
  ],
  "russules-blanches": [
   "Blanc en entonnoir",
@@ -220,7 +221,9 @@
  "tricho-bois": [
   "Orange, pied velouté",
   "Mèches pourpres",
-  "Minuscule parapluie"
+  "Minuscule parapluie",
+  "Cloche grise, en touffes",
+  "Lames très larges"
  ],
  "tricho-touffes": [
   "Gris-brun, élastique",
@@ -231,7 +234,7 @@
   "Blanc soyeux",
   "Jaune soufre, odeur de gaz",
   "Rouge, rose ou violet",
-  "Brun clair"
+  "Brun"
  ],
  "tricho-gris": [
   "Gris souris, sous pins",
@@ -245,11 +248,15 @@
   "Orange-rose",
   "Violet améthyste",
   "Rose-lilas, petit",
-  "Rose, sous hêtres"
+  "Rose, sous hêtres",
+  "Orange-rouge, noircit",
+  "Blanc taché de vineux"
  ],
  "tricho-bruns": [
   "Pied fin et creux",
-  "Pied très enraciné"
+  "Pied très enraciné",
+  "Gras, pied en massue",
+  "Brun-roux, sous hêtres"
  ],
  "rose": [
   "Blanc mat, farine",
@@ -289,7 +296,8 @@
  "cortinaires-autres": [
   "Violet foncé",
   "Lames rouge sang",
-  "Ocre ridé, anneau"
+  "Ocre ridé, anneau",
+  "Très grand, brun-violacé"
  ],
  "inocybes": [
   "Blanc qui rougit",
@@ -297,7 +305,8 @@
  ],
  "inocybes-autres": [
   "Petit blanc soyeux",
-  "Jaune paille, fendu"
+  "Jaune paille, fendu",
+  "Brun-roux, bulbe à rebord"
  ],
  "brune-autres": [
   "Odeur de radis",
@@ -347,7 +356,8 @@
  "touffes-sombres-autres": [
   "Rouge brique",
   "Ocre, sur conifères",
-  "Brun hygrophane"
+  "Brun hygrophane",
+  "Minuscules, par centaines"
  ],
  "noire-autres": [
   "Vert-bleu visqueux",
@@ -379,7 +389,8 @@
  ],
  "leccinum-autres": [
   "Orange, bouleaux",
-  "Rouge-orangé, trembles"
+  "Rouge-orangé, trembles",
+  "Brun-rouge, chênes"
  ],
  "bolets-bleuit": [
   "Ne bleuit pas",
@@ -403,7 +414,8 @@
   "Pores rouille, poivré",
   "Odeur d'iode",
   "Pied creux cassant",
-  "Écailles noires"
+  "Écailles noires",
+  "Blanchâtre, pins du Midi"
  ],
  "bolets-bleus": [
   "Pores jaunes, brun bai",
@@ -426,7 +438,8 @@
   "Pores jaune citron",
   "Gris, pied rouge, amer",
   "Pied enraciné, amer",
-  "Bleu bleuet intense"
+  "Bleu bleuet intense",
+  "Chapeau rose à rouge"
  ],
  "hydnes": [
   "Crème, assez grand",
@@ -449,7 +462,8 @@
  ],
  "plis-autres": [
   "Jaune, mèches lilas",
-  "Violet en massue"
+  "Violet en massue",
+  "Jaune pâle givré"
  ],
  "lisse": [
   "Trompette gris-noir",
@@ -559,7 +573,8 @@
   "Oreille orangée",
   "Bleu-vert",
   "Grande coupe brune",
-  "Coupe sur pied côtelé"
+  "Coupe sur pied côtelé",
+  "Beige, sur fumier"
  ],
  "phalles": [
   "Grand, tête verte",

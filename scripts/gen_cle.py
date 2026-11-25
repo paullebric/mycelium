@@ -83,6 +83,7 @@ russules = Q("russules", "Couleur du chapeau ?", [
       ("Jaune ou ocre", Q("russules-jaunes", "Saveur et odeur ?", [
           ("Jaune paille ; saveur amère et piquante ; odeur de pomme cuite", "russula-fellea"),
           ("Jaune ocre ; pied blanc ; saveur douce à un peu âcre", "russula-ochroleuca"),
+          ("Brun-ocre, visqueux, marge cannelée ; odeur rance et désagréable", "russula-foetens"),
       ])),
       ("Vert à brun-olive, lisse (non craquelé)", "russula-heterophylla"),
       ("Blanc ou noircissant", Q("russules-blanches", "Aspect ?", [
@@ -155,6 +156,8 @@ tricholomes = Q("tricholomes", "Aspect général ?", [
           ("Chapeau orange-roux visqueux ; pied velouté brun-noir ; en touffes, en hiver", "flammulina-velutipes"),
           ("Chapeau couvert de fines mèches pourpres sur fond jaune ; sur souches de conifères", "tricholomopsis-rutilans"),
           ("Minuscule « parapluie » blanc ; lames attachées à un collier ; sur brindilles", "marasmius-rotula"),
+          ("Petite cloche gris-brun ridée ; pied lisse et raide ; en touffes sur souches", "mycena-galericulata"),
+          ("Chapeau gris-brun fibrilleux ; lames très larges et espacées ; cordons blancs à la base", "megacollybia-platyphylla"),
       ])),
       ("Au sol, en grosses touffes serrées", Q("tricho-touffes", "Aspect ?", [
           ("Chapeau gris-brun lisse ; chair élastique ; bords de chemins", "lyophyllum-decastes"),
@@ -171,15 +174,19 @@ tricholomes = Q("tricholomes", "Aspect général ?", [
           ("Blanc soyeux ; taches bleu-vert au pied ; en automne", "tricholoma-columbetta"),
           ("Entièrement jaune soufre ; odeur forte de gaz d'éclairage ; sous feuillus", "tricholoma-sulphureum"),
           ("Rouge, orange, rose ou violet", Q("tricho-couleurs", "Aspect ?", [
-              ("Rouge écarlate, visqueux ; dans les prés", "hygrocybe-punicea"),
+              ("Rouge écarlate, visqueux, ne noircit pas ; dans les prés", "hygrocybe-punicea"),
               ("Orange-rose ; lames roses épaisses et espacées", "laccaria-laccata"),
               ("Entièrement violet améthyste", "laccaria-amethystina"),
               ("Rose-lilas, petit (2 à 5 cm) ; odeur de radis", "mycena-pura"),
               ("Rose, plus grand (3 à 6 cm) ; odeur de radis ; sous les hêtres", "mycena-rosea"),
+              ("Orange-rouge, conique pointu ; noircit en vieillissant ou au toucher ; dans les prés", "hygrocybe-conica"),
+              ("Grand et charnu, blanc taché de rouge vineux ; sous les chênes", "hygrophorus-russula"),
           ])),
-          ("Brun clair", Q("tricho-bruns", "Pied ?", [
+          ("Brun", Q("tricho-bruns", "Chapeau et pied ?", [
               ("Pied fin, lisse, creux ; petit ; dans la litière", "gymnopus-dryophilus"),
               ("Pied très long, enraciné profondément ; chapeau ridé, visqueux", "hymenopellis-radicata"),
+              ("Chapeau gras au toucher (« beurré ») ; pied renflé en massue à la base", "rhodocollybia-butyracea"),
+              ("Chapeau brun-roux visqueux ; lames se tachant de roux ; sous les hêtres", "tricholoma-ustale"),
           ])),
       ])),
   ])),
@@ -242,6 +249,7 @@ brune = Q("brune", "Particularité la plus visible ?", [
           ("Entièrement violet foncé, velouté", "cortinarius-violaceus"),
           ("Chapeau brun-olive ; lames rouge sang", "cortinarius-semisanguineus"),
           ("Chapeau ocre ridé ; anneau membraneux blanc", "cortinarius-caperatus"),
+          ("Très grand (10 à 20 cm), brun-violacé ; marge givrée de voile blanc", "cortinarius-praestans"),
       ])),
   ], groupe="Cortinaires")),
   ("Au sol ; chapeau conique fibrilleux, souvent fendu (inocybes)", Q("inocybes", "Couleur ?", [
@@ -249,6 +257,7 @@ brune = Q("brune", "Particularité la plus visible ?", [
       (AUTRES, Q("inocybes-autres", "Aspect ?", [
           ("Petit, blanc soyeux (ou lilas) ; ne rougit pas", "inocybe-geophylla"),
           ("Jaune paille à brun ; chapeau très fendu radialement", "inocybe-rimosa"),
+          ("Brun-roux fendu ; petit bulbe arrondi à rebord net à la base du pied", "inocybe-asterospora"),
       ])),
   ], groupe="Inocybes")),
   (AUTRES, Q("brune-autres", "Habitat et aspect ?", [
@@ -293,6 +302,7 @@ noire = Q("noire", "Particularité la plus visible ?", [
           ("Rouge brique ; lames grises", "hypholoma-lateritium"),
           ("Ocre ; lames gris pâle ; sur souches de conifères", "hypholoma-capnoides"),
           ("Brun, pâlissant en séchant ; lames brunes", "psathyrella-piluliformis"),
+          ("Minuscules chapeaux crème-gris plissés, par centaines ; ne se liquéfient pas", "coprinellus-disseminatus"),
       ])),
   ])),
   (AUTRES, Q("noire-autres", "Aspect ?", [
@@ -334,6 +344,7 @@ bolets = Q("bolets", "Le chapeau est-il gluant, avec un anneau sur le pied ?", [
           (AUTRES, Q("leccinum-autres", "Aspect ?", [
               ("Orange ; sous les bouleaux ; chair noircissant", "leccinum-versipelle"),
               ("Rouge-orangé ; sous les trembles et peupliers", "leccinum-aurantiacum"),
+              ("Brun-rouge orangé ; sous les chênes", "leccinum-quercinum"),
           ])),
       ])),
       ("Non", Q("bolets-bleuit", "La chair bleuit-elle à la coupe ?", [
@@ -346,13 +357,14 @@ bolets = Q("bolets", "Le chapeau est-il gluant, avec un anneau sur le pied ?", [
                   ("Brun-rouge acajou ; sous pins", "boletus-pinophilus"),
               ], groupe="Cèpes")),
               (AUTRES, Q("bolets-immuables-autres", "Aspect ?", [
-                  ("Chapeau gluant sans anneau ; pores jaunes avec gouttelettes ; sous pins", "suillus-granulatus"),
+                  ("Chapeau brun-jaune gluant sans anneau ; pores jaunes avec gouttelettes ; sous pins", "suillus-granulatus"),
                   ("Pores larges et anguleux ; chapeau orangé ; sous pins", "suillus-bovinus"),
                   ("Chapeau jaune-ocre granuleux ; odeur de chlore ; sous pins", "suillus-variegatus"),
                   ("Petit ; pores couleur rouille ; saveur poivrée", "chalciporus-piperatus"),
                   ("Chapeau ocre velouté ; pores jaunes ; odeur d'iode", "hemileccinum-impolitum"),
                   ("Chapeau marron velouté ; pores blancs ; pied creux et cassant", "gyroporus-castaneus"),
                   ("Chapeau couvert de grosses écailles noires (pomme de pin)", "strobilomyces-strobilaceus"),
+                  ("Chapeau blanchâtre à centre brun, gluant ; pied court ; pins du Midi", "suillus-bellinii"),
               ])),
           ])),
           ("Oui, elle bleuit", Q("bolets-bleus", "Couleur des pores ?", [
@@ -369,10 +381,11 @@ bolets = Q("bolets", "Le chapeau est-il gluant, avec un anneau sur le pied ?", [
               (AUTRES, Q("bolets-bleus-autres", "Aspect ?", [
                   ("Cuticule craquelée laissant voir du rouge ; pores jaunes", "xerocomellus-chrysenteron"),
                   ("Chapeau velouté olive ; pores larges jaune vif", "xerocomus-subtomentosus"),
-                  ("Pores jaune citron ; pied à réseau jaune ; chair bleuit peu", "butyriboletus-appendiculatus"),
+                  ("Chapeau brun ; pores jaune citron ; pied à réseau jaune ; chair bleuit peu", "butyriboletus-appendiculatus"),
                   ("Chapeau gris ; pied rouge à réseau ; chair amère", "caloboletus-calopus"),
                   ("Chapeau blanc-gris ; pied jaune profondément enraciné ; amer", "caloboletus-radicans"),
                   ("Pores blanchâtres ; chair bleu bleuet intense et immédiat", "gyroporus-cyanescens"),
+                  ("Chapeau rose à rouge ; pores jaunes ; pied jaune à réseau", "butyriboletus-regius"),
               ])),
           ])),
       ])),
@@ -397,6 +410,7 @@ chanterelles = Q("chanterelles", "Le dessous du chapeau porte :", [
       (AUTRES, Q("plis-autres", "Aspect ?", [
           ("Jaune, chapeau couvert de fines mèches lilas", "cantharellus-amethysteus"),
           ("Violet, en massue tronquée ; plis violets", "gomphus-clavatus"),
+          ("Jaune très pâle, givré de blanc ; jaunit à orangé au toucher", "cantharellus-pallens"),
       ])),
   ])),
   ("Une surface presque lisse ou faiblement veinée", Q("lisse", "Couleur ?", [
@@ -497,6 +511,7 @@ etranges = Q("etranges", "Laquelle de ces formes ?", [
       ("Minuscules coupes bleu-vert ; bois teinté de turquoise", "chlorociboria-aeruginascens"),
       ("Grande coupe brune veinée ; odeur d'eau de Javel ; au printemps", "disciotis-venosa"),
       ("Coupe brune sur un pied blanc à côtes saillantes", "helvella-acetabulum"),
+      ("Coupe beige-crème, bord enroulé ; sur fumier ou compost", "peziza-vesiculosa"),
   ], groupe="Pézizes")),
   ("Un pied blanc sortant d'un « œuf », tête gluante et puante", Q("phalles", "Taille et couleur ?", [
       ("Grand, tête verdâtre alvéolée, odeur de charogne", "phallus-impudicus"),

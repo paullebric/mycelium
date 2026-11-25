@@ -253,10 +253,12 @@
    "feuilles": true
   },
   "confusions": [
-   "cantharellus-cibarius"
+   "cantharellus-cibarius",
+   "cortinarius-praestans"
   ],
   "distinguer": {
-   "cantharellus-cibarius": "Le cortinaire a de vraies lames rouille et une sporée rouille ; la girolle des plis épais, sans vraies lames."
+   "cantharellus-cibarius": "Le cortinaire a de vraies lames rouille et une sporée rouille ; la girolle des plis épais, sans vraies lames.",
+   "cortinarius-praestans": "Le cortinaire remarquable est très grand (10 à 20 cm), brun-violacé, givré de blanc ; le cortinaire des montagnes, fauve orangé et plus petit."
   },
   "sources": [
    {
@@ -582,14 +584,16 @@
    "armillaria-mellea",
    "flammulina-velutipes",
    "armillaria-ostoyae",
-   "hypholoma-capnoides"
+   "hypholoma-capnoides",
+   "mycena-galericulata"
   ],
   "distinguer": {
    "kuehneromyces-mutabilis": "La galère a un pied à fibrilles argentées sans écailles retroussées ; la pholiote des écailles brunes retroussées sous l'anneau. Distinction difficile : en cas de doute, rejeter.",
    "armillaria-mellea": "L'armillaire a une sporée blanche et un anneau blanc cotonneux ; la galère une sporée rouille.",
    "flammulina-velutipes": "La galère a un anneau et une sporée rouille ; la collybie à pied velouté une sporée blanche, un chapeau visqueux et un pied velouté noir.",
    "armillaria-ostoyae": "L'armillaire a une sporée blanche ; la galère une sporée rouille.",
-   "hypholoma-capnoides": "La galère a une sporée rouille et un anneau ; l'hypholome à lames enfumées une sporée brun-pourpre et des lames grises."
+   "hypholoma-capnoides": "La galère a une sporée rouille et un anneau ; l'hypholome à lames enfumées une sporée brun-pourpre et des lames grises.",
+   "mycena-galericulata": "La mycène casquée n'a pas d'anneau, ses lames deviennent rosées et sa sporée est blanche."
   },
   "sources": [
    {
@@ -3409,12 +3413,14 @@
   "confusions": [
    "omphalotus-olearius",
    "hygrophoropsis-aurantiaca",
-   "cortinarius-orellanus"
+   "cortinarius-orellanus",
+   "cantharellus-pallens"
   ],
   "distinguer": {
    "omphalotus-olearius": "Le clitocybe de l'olivier a de vraies lames minces et pousse en touffes sur bois ; la girolle a des plis épais et pousse au sol.",
    "hygrophoropsis-aurantiaca": "La fausse girolle a de vraies lames minces, serrées, orange vif et une chair molle ; la girolle des plis épais et une chair ferme.",
-   "cortinarius-orellanus": "Le cortinaire a de vraies lames rouille et une sporée rouille ; la girolle des plis épais, sans vraies lames."
+   "cortinarius-orellanus": "Le cortinaire a de vraies lames rouille et une sporée rouille ; la girolle des plis épais, sans vraies lames.",
+   "cantharellus-pallens": "La chanterelle pâle est plus claire, givrée de blanc, et jaunit à orangé au toucher."
   },
   "sources": [
    {
@@ -6642,7 +6648,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "hygrocybe-conica"
+  ],
   "sources": [
    {
     "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
@@ -6650,7 +6658,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "hygrocybe-conica": "L'hygrocybe conique, plus petit et pointu, noircit en vieillissant ; l'hygrocybe ponceau ne noircit pas."
+  }
  },
  {
   "id": "hygrophorus-marzuolus",
@@ -6799,7 +6810,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "rhodocollybia-butyracea"
+  ],
   "sources": [
    {
     "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
@@ -6807,7 +6820,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "rhodocollybia-butyracea": "La collybie beurrée a un chapeau gras au toucher et un pied renflé en massue à la base."
+  }
  },
  {
   "id": "gymnopus-fusipes",
@@ -7978,7 +7994,9 @@
    10,
    11
   ],
-  "confusions": [],
+  "confusions": [
+   "inocybe-asterospora"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Inocybe fastigié » (statut vérifié le 23/11/2026)",
@@ -7993,7 +8011,10 @@
    {
     "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
    }
-  ]
+  ],
+  "distinguer": {
+   "inocybe-asterospora": "L'inocybe fastigié n'a pas de bulbe à rebord ; l'inocybe à spores étoilées si. Les deux sont toxiques."
+  }
  },
  {
   "id": "cortinarius-semisanguineus",
@@ -9116,7 +9137,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "coprinellus-disseminatus"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Coprinellus micaceus » (statut vérifié le 23/11/2026)",
@@ -9128,7 +9151,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "coprinellus-disseminatus": "Le coprin disséminé est minuscule (moins de 1,5 cm), par centaines, sans granules brillants."
+  }
  },
  {
   "id": "parasola-plicatilis",
@@ -10736,10 +10762,12 @@
    10
   ],
   "confusions": [
-   "suillellus-luridus"
+   "suillellus-luridus",
+   "butyriboletus-regius"
   ],
   "distinguer": {
-   "suillellus-luridus": "Le bolet rouge-pourpre a un chapeau blanc rosé et un pied jaune vif ; le blafard un chapeau olive-brun."
+   "suillellus-luridus": "Le bolet rouge-pourpre a un chapeau blanc rosé et un pied jaune vif ; le blafard un chapeau olive-brun.",
+   "butyriboletus-regius": "Le bolet royal a des pores jaunes et un réseau jaune ; le bolet rhodoxanthe des pores rouges et un réseau rouge."
   },
   "sources": [
    {
@@ -10998,7 +11026,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "suillus-bellinii"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Suillus granulatus » (statut vérifié le 23/11/2026)",
@@ -11010,7 +11040,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "suillus-bellinii": "Le bolet granulé a un chapeau brun-jaune uniforme ; le bolet de Bellini blanchâtre à centre brun, pied court."
+  }
  },
  {
   "id": "suillus-grevillei",
@@ -11196,7 +11229,9 @@
    10,
    11
   ],
-  "confusions": [],
+  "confusions": [
+   "leccinum-quercinum"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Leccinum aurantiacum » (statut vérifié le 23/11/2026)",
@@ -11208,7 +11243,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "leccinum-quercinum": "Le bolet orangé pousse sous les trembles et peupliers ; le bolet des chênes sous les chênes, chapeau plus brun."
+  }
  },
  {
   "id": "leccinum-versipelle",
@@ -12047,7 +12085,9 @@
    5,
    6
   ],
-  "confusions": [],
+  "confusions": [
+   "peziza-vesiculosa"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Disciotis venosa » (statut vérifié le 23/11/2026)",
@@ -12059,7 +12099,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "peziza-vesiculosa": "La pézize vésiculeuse est beige pâle, boursouflée, sans odeur de Javel, sur fumier ou compost."
+  }
  },
  {
   "id": "tuber-melanosporum",
@@ -14254,6 +14297,816 @@
    },
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "inocybe-asterospora",
+  "nom": "Inocybe à spores étoilées",
+  "latin": "Inocybe asterospora",
+  "autres_noms": [],
+  "statut": "toxique",
+  "precaution": null,
+  "toxicite": "Syndrome muscarinien : sueurs, salivation, larmoiement, troubles digestifs, ralentissement du cœur, peu après le repas.",
+  "criteres": [
+   "Chapeau brun-roux à mamelon, fibrilleux, fendu radialement",
+   "Pied rosé-brun terminé par un petit bulbe blanc à rebord net",
+   "Lames grisâtres puis brunes"
+  ],
+  "habitat": "Bois de feuillus (noisetiers, hêtres, chênes), bords de chemins",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "agaric",
+   "forme": "mamelon",
+   "chapeau": "#9a6440",
+   "hymenium": "#8d7a62",
+   "pied": "#d9b9a0",
+   "feuilles": true,
+   "ornement": "veines",
+   "pied_forme": "bulbeux",
+   "largeur": 0.6,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "inocybe-rimosa"
+  ],
+  "distinguer": {
+   "inocybe-rimosa": "L'inocybe à spores étoilées a un petit bulbe blanc à rebord net à la base du pied ; l'inocybe fastigié n'en a pas."
+  },
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "tricholoma-ustale",
+  "nom": "Tricholome brûlé",
+  "latin": "Tricholoma ustale",
+  "autres_noms": [],
+  "statut": "toxique",
+  "precaution": null,
+  "toxicite": "Troubles digestifs (vomissements, diarrhée) quelques heures après le repas.",
+  "criteres": [
+   "Chapeau brun-roux châtain, visqueux par temps humide",
+   "Lames blanches se tachant de roux",
+   "Pied blanchâtre fibrilleux, brunissant"
+  ],
+  "habitat": "Sous les hêtres, parfois chênes",
+  "saison": "Septembre à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#8a4a26",
+   "hymenium": "#efe6d6",
+   "pied": "#d8c2a6",
+   "feuilles": true,
+   "largeur": 0.85,
+   "epaisseur": 0.6
+  },
+  "mois": [
+   9,
+   10,
+   11
+  ],
+  "rang": "secondaire",
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tricholoma ustale » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tricholoma_ustale"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "russula-foetens",
+  "nom": "Russule fétide",
+  "latin": "Russula foetens",
+  "autres_noms": [],
+  "statut": "toxique",
+  "precaution": null,
+  "toxicite": "Troubles digestifs (vomissements, diarrhée) quelques heures après le repas.",
+  "criteres": [
+   "Chapeau brun-ocre jaunâtre, très visqueux, marge nettement cannelée",
+   "Odeur forte, rance et désagréable",
+   "Pied blanchâtre devenant creux et caverneux"
+  ],
+  "habitat": "Bois de feuillus et de conifères",
+  "saison": "Juillet à octobre",
+  "sporee": "Crème",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#b88a3e",
+   "hymenium": "#efe3c4",
+   "pied": "#ece3d0",
+   "feuilles": true,
+   "largeur": 0.95,
+   "epaisseur": 0.7
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Russule fétide » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Russule_fétide"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "hygrophorus-russula",
+  "nom": "Hygrophore russule",
+  "latin": "Hygrophorus russula",
+  "autres_noms": [
+   "Tricholome russule"
+  ],
+  "statut": "comestible",
+  "precaution": null,
+  "toxicite": null,
+  "criteres": [
+   "Grand chapeau charnu, blanc taché de rouge vineux à pourpre",
+   "Lames espacées, blanches se tachant de vineux",
+   "Pied plein et ferme, blanc taché de rose"
+  ],
+  "habitat": "Sous les chênes, sur sol calcaire, souvent en ronds",
+  "saison": "Septembre à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#b0566a",
+   "hymenium": "#f3e2e2",
+   "pied": "#efe0dc",
+   "feuilles": true,
+   "largeur": 0.95,
+   "epaisseur": 0.8
+  },
+  "mois": [
+   9,
+   10,
+   11
+  ],
+  "rang": "secondaire",
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Hygrophorus russula » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Hygrophorus_russula"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "rhodocollybia-butyracea",
+  "nom": "Collybie beurrée",
+  "latin": "Rhodocollybia butyracea",
+  "autres_noms": [
+   "Collybia butyracea"
+  ],
+  "statut": "sans-interet",
+  "precaution": null,
+  "toxicite": "Comestible médiocre (pied coriace) ; sans intérêt.",
+  "criteres": [
+   "Chapeau brun, gras au toucher comme du beurre, pâlissant en séchant",
+   "Pied renflé en massue à la base, fibreux, cannelé",
+   "Lames serrées blanchâtres"
+  ],
+  "habitat": "Litière des bois, surtout de conifères",
+  "saison": "Septembre à décembre",
+  "sporee": "Blanche à crème rosé",
+  "schema": {
+   "type": "agaric",
+   "forme": "mamelon",
+   "chapeau": "#7a5236",
+   "hymenium": "#f1e8da",
+   "pied": "#b89270",
+   "feuilles": true,
+   "pied_forme": "ventru",
+   "largeur": 0.75,
+   "epaisseur": 0.45
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "gymnopus-dryophilus"
+  ],
+  "distinguer": {
+   "gymnopus-dryophilus": "La collybie des chênes a un pied fin et égal ; la collybie beurrée un chapeau gras et un pied renflé à la base."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Rhodocollybia butyracea » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Rhodocollybia_butyracea"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "mycena-galericulata",
+  "nom": "Mycène casquée",
+  "latin": "Mycena galericulata",
+  "autres_noms": [
+   "Mycène en casque"
+  ],
+  "statut": "sans-interet",
+  "precaution": null,
+  "toxicite": "Sans intérêt culinaire.",
+  "criteres": [
+   "Petit chapeau (2 à 6 cm) en cloche, gris-brun, ridé radialement",
+   "Lames blanches puis rosées",
+   "Pied lisse, raide et creux ; en touffes sur souches"
+  ],
+  "habitat": "Souches et bois mort de feuillus",
+  "saison": "Presque toute l'année, surtout en automne",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#8e7c6a",
+   "hymenium": "#efe2dc",
+   "pied": "#c9bba8",
+   "feuilles": true,
+   "touffe": true,
+   "bois": true,
+   "largeur": 0.55,
+   "epaisseur": 0.35
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "galerina-marginata"
+  ],
+  "distinguer": {
+   "galerina-marginata": "La galère marginée, mortelle, a un anneau ou des restes d'anneau et une sporée brun rouille ; la mycène casquée n'a pas d'anneau et sa sporée est blanche."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Mycena galericulata » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Mycena_galericulata"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "megacollybia-platyphylla",
+  "nom": "Collybie à larges lames",
+  "latin": "Megacollybia platyphylla",
+  "autres_noms": [
+   "Oudemansiella platyphylla"
+  ],
+  "statut": "toxique",
+  "precaution": null,
+  "toxicite": "Suspecte : troubles digestifs signalés. À rejeter.",
+  "criteres": [
+   "Chapeau gris-brun, fibrilleux et rayé",
+   "Lames blanches très larges et espacées",
+   "Cordons blancs (filaments) à la base du pied"
+  ],
+  "habitat": "Bois de feuillus, sur bois pourri ou enterré",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "plat",
+   "chapeau": "#7d6c5c",
+   "hymenium": "#f2ece2",
+   "pied": "#e8e0d4",
+   "feuilles": true,
+   "largeur": 1.0,
+   "epaisseur": 0.45
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Megacollybia platyphylla » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Megacollybia_platyphylla"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "leccinum-quercinum",
+  "nom": "Bolet des chênes",
+  "latin": "Leccinum quercinum",
+  "autres_noms": [
+   "Leccinum aurantiacum var. quercinum"
+  ],
+  "statut": "comestible",
+  "precaution": "Toxique cru ou mal cuit : toujours bien cuire.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-rouge orangé",
+   "Pied blanc à scabres brun-roux",
+   "Chair grisonnant puis noircissant à la coupe ; sous les chênes"
+  ],
+  "habitat": "Sous les chênes",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#b2552c",
+   "hymenium": "#dcd6ca",
+   "pied": "#efebe2",
+   "feuilles": true,
+   "scabres": "#7a4a2e",
+   "hauteur": 1.2,
+   "epaisseur": 0.9
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "leccinum-aurantiacum"
+  ],
+  "distinguer": {
+   "leccinum-aurantiacum": "Le bolet des chênes pousse sous les chênes, chapeau plus brun ; le bolet orangé sous les trembles et peupliers."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Leccinum aurantiacum » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Leccinum_aurantiacum"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "butyriboletus-regius",
+  "nom": "Bolet royal",
+  "latin": "Butyriboletus regius",
+  "autres_noms": [
+   "Boletus regius"
+  ],
+  "statut": "comestible",
+  "precaution": "Espèce rare, protégée ou en liste rouge dans plusieurs régions : à laisser en place.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau rose à rouge framboise",
+   "Pores jaune vif",
+   "Pied jaune couvert d'un réseau jaune ; chair jaune bleuissant peu"
+  ],
+  "habitat": "Feuillus (chênes, hêtres), sols calcaires, stations chaudes",
+  "saison": "Juin à septembre",
+  "sporee": "Brun olive",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#d0566a",
+   "hymenium": "#f0c83a",
+   "pied": "#ecc94a",
+   "feuilles": true,
+   "reticule": true,
+   "hauteur": 1.1,
+   "epaisseur": 1.0
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "rubroboletus-rhodoxanthus"
+  ],
+  "distinguer": {
+   "rubroboletus-rhodoxanthus": "Le bolet rhodoxanthe a des pores rouges et un réseau rouge sur le pied ; le bolet royal des pores jaunes et un réseau jaune."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Bolet royal » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Bolet_royal"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "suillus-bellinii",
+  "nom": "Bolet de Bellini",
+  "latin": "Suillus bellinii",
+  "autres_noms": [],
+  "statut": "comestible",
+  "precaution": "Retirer la cuticule gluante, laxative.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau blanchâtre à centre brun, gluant",
+   "Pores jaunes avec gouttelettes",
+   "Pied court, ponctué de granulations, sans anneau"
+  ],
+  "habitat": "Sous les pins, en région méditerranéenne et sur le littoral atlantique",
+  "saison": "Octobre à janvier",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#e7dcc4",
+   "hymenium": "#e6c24e",
+   "pied": "#efe6c8",
+   "feuilles": true,
+   "ponctue": true,
+   "hauteur": 0.8,
+   "epaisseur": 0.9
+  },
+  "mois": [
+   10,
+   11,
+   12,
+   1
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "suillus-granulatus"
+  ],
+  "distinguer": {
+   "suillus-granulatus": "Le bolet de Bellini a un chapeau blanchâtre à centre brun et un pied court ; le bolet granulé un chapeau brun-jaune uniforme."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Suillus bellinii » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Suillus_bellinii"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "cortinarius-praestans",
+  "nom": "Cortinaire remarquable",
+  "latin": "Cortinarius praestans",
+  "autres_noms": [],
+  "statut": "comestible",
+  "precaution": "Les cortinaires comptent des espèces mortelles : ne consommer qu'après identification par un spécialiste. Rare, protégé dans certains pays.",
+  "toxicite": null,
+  "criteres": [
+   "Très grand chapeau (10 à 20 cm), brun-violacé, marge givrée de voile blanc",
+   "Lames gris-violet puis rouille",
+   "Pied massif à bulbe, couvert de restes de voile blanc"
+  ],
+  "habitat": "Sous feuillus (hêtres, chênes), sur sol calcaire",
+  "saison": "Août à octobre",
+  "sporee": "Brun rouille",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#6e4a5a",
+   "hymenium": "#9a8296",
+   "pied": "#e6dee0",
+   "feuilles": true,
+   "pied_forme": "bulbeux",
+   "largeur": 1.15,
+   "epaisseur": 1.0
+  },
+  "mois": [
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "cortinarius-orellanus"
+  ],
+  "distinguer": {
+   "cortinarius-orellanus": "Le cortinaire des montagnes, mortel, est fauve orangé et plus petit (3 à 8 cm), sans voile blanc givré ; le cortinaire remarquable est très grand et brun-violacé."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Cortinaire remarquable » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Cortinaire_remarquable"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "cantharellus-pallens",
+  "nom": "Chanterelle pâle",
+  "latin": "Cantharellus pallens",
+  "autres_noms": [
+   "Girolle pâle",
+   "Cantharellus subpruinosus"
+  ],
+  "statut": "comestible",
+  "precaution": null,
+  "toxicite": null,
+  "criteres": [
+   "Chapeau jaune très pâle, givré de blanc",
+   "Plis épais, fourchus, descendant sur le pied",
+   "Jaunit à orangé au toucher"
+  ],
+  "habitat": "Bois de feuillus (chênes, hêtres), sol calcaire",
+  "saison": "Juin à octobre",
+  "sporee": "Blanche à crème",
+  "schema": {
+   "type": "chanterelle",
+   "chapeau": "#f0d88a",
+   "hymenium": "#eecf7e",
+   "pied": "#f1dca0",
+   "feuilles": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "cantharellus-cibarius"
+  ],
+  "distinguer": {
+   "cantharellus-cibarius": "La girolle est jaune d'œuf ; la chanterelle pâle est plus claire, givrée de blanc, et jaunit à orangé au toucher."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Cantharellus pallens » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Cantharellus_pallens"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "coprinellus-disseminatus",
+  "nom": "Coprin disséminé",
+  "latin": "Coprinellus disseminatus",
+  "autres_noms": [
+   "Coprinus disseminatus"
+  ],
+  "statut": "sans-interet",
+  "precaution": null,
+  "toxicite": "Sans intérêt (minuscule).",
+  "criteres": [
+   "Minuscules chapeaux (5 à 15 mm) en cloche, crème puis gris, plissés",
+   "Par centaines sur les souches",
+   "Lames qui noircissent sans se liquéfier"
+  ],
+  "habitat": "Souches et bois mort de feuillus",
+  "saison": "Avril à novembre",
+  "sporee": "Noire",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#cdbfa8",
+   "hymenium": "#6a6058",
+   "pied": "#f2ede4",
+   "feuilles": true,
+   "touffe": true,
+   "bois": true,
+   "largeur": 0.45,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "coprinellus-micaceus"
+  ],
+  "distinguer": {
+   "coprinellus-micaceus": "Le coprin disséminé est minuscule, par centaines, et ne se liquéfie pas ; le coprin micacé est plus grand et porte des granules brillants."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Coprinellus disseminatus » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Coprinellus_disseminatus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "peziza-vesiculosa",
+  "nom": "Pézize vésiculeuse",
+  "latin": "Peziza vesiculosa",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "precaution": null,
+  "toxicite": "Sans intérêt ; toxique crue comme la plupart des pézizes.",
+  "criteres": [
+   "Coupe de 3 à 10 cm, beige-crème, bord enroulé",
+   "Intérieur boursouflé, extérieur granuleux",
+   "Sur fumier, compost, paille"
+  ],
+  "habitat": "Fumier, compost, terre enrichie",
+  "saison": "Mars à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "coupe",
+   "chapeau": "#d9c09a",
+   "hymenium": "#e2caa2",
+   "forme": "groupe"
+  },
+  "mois": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "disciotis-venosa"
+  ],
+  "distinguer": {
+   "disciotis-venosa": "La pézize veinée a l'intérieur brun veiné et une odeur d'eau de Javel ; la pézize vésiculeuse est beige pâle, boursouflée, sur fumier."
+  },
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Peziza vesiculosa » (statut vérifié le 25/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Peziza_vesiculosa"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hygrocybe-conica",
+  "nom": "Hygrocybe conique",
+  "latin": "Hygrocybe conica",
+  "autres_noms": [
+   "Hygrophore conique"
+  ],
+  "statut": "toxique",
+  "precaution": null,
+  "toxicite": "Suspect : troubles digestifs signalés. À rejeter.",
+  "criteres": [
+   "Chapeau conique pointu, orange-rouge, cireux",
+   "Noircit en vieillissant ou au toucher",
+   "Pied jaune-orange strié, noircissant"
+  ],
+  "habitat": "Prés, pelouses, bords de chemins",
+  "saison": "Juin à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "conique",
+   "chapeau": "#e0552a",
+   "hymenium": "#f1d070",
+   "pied": "#e8b43a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.55,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "rang": "secondaire",
+  "confusions": [
+   "hygrocybe-punicea"
+  ],
+  "distinguer": {
+   "hygrocybe-punicea": "L'hygrocybe conique a un chapeau pointu qui noircit ; l'hygrocybe ponceau est plus grand, rouge écarlate, et ne noircit pas."
+  },
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
    }
   ]
  }

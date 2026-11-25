@@ -10,7 +10,7 @@
 
 mycélium présente la clé d'identification des champignons comme une **carte que l'on explore** : on part de la forme générale du champignon, on touche une question, on suit la réponse qui correspond le long de sa branche, jusqu'à l'espèce.
 
-- **263 espèces** de France : 76 principales au centre, 187 secondaires autour.
+- **278 espèces** de France : 76 principales au centre, 202 secondaires autour.
 - **Fiches complètes** : critères clés, habitat, saison, sporée, toxicité, sources.
 - **Sosies** : les confusions possibles sont reliées sur la carte et comparables photo contre photo, avec ce qui les sépare.
 - **« Comment regarder ? »** : chaque question a un schéma et une photo réelle par réponse.

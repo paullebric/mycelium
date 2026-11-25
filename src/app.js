@@ -2118,7 +2118,10 @@
   // Changement de disposition (animé)
   var selDispo = $('#disposition');
   selDispo.innerHTML = Object.keys(DISPOS).map(function (k) { return '<option value="' + k + '">' + DISPOS[k].label + '</option>'; }).join('');
-  var dispoActuelle = DISPOS[stockage('cc-dispo2')] ? stockage('cc-dispo2') : (large() ? 'radial' : 'eventail'); // par défaut : éventail sur téléphone, radiale sur ordinateur
+  // Par défaut : éventail sur téléphone, radiale sur ordinateur (et tablette). On regarde l'appareil
+  // (écran tactile et petit écran), pas la largeur de la fenêtre : une fenêtre réduite sur PC reste en radial.
+  var telephone = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches) && Math.min(screen.width, screen.height) < 600;
+  var dispoActuelle = DISPOS[stockage('cc-dispo2')] ? stockage('cc-dispo2') : (telephone ? 'eventail' : 'radial');
   selDispo.value = dispoActuelle;
   selDispo.addEventListener('change', function () { changerDispo(selDispo.value); });
   var animDispo = 0;

@@ -3,5 +3,15 @@
   "appName": "mycélium",
   "webDir": "www",
   "backgroundColor": "#0C120F",
-  "android": { "backgroundColor": "#0C120F", "allowMixedContent": false }
+  "android": {
+    "backgroundColor": "#0C120F",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "style": "DARK",
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
 }

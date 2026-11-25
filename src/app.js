@@ -519,12 +519,17 @@
         .onfinish = function () { calque.style.transformOrigin = ''; };
     })();
   }
-  function appliquerGeometrie(L) {
+  // N'écrit un attribut que s'il change : chaque écriture réveille le miroir WebGL (MutationObserver)
+  function poser(el, nom, v) { if (el['_' + nom] !== v) { el['_' + nom] = v; el.setAttribute(nom, v); } }
+  // leger : image intermédiaire d'une animation (arc) — on saute courbes de niveau, mini-carte et LOD forcé,
+  // recalculés à la dernière image
+  function appliquerGeometrie(L, leger) {
     courant = L;
     noeuds.forEach(function (nd) {
       var o = elems[nd.id], p = L.pos[nd.id];
-      o.g.setAttribute('transform', 'translate(' + r1(p.x) + ' ' + r1(p.y) + ') scale(' + p.s.toFixed(3) + ')');
-      if (o.gE) o.gE.setAttribute('transform', o.g.getAttribute('transform'));
+      var tr = 'translate(' + r1(p.x) + ' ' + r1(p.y) + ') scale(' + p.s.toFixed(3) + ')';
+      poser(o.g, 'transform', tr);
+      if (o.gE) poser(o.gE, 'transform', tr);
       if (nd.sp) {
         var modeE = modeDepuisAngle(p.d || 0);
         if (arcNd && nd.parent === arcNd) { // en arc : étiquette dessous si l'arc est horizontal, sinon sur le côté extérieur
@@ -535,20 +540,19 @@
       }
       if (o.arete) {
         var e = L.aret[nd.id];
-        o.arete.setAttribute('d', 'M' + r1(e[0]) + ' ' + r1(e[1]) + 'C' + r1(e[2]) + ' ' + r1(e[3]) + ' ' + r1(e[4]) + ' ' + r1(e[5]) + ' ' + r1(e[6]) + ' ' + r1(e[7]));
+        poser(o.arete, 'd', 'M' + r1(e[0]) + ' ' + r1(e[1]) + 'C' + r1(e[2]) + ' ' + r1(e[3]) + ' ' + r1(e[4]) + ' ' + r1(e[5]) + ' ' + r1(e[6]) + ' ' + r1(e[7]));
         var rp = L.rep[nd.id];
-        o.rep.setAttribute('transform', 'translate(' + r1(rp.x) + ' ' + r1(rp.y) + ') scale(' + rp.s.toFixed(3) + ')');
+        poser(o.rep, 'transform', 'translate(' + r1(rp.x) + ' ' + r1(rp.y) + ') scale(' + rp.s.toFixed(3) + ')');
       }
       if (o.reg) {
         var g = L.reg[nd.id];
-        o.reg.setAttribute('transform', 'translate(' + r1(g.x) + ' ' + r1(g.y) + ') scale(' + g.s.toFixed(3) + ')');
+        poser(o.reg, 'transform', 'translate(' + r1(g.x) + ' ' + r1(g.y) + ') scale(' + g.s.toFixed(3) + ')');
       }
     });
-    paires.forEach(function (p) { elSosies[p.cle].setAttribute('d', dSosie(p, L.sos[p.cle])); });
+    paires.forEach(function (p) { poser(elSosies[p.cle], 'd', dSosie(p, L.sos[p.cle])); });
     cercleP.setAttribute('r', r1(L.Rc || 0)); cercleP.style.display = L.Rc ? '' : 'none';
-    dessinerCourbes(L);
-    dessinerMinicarte();
-    majLOD(true); placerReponses(); placerTitreCercle();
+    if (!leger) { dessinerCourbes(L); dessinerMinicarte(); }
+    majLOD(!leger); placerReponses(); placerTitreCercle();
   }
 
   // Courbes de niveau : des cercles déformés par la densité d'espèces de chaque secteur de la carte
@@ -603,7 +607,9 @@
   if (window.MutationObserver) {
     var obsUI = new MutationObserver(function () { cachesMem = null; });
     ['#cadre-mini', '#controles', '#volet', '#barre', '#ariane', '#quitter-focus'].forEach(function (sel) {
-      var x = document.querySelector(sel); if (x) obsUI.observe(x, { attributes: true, childList: true, subtree: true, characterData: true });
+      var x = document.querySelector(sel); if (!x) return;
+      // la mini-carte se redessine à chaque image : seule sa boîte compte, pas son contenu
+      obsUI.observe(x, sel === '#cadre-mini' ? { attributes: true } : { attributes: true, childList: true, subtree: true, characterData: true });
     });
     obsUI.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
@@ -737,7 +743,7 @@
       var o = elems[nd.id], p = courant.pos[nd.id], px = p.s * k, n;
       if (nd.sp) n = px * 48 < 5 ? 0 : px * 14 < 6 ? 1 : px * 11 < 8 ? 2 : px * 10 < 9.5 ? 3 : 4;
       else n = px * 17 < 6 ? 0 : px * 10 < 8.5 ? 2 : 4;
-      if (force || niveauxPrec[nd.id] !== n) { o.g.setAttribute('data-n', n); if (o.gE) o.gE.setAttribute('data-n', n); niveauxPrec[nd.id] = n; }
+      if ((force || niveauxPrec[nd.id] !== n) && !o.horsEcran) { o.g.setAttribute('data-n', n); if (o.gE) o.gE.setAttribute('data-n', n); niveauxPrec[nd.id] = n; } // hors écran : mis à jour à son retour
       if (o.mc && carnet[nd.sp.id]) majMarqueCarnet(o, px);
       if (nd.sp && arcNd && nd.parent === arcNd) { // espèces en arc : étiquettes toujours lisibles (≈ 12 px)
         var sc = Math.min(2, Math.max(1, 12 / (19 * px)));
@@ -1066,7 +1072,8 @@
 
   /* ======================= État de l'interface ======================= */
   var selection = null, focusNd = null;
-  function large() { return window.innerWidth > 820; }
+  var largeMem = null; window.addEventListener('resize', function () { largeMem = null; });
+  function large() { if (largeMem === null) largeMem = window.innerWidth > 820; return largeMem; } // lu souvent : gardé en mémoire
   function classe(c, on) { document.body.classList.toggle(c, !!on); }
   var ROMAINS = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii'];
   function plageMois(m) {
@@ -1277,7 +1284,7 @@
     var A = courant, t0 = performance.now();
     (function pas() {
       var t = Math.min(1, (performance.now() - t0) / duree), e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      appliquerGeometrie(t < 1 ? interpoler(A, L, e) : L);
+      appliquerGeometrie(t < 1 ? interpoler(A, L, e) : L, t < 1);
       if (t < 1) animArc = requestAnimationFrame(pas);
     })();
   }
@@ -2243,6 +2250,7 @@
       illustration: illustration, mondeSVG: monde, gCourbes: gCourbes, gRepsFond: gRepsFond, cercleP: cercleP, titreP: titreP,
       zoneCarte: zoneCarte, taille: taille,
       cam: function () { return cam; }, courant: function () { return courant; },
+      enVol: function () { return !!anim; },
       badgesSVG: function () {
         var st = {}; ORDRE_STATUTS.forEach(function (s) { st[s] = '<circle cx="12" cy="12" r="13" fill="#0C120F"/><circle cx="12" cy="12" r="11" fill="' + STATUTS[s].couleur + '"/>' + ICONES[s]; });
         return {

@@ -178,6 +178,11 @@
       var el = ctx.elems[nd.id].g, sp = nd.sp, st = ctx.STATUTS[sp.statut], n = niveau(el), arc = cl(el, 'dans-arc'), sel = cl(el, 'sel');
       var c = ob.c, g = ob.forme;
       var plein = n === 0 && !arc, r = plein ? 72 : 48;
+      // clé de dessin : si rien de ce qui se dessine n'a changé (ex. seul le focus change l'opacité), on ne redessine pas
+      var tr0 = cl(el, 'trouve') && cl(document.body, 'avec-carnet'), mc0 = tr0 && el.querySelector('.marque-carnet circle'), a20 = sp.statut === 'mortel' && el.querySelector('.anneau2');
+      var cleForme = [n, arc, sel, tr0, !!tex.photos[sp.id], mc0 ? mc0.getAttribute('r') + (mc0.getAttribute('style') || '') : '', a20 ? a20.getAttribute('r') + '/' + a20.getAttribute('stroke-width') + '/' + a20.getAttribute('stroke-opacity') : ''].join('|');
+      if (ob.cleForme === cleForme) return;
+      ob.cleForme = cleForme;
       g.clear();
       if (sel) g.circle(0, 0, r).stroke({ width: 18, color: AMBRE, alpha: 0.45 });
       g.circle(0, 0, r).fill({ color: n <= 1 && !arc ? couleur(st.couleur) : arc && n === 0 ? 0x141c17 : couleur(st.clair) });
@@ -482,7 +487,9 @@
       app.render();
       if (animer.size || fondus.size) demander();
       clearTimeout(minuterieNet);
-      if (performance.now() - dernierNet > 200 && ajusterNettete(12)) demander(); // pendant le mouvement : quelques textes par image
+      // pendant un geste : quelques textes affinés par image ; pendant un trajet animé : aucun (ré-rasteriser du texte
+      // et l'envoyer à la carte graphique coûte cher sur téléphone) — tout est affiné à l'arrivée
+      if (!(ctx.enVol && ctx.enVol()) && performance.now() - dernierNet > 200 && ajusterNettete(12)) demander();
       minuterieNet = setTimeout(function () { ajusterNettete(0); }, 140);         // à l'arrêt : tous
     }
 

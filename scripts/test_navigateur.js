@@ -58,7 +58,7 @@ const fichier = process.argv[2], dossier = process.argv[3] || '.', prefixe = pro
       await p.screenshot({ path: `${dossier}/${prefixe}-recherche.png`, clip: { x: 0, y: 0, width: 1400, height: 450 } });
       // export
       const dl = p.waitForEvent('download');
-      await p.keyboard.press('Escape'); await p.evaluate(() => CARTE.vue('legende')); await p.click('#exporter');
+      await p.keyboard.press('Escape'); await p.evaluate(() => CARTE.vue('reglages')); await p.click('#exporter');
       const fichierDl = await dl; const out = `${dossier}/${prefixe}-export.svg`; await fichierDl.saveAs(out);
       console.log('export SVG :', (require('fs').statSync(out).size / 1024).toFixed(0), 'Ko');
     } else {

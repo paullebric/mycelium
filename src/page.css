@@ -14,6 +14,10 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 [hidden]{display:none !important}
 .carre{width:40px;height:40px;flex:none;display:grid;place-items:center;padding:0;border:1px solid var(--ligne2);background:rgba(12,18,15,.82);color:var(--menthe);font:500 16px var(--mono)}
 .carre:hover{background:var(--panneau2)}
+.carre.gris{border-color:rgba(143,163,154,.45);color:var(--gris)}
+.carre.gris svg{display:block;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.carre.gris:hover svg,.carre.gris[aria-expanded="true"] svg{transform:rotate(60deg)}
+@media (prefers-reduced-motion:reduce){.carre.gris svg{transition:none}}
 .carre.rouge{border-color:var(--vermillon);background:rgba(255,90,60,.08);color:var(--vermillon);font-weight:600}
 .gros-bouton{display:block;width:100%;height:50px;border:none;background:var(--menthe);color:var(--nuit);font:600 13px var(--mono);letter-spacing:.1em}
 .gros-bouton:hover{background:#b3ffd8}
@@ -441,3 +445,10 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
 #tuto-bulle .t-points i{width:14px;height:3px;background:var(--ligne2)}
 #tuto-bulle .t-points i.on{background:var(--ambre)}
 @media (prefers-reduced-motion:reduce){#tuto-voile,#tuto-bulle{transition:none}}
+
+/* Réglages : rappel « outil pédagogique » en tête */
+.rappel{border:1px solid rgba(255,90,60,.55);background:rgba(255,90,60,.08);padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:14px}
+.rappel .ico{grid-row:span 2;width:28px;height:28px;display:grid;place-items:center;border:1.5px solid var(--vermillon);color:var(--vermillon);font:700 15px var(--mono)}
+.rappel b{font:600 11px var(--mono);letter-spacing:.08em;color:#FF8A73}
+.rappel p{margin:0;font-size:12.5px;line-height:1.45;color:var(--texte)}
+#credits{font-size:8.5px;line-height:1.35;margin-top:10px}

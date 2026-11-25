@@ -14,7 +14,7 @@
 </head>
 <body>
 <header id="barre">
-  <button id="btn-avert" class="carre rouge" aria-label="Avertissement : outil pédagogique" title="Avertissement">!</button>
+  <button id="btn-reglages" class="carre gris" aria-label="Réglages" title="Réglages"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.08 4.65 L10.55 1.90 L13.45 1.90 L13.92 4.65 A7.6 7.6 0 0 1 15.84 5.44 L15.84 5.44 L18.11 3.83 L20.17 5.89 L18.56 8.16 A7.6 7.6 0 0 1 19.35 10.08 L19.35 10.08 L22.10 10.55 L22.10 13.45 L19.35 13.92 A7.6 7.6 0 0 1 18.56 15.84 L18.56 15.84 L20.17 18.11 L18.11 20.17 L15.84 18.56 A7.6 7.6 0 0 1 13.92 19.35 L13.92 19.35 L13.45 22.10 L10.55 22.10 L10.08 19.35 A7.6 7.6 0 0 1 8.16 18.56 L8.16 18.56 L5.89 20.17 L3.83 18.11 L5.44 15.84 A7.6 7.6 0 0 1 4.65 13.92 L4.65 13.92 L1.90 13.45 L1.90 10.55 L4.65 10.08 A7.6 7.6 0 0 1 5.44 8.16 L5.44 8.16 L3.83 5.89 L5.89 3.83 L8.16 5.44 A7.6 7.6 0 0 1 10.08 4.65Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
   <div class="logo" aria-label="mycélium">mycélium<span>.</span></div>
   <div class="zone-recherche">
     <svg class="loupe" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -71,6 +71,18 @@
 
 <section id="p-carnet" class="panneau" aria-label="Carnet" hidden></section>
 
+<section id="p-reglages" class="panneau demi" aria-label="Réglages" hidden>
+  <div class="p-tete"><div><div class="sur-titre">RÉGLAGES</div><h2>Paramètres</h2></div><button class="p-fermer carre" aria-label="Fermer">✕</button></div>
+  <div class="rappel"><span class="ico" aria-hidden="true">!</span><b>OUTIL PÉDAGOGIQUE</b>
+    <p>Ne mangez jamais un champignon sur la seule base de cette carte : <strong>faites vérifier toute récolte par un pharmacien ou un mycologue.</strong> En cas d'intoxication : <strong>15</strong> ou un centre antipoison.</p></div>
+  <h3 class="rubrique">GUIDE</h3>
+  <div class="opts"><button id="relancer-tuto" class="opt-ligne"><span>Revoir le tutoriel</span><span class="etat">▶</span></button></div>
+  <h3 class="rubrique">CARTE</h3>
+<div class="opts"><label class="opt-ligne"><span>Disposition</span><select id="disposition"></select></label>
+  <button id="opt-rendu" class="opt-ligne" aria-pressed="true"><span>Rendu rapide de la carte (WebGL)</span><span class="etat"></span></button>
+  <button id="exporter" class="opt-ligne"><span>Exporter la carte en poster (SVG)</span><span class="etat">↓</span></button></div>
+</section>
+
 <section id="p-legende" class="panneau demi" aria-label="Légende" hidden>
   <div class="p-tete"><div><div class="sur-titre">LÉGENDE</div><h2>Lire la carte</h2></div><button class="p-fermer carre" aria-label="Fermer">✕</button></div>
   <ul id="legende-statuts"></ul>
@@ -78,13 +90,6 @@
   <p class="leg-l"><svg width="22" height="22" viewBox="-11 -11 22 22" aria-hidden="true"><circle r="9" fill="#0C120F" stroke="#FFB547" stroke-width="2"/><path d="M0 -5v5" stroke="#FFB547" stroke-width="2.4" stroke-linecap="round"/><circle cy="4.2" r="1.4" fill="#FFB547"/></svg> Comestible seulement avec précautions</p>
   <p class="leg-l"><svg width="22" height="22" viewBox="-11 -11 22 22" aria-hidden="true"><circle r="9" fill="none" stroke="#FFB547" stroke-width="2"/><path d="M0-5l1.5 3.2 3.4.4-2.5 2.3.7 3.4L0 2.6-3.1 4.3l.7-3.4-2.5-2.3 3.4-.4z" fill="#FFB547"/></svg> Espèce de mon carnet (trouvée)</p>
   <p class="leg-l"><svg width="40" height="22" aria-hidden="true"><path d="M2 11 Q20 2 38 11 M2 17 Q20 8 38 17" fill="none" stroke="#8DF5C0" stroke-opacity=".5"/></svg> Courbes de niveau : plus elles se resserrent et s'écartent, plus la branche compte d'espèces</p>
-  <h3 class="rubrique">NAVIGUER</h3>
-  <p class="note">Glisser : se déplacer. Pincer ou molette : zoomer. Double-toucher : zoomer ici. Toucher une question : focus sur sa branche, et « ? » pour savoir comment regarder. Toucher une espèce : aperçu, puis fiche. Touche 0 : tout voir.</p>
-  <h3 class="rubrique">AUTRES DISPOSITIONS</h3>
-  <div class="opts"><label class="opt-ligne"><span>Disposition</span><select id="disposition"></select></label>
-  <button id="opt-rendu" class="opt-ligne" aria-pressed="true"><span>Rendu rapide de la carte (WebGL)</span><span class="etat"></span></button>
-  <button id="relancer-tuto" class="opt-ligne"><span>Revoir le tutoriel</span><span class="etat">▶</span></button>
-  <button id="exporter" class="opt-ligne"><span>Exporter la carte en poster (SVG)</span><span class="etat">↓</span></button></div>
   <p class="note" id="credits"></p>
 </section>
 
@@ -111,7 +116,7 @@
     <label class="avert-case"><input type="checkbox" id="avert-plus"> Ne plus m'avertir à l'ouverture</label>
     <button id="avert-ok" class="gros-bouton">J'AI COMPRIS · EXPLORER</button>
   </section>
-  <p class="avert-pied">L'avertissement reste accessible à tout moment par le bouton <b>!</b> en haut à gauche.</p>
+  <p class="avert-pied">Ce rappel reste accessible à tout moment dans les <b>réglages</b> (roue dentée en haut à gauche).</p>
 </div>
 
 <div id="visionneuse" role="dialog" aria-modal="true" aria-label="Illustration en grand" hidden>

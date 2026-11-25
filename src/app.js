@@ -1966,7 +1966,8 @@
   /* ======================= Vues (navigation basse) ======================= */
   var vueCourante = 'carte';
   function montrerVue(v, garderFiche) {
-    ['filtres', 'carnet', 'legende'].forEach(function (x) { $('#p-' + x).hidden = x !== v; });
+    ['filtres', 'carnet', 'legende', 'reglages'].forEach(function (x) { $('#p-' + x).hidden = x !== v; });
+    $('#btn-reglages').setAttribute('aria-expanded', v === 'reglages');
     if (v !== 'carte' && !garderFiche) fermerFiche();
     vueCourante = v;
     document.querySelectorAll('#nav [data-vue]').forEach(function (b) { b.setAttribute('aria-current', b.getAttribute('data-vue') === v); });
@@ -2042,7 +2043,7 @@
   $('#avert-nb').textContent = feuilles.length;
   function ouvrirAvert() { $('#avert-plus').checked = stockage(CLE_AVERT) === '1'; $('#avert').hidden = false; $('#avert-ok').focus(); }
   $('#avert-ok').addEventListener('click', function () { stockage(CLE_AVERT, $('#avert-plus').checked ? '1' : '0'); $('#avert').hidden = true; apresAccueil(); });
-  $('#btn-avert').addEventListener('click', ouvrirAvert);
+  $('#btn-reglages').addEventListener('click', function () { montrerVue(vueCourante === 'reglages' ? 'carte' : 'reglages'); });
 
   // Échap : ferme ce qui est au premier plan
   function echap() { // renvoie false s'il n'y avait plus rien à fermer
@@ -2065,7 +2066,7 @@
   // Changement de disposition (animé)
   var selDispo = $('#disposition');
   selDispo.innerHTML = Object.keys(DISPOS).map(function (k) { return '<option value="' + k + '">' + DISPOS[k].label + '</option>'; }).join('');
-  var dispoActuelle = DISPOS[stockage('cc-dispo2')] ? stockage('cc-dispo2') : 'radial';
+  var dispoActuelle = DISPOS[stockage('cc-dispo2')] ? stockage('cc-dispo2') : (large() ? 'radial' : 'eventail'); // par défaut : éventail sur téléphone, radiale sur ordinateur
   selDispo.value = dispoActuelle;
   selDispo.addEventListener('change', function () { changerDispo(selDispo.value); });
   var animDispo = 0;
@@ -2256,7 +2257,7 @@
     { titre: 'Trouvé !', texte: 'Vous l\'avez trouvé ? Touchez l\'étoile : il rejoint votre carnet.', cible: function () { return $('#fiche').hidden ? $('#volet [data-act="trouve"]') : $('#fiche [data-act="trouve"]'); }, attend: 'trouve', ok: 'SUIVANT' },
     { titre: 'Mangé !', texte: function () { return selection && selection.sp && selection.sp.statut === 'comestible' ? 'Pour une espèce comestible, touchez « Mangé ! » une fois dégustée.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>' : 'Pour une espèce comestible, un bouton « Mangé ! » apparaît à côté de l\'étoile.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>'; },
       cible: function () { return $('#fiche').hidden ? $('#volet [data-act="mange"]') : $('#fiche [data-act="mange"]'); }, attend: 'mange', ok: 'SUIVANT' },
-    { titre: 'C\'est tout !', texte: 'Retrouvez vos trouvailles et vos statistiques dans CARNET. Ce guide se relance depuis LÉGENDE.', ok: 'TERMINER', avant: function () { fermerFiche(); } }
+    { titre: 'C\'est tout !', texte: 'Retrouvez vos trouvailles et vos statistiques dans CARNET. Ce guide se relance depuis les réglages (roue dentée en haut à gauche).', ok: 'TERMINER', avant: function () { fermerFiche(); } }
   ];
   function lancerTuto() {
     stockage(CLE_TUTO, '1');

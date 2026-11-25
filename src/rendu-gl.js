@@ -230,9 +230,9 @@
       });
       var b = cq.querySelector('.bouton-aide');
       if (b) {
-        var tb = transformation(b), ga = new PIXI.Graphics().circle(tb.x, tb.y, 16).fill({ color: MENTHE });
-        q.addChild(ga); q.addChild(creerTexte(PIXI, '?', styleDe('aide'), tb.x, tb.y + 6, 'middle'));
-        ob.aide = { x: tb.x, y: tb.y, el: b };
+        var tb = transformation(b), ca = new PIXI.Container(), ga = new PIXI.Graphics().circle(0, 0, 16).fill({ color: MENTHE });
+        ca.position.set(tb.x, tb.y); ca.addChild(ga); ca.addChild(creerTexte(PIXI, '?', styleDe('aide'), 0, 6, 'middle')); q.addChild(ca);
+        ob.aide = { x: tb.x, y: tb.y, el: b, c: ca };
       }
     }
     function majQuestion(nd, ob) {
@@ -430,7 +430,7 @@
     // Pendant un geste, on les met à jour peu à peu (quelques-uns par image) ; à l'arrêt, tous d'un coup.
     var minuterieNet = 0, dernierNet = 0;
     function ajusterNettete(budget) {
-      var dpr = Math.min(window.devicePixelRatio || 1, 2.5), n = 0, reste = false;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2), n = 0, reste = false;
       dernierNet = performance.now();
       var T = ctx.taille();
       (function visiter(o) {
@@ -530,19 +530,15 @@
     var GL = {
       actif: function () { return pret; },
       _debug: function () { return { objs: objs, C: C, monde: monde }; },
-      // Démarrage : révélation circulaire de la carte (un seul masque, coût quasi nul par image)
-      revelation: function (cx, cy, r) {
-        if (r == null) { if (monde.mask) { var m0 = monde.mask; monde.mask = null; m0.destroy(); } demander(); return; }
-        if (!monde.mask) { var g = new PIXI.Graphics(); g.circle(0, 0, 1).fill(0xffffff); monde.addChild(g); monde.mask = g; }
-        monde.mask.position.set(cx, cy); monde.mask.scale.set(Math.max(0.001, r)); sale = true; demander();
-      },
+
       designer: designer,
       demander: demander,
       app: app
     };
     var badgesSVG = ctx.badgesSVG();
     Promise.all([
-      app.init({ backgroundAlpha: 0, antialias: true, autoDensity: true, resolution: Math.min(window.devicePixelRatio || 1, 2.5), resizeTo: ctx.zoneCarte, autoStart: false, preference: 'webgl' }),
+      app.init({ backgroundAlpha: 0, antialias: (window.devicePixelRatio || 1) < 2, autoDensity: true, resolution: Math.min(window.devicePixelRatio || 1, 2), // écrans très denses : 2x suffit, sans lissage MSAA (bien moins de pixels à calculer)
+        resizeTo: ctx.zoneCarte, autoStart: false, preference: 'webgl' }),
       document.fonts ? Promise.all(["italic 400 16px 'Literata'", "400 16px 'Literata'", "400 16px 'IBM Plex Mono'", "500 16px 'IBM Plex Mono'", "600 16px 'IBM Plex Mono'"].map(function (f) { return document.fonts.load(f); })) : null
     ].concat(Object.keys(badgesSVG.statuts).map(function (s) {
       return svgVersImage(badgesSVG.statuts[s], '-1 -1 26 26').then(function (im) { tex.badges[s] = textureImage(PIXI, im, 96); });

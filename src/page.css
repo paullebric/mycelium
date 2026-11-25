@@ -77,17 +77,14 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 .v-invite{position:absolute;left:0;right:0;top:40px;text-align:center;font:italic 15.1px/1 var(--serif);color:#b9c7c0}
 .v-leg{position:absolute;left:0;right:0;top:66px;display:flex;justify-content:center;gap:12px;font:500 9px var(--mono);letter-spacing:.06em;color:var(--gris)}
 .v-leg i{display:inline-block;width:7px;height:7px;margin-right:3px}
-.volet-q{height:178px;position:relative}
-.volet-q .v-fond{top:20px}
-.vq-corps{position:absolute;left:0;right:0;top:42px;padding:0 64px;text-align:center}
-.vq-groupe{font:500 9px var(--mono);letter-spacing:.14em;color:var(--menthe)}
-.vq-q{font:italic 16.8px/1.1 var(--serif);margin:3px 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.vq-info{font-size:10.5px;color:var(--gris)}
-.vq-reps{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:6px;overflow-x:auto;padding:0 14px 4px;scrollbar-width:none;scroll-snap-type:x proximity}
-.vq-reps::-webkit-scrollbar{display:none}
-.vq-rep{flex:none;max-width:230px;height:40px;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--ligne2);background:var(--nuit);color:var(--menthe);font:500 11px var(--mono);scroll-snap-align:start}
-.vq-num{flex:none;width:20px;height:20px;border-radius:50%;background:var(--menthe);color:var(--nuit);display:grid;place-items:center;font:700 10.5px var(--mono);margin-left:-4px}
-.vq-rep span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.volet-q{height:84px;position:relative}
+.volet-q .v-fond{top:28px}
+.volet-q .v-rond.aide{left:50%;top:0;width:54px;height:54px;margin-left:-27px;font-size:22px;box-shadow:0 0 0 6px var(--nuit)}
+.vq-info{position:absolute;left:0;right:0;top:60px;text-align:center;border:none;background:none;padding:2px 0;font:600 10px var(--mono);letter-spacing:.06em;color:var(--menthe);cursor:pointer}
+/* « ? » qui gigote quand on reste bloqué sur une question */
+@keyframes gigote{0%,100%{transform:rotate(0) scale(1)}6%{transform:rotate(-14deg) scale(1.1)}12%{transform:rotate(11deg) scale(1.1)}18%{transform:rotate(-8deg) scale(1.06)}24%{transform:rotate(5deg) scale(1.03)}30%{transform:rotate(0) scale(1)}}
+.bloque .volet-q .v-rond.aide{animation:gigote 2.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.bloque .volet-q .v-rond.aide{animation:none}}
 .vq-rep small{color:var(--gris);font-size:9.5px}
 .vq-rep:hover{border-color:var(--menthe)}
 .v-rond{position:absolute;width:46px;height:46px;border-radius:50%;padding:0;display:grid;place-items:center;border:1px solid var(--menthe);background:var(--nuit);color:var(--menthe);font:600 9px var(--mono);letter-spacing:.04em;line-height:1.05;text-align:center}
@@ -452,3 +449,6 @@ svg#vis-img{width:min(92vw,calc(100dvh - 210px));height:min(92vw,calc(100dvh - 2
 .rappel b{font:600 11px var(--mono);letter-spacing:.08em;color:#FF8A73}
 .rappel p{margin:0;font-size:12.5px;line-height:1.45;color:var(--texte)}
 #credits{font-size:8.5px;line-height:1.35;margin-top:10px}
+
+/* Démarrage : carte invisible jusqu'à son apparition animée */
+.avant-pousse #carte,.avant-pousse #carte-gl{opacity:0}

@@ -502,22 +502,21 @@
     for (k in B.sos) { var sa = A.sos[k], sb = B.sos[k], s2 = []; for (var j = 0; j < 6; j++) s2.push(lerp(sa[j], sb[j], t)); R.sos[k] = s2; }
     return R;
   }
-  // Démarrage : la carte se révèle depuis le centre, en cercle qui s'élargit.
-  // Une seule valeur change par image (le rayon d'un masque), au lieu de redessiner chaque branche.
+  // Démarrage : la carte apparaît en grandissant depuis la première question.
+  // Animation confiée au compositeur du navigateur (opacité + échelle d'un seul calque) : elle reste fluide
+  // même pendant que l'app finit de se charger. On attend que le rendu WebGL soit prêt pour ne rien voir surgir.
   function lancerPousse() {
-    if (mouvReduit || lancerPousse.fait) return; lancerPousse.fait = true;
-    var P = courant.pos[racine.id], B = courant.bornes, cx = P.x, cy = P.y;
-    var Rmax = Math.max(Math.hypot(B.x - cx, B.y - cy), Math.hypot(B.x + B.w - cx, B.y - cy), Math.hypot(B.x - cx, B.y + B.h - cy), Math.hypot(B.x + B.w - cx, B.y + B.h - cy)) * 1.05;
-    var NS = 'http://www.w3.org/2000/svg', defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(NS, 'defs'), svg.firstChild);
-    var cp = document.createElementNS(NS, 'clipPath'); cp.id = 'revele'; cp.setAttribute('clipPathUnits', 'userSpaceOnUse');
-    var cc = document.createElementNS(NS, 'circle'); cc.setAttribute('cx', cx); cc.setAttribute('cy', cy); cc.setAttribute('r', 0); cp.appendChild(cc); defs.appendChild(cp);
-    monde.setAttribute('clip-path', 'url(#revele)');
-    var t0 = performance.now(), D = 1300;
-    (function pas() {
-      var k = Math.min(1, (performance.now() - t0) / D), u = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, r = Rmax * u;
-      if (GL && GL.actif()) GL.revelation(cx, cy, r); else cc.setAttribute('r', r.toFixed(1));
-      if (k < 1) requestAnimationFrame(pas);
-      else { monde.removeAttribute('clip-path'); cp.remove(); if (GL && GL.revelation) GL.revelation(null); }
+    if (lancerPousse.fait) return; lancerPousse.fait = true;
+    if (mouvReduit || !document.body.animate) { classe('avant-pousse', false); return; }
+    var t0 = performance.now();
+    (function attendre() {
+      if (GL && !GL.actif() && performance.now() - t0 < 2500) { requestAnimationFrame(attendre); return; }
+      var calque = GL && GL.actif() ? $('#carte-gl') : svg, P = courant.pos[racine.id];
+      var ox = cam.x + P.x * cam.k, oy = cam.y + P.y * cam.k;
+      calque.style.transformOrigin = ox.toFixed(0) + 'px ' + oy.toFixed(0) + 'px';
+      classe('avant-pousse', false);
+      calque.animate([{ opacity: 0, transform: 'scale(.82)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 1100, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' })
+        .onfinish = function () { calque.style.transformOrigin = ''; };
     })();
   }
   function appliquerGeometrie(L) {
@@ -1205,8 +1204,9 @@
     classe('en-focus', focusNd);
   }
   function dansFocus(nd) { if (!focusNd) return true; while (nd) { if (nd === focusNd) return true; nd = nd.parent; } return false; }
-  function quitterFocus() { appliquerFocus(null); deselectionner(); recentrer(); }
+  function quitterFocus() { appliquerFocus(null); deselectionner(); } // sort de la question en cours, sans bouger la carte (Recentrer s'en charge)
   function deselectionner() {
+    surveillerBlocage(null);
     majArc(null);
     selection = null; marquerChemin(null); majAriane(null); surbrillanceSosies(null); fermerFiche(); rendreVolet(); dessinerMinicarte();
     classe('esp-sel', false);
@@ -1227,8 +1227,33 @@
     var rmin = 150 * P.s + 115 * s;
     var r = Math.max(rmin, n > 1 ? pas * (n - 1) / span : 0), rx = r, ry = r;
     if (plein) { var somme = pas * n / Math.PI; ry = Math.max(rmin * 0.75, somme / (1 + ratio)); rx = Math.max(rmin, ry * ratio); }
+    // Sous-questions de cette question (ex. « truffes ») : elles restent en place, l'arc laisse libre
+    // tout le secteur qu'occupe leur branche, pour que les espèces ne viennent pas se poser dessus.
+    var exclus = [], TOUR = Math.PI * 2;
+    function norm(x) { x %= TOUR; return x < 0 ? x + TOUR : x; }
+    nd.enfants.forEach(function (c) {
+      if (c.sp) return;
+      var angs = []; (function m(q) { var Q = B.pos[q.id]; if (Math.hypot(Q.x - P.x, Q.y - P.y) > 1) angs.push(Math.atan2(Q.y - P.y, Q.x - P.x)); if (!q.sp) q.enfants.forEach(m); })(c);
+      if (!angs.length) return;
+      var a0 = angs[0], lo = 0, hi = 0; // étendue angulaire autour de la direction de la sous-question
+      angs.forEach(function (x) { var d = Math.atan2(Math.sin(x - a0), Math.cos(x - a0)); lo = Math.min(lo, d); hi = Math.max(hi, d); });
+      exclus.push([norm(a0 + lo - 0.3), hi - lo + 0.6]);
+    });
+    var angles = null;
+    if (exclus.length && n) {
+      var pasA = TOUR / 720, libres = [], depart = norm(dir + Math.PI); // on parcourt le tour depuis l'arrière (branche d'arrivée)
+      for (var j = 0; j < 720; j++) {
+        var x0 = norm(depart + j * pasA), pris = exclus.some(function (e) { return norm(x0 - e[0]) < e[1]; });
+        if (!pris) libres.push(depart + j * pasA);
+      }
+      if (libres.length * pasA >= n * 0.35) { // assez de place : espèces réparties sur les secteurs libres
+        var ordre = fs.slice().sort(function (u, v) { var pu = B.pos[u.id], pv = B.pos[v.id]; return norm(Math.atan2(pu.y - P.y, pu.x - P.x) - depart) - norm(Math.atan2(pv.y - P.y, pv.x - P.x) - depart); });
+        angles = {}; ordre.forEach(function (f, i) { angles[f.id] = libres[Math.min(libres.length - 1, Math.floor((i + 0.5) / n * libres.length))]; });
+        if (!plein) { r = Math.max(rmin, r * 0.8); rx = ry = r; }
+      }
+    }
     fs.forEach(function (f, i) {
-      var a = dir + (n > 1 ? (i - (n - 1) / 2) * span / (n - 1) : 0);
+      var a = angles ? angles[f.id] : dir + (n > 1 ? (i - (n - 1) / 2) * span / (n - 1) : 0);
       var x = P.x + Math.cos(a) * rx, y = P.y + Math.sin(a) * ry;
       a = Math.atan2(y - P.y, x - P.x);
       L.pos[f.id] = { x: x, y: y, s: s, r: B.pos[f.id].r, a: B.pos[f.id].a, d: Math.PI / 2 }; // étiquettes sous les ronds
@@ -1292,8 +1317,32 @@
     return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
   }
 
+  // Bloqué plus de 3,5 s sur une question : son « ? » (sur la carte et en bas) se met à gigoter
+  var blocage = { nd: null, minut: 0, raf: 0 };
+  function poserGigote(nd, rot, ech) {
+    var b = elems[nd.id].g.querySelector('.bouton-aide'), P = b && b.getAttribute('transform').match(/translate\([^)]*\)/);
+    if (b && P) b.setAttribute('transform', P[0] + (rot ? ' rotate(' + (rot * 180 / Math.PI).toFixed(1) + ') scale(' + ech.toFixed(3) + ')' : ''));
+    if (GL && GL.actif() && GL.gigoter) GL.gigoter(nd.id, rot, ech);
+  }
+  function surveillerBlocage(nd) {
+    clearTimeout(blocage.minut); cancelAnimationFrame(blocage.raf);
+    if (blocage.nd) poserGigote(blocage.nd, 0, 1);
+    blocage.nd = nd; classe('bloque', false);
+    if (!nd || mouvReduit) return;
+    blocage.minut = setTimeout(function () {
+      classe('bloque', true);
+      var t0 = performance.now(), K = [[0, 0, 1], [.06, -14, 1.1], [.12, 11, 1.1], [.18, -8, 1.06], [.24, 5, 1.03], [.30, 0, 1], [1, 0, 1]];
+      (function pas() {
+        var u = ((performance.now() - t0) / 2600) % 1, i = 0; while (K[i + 1][0] < u) i++;
+        var a = K[i], b = K[i + 1], f = (u - a[0]) / (b[0] - a[0]), e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+        poserGigote(nd, (a[1] + (b[1] - a[1]) * e) * Math.PI / 180, a[2] + (b[2] - a[2]) * e);
+        blocage.raf = requestAnimationFrame(pas);
+      })();
+    }, 3500);
+  }
   function selectionnerQuestion(nd, glisser) {
     marquerDemarre();
+    surveillerBlocage(nd);
     selection = nd; marquerChemin(nd); majAriane(nd); fermerFiche(); surbrillanceSosies(null);
     classe('esp-sel', false);
     if (elems[nd.id].rep) elems[nd.id].rep.classList.toggle('rep-arrivee', !glisser); // sans trajet : la réponse d'arrivée s'efface tout de suite
@@ -1329,6 +1378,7 @@
     })();
   }
   function selectionnerEspece(id, voler, glisser) {
+    surveillerBlocage(null);
     marquerDemarre(); signalTuto('espece');
     var nd = parId['sp:' + id]; if (!nd) return;
     if (!dansFocus(nd)) appliquerFocus(null);
@@ -1365,7 +1415,6 @@
   $('#ariane').addEventListener('click', function (e) {
     var b = e.target.closest('[data-id]'); if (!b) return;
     var nd = parId[b.getAttribute('data-id')];
-    if (nd && nd.prof === 0) { quitterFocus(); return; }
     activerNoeud(b.getAttribute('data-id'));
   });
   $('#quitter-focus').addEventListener('click', quitterFocus);
@@ -1384,14 +1433,9 @@
       h = '<div class="volet-vide"><div class="v-fond"></div><div class="v-poignee"></div><div class="v-invite">Touchez une question ou une espèce</div><div class="v-leg">' +
         ['comestible', 'sans-interet', 'toxique', 'mortel'].map(function (s) { return '<span><i style="background:' + STATUTS[s].couleur + '"></i>' + STATUTS[s].court + '</span>'; }).join('') + '</div></div>';
     } else if (!selection.sp) {
-      var q = selection.q, n = selection.enfants.length;
       h = '<div class="volet-q"><div class="v-fond"></div>' +
-        '<button class="v-rond aide" style="left:7%;top:26px" data-act="aide" aria-label="Comment regarder ?" title="Comment regarder ?">?</button>' +
-        (selection.parent ? '<button class="v-rond" style="right:7%;top:26px" data-act="haut" aria-label="Question précédente">↑<br>HAUT</button>' : '') +
-        '<div class="vq-corps"><div class="vq-groupe">' + escHTML((q.groupe || (selection.prof === 0 ? 'Départ' : 'Question')).toUpperCase()) + '</div><div class="vq-q">' + escHTML(q.question) + '</div>' +
-        '</div><div class="vq-reps" role="group" aria-label="Réponses">' + selection.enfants.map(function (c) {
-          return '<button class="vq-rep" data-act="rep" data-rep="' + c.id + '"><b class="vq-num">' + (selection.enfants.indexOf(c) + 1) + '</b><span>' + escHTML(c.court) + '</span><small>' + (c.sp ? '' : c.nF) + '</small></button>';
-        }).join('') + '</div></div>';
+        '<button class="v-rond aide" data-act="aide" aria-label="Comment regarder ? Plus d\'info sur la question" title="Comment regarder ?">?</button>' +
+        '<button class="vq-info" data-act="aide">Plus d\'info sur la question ?</button></div>';
     } else {
       var sp = selection.sp, st = STATUTS[sp.statut], c = carnet[sp.id] || null;
       var conf = (sp.confusions || []).filter(function (x) { return ESP[x]; });
@@ -1421,8 +1465,8 @@
       [].forEach.call(v.querySelectorAll('.v-rond'), function (b, i) { b.animate([{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { duration: 300, delay: 120 + i * 60, easing: e, fill: 'backwards' }); });
       mont(v.querySelector('.vs-corps'), 8, 90);
     } else {
-      mont(v.querySelector('.vq-corps'), 10, 0);
-      [].forEach.call(v.querySelectorAll('.vq-rep'), function (b, i) { b.animate([{ opacity: 0, transform: 'translateY(10px) scale(.92)' }, { opacity: 1, transform: 'none' }], { duration: 280, delay: 80 + i * 45, easing: 'ease-out', fill: 'backwards' }); });
+      var qa = v.querySelector('.v-rond.aide'); if (qa) qa.animate([{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { duration: 300, easing: e });
+      mont(v.querySelector('.vq-info'), 6, 120);
     }
   }
   $('#volet').addEventListener('click', function (e) {
@@ -1659,6 +1703,7 @@
   }
   var aideNd = null;
   function ouvrirAide(nd) {
+    surveillerBlocage(null);
     if (!nd || nd.sp) return;
     aideNd = nd;
     var q = nd.q, ex = exemplesAide(nd), court = ex.every(function (e) { return e.enfant.reponse.length < 60; }) && ex.length > 1;
@@ -2146,7 +2191,7 @@
   /* ======================= Boutons, légende ======================= */
   $('#zoom-plus').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1.8); });
   $('#zoom-moins').addEventListener('click', function () { var T = taille(); zoomerEnAnime(T.w / 2, T.h / 2, 1 / 1.8); });
-  $('#recentrer').addEventListener('click', function () { quitterFocus(); reinitDepart(); }); // recentre, désélectionne tout et remet « Démarrer »
+  $('#recentrer').addEventListener('click', function () { quitterFocus(); recentrer(); reinitDepart(); }); // recentre, désélectionne tout et remet « Démarrer »
   $('#legende-statuts').innerHTML = ORDRE_STATUTS.map(function (s) {
     var st = STATUTS[s];
     return '<li><svg width="34" height="34" viewBox="-17 -17 34 34" aria-hidden="true"><circle r="12" fill="' + st.clair + '" stroke="' + st.couleur + '" stroke-width="3" stroke-dasharray="' + (st.dash ? st.dash.split(' ').map(function (v) { return v / 3; }).join(' ') : '') + '"/>' + (s === 'mortel' ? '<circle r="15.5" fill="none" stroke="' + st.couleur + '" stroke-width="1.4"/>' : '') + '<g transform="translate(-7 -7) scale(.58)">' + '<circle cx="12" cy="12" r="12" fill="' + st.couleur + '"/>' + ICONES[s] + '</g></svg> <span><strong>' + st.label + '</strong><br>' + {
@@ -2251,14 +2296,28 @@
   var ETAPES_TUTO = [
     { titre: 'Bienvenue dans mycélium', texte: 'Identifions un champignon ensemble. Cela prend moins d\'une minute.', ok: 'C\'EST PARTI' },
     { titre: 'Démarrez', texte: 'Touchez « Démarrer l\'identification ».', cible: function () { var b = $('#commencer'); return b && !b.hidden ? b : null; }, attend: 'demarre' },
-    { titre: 'Répondez aux questions', texte: 'Touchez la réponse qui décrit votre champignon, question après question, jusqu\'à une espèce.<br><small>Pas de champignon sous la main ? Prenez un exemple.</small>',
-      cible: function () { return $('#volet .vq-reps'); }, attend: 'espece', autre: 'PRENDRE UN EXEMPLE', faireAutre: function () { selectionnerEspece('boletus-edulis', true); } },
+    { titre: 'Répondez sur la carte', texte: 'Touchez sur la carte le numéro de la réponse qui décrit votre champignon, question après question, jusqu\'à une espèce. Bloqué ? Le « ? » explique comment regarder.<br><small>Pas de champignon sous la main ? Prenez un exemple.</small>',
+      cible: reponsesSurCarte, attend: 'espece', autre: 'PRENDRE UN EXEMPLE', faireAutre: function () { selectionnerEspece('boletus-edulis', true); } },
     { titre: 'Votre espèce', texte: 'Touchez « FICHE » pour tout savoir : critères, saison, sosies à ne pas confondre.', cible: function () { return $('#volet [data-act="fiche"]'); }, attend: 'fiche', ok: 'SUIVANT' },
     { titre: 'Trouvé !', texte: 'Vous l\'avez trouvé ? Touchez l\'étoile : il rejoint votre carnet.', cible: function () { return $('#fiche').hidden ? $('#volet [data-act="trouve"]') : $('#fiche [data-act="trouve"]'); }, attend: 'trouve', ok: 'SUIVANT' },
     { titre: 'Mangé !', texte: function () { return selection && selection.sp && selection.sp.statut === 'comestible' ? 'Pour une espèce comestible, touchez « Mangé ! » une fois dégustée.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>' : 'Pour une espèce comestible, un bouton « Mangé ! » apparaît à côté de l\'étoile.<br><small>Ne mangez jamais un champignon sans l\'avoir fait vérifier par un pharmacien ou un mycologue.</small>'; },
       cible: function () { return $('#fiche').hidden ? $('#volet [data-act="mange"]') : $('#fiche [data-act="mange"]'); }, attend: 'mange', ok: 'SUIVANT' },
     { titre: 'C\'est tout !', texte: 'Retrouvez vos trouvailles et vos statistiques dans CARNET. Ce guide se relance depuis les réglages (roue dentée en haut à gauche).', ok: 'TERMINER', avant: function () { fermerFiche(); } }
   ];
+  // Zone de l'écran occupée par les réponses de la question en cours (pour l'éclairer pendant le guide)
+  function reponsesSurCarte() {
+    if (!selection || selection.sp) return null;
+    var T = taille(), x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    selection.enfants.forEach(function (c) {
+      var o = elems[c.id]; if (!o.rep || o.rep.style.display === 'none') return;
+      var m = /translate\(([-\d.]+) ([-\d.]+)\)/.exec(o.rep.getAttribute('transform') || ''); if (!m) return;
+      var x = T.l + cam.x + m[1] * cam.k, y = T.t + cam.y + m[2] * cam.k;
+      x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+    });
+    if (x0 > x1) return null;
+    x0 = Math.max(4, x0 - 60); x1 = Math.min(window.innerWidth - 4, x1 + 60); y0 = Math.max(4, y0 - 22); y1 = y1 + 40;
+    return { getBoundingClientRect: function () { return { left: x0, top: y0, right: x1, bottom: y1, width: x1 - x0, height: y1 - y0 }; } };
+  }
   function lancerTuto() {
     stockage(CLE_TUTO, '1');
     tuto = { i: 0 }; $('#tuto').hidden = false; etapeTuto(0);
@@ -2300,7 +2359,7 @@
     if (t === 'passer') finirTuto(); else if (t === 'ok') { tuto.att = false; etapeTuto(tuto.i + 1); } else if (t === 'autre' && E.faireAutre) E.faireAutre();
   });
   $('#relancer-tuto').addEventListener('click', function () {
-    montrerVue('carte'); quitterFocus(); reinitDepart();
+    montrerVue('carte'); quitterFocus(); recentrer(); reinitDepart();
     setTimeout(lancerTuto, 500);
   });
   // Après l'avertissement (ou directement) : le mycélium pousse, puis le guide s'ouvre la première fois

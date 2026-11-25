@@ -9,12 +9,12 @@ Identifiez les champignons de France en explorant une carte, même hors ligne.
 ## Description complète (4000 caractères max)
 mycélium transforme la clé d'identification des champignons en une carte que l'on explore du bout du doigt.
 
-On part de la forme générale du champignon. On touche une question (« Que voit-on sous le chapeau ? »), on choisit la réponse qui correspond, et la carte glisse le long de la branche jusqu'à la question suivante… jusqu'à l'espèce.
+On touche « Démarrer l'identification », puis on répond directement sur la carte : la forme générale, ce qu'on voit sous le chapeau, la couleur de la sporée… À chaque réponse, la carte glisse le long de la branche jusqu'à la question suivante, et ainsi jusqu'à l'espèce. Un court tutoriel guide la première identification.
 
 278 ESPÈCES DE FRANCE
 • 76 espèces principales et 202 espèces secondaires
 • Fiches complètes : critères clés, habitat, saison, sporée, toxicité
-• 233 photos (Wikimedia Commons) et des schémas pour chaque espèce
+• 276 photos (Wikimedia Commons) et des schémas pour chaque espèce
 
 NE PAS CONFONDRE
 • Les sosies sont reliés sur la carte
@@ -23,11 +23,14 @@ NE PAS CONFONDRE
 
 APPRENDRE À REGARDER
 • Chaque question a sa page « Comment regarder ? » : un schéma et une vraie photo par réponse (lames, tubes, aiguillons, plis, volve…)
+• Hésitant sur une question ? Le « ? » vous fait signe
 
 SUR LE TERRAIN
 • Fonctionne entièrement hors ligne : tout est dans l'application
 • Filtre par mois de cueillette
-• Carnet : notez vos trouvailles (« Trouvé ! ») et, pour les comestibles vérifiés, « Mangé ! » ; export et import du carnet
+• Carnet : notez vos trouvailles (« Trouvé ! ») et, pour les comestibles vérifiés, « Mangé ! »
+• Statistiques : part de la carte trouvée, découvertes au fil des mois, jours de cueillette
+• Vue d'ensemble : vos espèces trouvées entourées sur la carte ; export et import du carnet
 
 RESPECT DE LA VIE PRIVÉE
 • Aucun compte, aucune publicité, aucune donnée collectée

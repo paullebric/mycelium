@@ -1,7 +1,7 @@
 # Publier mycélium sur le Play Store, pas à pas
 
 Le Play Store n'accepte plus les fichiers `.apk` pour une nouvelle app : il faut envoyer un **`.aab`** (Android App Bundle).
-Il est prêt : `mycelium-1.1.aab` (cible Android 16, comme l'exige Google en 2026).
+Il est prêt : `mycelium-1.15.aab` (version 1.15, versionCode 16, cible Android 16 comme l'exige Google en 2026).
 
 Tout se fait sur ordinateur, sur **https://play.google.com/console**.
 
@@ -50,7 +50,7 @@ Menu de gauche : **Règles et programmes → Contenu de l'application**. Chaque 
 - Nom, description courte, description complète : copier depuis `play-store/textes-fiche.md`.
 - Icône : `play-store/icone-512.png`
 - Image de présentation : `play-store/banniere-1024x500.png`
-- Captures d'écran téléphone : les 8 fichiers `play-store/capture-*.png` (2 minimum).
+- Captures d'écran téléphone : les 8 fichiers `play-store/capture-*.png` (1080 × 1920, dans l'ordre 1 → 8 : carte, question, espèces, espèce, fiche, sosies, « Comment regarder ? », carnet).
 - Puis **Paramètres de la fiche** : catégorie **Éducation**, e-mail de contact, site web `https://paullebric.github.io/mycelium/`.
 
 ---
@@ -62,8 +62,8 @@ Le test interne n'a **pas d'examen** par Google (ou très court) : idéal pour s
 1. **Tester → Test interne → Testeurs → Créer une liste d'adresses e-mail**, par ex. « famille ». Ajouter les adresses **Gmail** (comptes Google utilisés sur leurs téléphones). Enregistrer et cocher la liste.
 2. **Test interne → Créer une release**.
 3. Signature : Google propose **« Signature d'application par Google Play »** → **Accepter** (Google garde la clé de distribution ; notre clé `signature/` devient la « clé d'importation »).
-4. **Importer** le fichier `mycelium-1.1.aab`.
-5. Nom de la release : `1.1` ; notes : « Première version de test ». → **Suivant → Enregistrer et publier**.
+4. **Importer** le fichier `mycelium-1.15.aab`.
+5. Nom de la release : `1.15` ; notes : « Première version de test ». → **Suivant → Enregistrer et publier**.
 6. Onglet **Testeurs** → **« Copier le lien »** : c'est le **lien d'invitation** à envoyer aux testeurs.
 
 **Côté testeur** : ouvrir le lien **sur son téléphone, connecté au même compte Gmail que celui ajouté à la liste** → « Devenir testeur » → « Télécharger sur Google Play ». Les mises à jour arrivent ensuite automatiquement par le Play Store.

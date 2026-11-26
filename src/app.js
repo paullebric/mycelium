@@ -710,8 +710,8 @@
   // Culling : ce qui est loin de l'écran n'est plus du tout traité par le navigateur (display:none).
   // La zone gardée couvre l'écran et sa marge (le SVG déborde d'une demi-largeur de chaque côté pour les gestes).
   function majCulling() {
-    var T = taille(), k = cam.k;
-    var vx0 = (-T.w - cam.x) / k, vx1 = (2 * T.w - cam.x) / k, vy0 = (-T.h - cam.y) / k, vy1 = (2 * T.h - cam.y) / k;
+    var T = taille(), k = cam.k, mg = enUltra() ? 0.35 : 1; // marge préparée hors écran : un écran (0,35 en ultra-économie)
+    var vx0 = (-mg * T.w - cam.x) / k, vx1 = ((1 + mg) * T.w - cam.x) / k, vy0 = (-mg * T.h - cam.y) / k, vy1 = ((1 + mg) * T.h - cam.y) / k;
     noeuds.forEach(function (nd) {
       var o = elems[nd.id], p = courant.pos[nd.id], m = (nd.sp ? 260 : 220) * p.s;
       var dehors = p.x + m < vx0 || p.x - m > vx1 || p.y + m < vy0 || p.y - m > vy1;
@@ -1467,7 +1467,7 @@
   }
   // Entrée du volet quand la sélection change (pas quand il est seulement rafraîchi)
   function animerVolet(v) {
-    if (mouvReduit || !document.body.animate || !selection) return;
+    if (mouvReduit || enUltra() || !document.body.animate || !selection) return;
     var e = 'cubic-bezier(.2,.8,.3,1.15)', mont = function (n, d, dl) { if (n) n.animate([{ opacity: 0, transform: 'translateY(' + d + 'px)' }, { opacity: 1, transform: 'none' }], { duration: 320, delay: dl, easing: 'ease-out', fill: 'backwards' }); };
     if (selection.sp) {
       var ph = v.querySelector('.v-photo');
@@ -2253,14 +2253,18 @@
   // Économie : carte en résolution réduite et effets décoratifs coupés (réponses en éventail, pulsation des mortels,
   // trait des sosies, « ? » de la carte qui gigote, fondus). En automatique, l'app mesure la fluidité des trajets
   // animés et passe d'elle-même en économie si les images sont trop lentes (choix gardé pour les prochains lancements).
-  var qualite = ['auto', 'haute', 'eco'].indexOf(stockage('mycelium-qualite')) >= 0 ? stockage('mycelium-qualite') : 'auto';
-  var ecoAuto = stockage('mycelium-qualite-auto') === 'eco';
-  function enEco() { return qualite === 'eco' || (qualite === 'auto' && ecoAuto); }
+  // Ultra-économie : en plus, carte en 1x, fond en courbes de niveau masqué, photos de la carte plus petites,
+  // moins d'éléments préparés hors de l'écran et volet sans animation.
+  var qualite = ['auto', 'haute', 'eco', 'ultra'].indexOf(stockage('mycelium-qualite')) >= 0 ? stockage('mycelium-qualite') : 'auto';
+  var niveauAuto = ['eco', 'ultra'].indexOf(stockage('mycelium-qualite-auto')) >= 0 ? stockage('mycelium-qualite-auto') : '';
+  function niveauQualite() { var q = qualite === 'auto' ? niveauAuto : qualite; return q === 'ultra' ? 2 : q === 'eco' ? 1 : 0; }
+  function enEco() { return niveauQualite() >= 1; }
+  function enUltra() { return niveauQualite() >= 2; }
   function effetsReduits() { return mouvReduit || enEco(); }
   var mesures = { vols: 0, images: [] };
   function mesurerFluidite() {
-    if (qualite !== 'auto' || ecoAuto || !GL || !GL.actif()) return;
-    if (++mesures.vols < 2) return; // le premier trajet charge photos et textes : on ne le compte pas
+    if (qualite !== 'auto' || niveauAuto === 'ultra' || !GL || !GL.actif()) return;
+    if (++mesures.vols < 2) return; // le premier trajet (et le premier après un changement) charge photos et textes : non compté
     var l = performance.now();
     (function pas(n) {
       mesures.images.push(n - l); l = n;
@@ -2269,19 +2273,23 @@
       if (total < 1500) return; // moins de 1,5 s de trajet mesurée : on attend d'autres trajets
       var t = mesures.images.slice().sort(function (a, b) { return a - b; }), p75 = t[Math.floor(t.length * 0.75)];
       mesures.images = [];
-      if (p75 > 24) { ecoAuto = true; stockage('mycelium-qualite-auto', 'eco'); appliquerQualite(); } // un quart des images sous ~40 images/s : saccades visibles
+      if (p75 > 24) { // un quart des images sous ~40 images/s : saccades visibles → un cran d'économie de plus
+        niveauAuto = niveauAuto === 'eco' ? 'ultra' : 'eco'; stockage('mycelium-qualite-auto', niveauAuto);
+        mesures.vols = 0; appliquerQualite();
+      }
     })(l);
   }
   function appliquerQualite() {
-    if (GL && GL.regler) GL.regler(enEco());
+    if (GL && GL.regler) GL.regler(niveauQualite());
+    if (typeof gCourbes !== 'undefined') gCourbes.style.display = enUltra() ? 'none' : '';
     var s = $('#qualite'); if (s) s.value = qualite;
-    var e = $('#qualite-etat'); if (e) e.textContent = qualite === 'auto' ? (ecoAuto ? 'économie activée (téléphone moins rapide)' : 'haute qualité (fluide sur cet appareil)') : '';
+    var e = $('#qualite-etat'); if (e) e.textContent = qualite === 'auto' ? (niveauAuto === 'ultra' ? 'ultra-économie activée (téléphone peu rapide)' : niveauAuto === 'eco' ? 'économie activée (téléphone moins rapide)' : 'haute qualité (fluide sur cet appareil)') : '';
   }
 
   /* ======================= Rendu WebGL ======================= */
   if (window.installerRenduGL) {
     GL = window.installerRenduGL({
-      mouvReduit: mouvReduit, eco: enEco, noeuds: noeuds, parId: parId, elems: elems, paires: paires, elSosies: elSosies, STATUTS: STATUTS, PHOTOS: PHOTOS,
+      mouvReduit: mouvReduit, eco: niveauQualite, noeuds: noeuds, parId: parId, elems: elems, paires: paires, elSosies: elSosies, STATUTS: STATUTS, PHOTOS: PHOTOS,
       illustration: illustration, mondeSVG: monde, gCourbes: gCourbes, gRepsFond: gRepsFond, cercleP: cercleP, titreP: titreP,
       zoneCarte: zoneCarte, taille: taille,
       cam: function () { return cam; }, courant: function () { return courant; },
@@ -2403,7 +2411,7 @@
   });
   $('#qualite').addEventListener('change', function () {
     qualite = this.value; stockage('mycelium-qualite', qualite);
-    if (qualite !== 'auto') { ecoAuto = false; stockage('mycelium-qualite-auto', ''); mesures = { vols: 0, images: [] }; }
+    if (qualite !== 'auto') { niveauAuto = ''; stockage('mycelium-qualite-auto', ''); mesures = { vols: 0, images: [] }; }
     appliquerQualite();
   });
   appliquerQualite();
@@ -2431,7 +2439,7 @@
     selectionner: function (id) { selectionnerEspece(id, true); },
     question: function (id) { selectionnerQuestion(parId[id]); },
     pousse: function () { lancerPousse.fait = false; lancerPousse(); },
-    qualite: function () { return { qualite: qualite, ecoAuto: ecoAuto, vols: mesures.vols, images: mesures.images.length }; },
+    qualite: function () { return { qualite: qualite, niveauAuto: niveauAuto, niveau: niveauQualite(), vols: mesures.vols }; },
     aide: function (id) { ouvrirAide(parId[id]); },
     fiche: function (id) { selectionnerEspece(id, false); ouvrirFiche(ESP[id]); },
     vue: montrerVue,

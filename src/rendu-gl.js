@@ -171,7 +171,7 @@
       tex.photos[id] = null;
       var ph = ctx.PHOTOS && ctx.PHOTOS[id];
       var p = ph ? chargerImage(ph.src) : svgVersImage(ctx.illustration(nd.sp, 48), '-48 -48 96 96');
-      p.then(function (im) { tex.photos[id] = textureRonde(PIXI, im, 160); aMettreAJour.add('g:' + nd.id); demander(); }).catch(function () {});
+      p.then(function (im) { tex.photos[id] = textureRonde(PIXI, im, eco >= 2 ? 96 : 160); aMettreAJour.add('g:' + nd.id); demander(); }).catch(function () {});
       return null;
     }
     function majFeuille(nd, ob) {
@@ -535,13 +535,14 @@
     /* ---- démarrage ---- */
     var toile = null;
     // Mode économie : carte calculée en 1,25x au lieu de 2x (environ 2,5 fois moins de pixels), fondus coupés
-    var eco = !!(ctx.eco && ctx.eco());
-    function resCible() { return Math.min(window.devicePixelRatio || 1, eco ? 1.25 : 2); }
+    var eco = ctx.eco ? +ctx.eco() || 0 : 0; // 0 haute, 1 économie, 2 ultra-économie
+    function resCible() { return Math.min(window.devicePixelRatio || 1, [2, 1.25, 1][eco]); }
     var GL = {
       actif: function () { return pret; },
       _debug: function () { return { objs: objs, C: C, monde: monde }; },
       regler: function (e) {
-        eco = !!e; if (!pret) return;
+        eco = +e || 0; if (!pret) return;
+        C.courbes.visible = eco < 2;
         app.renderer.resize(ctx.zoneCarte.clientWidth, ctx.zoneCarte.clientHeight, resCible());
         tout = true; ajusterNettete(0); demander();
       },
@@ -568,6 +569,7 @@
       app.renderer.on && app.renderer.on('resize', demander);
       window.addEventListener('resize', demander);
       document.body.classList.add('mode-gl');
+      C.courbes.visible = eco < 2;
       pret = true; tout = true;
       if (ctx.surPret) ctx.surPret();
       demander();

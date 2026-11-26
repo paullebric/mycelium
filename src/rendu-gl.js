@@ -117,10 +117,22 @@
     try { var essai = document.createElement('canvas'); if (!(essai.getContext('webgl2') || essai.getContext('webgl'))) return null; } catch (e) { return null; }
 
     var app = new PIXI.Application(), pret = false, sale = true, rafId = 0;
-    var monde = new PIXI.Container(), C = {};
-    ['courbes', 'regions', 'aretes', 'cercle', 'titre', 'sosies', 'repsFond', 'noeuds', 'questions', 'reps', 'etiq'].forEach(function (n) { C[n] = new PIXI.Container(); monde.addChild(C[n]); });
+    // Carte « figée » : le monde et chacune de ses couches sont des groupes de rendu. La caméra (position, zoom)
+    // est appliquée par la carte graphique : un trajet ne renvoie aucune géométrie, et un changement dans une
+    // couche (une réponse qui bouge, un rond qui change) ne reconstruit que cette couche.
+    var monde = new PIXI.Container({ isRenderGroup: true }), C = {};
+    ['courbes', 'regions', 'aretes', 'cercle', 'titre', 'sosies', 'repsFond', 'noeuds', 'questions', 'reps', 'etiq'].forEach(function (n) { C[n] = new PIXI.Container({ isRenderGroup: true }); monde.addChild(C[n]); });
     C.noeuds.cullable = false;
     var objs = {}, cles = new WeakMap(), aMettreAJour = new Set(), tout = true;
+    // Paquets : chaque couche est découpée en petits groupes de rendu d'une douzaine de nœuds voisins. Quand un rond
+    // change (niveau de détail au zoom, sélection, arc), seul son paquet est renvoyé à la carte graphique.
+    var IDX = {}; ctx.noeuds.forEach(function (nd, i) { IDX[nd.id] = i; });
+    var paquets = {};
+    function paquet(couche, id) {
+      var k = couche + ':' + Math.floor((IDX[id] || 0) / 12);
+      if (!paquets[k]) { paquets[k] = new PIXI.Container({ isRenderGroup: true }); C[couche].addChild(paquets[k]); }
+      return paquets[k];
+    }
     var tex = { photos: {}, badges: {}, prec: null, etoile: null };
 
     /* ---- correspondance élément SVG -> objet à redessiner ---- */
@@ -158,7 +170,9 @@
     // Changement d'opacité d'un nœud ou d'une branche (filtres, focus) : fondu sur quelques images au lieu d'un saut
     var fondus = new Map();
     function alphaDouce(ob, d, a) {
-      if (!ob.alphaVu || ctx.mouvReduit || eco) { ob.alphaVu = true; d.alpha = a; fondus.delete(d); return; }
+      // Opacité appliquée d'un coup : avec PixiJS, chaque image d'un fondu renverrait toute la géométrie de la
+      // couche à la carte graphique (l'opacité fait partie des sommets). C'était la principale cause de saccades.
+      if (true) { ob.alphaVu = true; d.alpha = a; fondus.delete(d); return; }
       if (Math.abs(d.alpha - a) < 0.01) { d.alpha = a; fondus.delete(d); return; }
       fondus.set(d, a);
     }
@@ -171,7 +185,7 @@
       tex.photos[id] = null;
       var ph = ctx.PHOTOS && ctx.PHOTOS[id];
       var p = ph ? chargerImage(ph.src) : svgVersImage(ctx.illustration(nd.sp, 48), '-48 -48 96 96');
-      p.then(function (im) { tex.photos[id] = textureRonde(PIXI, im, eco >= 2 ? 96 : 160); aMettreAJour.add('g:' + nd.id); demander(); }).catch(function () {});
+      p.then(function (im) { tex.photos[id] = textureRonde(PIXI, im, 160); aMettreAJour.add('g:' + nd.id); demander(); }).catch(function () {});
       return null;
     }
     function majFeuille(nd, ob) {
@@ -260,11 +274,11 @@
       if (nd.sp) {
         ob.forme = new PIXI.Graphics(); ob.anneaux = new PIXI.Graphics();
         ob.c.addChild(ob.forme); ob.c.addChild(ob.anneaux);
-        C.noeuds.addChild(ob.c);
+        paquet('noeuds', nd.id).addChild(ob.c);
       } else {
         ob.pastille = new PIXI.Graphics().circle(0, 0, 11).fill({ color: NUIT }).stroke({ width: 3, color: MENTHE });
         ob.c.addChild(ob.pastille);
-        C.questions.addChild(ob.c);
+        paquet('questions', nd.id).addChild(ob.c);
       }
       return ob;
     }
@@ -285,7 +299,7 @@
       var visiblePossible = n >= 2 || arc;
       if (!ob && !visiblePossible) return;
       var mode = o.modeEtiq + (arc ? '+arc' : '');
-      if (!ob) { ob = objs['e:' + id] = { c: new PIXI.Container(), in: new PIXI.Container(), lignes: [] }; ob.c.addChild(ob.in); C.etiq.addChild(ob.c); }
+      if (!ob) { ob = objs['e:' + id] = { c: new PIXI.Container(), in: new PIXI.Container(), lignes: [] }; ob.c.addChild(ob.in); paquet('etiq', id).addChild(ob.c); }
       if (ob.mode !== mode) { // reconstruire les lignes
         ob.in.removeChildren().forEach(function (x) { x.destroy({ texture: true }); });
         ob.lignes = [];
@@ -311,11 +325,11 @@
     }
 
     /* ---- branches ---- */
-    var kBranches = 0;
+    var kBranches = 0, aFiger = false, minuterieFige = 0;
     function majArete(id) {
       var el = ctx.elems[id].arete, ob = objs['a:' + id];
       if (cache(el)) { if (ob) ob.g.visible = false; return; }
-      if (!ob) { ob = objs['a:' + id] = { g: new PIXI.Graphics() }; C.aretes.addChild(ob.g); }
+      if (!ob) { ob = objs['a:' + id] = { g: new PIXI.Graphics() }; paquet('aretes', id).addChild(ob.g); }
       var d = el.getAttribute('d'), lo = loin(), ch = cl(el, 'chemin'), k = ctx.cam().k;
       var larg = lo ? (ch ? 2.6 : 1.4) / k : +el.getAttribute('stroke-width');
       var cle = d + '|' + larg.toPrecision(2);
@@ -469,9 +483,16 @@
         aMettreAJour.add('cercle'); aMettreAJour.add('titre'); majCourbes(true);
       }
       // en vue lointaine, l'épaisseur des branches suit le zoom (trait fin constant à l'écran)
-      if (loin() && (!kBranches || Math.abs(Math.log(cam.k / kBranches)) > 0.2)) { kBranches = cam.k; ctx.noeuds.forEach(function (nd) { if (nd.parent) aMettreAJour.add('a:' + nd.id); }); }
-      else if (!loin() && kBranches) { kBranches = 0; ctx.noeuds.forEach(function (nd) { if (nd.parent) aMettreAJour.add('a:' + nd.id); }); }
-      majCourbes(false);
+      // Pendant un trajet animé, épaisseur des branches et courbes de niveau restent figées (les recalculer renvoie
+      // des centaines de Ko à la carte graphique) : elles sont mises à jour à l'arrivée.
+      var vol = ctx.enVol && ctx.enVol();
+      if (vol) aFiger = true;
+      else {
+        if (aFiger) { aFiger = false; minuterieFige = setTimeout(demander, 0); }
+        if (loin() && (!kBranches || Math.abs(Math.log(cam.k / kBranches)) > 0.2)) { kBranches = cam.k; ctx.noeuds.forEach(function (nd) { if (nd.parent) aMettreAJour.add('a:' + nd.id); }); }
+        else if (!loin() && kBranches) { kBranches = 0; ctx.noeuds.forEach(function (nd) { if (nd.parent) aMettreAJour.add('a:' + nd.id); }); }
+        majCourbes(false);
+      }
       aMettreAJour.forEach(function (k) {
         var i = k.indexOf(':'), t = i < 0 ? k : k.slice(0, i), id = i < 0 ? null : k.slice(i + 1);
         if (t === 'g') majNoeud(id); else if (t === 'e') majEtiquette(id); else if (t === 'a') majArete(id); else if (t === 'r') majReponse(id);
@@ -490,7 +511,9 @@
       // pendant un geste : quelques textes affinés par image ; pendant un trajet animé : aucun (ré-rasteriser du texte
       // et l'envoyer à la carte graphique coûte cher sur téléphone) — tout est affiné à l'arrivée
       if (!(ctx.enVol && ctx.enVol()) && performance.now() - dernierNet > 200 && ajusterNettete(12)) demander();
-      minuterieNet = setTimeout(function () { ajusterNettete(0); }, 140);         // à l'arrêt : tous
+      minuterieNet = setTimeout(function affiner() { // à l'arrêt : tous, par lots de 20 (pas de pic)
+        if (ajusterNettete(20)) { demander(); minuterieNet = setTimeout(affiner, 16); }
+      }, 140);
     }
 
     /* ---- désignation au doigt : quel élément est sous le point (x, y) ? ---- */
@@ -535,14 +558,45 @@
     /* ---- démarrage ---- */
     var toile = null;
     // Mode économie : carte calculée en 1,25x au lieu de 2x (environ 2,5 fois moins de pixels), fondus coupés
-    var eco = ctx.eco ? +ctx.eco() || 0 : 0; // 0 haute, 1 économie, 2 ultra-économie
-    function resCible() { return Math.min(window.devicePixelRatio || 1, [2, 1.25, 1][eco]); }
+    var eco = ctx.eco ? +ctx.eco() || 0 : 0; // 0 haute, 1 économie
+    function resCible() { return Math.min(window.devicePixelRatio || 1, eco ? 1.25 : 2); }
+    function prechauffer() {}
     var GL = {
       actif: function () { return pret; },
       _debug: function () { return { objs: objs, C: C, monde: monde }; },
+      // Préchargement en arrière-plan : toutes les photos des espèces et toutes les cartes de questions sont créées
+      // et envoyées à la carte graphique pendant que la carte est au repos, par petits lots. Ainsi, une transition
+      // vers une zone jamais vue n'a plus rien à fabriquer (c'était la cause des saccades « de temps en temps »).
+      prechauffer: function () {
+        if (prechauffer.fait) return;
+        if (!pret) { setTimeout(GL.prechauffer, 500); return; }
+        prechauffer.fait = true;
+        var file = ctx.noeuds.slice(), chauffe = new PIXI.Container(); chauffe.alpha = 0.01; chauffe.scale.set(0.01); app.stage.addChild(chauffe);
+        function lot() {
+          if (ctx.enVol && ctx.enVol()) { setTimeout(lot, 300); return; } // jamais pendant un trajet
+          var t0 = performance.now();
+          while (file.length && performance.now() - t0 < 6) {
+            var nd = file.shift(), neuf = !objs['g:' + nd.id], ob = objNoeud(nd);
+            if (neuf) { ob.c.visible = false; aMettreAJour.add('g:' + nd.id); } // placé et affiché par la mise à jour normale
+            if (nd.sp) {
+              var t = photoDe(nd);
+              if (t) { var sp = new PIXI.Sprite(t); sp.width = sp.height = 4; chauffe.addChild(sp); } // un rendu = texture envoyée
+              else if ((nd.__essais = (nd.__essais || 0) + 1) < 40) file.push(nd); // photo pas encore décodée : on repassera
+            } else if (!ob.carte) { construireCarteQ(nd, ob); ob.carte.visible = false; }
+          }
+          sale = true; demander();
+          setTimeout(function () { chauffe.removeChildren().forEach(function (x) { x.destroy(); }); if (file.length) setTimeout(lot, 60); else { chauffe.destroy(); } }, 50);
+        }
+        lot();
+      },
+      // Trait des sosies dévoilé par un cercle qui grandit depuis l'espèce (seul le masque change à chaque image)
+      masqueSosies: function (cx, cy, r) {
+        if (r == null) { if (C.sosies.mask) { var m0 = C.sosies.mask; C.sosies.mask = null; m0.destroy(); } demander(); return; }
+        if (!C.sosies.mask) { var g = new PIXI.Graphics(); g.circle(0, 0, 1).fill(0xffffff); monde.addChild(g); C.sosies.mask = g; }
+        C.sosies.mask.position.set(cx, cy); C.sosies.mask.scale.set(Math.max(0.001, r)); sale = true; demander();
+      },
       regler: function (e) {
         eco = +e || 0; if (!pret) return;
-        C.courbes.visible = eco < 2;
         app.renderer.resize(ctx.zoneCarte.clientWidth, ctx.zoneCarte.clientHeight, resCible());
         tout = true; ajusterNettete(0); demander();
       },
@@ -569,7 +623,6 @@
       app.renderer.on && app.renderer.on('resize', demander);
       window.addEventListener('resize', demander);
       document.body.classList.add('mode-gl');
-      C.courbes.visible = eco < 2;
       pret = true; tout = true;
       if (ctx.surPret) ctx.surPret();
       demander();

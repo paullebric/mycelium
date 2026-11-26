@@ -710,7 +710,7 @@
   // Culling : ce qui est loin de l'écran n'est plus du tout traité par le navigateur (display:none).
   // La zone gardée couvre l'écran et sa marge (le SVG déborde d'une demi-largeur de chaque côté pour les gestes).
   function majCulling() {
-    var T = taille(), k = cam.k, mg = enUltra() ? 0.35 : 1; // marge préparée hors écran : un écran (0,35 en ultra-économie)
+    var T = taille(), k = cam.k, mg = 1; // marge préparée hors écran : un écran de chaque côté
     var vx0 = (-mg * T.w - cam.x) / k, vx1 = ((1 + mg) * T.w - cam.x) / k, vy0 = (-mg * T.h - cam.y) / k, vy1 = ((1 + mg) * T.h - cam.y) / k;
     noeuds.forEach(function (nd) {
       var o = elems[nd.id], p = courant.pos[nd.id], m = (nd.sp ? 260 : 220) * p.s;
@@ -1052,6 +1052,18 @@
   }
   function tracerSosies(liste, id) {
     if (effetsReduits() || !liste.length) return;
+    if (GL && GL.actif() && GL.masqueSosies) { // WebGL : traits entiers, dévoilés par un cercle depuis l'espèce
+      var P = courant.pos['sp:' + id]; if (!P) return;
+      var rMax = 0; liste.forEach(function (p) { var s2 = courant.sos[p.cle]; rMax = Math.max(rMax, Math.hypot(s2[0] - P.x, s2[1] - P.y), Math.hypot(s2[4] - P.x, s2[5] - P.y)); });
+      var t1 = performance.now() + 250, D1 = 650;
+      GL.masqueSosies(P.x, P.y, 0);
+      (function pas1() {
+        var k = Math.max(0, Math.min(1, (performance.now() - t1) / D1)), u = 1 - Math.pow(1 - k, 3);
+        if (k >= 1) { GL.masqueSosies(null); return; }
+        GL.masqueSosies(P.x, P.y, rMax * 1.05 * u); requestAnimationFrame(pas1);
+      })();
+      return;
+    }
     var t0 = performance.now() + 250, D = 650;
     liste.forEach(function (p) { traceSos[p.cle] = { t: 0, depuisB: p.b === id }; elSosies[p.cle].setAttribute('d', dSosie(p, courant.sos[p.cle])); });
     (function pas() {
@@ -1467,7 +1479,7 @@
   }
   // Entrée du volet quand la sélection change (pas quand il est seulement rafraîchi)
   function animerVolet(v) {
-    if (mouvReduit || enUltra() || !document.body.animate || !selection) return;
+    if (mouvReduit || !document.body.animate || !selection) return;
     var e = 'cubic-bezier(.2,.8,.3,1.15)', mont = function (n, d, dl) { if (n) n.animate([{ opacity: 0, transform: 'translateY(' + d + 'px)' }, { opacity: 1, transform: 'none' }], { duration: 320, delay: dl, easing: 'ease-out', fill: 'backwards' }); };
     if (selection.sp) {
       var ph = v.querySelector('.v-photo');
@@ -2253,17 +2265,14 @@
   // Économie : carte en résolution réduite et effets décoratifs coupés (réponses en éventail, pulsation des mortels,
   // trait des sosies, « ? » de la carte qui gigote, fondus). En automatique, l'app mesure la fluidité des trajets
   // animés et passe d'elle-même en économie si les images sont trop lentes (choix gardé pour les prochains lancements).
-  // Ultra-économie : en plus, carte en 1x, fond en courbes de niveau masqué, photos de la carte plus petites,
-  // moins d'éléments préparés hors de l'écran et volet sans animation.
-  var qualite = ['auto', 'haute', 'eco', 'ultra'].indexOf(stockage('mycelium-qualite')) >= 0 ? stockage('mycelium-qualite') : 'auto';
-  var niveauAuto = ['eco', 'ultra'].indexOf(stockage('mycelium-qualite-auto')) >= 0 ? stockage('mycelium-qualite-auto') : '';
-  function niveauQualite() { var q = qualite === 'auto' ? niveauAuto : qualite; return q === 'ultra' ? 2 : q === 'eco' ? 1 : 0; }
+  var qualite = stockage('mycelium-qualite') === 'ultra' ? 'eco' : ['auto', 'haute', 'eco'].indexOf(stockage('mycelium-qualite')) >= 0 ? stockage('mycelium-qualite') : 'auto'; // l'ancien mode ultra devient économie
+  var niveauAuto = ['eco', 'ultra'].indexOf(stockage('mycelium-qualite-auto')) >= 0 ? 'eco' : '';
+  function niveauQualite() { var q = qualite === 'auto' ? niveauAuto : qualite; return q === 'eco' ? 1 : 0; }
   function enEco() { return niveauQualite() >= 1; }
-  function enUltra() { return niveauQualite() >= 2; }
   function effetsReduits() { return mouvReduit || enEco(); }
   var mesures = { vols: 0, images: [] };
   function mesurerFluidite() {
-    if (qualite !== 'auto' || niveauAuto === 'ultra' || !GL || !GL.actif()) return;
+    if (qualite !== 'auto' || niveauAuto === 'eco' || !GL || !GL.actif()) return;
     if (++mesures.vols < 2) return; // le premier trajet (et le premier après un changement) charge photos et textes : non compté
     var l = performance.now();
     (function pas(n) {
@@ -2273,17 +2282,16 @@
       if (total < 1500) return; // moins de 1,5 s de trajet mesurée : on attend d'autres trajets
       var t = mesures.images.slice().sort(function (a, b) { return a - b; }), p75 = t[Math.floor(t.length * 0.75)];
       mesures.images = [];
-      if (p75 > 24) { // un quart des images sous ~40 images/s : saccades visibles → un cran d'économie de plus
-        niveauAuto = niveauAuto === 'eco' ? 'ultra' : 'eco'; stockage('mycelium-qualite-auto', niveauAuto);
+      if (p75 > 24) { // un quart des images sous ~40 images/s : saccades visibles → économie
+        niveauAuto = 'eco'; stockage('mycelium-qualite-auto', niveauAuto);
         mesures.vols = 0; appliquerQualite();
       }
     })(l);
   }
   function appliquerQualite() {
     if (GL && GL.regler) GL.regler(niveauQualite());
-    if (typeof gCourbes !== 'undefined') gCourbes.style.display = enUltra() ? 'none' : '';
     var s = $('#qualite'); if (s) s.value = qualite;
-    var e = $('#qualite-etat'); if (e) e.textContent = qualite === 'auto' ? (niveauAuto === 'ultra' ? 'ultra-économie activée (téléphone peu rapide)' : niveauAuto === 'eco' ? 'économie activée (téléphone moins rapide)' : 'haute qualité (fluide sur cet appareil)') : '';
+    var e = $('#qualite-etat'); if (e) e.textContent = qualite === 'auto' ? (niveauAuto === 'eco' ? 'économie activée (téléphone moins rapide)' : 'haute qualité (fluide sur cet appareil)') : '';
   }
 
   /* ======================= Rendu WebGL ======================= */
@@ -2420,7 +2428,7 @@
     setTimeout(lancerTuto, 500);
   });
   // Après l'avertissement (ou directement) : le mycélium pousse, puis le guide s'ouvre la première fois
-  function apresAccueil() { lancerPousse(); if (stockage(CLE_TUTO) !== '1') setTimeout(lancerTuto, mouvReduit ? 300 : 1800); }
+  function apresAccueil() { setTimeout(function () { if (GL && GL.prechauffer) GL.prechauffer(); }, 1800); lancerPousse(); if (stockage(CLE_TUTO) !== '1') setTimeout(lancerTuto, mouvReduit ? 300 : 1800); }
 
   /* ======================= Démarrage ======================= */
   majAriane(null);

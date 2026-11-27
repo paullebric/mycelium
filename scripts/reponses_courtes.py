@@ -108,6 +108,8 @@ C = {
  "phalles": ["Grand, tête verte", "Petit, pointe orange"],
  "noirs-bois": ["Bois de cerf", "Doigts noirs", "Boule noire dure"],
 }
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cle_ajouts; cle_ajouts.courts(C)  # réponses courtes des espèces ajoutées en v1.22
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cle = json.load(open(os.path.join(root, "data", "cle.json"), encoding="utf-8"))
 err = []

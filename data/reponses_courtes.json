@@ -45,7 +45,8 @@
  "amanites-vaginees": [
   "Gris",
   "Fauve roux",
-  "Orange safran"
+  "Orange safran",
+  "Brun doré, volve grise"
  ],
  "amanites-bulbe": [
   "Rouge, verrues blanches",
@@ -82,7 +83,8 @@
   "Lait rouge vineux",
   "Lait qui jaunit",
   "Lait rouge sang, sur bois",
-  "Lait blanc immuable"
+  "Lait blanc immuable",
+  "Lait orange, sur bois"
  ],
  "lactaires-orange": [
   "Sous épicéas",
@@ -93,7 +95,9 @@
   "Blanc, lames serrées",
   "Blanc, lames espacées",
   "Brun-roux, sous chênes",
-  "Olive-noir, sous bouleaux"
+  "Olive-noir, sous bouleaux",
+  "Gris-vert visqueux",
+  "Blanc taché de rose"
  ],
  "russules": [
   "Rouge vif",
@@ -105,7 +109,8 @@
   "Rouge, rose ou pourpre",
   "Jaune ou ocre",
   "Vert à olive, lisse",
-  "Blanc ou noircissant"
+  "Blanc ou noircissant",
+  "Gris-bleu poudré"
  ],
  "russules-rouges": [
   "Rouge vif, sous hêtres",
@@ -113,7 +118,8 @@
   "Pourpre, odeur de hareng",
   "Brun-rouge, saveur douce",
   "Rose-brun, bord dénudé",
-  "Grand, olive-pourpre"
+  "Grand, olive-pourpre",
+  "Rouge sang, âcre"
  ],
  "russules-jaunes": [
   "Jaune paille, amère",
@@ -162,7 +168,8 @@
  ],
  "touffes-blanches-autres": [
   "Brun-rosé, anneau épais",
-  "Blanc visqueux, sur hêtre"
+  "Blanc visqueux, sur hêtre",
+  "Pied renflé, au sol"
  ],
  "blanche-lames": [
   "Lames décurrentes",
@@ -181,7 +188,11 @@
   "Crème, en corne",
   "Petit éventail brun",
   "Éventail gris velu",
-  "Jaune miel, Midi"
+  "Jaune miel, Midi",
+  "Blanc moucheté, sur saules",
+  "Écailleux, odeur d'anis",
+  "Blanc floconneux, voile",
+  "Crème pâle, en été"
  ],
  "clitocybes": [
   "Orange, lames fourchues",
@@ -199,7 +210,8 @@
   "Roux en entonnoir",
   "Odeur de jasmin",
   "Lames cireuses",
-  "Sous panicauts"
+  "Sous panicauts",
+  "Autres"
  ],
  "hygrophores-pres": [
   "Orange-saumon",
@@ -223,7 +235,8 @@
   "Mèches pourpres",
   "Minuscule parapluie",
   "Cloche grise, en touffes",
-  "Lames très larges"
+  "Lames très larges",
+  "Autres"
  ],
  "tricho-touffes": [
   "Gris-brun, élastique",
@@ -234,14 +247,16 @@
   "Blanc soyeux",
   "Jaune soufre, odeur de gaz",
   "Rouge, rose ou violet",
-  "Brun"
+  "Brun",
+  "Jaune ou vert cireux"
  ],
  "tricho-gris": [
   "Gris souris, sous pins",
   "Gris conique, amer",
   "Olive, odeur de savon",
   "Brun très foncé",
-  "Gris-noir, montagne"
+  "Gris-noir, montagne",
+  "Gris, jaunissant, farine"
  ],
  "tricho-couleurs": [
   "Rouge écarlate",
@@ -250,13 +265,16 @@
   "Rose-lilas, petit",
   "Rose, sous hêtres",
   "Orange-rouge, noircit",
-  "Blanc taché de vineux"
+  "Blanc taché de vineux",
+  "Rouge vif sec"
  ],
  "tricho-bruns": [
   "Pied fin et creux",
   "Pied très enraciné",
   "Gras, pied en massue",
-  "Brun-roux, sous hêtres"
+  "Brun-roux, sous hêtres",
+  "Odeur d'ail, pied noir",
+  "Pied velu, saveur brûlante"
  ],
  "rose": [
   "Blanc mat, farine",
@@ -269,7 +287,8 @@
   "Petit lilas-brun",
   "Printemps, sous rosacées",
   "Automne, dans les bois",
-  "Sur bois mort"
+  "Sur bois mort",
+  "Rose saumon, sur orme"
  ],
  "brune": [
   "Lames qui se détachent",
@@ -286,7 +305,8 @@
  "touffes-brunes-autres": [
   "Hérissé d'écailles",
   "Grand orange doré",
-  "Sur peupliers"
+  "Sur peupliers",
+  "Crème, sur peupliers"
  ],
  "cortinaires": [
   "Fauve orangé",
@@ -297,7 +317,9 @@
   "Violet foncé",
   "Lames rouge sang",
   "Ocre ridé, anneau",
-  "Très grand, brun-violacé"
+  "Très grand, brun-violacé",
+  "Mèches rouge-cuivré",
+  "Visqueux, à bracelets"
  ],
  "inocybes": [
   "Blanc qui rougit",
@@ -313,7 +335,9 @@
   "Petit, anneau",
   "Petit, sur brindilles",
   "Beige, printemps",
-  "Orange-roux, sur bois"
+  "Orange-roux, sur bois",
+  "Jaune d'œuf visqueux",
+  "Pied velours noir"
  ],
  "hebelomes": [
   "Moyen, crème",
@@ -333,7 +357,8 @@
  "coprins-autres": [
   "Noir et blanc (pie)",
   "Petit ocre granuleux",
-  "Minuscule, pelouses"
+  "Minuscule, pelouses",
+  "Gris à poils blancs"
  ],
  "agarics": [
   "Ne jaunit pas, prés",
@@ -365,7 +390,8 @@
   "Marge à lambeaux",
   "Lames qui pleurent",
   "Petit conique, prés",
-  "Lames décurrentes"
+  "Lames décurrentes",
+  "Autres"
  ],
  "gomphides": [
   "Orange-cuivré, pins",
@@ -373,11 +399,14 @@
  ],
  "bolets": [
   "Gluant, avec anneau",
-  "Non"
+  "Non",
+  "Polypore à pied"
  ],
  "suillus-anneau": [
   "Brun, sous pins",
-  "Jaune, sous mélèzes"
+  "Jaune, sous mélèzes",
+  "Gris très gluant, mélèzes",
+  "Pied creux, mélèzes"
  ],
  "bolets-pied": [
   "Pied rugueux",
@@ -390,7 +419,10 @@
  "leccinum-autres": [
   "Orange, bouleaux",
   "Rouge-orangé, trembles",
-  "Brun-rouge, chênes"
+  "Brun-rouge, chênes",
+  "Brun-gris, sous charmes",
+  "Jaune craquelé, chênes",
+  "Orange, pied blanc"
  ],
  "bolets-bleuit": [
   "Ne bleuit pas",
@@ -415,7 +447,8 @@
   "Odeur d'iode",
   "Pied creux cassant",
   "Écailles noires",
-  "Blanchâtre, pins du Midi"
+  "Blanchâtre, pins du Midi",
+  "Autres"
  ],
  "bolets-bleus": [
   "Pores jaunes, brun bai",
@@ -439,7 +472,8 @@
   "Gris, pied rouge, amer",
   "Pied enraciné, amer",
   "Bleu bleuet intense",
-  "Chapeau rose à rouge"
+  "Chapeau rose à rouge",
+  "Autres"
  ],
  "hydnes": [
   "Crème, assez grand",
@@ -449,7 +483,9 @@
  "hydnes-autres": [
   "Grosses écailles brunes",
   "Gouttes rouge sang",
-  "Minuscule, sur cônes"
+  "Minuscule, sur cônes",
+  "Noir-bleuté, chair noire",
+  "Bleu pâle, chair zonée"
  ],
  "chanterelles": [
   "Plis fourchus",
@@ -463,7 +499,8 @@
  "plis-autres": [
   "Jaune, mèches lilas",
   "Violet en massue",
-  "Jaune pâle givré"
+  "Jaune pâle givré",
+  "Trompette gris-noir à plis"
  ],
  "lisse": [
   "Trompette gris-noir",
@@ -484,7 +521,9 @@
   "Tête à « jupe »",
   "Dé à coudre",
   "Selle gris-noir",
-  "Selle brun-roux"
+  "Selle brun-roux",
+  "Dé à coudre lisse",
+  "Coupe gris-noir, pied blanc"
  ],
  "boules": [
   "Blanc, petites perles",
@@ -497,7 +536,8 @@
   "En quille",
   "Petite, sans pied",
   "Base plissée",
-  "Enterrée, noire"
+  "Enterrée, noire",
+  "Autres"
  ],
  "truffes": [
   "Noire, en hiver",
@@ -506,7 +546,8 @@
  "coraux": [
   "Boule de lames",
   "Rameaux dressés",
-  "Massue unique"
+  "Massue unique",
+  "Rosette de lames plates"
  ],
  "ramaires": [
   "Bouts rose-violacé",
@@ -515,7 +556,10 @@
  ],
  "ramaires-autres": [
   "Petits rameaux blancs",
-  "Jaune d'or, sur bois"
+  "Jaune d'or, sur bois",
+  "Rameaux en couronnes",
+  "Rameaux serrés dressés",
+  "Massue blanche ridée"
  ],
  "consoles": [
   "Jaune soufre en étages",
@@ -533,7 +577,8 @@
   "Éventail écailleux",
   "Cascade d'aiguillons",
   "Brun-roux velu",
-  "Petites consoles grises"
+  "Petites consoles grises",
+  "Autres"
  ],
  "consoles-dures": [
   "Sabot de cheval",
@@ -541,12 +586,14 @@
   "Rouge laqué",
   "Marge rouge-orange",
   "Blanc, sur bouleaux",
-  "Pores en labyrinthe"
+  "Pores en labyrinthe",
+  "Autres"
  ],
  "consoles-minces": [
   "Zones multicolores",
   "Blanc bosselé",
-  "Jaune-orange velu"
+  "Jaune-orange velu",
+  "Autres"
  ],
  "gelatineux": [
   "Oreille brune",
@@ -556,7 +603,8 @@
   "Masses noires",
   "Translucide à aiguillons",
   "Cornet rose-orangé",
-  "Chapeau vert gélatineux"
+  "Chapeau vert gélatineux",
+  "Autres"
  ],
  "etranges": [
   "Coupe ou disque",
@@ -565,7 +613,9 @@
   "Étoile rouge (pieuvre)",
   "Étoile brune",
   "Petit nid",
-  "Noir et dur"
+  "Noir et dur",
+  "Petite massue colorée",
+  "Sur une russule pourrie"
  ],
  "coupes": [
   "Orange vif",
@@ -574,7 +624,8 @@
   "Bleu-vert",
   "Grande coupe brune",
   "Coupe sur pied côtelé",
-  "Beige, sur fumier"
+  "Beige, sur fumier",
+  "Autres"
  ],
  "phalles": [
   "Grand, tête verte",
@@ -583,6 +634,103 @@
  "noirs-bois": [
   "Bois de cerf",
   "Doigts noirs",
-  "Boule noire dure"
+  "Boule noire dure",
+  "Doigt noir à long pied"
+ ],
+ "consoles-molles-autres": [
+  "Rosette au pied des pins",
+  "Blanc rosissant",
+  "Coussin qui pleure",
+  "Sur tamaris",
+  "Corail blanc à aiguillons"
+ ],
+ "consoles-dures-autres": [
+  "Pores rougissants",
+  "Sur arbres fruitiers",
+  "Laqué, base des chênes",
+  "Pores en nid d'abeilles",
+  "Sur pins vivants",
+  "Laqué à pied, sapins"
+ ],
+ "consoles-minces-autres": [
+  "Gris très velu",
+  "Lames, sur bouleaux",
+  "Rouge-orangé vif",
+  "Zones ocre",
+  "Lames, bois travaillé",
+  "Pores violets",
+  "Rosettes brunes au sol"
+ ],
+ "polypores-pied": [
+  "Écailleux, sur sclérote",
+  "Pied noir",
+  "Petit, en hiver"
+ ],
+ "bolets-immuables-plus": [
+  "Base du pied rose",
+  "Sombre, sporée pourpre",
+  "Sur un scléroderme"
+ ],
+ "bolets-bleus-plus": [
+  "Rouge framboise",
+  "Pourpre pruineux"
+ ],
+ "coupes-autres": [
+  "Orange qui bleuit",
+  "Enterrée, sous cèdres",
+  "Couronne violacée"
+ ],
+ "boules-plus": [
+  "Longues épines",
+  "Petite, des pelouses",
+  "Grosse, en mosaïque",
+  "Boule sur un pied fin",
+  "Grand pied écailleux"
+ ],
+ "gelatineux-autres": [
+  "Orange sur stérée",
+  "Petites cornes jaunes",
+  "Disques noirs",
+  "Translucide à grains",
+  "Éventail orange à pores"
+ ],
+ "massues": [
+  "Orange, sur chrysalide",
+  "Jaune, dans les marais"
+ ],
+ "clitocybes-plus": [
+  "Gris en coupe",
+  "Minuscule orange",
+  "Minuscule gris-brun",
+  "Blanc ivoire visqueux"
+ ],
+ "tricho-bois-autres": [
+  "Cloche grise, en touffes",
+  "Rose, pied jaune",
+  "Minuscule, sur brindilles",
+  "Jaune à mèches brunes"
+ ],
+ "hygrocybes-jaunes": [
+  "Vert perroquet",
+  "Jaune citron",
+  "Petit jaune orangé",
+  "Jaune conique"
+ ],
+ "noire-plus": [
+  "Bleu-vert visqueux",
+  "Jaune paille, anneau",
+  "Orange, sur copeaux",
+  "Sur crottin",
+  "Conique, pied très long"
+ ],
+ "etoiles": [
+  "Collerette",
+  "Petite, sans collerette",
+  "Bras épais craquelés"
+ ],
+ "nids": [
+  "Strié et velu",
+  "Lisse, en vase",
+  "Jaune, œufs blancs"
  ]
 }

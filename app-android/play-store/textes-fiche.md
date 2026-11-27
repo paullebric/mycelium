@@ -11,10 +11,10 @@ mycélium transforme la clé d'identification des champignons en une carte que l
 
 On touche « Démarrer l'identification », puis on répond directement sur la carte : la forme générale, ce qu'on voit sous le chapeau, la couleur de la sporée… À chaque réponse, la carte glisse le long de la branche jusqu'à la question suivante, et ainsi jusqu'à l'espèce. Un court tutoriel guide la première identification.
 
-278 ESPÈCES DE FRANCE
-• 76 espèces principales et 202 espèces secondaires
+378 ESPÈCES DE FRANCE
+• 76 espèces principales et 302 espèces secondaires
 • Fiches complètes : critères clés, habitat, saison, sporée, toxicité
-• 276 photos (Wikimedia Commons) et des schémas pour chaque espèce
+• Plus de 370 photos (Wikimedia Commons, iNaturalist) et des schémas pour chaque espèce
 
 NE PAS CONFONDRE
 • Les sosies sont reliés sur la carte

@@ -543,6 +543,10 @@ racine = Q("racine", "Quelle est la forme générale du champignon ?", [
   ("Forme étrange : coupe, étoile, cage, œuf, nid…", etranges),
 ], aide="Observez le champignon entier, y compris la base du pied : déterrez-le délicatement.")
 
+# espèces ajoutées en v1.22 (branches décrites dans cle_ajouts.py)
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cle_ajouts; cle_ajouts.appliquer(racine, Q)
+
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 json.dump(racine, open(os.path.join(root, "data", "cle.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("cle.json écrit")

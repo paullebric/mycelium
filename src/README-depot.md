@@ -10,13 +10,13 @@
 
 mycélium présente la clé d'identification des champignons comme une **carte que l'on explore** : on part de la forme générale du champignon, on touche une question, on suit la réponse qui correspond le long de sa branche, jusqu'à l'espèce.
 
-- **278 espèces** de France : 76 principales au centre, 202 secondaires autour.
+- **378 espèces** de France : 76 principales au centre, 302 secondaires autour.
 - **Fiches complètes** : critères clés, habitat, saison, sporée, toxicité, sources.
 - **Sosies** : les confusions possibles sont reliées sur la carte et comparables photo contre photo, avec ce qui les sépare.
 - **« Comment regarder ? »** : chaque question a un schéma et une photo réelle par réponse.
 - **Filtres** par mois de cueillette et par statut. Les espèces mortelles restent toujours affichées.
 - **Carnet** : on note ses trouvailles (« Trouvé ! ») et, pour les comestibles vérifiés, « Mangé ! ». Le carnet s'exporte et s'importe.
-- **Photos** : 233 photos Wikimedia Commons, avec auteur et licence dans chaque fiche.
+- **Photos** : Wikimedia Commons et iNaturalist, avec auteur et licence dans chaque fiche.
 - **Hors ligne** : une fois ouverte une première fois, l'app fonctionne sans réseau, en forêt comprise.
 
 ## Installer l'app
@@ -47,7 +47,7 @@ Pour mettre à jour : regénérer la version (`node build.js --pwa` dans le proj
 ## Sources et crédits
 
 - **Données mycologiques** : guides de référence et articles Wikipédia ; les sources de chaque espèce sont citées dans sa fiche. Les statuts de toxicité sont volontairement prudents.
-- **Photos** : Wikimedia Commons, sous licences CC BY, CC BY-SA ou domaine public. Auteur et licence sont indiqués dans chaque fiche.
+- **Photos** : Wikimedia Commons et iNaturalist, sous licences CC BY, CC BY-SA, CC BY-NC, CC BY-NC-SA ou domaine public (usage non commercial : l'app est gratuite et sans publicité). Auteur et licence sont indiqués dans chaque fiche.
 - **Polices** : Literata et IBM Plex Mono, sous SIL Open Font License.
 
 ## Avertissement

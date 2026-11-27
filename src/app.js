@@ -2226,7 +2226,7 @@
       comestible: 'bon comestible · trait plein, coche'
     }[s] + '</span></li>';
   }).join('');
-  $('#credits').textContent = (PHOTOS ? 'Photos : Wikimedia Commons (licences CC BY, CC BY-SA ou domaine public) ; auteur et licence dans chaque fiche. ' : '') +
+  $('#credits').textContent = (PHOTOS ? 'Photos : Wikimedia Commons et iNaturalist (licences CC BY, CC BY-SA, CC BY-NC, CC BY-NC-SA ou domaine public) ; auteur et licence dans chaque fiche. ' : '') +
     'Polices : Literata et IBM Plex Mono (SIL Open Font License). Rendu de la carte : PixiJS (licence MIT). ' + (D.meta && D.meta.app ? 'Version ' + D.meta.app + ' ' : '') + (D.meta && D.meta.version ? '(données du ' + D.meta.version + ').' : '');
 
   /* ======================= Export SVG (poster) ======================= */

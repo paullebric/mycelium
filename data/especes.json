@@ -254,11 +254,13 @@
   },
   "confusions": [
    "cantharellus-cibarius",
-   "cortinarius-praestans"
+   "cortinarius-praestans",
+   "cortinarius-bolaris"
   ],
   "distinguer": {
    "cantharellus-cibarius": "Le cortinaire a de vraies lames rouille et une sporée rouille ; la girolle des plis épais, sans vraies lames.",
-   "cortinarius-praestans": "Le cortinaire remarquable est très grand (10 à 20 cm), brun-violacé, givré de blanc ; le cortinaire des montagnes, fauve orangé et plus petit."
+   "cortinarius-praestans": "Le cortinaire remarquable est très grand (10 à 20 cm), brun-violacé, givré de blanc ; le cortinaire des montagnes, fauve orangé et plus petit.",
+   "cortinarius-bolaris": "Le cortinaire rougeâtre est couvert de mèches rouge-cuivré sur fond jaune pâle : à rejeter aussi."
   },
   "sources": [
    {
@@ -973,11 +975,13 @@
   },
   "confusions": [
    "tricholoma-portentosum",
-   "tricholoma-terreum"
+   "tricholoma-terreum",
+   "tricholoma-scalpturatum"
   ],
   "distinguer": {
    "tricholoma-portentosum": "Le tricholome tigré a un chapeau gris argenté couvert de mèches sombres et pousse surtout en montagne calcaire ; le petit-gris est fibrilleux, strié de noir, sous les pins.",
-   "tricholoma-terreum": "Le tricholome tigré est grand et trapu, couvert de mèches sombres ; le terreux est petit, gris souris, feutré."
+   "tricholoma-terreum": "Le tricholome tigré est grand et trapu, couvert de mèches sombres ; le terreux est petit, gris souris, feutré.",
+   "tricholoma-scalpturatum": "Le tricholome gravé est plus petit, à fines fibrilles grises, lames jaunissantes, odeur de farine."
   },
   "sources": [
    {
@@ -1090,12 +1094,14 @@
   "confusions": [
    "marasmius-oreades",
    "clitopilus-prunulus",
-   "cuphophyllus-virgineus"
+   "cuphophyllus-virgineus",
+   "hygrophorus-eburneus"
   ],
   "distinguer": {
    "marasmius-oreades": "Le mousseron a des lames espacées non décurrentes et un pied coriace qui se tord ; le clitocybe blanchâtre a des lames serrées décurrentes. Ils poussent dans les mêmes prés.",
    "clitopilus-prunulus": "Le meunier a une sporée rose et une forte odeur de farine ; le clitocybe blanchâtre une sporée blanche, sans odeur de farine.",
-   "cuphophyllus-virgineus": "L'hygrophore a des lames épaisses, espacées, cireuses ; le clitocybe blanchâtre des lames minces et serrées."
+   "cuphophyllus-virgineus": "L'hygrophore a des lames épaisses, espacées, cireuses ; le clitocybe blanchâtre des lames minces et serrées.",
+   "hygrophorus-eburneus": "L'hygrophore ivoire est très visqueux, à lames épaisses et espacées, et pousse sous les hêtres."
   },
   "sources": [
    {
@@ -2877,7 +2883,9 @@
    "chapeau": "#7f7b78",
    "hymenium": "#f3efe6"
   },
-  "confusions": [],
+  "confusions": [
+   "pleurotus-pulmonarius"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Pleurotus ostreatus » (statut vérifié le 23/11/2026)",
@@ -2900,7 +2908,10 @@
    11,
    12
   ],
-  "rang": "principal"
+  "rang": "principal",
+  "distinguer": {
+   "pleurotus-pulmonarius": "Le pleurote pulmonaire est plus pâle (crème) et pousse en été."
+  }
  },
  {
   "id": "kuehneromyces-mutabilis",
@@ -3008,12 +3019,14 @@
   "confusions": [
    "galerina-marginata",
    "hypholoma-fasciculare",
-   "gymnopilus-junonius"
+   "gymnopilus-junonius",
+   "armillaria-gallica"
   ],
   "distinguer": {
    "galerina-marginata": "L'armillaire a une sporée blanche et un anneau blanc cotonneux ; la galère une sporée rouille.",
    "hypholoma-fasciculare": "L'hypholome a des lames jaune-vert, une saveur très amère, une sporée brun-pourpre ; l'armillaire des lames blanchâtres et une sporée blanche.",
-   "gymnopilus-junonius": "La pholiote remarquable a une sporée rouille et une saveur amère ; l'armillaire une sporée blanche."
+   "gymnopilus-junonius": "La pholiote remarquable a une sporée rouille et une saveur amère ; l'armillaire une sporée blanche.",
+   "armillaria-gallica": "L'armillaire bulbeuse pousse isolée ou en petits groupes au sol, avec une base renflée."
   },
   "sources": [
    {
@@ -3295,10 +3308,12 @@
    "epaisseur": 1.2
   },
   "confusions": [
-   "amanita-phalloides"
+   "amanita-phalloides",
+   "russula-parazurea"
   ],
   "distinguer": {
-   "amanita-phalloides": "La phalloïde a un anneau et une volve en sac ; la russule charbonnière n'a ni anneau ni volve et son pied casse comme de la craie."
+   "amanita-phalloides": "La phalloïde a un anneau et une volve en sac ; la russule charbonnière n'a ni anneau ni volve et son pied casse comme de la craie.",
+   "russula-parazurea": "La russule presque bleue a un chapeau gris-bleu comme poudré et des lames cassantes."
   },
   "sources": [
    {
@@ -3527,7 +3542,9 @@
    "chapeau": "#4a4542",
    "feuilles": true
   },
-  "confusions": [],
+  "confusions": [
+   "craterellus-cinereus"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Trompette de la mort » (statut vérifié le 23/11/2026)",
@@ -3548,7 +3565,10 @@
    11,
    12
   ],
-  "rang": "principal"
+  "rang": "principal",
+  "distinguer": {
+   "craterellus-cinereus": "La chanterelle cendrée a des plis gris bien marqués sous le chapeau, et une odeur fruitée."
+  }
  },
  {
   "id": "craterellus-lutescens",
@@ -4081,7 +4101,9 @@
    "epaisseur": 0.9,
    "feuilles": true
   },
-  "confusions": [],
+  "confusions": [
+   "leccinellum-pseudoscabrum"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Bolet rude » (statut vérifié le 23/11/2026)",
@@ -4104,7 +4126,10 @@
    11,
    12
   ],
-  "rang": "principal"
+  "rang": "principal",
+  "distinguer": {
+   "leccinellum-pseudoscabrum": "Le bolet rude des charmes pousse sous les charmes ; sa chair grisonne puis noircit, chapeau bosselé."
+  }
  },
  {
   "id": "suillus-luteus",
@@ -4186,11 +4211,13 @@
   },
   "confusions": [
    "gyromitra-esculenta",
-   "verpa-bohemica"
+   "verpa-bohemica",
+   "verpa-conica"
   ],
   "distinguer": {
    "gyromitra-esculenta": "La morille a des alvéoles et une seule cavité intérieure ; le gyromitre est plissé en cervelle et cloisonné à l'intérieur.",
-   "verpa-bohemica": "La morille a une tête soudée au pied ; la verpe une tête libre et un pied rempli de moelle."
+   "verpa-bohemica": "La morille a une tête soudée au pied ; la verpe une tête libre et un pied rempli de moelle.",
+   "verpa-conica": "La verpe conique a un chapeau lisse (non alvéolé), entièrement libre du pied : toxique."
   },
   "sources": [
    {
@@ -4455,7 +4482,9 @@
    "chapeau": "#ecdcb0",
    "aiguilles": true
   },
-  "confusions": [],
+  "confusions": [
+   "sparassis-brevipes"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Sparassis crépu » (statut vérifié le 23/11/2026)",
@@ -4476,7 +4505,10 @@
    11,
    12
   ],
-  "rang": "principal"
+  "rang": "principal",
+  "distinguer": {
+   "sparassis-brevipes": "Le sparassis lamelleux a des lames larges et plates, au pied des chênes ou des sapins."
+  }
  },
  {
   "id": "laetiporus-sulphureus",
@@ -4612,10 +4644,12 @@
    11
   ],
   "confusions": [
-   "amanita-phalloides"
+   "amanita-phalloides",
+   "amanita-ceciliae"
   ],
   "distinguer": {
-   "amanita-phalloides": "L'amanite vaginée n'a pas d'anneau et sa marge est striée ; la phalloïde a un anneau et une marge lisse."
+   "amanita-phalloides": "L'amanite vaginée n'a pas d'anneau et sa marge est striée ; la phalloïde a un anneau et une marge lisse.",
+   "amanita-ceciliae": "L'amanite impériale est plus grande, brun doré, avec des plaques grises sur le chapeau et une volve friable."
   },
   "sources": [
    {
@@ -6649,7 +6683,8 @@
    12
   ],
   "confusions": [
-   "hygrocybe-conica"
+   "hygrocybe-conica",
+   "hygrocybe-coccinea"
   ],
   "sources": [
    {
@@ -6660,7 +6695,8 @@
    }
   ],
   "distinguer": {
-   "hygrocybe-conica": "L'hygrocybe conique, plus petit et pointu, noircit en vieillissant ; l'hygrocybe ponceau ne noircit pas."
+   "hygrocybe-conica": "L'hygrocybe conique, plus petit et pointu, noircit en vieillissant ; l'hygrocybe ponceau ne noircit pas.",
+   "hygrocybe-coccinea": "L'hygrocybe cochenille est plus petit, à chapeau sec (non visqueux)."
   }
  },
  {
@@ -9754,7 +9790,9 @@
    10,
    11
   ],
-  "confusions": [],
+  "confusions": [
+   "lactarius-controversus"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Lactarius piperatus » (statut vérifié le 23/11/2026)",
@@ -9766,7 +9804,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "lactarius-controversus": "Le lactaire renversé a des lames rosées et pousse sous peupliers et saules."
+  }
  },
  {
   "id": "lactifluus-vellereus",
@@ -10927,7 +10968,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "hortiboletus-rubellus"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Bolet à chair jaune » (statut vérifié le 23/11/2026)",
@@ -10939,7 +10982,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "hortiboletus-rubellus": "Le bolet framboise a un chapeau rouge vif lisse, non craquelé."
+  }
  },
  {
   "id": "xerocomus-subtomentosus",
@@ -11027,7 +11073,8 @@
    12
   ],
   "confusions": [
-   "suillus-bellinii"
+   "suillus-bellinii",
+   "suillus-collinitus"
   ],
   "sources": [
    {
@@ -11042,7 +11089,8 @@
    }
   ],
   "distinguer": {
-   "suillus-bellinii": "Le bolet granulé a un chapeau brun-jaune uniforme ; le bolet de Bellini blanchâtre à centre brun, pied court."
+   "suillus-bellinii": "Le bolet granulé a un chapeau brun-jaune uniforme ; le bolet de Bellini blanchâtre à centre brun, pied court.",
+   "suillus-collinitus": "Le bolet à base rose se reconnaît à la base de son pied rose."
   }
  },
  {
@@ -12349,10 +12397,12 @@
    11
   ],
   "confusions": [
-   "amanita-phalloides"
+   "amanita-phalloides",
+   "lycoperdon-pratense"
   ],
   "distinguer": {
-   "amanita-phalloides": "Couper verticalement : un œuf d'amanite montre la silhouette d'un champignon ; le bovista est blanc et homogène."
+   "amanita-phalloides": "Couper verticalement : un œuf d'amanite montre la silhouette d'un champignon ; le bovista est blanc et homogène.",
+   "lycoperdon-pratense": "La vesse-de-loup des prés a une base stérile séparée de la tête par une cloison."
   },
   "sources": [
    {
@@ -13427,7 +13477,9 @@
    11,
    12
   ],
-  "confusions": [],
+  "confusions": [
+   "naematelia-aurantia"
+  ],
   "sources": [
    {
     "titre": "Wikipédia FR : « Trémelle mésentérique » (statut vérifié le 23/11/2026)",
@@ -13439,7 +13491,10 @@
    {
     "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
-  ]
+  ],
+  "distinguer": {
+   "naematelia-aurantia": "La trémelle orangée est plus orange, plus ferme, et pousse sur la stérée hirsute."
+  }
  },
  {
   "id": "tremella-foliacea",
@@ -15093,10 +15148,12 @@
   ],
   "rang": "secondaire",
   "confusions": [
-   "hygrocybe-punicea"
+   "hygrocybe-punicea",
+   "hygrocybe-acutoconica"
   ],
   "distinguer": {
-   "hygrocybe-punicea": "L'hygrocybe conique a un chapeau pointu qui noircit ; l'hygrocybe ponceau est plus grand, rouge écarlate, et ne noircit pas."
+   "hygrocybe-punicea": "L'hygrocybe conique a un chapeau pointu qui noircit ; l'hygrocybe ponceau est plus grand, rouge écarlate, et ne noircit pas.",
+   "hygrocybe-acutoconica": "L'hygrophore pointu, jaune, ne noircit pas."
   },
   "sources": [
    {
@@ -15107,6 +15164,4793 @@
    },
    {
     "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "daedaleopsis-confragosa",
+  "nom": "Tramète rougissante",
+  "latin": "Daedaleopsis confragosa",
+  "autres_noms": [
+   "Tramète rougissant"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Console mince, zonée de brun-roux",
+   "Pores allongés ou en lames, crème, rougissant au toucher",
+   "Sur saules, aulnes, bouleaux"
+  ],
+  "habitat": "Bois mort ou vivant de feuillus humides",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#9a6a4a",
+   "chapeau2": "#d9c2a4"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "phaeolus-schweinitzii",
+  "nom": "Phéole de Schweinitz",
+  "latin": "Phaeolus schweinitzii",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Non comestible.",
+  "criteres": [
+   "Grande rosette spongieuse brun-roux à marge jaune vif",
+   "Pores jaune-vert brunissant au toucher",
+   "Au pied des pins, souvent sur racines"
+  ],
+  "habitat": "Pied des conifères, surtout pins",
+  "saison": "Juillet à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#8a4a1e",
+   "chapeau2": "#e0b83a"
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "abortiporus-biennis",
+  "nom": "Polypore bisannuel",
+  "latin": "Abortiporus biennis",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau blanchâtre à rosé, irrégulier, souvent en rosette",
+   "Pores blancs labyrinthiques qui rougissent au toucher",
+   "Au sol, sur racines ou souches de feuillus"
+  ],
+  "habitat": "Souches et racines de feuillus",
+  "saison": "Juin à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#e8d6c8",
+   "chapeau2": "#c98a7a"
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Polypore bisannuel » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Polypore_bisannuel"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "pseudoinonotus-dryadeus",
+  "nom": "Polypore larmoyant",
+  "latin": "Pseudoinonotus dryadeus",
+  "autres_noms": [
+   "Inonotus dryadeus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Non comestible.",
+  "criteres": [
+   "Gros coussin épais brun-ocre",
+   "Laisse perler des gouttes ambrées quand il est jeune",
+   "Au pied des chênes vivants"
+  ],
+  "habitat": "Base des chênes",
+  "saison": "Juillet à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#9a6a3a",
+   "chapeau2": "#c99a5a"
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Inonotus dryadeus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Inonotus_dryadeus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "inocutis-tamaricis",
+  "nom": "Polypore du tamaris",
+  "latin": "Inocutis tamaricis",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Non comestible.",
+  "criteres": [
+   "Console brun-roux, velue au-dessus",
+   "Pores brun-jaune",
+   "Uniquement sur tamaris"
+  ],
+  "habitat": "Tamaris, littoral et Midi",
+  "saison": "Août à décembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#8a5226",
+   "chapeau2": "#b8803e"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Inocutis tamaricis » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Inocutis_tamaricis"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hericium-coralloides",
+  "nom": "Hydne corail",
+  "latin": "Hericium coralloides",
+  "autres_noms": [
+   "Hydne rameux"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Rare et protégé dans plusieurs régions : à laisser en place.",
+  "toxicite": null,
+  "criteres": [
+   "Blanc, ramifié comme un corail",
+   "Aiguillons courts pendants au bout des rameaux",
+   "Sur bois mort de hêtre ou de sapin"
+  ],
+  "habitat": "Troncs morts de feuillus et de sapins",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "cascade",
+   "chapeau": "#f4f1ea"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "phellinus-pomaceus",
+  "nom": "Phellin des arbres fruitiers",
+  "latin": "Phellinus pomaceus",
+  "autres_noms": [
+   "Phellinus tuberculosus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Ligneux ; sans intérêt.",
+  "criteres": [
+   "Petite console dure en sabot, grise et fendillée",
+   "Pores bruns très fins",
+   "Sur pruniers, cerisiers, prunelliers"
+  ],
+  "habitat": "Rosacées : pruniers, cerisiers, prunelliers",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#7a7470",
+   "chapeau2": "#7a5a3a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Phellinus tuberculosus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Phellinus_tuberculosus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "ganoderma-resinaceum",
+  "nom": "Ganoderme résineux",
+  "latin": "Ganoderma resinaceum",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Non comestible.",
+  "criteres": [
+   "Grande console brun-rouge laquée, à marge blanche",
+   "Chair brune tendre (annuel)",
+   "À la base des chênes vivants"
+  ],
+  "habitat": "Base des chênes et autres feuillus",
+  "saison": "Juin à décembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#7a2a1e",
+   "chapeau2": "#e8d8b8"
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hexagonia-nitida",
+  "nom": "Polypore nid d'abeilles",
+  "latin": "Hexagonia nitida",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Console brun-roux zonée",
+   "Pores très larges et anguleux, en nid d'abeilles",
+   "Sur chênes verts et chênes du Midi"
+  ],
+  "habitat": "Chênes, région méditerranéenne",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#8a5a32",
+   "chapeau2": "#b88a5a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "porodaedalea-pini",
+  "nom": "Tramète du pin",
+  "latin": "Porodaedalea pini",
+  "autres_noms": [
+   "Phellinus pini"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Ligneux ; sans intérêt.",
+  "criteres": [
+   "Console dure brun sombre, ridée et fendue",
+   "Pores jaunâtres irréguliers",
+   "Sur pins vivants, en hauteur"
+  ],
+  "habitat": "Troncs de pins vivants",
+  "saison": "Toute l'année",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#4a3424",
+   "chapeau2": "#c9a05a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tramète du pin » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tramète_du_pin"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "ganoderma-carnosum",
+  "nom": "Ganoderme du sapin",
+  "latin": "Ganoderma carnosum",
+  "autres_noms": [
+   "Ganoderma atkinsonii"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau brun-noir très laqué",
+   "Un pied latéral laqué",
+   "Sur sapins et souches de conifères, en montagne"
+  ],
+  "habitat": "Conifères, surtout sapins",
+  "saison": "Juin à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#3a1e18",
+   "chapeau2": "#e8d8b8"
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "trametes-hirsuta",
+  "nom": "Tramète hirsute",
+  "latin": "Trametes hirsuta",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Petite console gris-blanc très velue",
+   "Zones peu contrastées, marge souvent brune",
+   "Pores crème ronds"
+  ],
+  "habitat": "Bois mort de feuillus, au soleil",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#c9c2b0",
+   "chapeau2": "#e8e0cc"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Trametes hirsuta » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Trametes_hirsuta"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lenzites-betulina",
+  "nom": "Lenzite du bouleau",
+  "latin": "Lenzites betulina",
+  "autres_noms": [
+   "Trametes betulina"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Console mince zonée de gris, velue",
+   "Dessous à lames (et non à pores)",
+   "Sur bouleaux et autres feuillus"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#a8a296",
+   "chapeau2": "#e8dcc4"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lenzites betulinus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lenzites_betulinus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "trametes-cinnabarina",
+  "nom": "Pycnopore cinabre",
+  "latin": "Trametes cinnabarina",
+  "autres_noms": [
+   "Pycnoporus cinnabarinus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Petite console entièrement rouge-orangé vif",
+   "Pores rouge-orangé",
+   "Sur branches mortes de feuillus, au soleil"
+  ],
+  "habitat": "Bois mort de feuillus (cerisiers, hêtres)",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#e0582a",
+   "chapeau2": "#ef7a3a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pycnoporus cinnabarinus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pycnoporus_cinnabarinus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "trametes-ochracea",
+  "nom": "Tramète zonée",
+  "latin": "Trametes ochracea",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Petite console épaisse, zones ocre et brun-roux",
+   "Surface veloutée",
+   "Pores crème"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#b8823e",
+   "chapeau2": "#e8dcc4"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "gloeophyllum-sepiarium",
+  "nom": "Lenzite des poutres",
+  "latin": "Gloeophyllum sepiarium",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Console brun-roux à marge jaune-orangé",
+   "Dessous à lames épaisses brun-jaune",
+   "Sur bois de conifères travaillé (poutres, piquets)"
+  ],
+  "habitat": "Bois de conifères, souvent travaillé",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#6a3a1e",
+   "chapeau2": "#e0a03a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lenzite des clôtures » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lenzite_des_clôtures"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "trichaptum-abietinum",
+  "nom": "Tramète lilas",
+  "latin": "Trichaptum abietinum",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Petites consoles grises, velues, en groupes",
+   "Pores violets à lilas",
+   "Sur bois mort de conifères"
+  ],
+  "habitat": "Bois mort de sapins et pins",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "console",
+   "chapeau": "#a8a4a0",
+   "chapeau2": "#9a7ab8"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tramète lilas » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tramète_lilas"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "thelephora-terrestris",
+  "nom": "Théléphore terrestre",
+  "latin": "Thelephora terrestris",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Rosettes coriaces brun chocolat, fibreuses",
+   "Bord frangé plus clair",
+   "Au sol, sous les pins, sur sols sableux"
+  ],
+  "habitat": "Sols sableux sous conifères, landes",
+  "saison": "Juillet à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "console",
+   "chapeau": "#5a3a26",
+   "chapeau2": "#8a6a4a"
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Théléphore terrestre » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Théléphore_terrestre"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "polyporus-tuberaster",
+  "nom": "Polypore à sclérote",
+  "latin": "Polyporus tuberaster",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible jeune mais coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau crème couvert d'écailles brunes",
+   "Pores blancs anguleux, pied central",
+   "Pousse d'une grosse masse souterraine (sclérote)"
+  ],
+  "habitat": "Feuillus, au sol ou sur branches enterrées",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#d9b88a",
+   "hymenium": "#f2ead8",
+   "pied": "#e8dcc4",
+   "feuilles": true
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "picipes-badius",
+  "nom": "Polypore bai",
+  "latin": "Picipes badius",
+  "autres_noms": [
+   "Polyporus badius"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau brun-roux lisse et brillant, en entonnoir",
+   "Pores blancs très fins",
+   "Pied court, noir à la base"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Mai à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#7a3a1e",
+   "hymenium": "#f2ead8",
+   "pied": "#3a2a22",
+   "feuilles": true,
+   "bois": true
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Polypore bai » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Polypore_bai"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lentinus-brumalis",
+  "nom": "Polypore d'hiver",
+  "latin": "Lentinus brumalis",
+  "autres_noms": [
+   "Polyporus brumalis"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Petit chapeau brun velouté",
+   "Pores blancs, pied central gris",
+   "En hiver et au printemps, sur branches tombées"
+  ],
+  "habitat": "Branches mortes de feuillus",
+  "saison": "Novembre à mai",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#6a4a32",
+   "hymenium": "#f2ead8",
+   "pied": "#9a8a7a",
+   "feuilles": true,
+   "bois": true,
+   "largeur": 0.7
+  },
+  "mois": [
+   11,
+   12,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "leccinellum-pseudoscabrum",
+  "nom": "Bolet rude des charmes",
+  "latin": "Leccinellum pseudoscabrum",
+  "autres_noms": [
+   "Leccinum carpini"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toujours bien cuire : troubles digestifs s'il est cru ou mal cuit.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-gris bosselé, ridé",
+   "Pied à scabres noirs",
+   "Chair grisonnant puis noircissant ; sous les charmes"
+  ],
+  "habitat": "Sous les charmes et noisetiers",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#7a6a52",
+   "hymenium": "#e6dcc0",
+   "pied": "#efebe2",
+   "feuilles": true,
+   "scabres": "#2f2a25",
+   "hauteur": 1.2,
+   "epaisseur": 0.9
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "leccinum-scabrum"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Leccinellum pseudoscabrum » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Leccinellum_pseudoscabrum"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "leccinum-scabrum": "Le bolet rude pousse sous les bouleaux, chair peu changeante ; le bolet des charmes pousse sous les charmes et sa chair noircit."
+  }
+ },
+ {
+  "id": "leccinellum-crocipodium",
+  "nom": "Bolet craquelé",
+  "latin": "Leccinellum crocipodium",
+  "autres_noms": [
+   "Leccinum crocipodium"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toujours bien cuire : troubles digestifs s'il est cru ou mal cuit.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau jaune à brun-jaune, cuticule craquelée",
+   "Pores jaunes, pied jaune à scabres jaunes",
+   "Chair rosissant puis noircissant ; sous chênes"
+  ],
+  "habitat": "Sous chênes, sols calcaires et chauds",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#c9a03a",
+   "hymenium": "#ecd24a",
+   "pied": "#ecdc8a",
+   "feuilles": true,
+   "scabres": "#c9a03a",
+   "hauteur": 1.1,
+   "epaisseur": 0.9
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Leccinellum crocipodium » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Leccinellum_crocipodium"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "leccinum-leucopodium",
+  "nom": "Bolet orangé à pied blanc",
+  "latin": "Leccinum leucopodium",
+  "autres_noms": [
+   "Leccinum albostipitatum"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toujours bien cuire : troubles digestifs s'il est cru ou mal cuit.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau orange vif, peau débordante",
+   "Pied blanc à mèches blanches (pas noires)",
+   "Sous trembles et bouleaux"
+  ],
+  "habitat": "Sous trembles et bouleaux",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#e0702a",
+   "hymenium": "#e6dcc0",
+   "pied": "#f6f2e8",
+   "feuilles": true,
+   "scabres": "#e8e0d0",
+   "hauteur": 1.2,
+   "epaisseur": 0.95
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Leccinum albostipitatum » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Leccinum_albostipitatum"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "suillus-viscidus",
+  "nom": "Bolet gris des mélèzes",
+  "latin": "Suillus viscidus",
+  "autres_noms": [
+   "Suillus aeruginascens"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Retirer la cuticule gluante, laxative.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau gris-blanchâtre très gluant",
+   "Pores gris larges, anneau gluant",
+   "Sous les mélèzes"
+  ],
+  "habitat": "Sous les mélèzes",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#b8b4a4",
+   "hymenium": "#a8a090",
+   "pied": "#d8d4c4",
+   "feuilles": true,
+   "anneau": true,
+   "hauteur": 1.0
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Suillus viscidus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Suillus_viscidus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "suillus-cavipes",
+  "nom": "Bolet à pied creux",
+  "latin": "Suillus cavipes",
+  "autres_noms": [
+   "Boletinus cavipes"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-roux fibrilleux, sec (peu gluant)",
+   "Pores jaunes larges, décurrents",
+   "Pied creux ; sous les mélèzes"
+  ],
+  "habitat": "Sous les mélèzes, en montagne",
+  "saison": "Août à octobre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#8a5a32",
+   "hymenium": "#e0c84a",
+   "pied": "#d9c49a",
+   "feuilles": true,
+   "anneau": true,
+   "hauteur": 1.0
+  },
+  "mois": [
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Suillus cavipes » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Suillus_cavipes"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "suillus-collinitus",
+  "nom": "Bolet à base rose",
+  "latin": "Suillus collinitus",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Retirer la cuticule gluante, laxative.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun gluant, fibrilles rayonnantes",
+   "Pores jaunes, pied ponctué sans anneau",
+   "Base du pied et mycélium roses ; sous pins"
+  ],
+  "habitat": "Sous les pins, surtout dans le Midi",
+  "saison": "Septembre à décembre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#7a4a2a",
+   "hymenium": "#e0c84a",
+   "pied": "#ecdcb0",
+   "feuilles": true,
+   "ponctue": true,
+   "hauteur": 1.0
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [
+   "suillus-granulatus"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Suillus collinitus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Suillus_collinitus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "suillus-granulatus": "Le bolet granulé a une base du pied blanche ; le bolet à base rose a la base du pied et le mycélium roses."
+  }
+ },
+ {
+  "id": "porphyrellus-porphyrosporus",
+  "nom": "Bolet porphyre",
+  "latin": "Porphyrellus porphyrosporus",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible médiocre ; sans intérêt.",
+  "criteres": [
+   "Chapeau brun-gris sombre, velouté",
+   "Pores gris-brun qui verdissent au toucher",
+   "Sporée rouge-pourpre"
+  ],
+  "habitat": "Forêts de feuillus et de conifères acides",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun pourpre",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#5a4a40",
+   "hymenium": "#8a7a6a",
+   "pied": "#7a6a5a",
+   "feuilles": true,
+   "hauteur": 1.2
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Porphyrellus porphyrosporus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Porphyrellus_porphyrosporus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "pseudoboletus-parasiticus",
+  "nom": "Bolet parasite",
+  "latin": "Pseudoboletus parasiticus",
+  "autres_noms": [
+   "Xerocomus parasiticus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petit bolet jaune-olive",
+   "Pores jaunes",
+   "Pousse sur un scléroderme (vesse-de-loup jaune)"
+  ],
+  "habitat": "Sur Scleroderma citrinum",
+  "saison": "Juillet à octobre",
+  "sporee": "Brun olive",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#a8943a",
+   "hymenium": "#d9b83a",
+   "pied": "#c9b06a",
+   "feuilles": true,
+   "hauteur": 0.9,
+   "epaisseur": 0.8
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pseudoboletus parasiticus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pseudoboletus_parasiticus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hortiboletus-rubellus",
+  "nom": "Bolet framboise",
+  "latin": "Hortiboletus rubellus",
+  "autres_noms": [
+   "Xerocomus rubellus"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Comestible médiocre, à bien cuire.",
+  "toxicite": null,
+  "criteres": [
+   "Petit chapeau rouge framboise",
+   "Pores jaunes bleuissant",
+   "Pied jaune ponctué de rouge à la base"
+  ],
+  "habitat": "Parcs, bords de chemins, sous feuillus",
+  "saison": "Juin à octobre",
+  "sporee": "Brun olive",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#c0322a",
+   "hymenium": "#ecd24a",
+   "pied": "#e0b84a",
+   "feuilles": true,
+   "hauteur": 1.0,
+   "epaisseur": 0.8
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "xerocomellus-chrysenteron"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Bolet framboise » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Bolet_framboise"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "xerocomellus-chrysenteron": "La cuticule du bolet à chair jaune se craquelle en montrant du rouge ; celle du bolet framboise reste lisse, rouge vif."
+  }
+ },
+ {
+  "id": "xerocomellus-pruinatus",
+  "nom": "Bolet pruineux",
+  "latin": "Xerocomellus pruinatus",
+  "autres_noms": [
+   "Xerocomus pruinatus"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toujours bien cuire : troubles digestifs s'il est cru ou mal cuit.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-pourpre sombre, comme givré (pruineux)",
+   "Cuticule non craquelée, pores jaune vif",
+   "Chair jaune bleuissant faiblement"
+  ],
+  "habitat": "Feuillus et conifères",
+  "saison": "Septembre à novembre",
+  "sporee": "Brun olive",
+  "schema": {
+   "type": "bolet",
+   "forme": "bombe",
+   "chapeau": "#5a2e2a",
+   "hymenium": "#ecd24a",
+   "pied": "#e0c070",
+   "feuilles": true,
+   "hauteur": 1.0
+  },
+  "mois": [
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Bolet pruineux » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Bolet_pruineux"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "phellodon-niger",
+  "nom": "Hydne noir",
+  "latin": "Phellodon niger",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau noir-bleuté, bosselé, à marge pâle",
+   "Aiguillons gris sous le chapeau",
+   "Chair noire et dure ; odeur de fenugrec en séchant"
+  ],
+  "habitat": "Sous conifères et feuillus, sols pauvres",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "hydne",
+   "forme": "plat",
+   "chapeau": "#2e2a32",
+   "hymenium": "#9a9aa0",
+   "pied": "#3a3436",
+   "epaisseur": 1.0,
+   "feuilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hydnellum-caeruleum",
+  "nom": "Hydnelle bleue",
+  "latin": "Hydnellum caeruleum",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau bleu pâle à blanc, bosselé, devenant brun",
+   "Aiguillons bruns",
+   "Chair zonée de bleu et d'orange"
+  ],
+  "habitat": "Sous pins et épicéas, sols sableux",
+  "saison": "Août à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "hydne",
+   "forme": "plat",
+   "chapeau": "#9ab4c8",
+   "hymenium": "#7a5a3a",
+   "pied": "#a0702e",
+   "epaisseur": 1.0,
+   "feuilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "craterellus-cinereus",
+  "nom": "Chanterelle cendrée",
+  "latin": "Craterellus cinereus",
+  "autres_noms": [
+   "Cantharellus cinereus"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": null,
+  "criteres": [
+   "Petite trompette gris-noir",
+   "Plis gris bien marqués, fourchus (pas lisse)",
+   "Odeur fruitée ; en troupes sous feuillus"
+  ],
+  "habitat": "Sous feuillus, mousses",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "trompette",
+   "chapeau": "#3e3a3a",
+   "feuilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "craterellus-cornucopioides"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Craterellus cinereus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Craterellus_cinereus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "craterellus-cornucopioides": "La trompette des morts a une face externe lisse ; la chanterelle cendrée a des plis bien marqués."
+  }
+ },
+ {
+  "id": "verpa-conica",
+  "nom": "Verpe conique",
+  "latin": "Verpa conica",
+  "autres_noms": [
+   "Verpa digitaliformis"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Troubles digestifs signalés, comme la verpe de Bohême ; à rejeter.",
+  "criteres": [
+   "Petit dé à coudre brun, lisse (non ridé)",
+   "Tête entièrement libre du pied",
+   "Au printemps, sous les buissons"
+  ],
+  "habitat": "Haies, bois clairs, sols calcaires",
+  "saison": "Mars à mai",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "morille",
+   "chapeau": "#8a6a4a",
+   "forme": "conique",
+   "pied": "#f2e8d2",
+   "feuilles": true
+  },
+  "mois": [
+   3,
+   4,
+   5
+  ],
+  "confusions": [
+   "morchella-esculenta"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Verpe conique » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Verpe_conique"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ],
+  "distinguer": {
+   "morchella-esculenta": "La morille a une tête alvéolée soudée au pied ; la verpe conique a un petit chapeau lisse, libre du pied."
+  }
+ },
+ {
+  "id": "dissingia-leucomelaena",
+  "nom": "Helvelle blanche et noire",
+  "latin": "Dissingia leucomelaena",
+  "autres_noms": [
+   "Helvella leucomelaena"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Toxique crue, comme les autres helvelles.",
+  "criteres": [
+   "Coupe gris-noir",
+   "Court pied blanc côtelé",
+   "Au printemps, sur sols sableux sous les pins"
+  ],
+  "habitat": "Sols sableux, sous conifères",
+  "saison": "Mars à juin",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "coupe",
+   "chapeau": "#3a3634",
+   "hymenium": "#2a2624",
+   "pied": "#f2ede2",
+   "feuilles": true
+  },
+  "mois": [
+   3,
+   4,
+   5,
+   6
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Dissingia leucomelaena » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Dissingia_leucomelaena"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "caloscypha-fulgens",
+  "nom": "Pézize brillante",
+  "latin": "Caloscypha fulgens",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Coupe orange-jaune vif",
+   "Se tache de bleu-vert par endroits",
+   "Au printemps, sous les conifères de montagne"
+  ],
+  "habitat": "Sous épicéas et sapins",
+  "saison": "Mars à juin",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "coupe",
+   "chapeau": "#ef9a1a",
+   "hymenium": "#f2b82a",
+   "forme": "groupe"
+  },
+  "mois": [
+   3,
+   4,
+   5,
+   6
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pézize écorce d'orange » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pézize_écorce_d'orange"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "geopora-sumneriana",
+  "nom": "Géopore des cèdres",
+  "latin": "Geopora sumneriana",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Coupe d'abord enterrée, s'ouvrant en étoile",
+   "Intérieur crème, extérieur brun velu",
+   "Sous les cèdres, à la fin de l'hiver"
+  ],
+  "habitat": "Sous les cèdres, parcs",
+  "saison": "Février à mai",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "coupe",
+   "chapeau": "#8a6a4a",
+   "hymenium": "#ecdcc0"
+  },
+  "mois": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Geopora sumneriana » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Geopora_sumneriana"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "sarcosphaera-coronaria",
+  "nom": "Pézize couronnée",
+  "latin": "Sarcosphaera coronaria",
+  "autres_noms": [
+   "Sarcosphaera crassa"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Toxique (accumule l'arsenic) ; à rejeter.",
+  "criteres": [
+   "Grosse boule enterrée qui s'ouvre en couronne",
+   "Intérieur violacé, extérieur blanchâtre",
+   "Au printemps, sols calcaires"
+  ],
+  "habitat": "Sols calcaires, sous conifères",
+  "saison": "Avril à juin",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "coupe",
+   "chapeau": "#ece4dc",
+   "hymenium": "#9a6a9a"
+  },
+  "mois": [
+   4,
+   5,
+   6
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Sarcosphaera coronaria » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Sarcosphaera_coronaria"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "lycoperdon-echinatum",
+  "nom": "Vesse-de-loup hérisson",
+  "latin": "Lycoperdon echinatum",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Ne consommer que jeune, chair entièrement blanche. Toujours couper verticalement pour écarter un œuf d'amanite.",
+  "toxicite": null,
+  "criteres": [
+   "Boule couverte de longues épines brunes",
+   "Les épines tombent en laissant un réseau",
+   "Sous les hêtres, sols calcaires"
+  ],
+  "habitat": "Hêtraies calcaires",
+  "saison": "Juillet à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "boule",
+   "forme": "poire",
+   "chapeau": "#c9a87a",
+   "chapeau2": "#6a4a2a",
+   "ornement": "pointes",
+   "interieur": "#fbfaf6",
+   "feuilles": true
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Vesse-de-loup hérisson » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Vesse-de-loup_hérisson"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lycoperdon-pratense",
+  "nom": "Vesse-de-loup des prés",
+  "latin": "Lycoperdon pratense",
+  "autres_noms": [
+   "Vascellum pratense"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Ne consommer que jeune, chair entièrement blanche. Toujours couper verticalement pour écarter un œuf d'amanite.",
+  "toxicite": null,
+  "criteres": [
+   "Petite boule blanche à fines verrues",
+   "Base séparée de la tête par une cloison",
+   "Dans les pelouses et les prés"
+  ],
+  "habitat": "Pelouses, prés",
+  "saison": "Juin à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "boule",
+   "chapeau": "#f1ebdc",
+   "interieur": "#fbfaf6",
+   "herbe": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "bovista-plumbea"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lycoperdon pratense » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lycoperdon_pratense"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "bovista-plumbea": "La boviste plombée n'a pas de cloison à la base et devient gris plomb ; la vesse-de-loup des prés a une base séparée par une cloison."
+  }
+ },
+ {
+  "id": "lycoperdon-utriforme",
+  "nom": "Vesse-de-loup ciselée",
+  "latin": "Lycoperdon utriforme",
+  "autres_noms": [
+   "Handkea utriformis",
+   "Calvatia utriformis"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Ne consommer que jeune, chair entièrement blanche. Toujours couper verticalement pour écarter un œuf d'amanite.",
+  "toxicite": null,
+  "criteres": [
+   "Grosse poire crème puis brune (8 à 15 cm)",
+   "Surface découpée en mosaïque",
+   "Prés et pâturages de montagne"
+  ],
+  "habitat": "Prés, pâturages",
+  "saison": "Juin à octobre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "boule",
+   "forme": "poire",
+   "chapeau": "#e8dcc4",
+   "ornement": "craquele",
+   "interieur": "#fbfaf6",
+   "herbe": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lycoperdon utriforme » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lycoperdon_utriforme"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "tulostoma-brumale",
+  "nom": "Tulostome des brumes",
+  "latin": "Tulostoma brumale",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petite boule blanchâtre (1 cm)",
+   "Portée par un pied fin et dur",
+   "Sols sableux, dunes, vieux murs"
+  ],
+  "habitat": "Sols sableux et calcaires secs",
+  "saison": "Octobre à avril",
+  "sporee": "Brune",
+  "schema": {
+   "type": "boule",
+   "chapeau": "#e8e0cc",
+   "interieur": "#8a6a4a",
+   "largeur": 0.5
+  },
+  "mois": [
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tulostome des brumes » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tulostome_des_brumes"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "battarrea-phalloides",
+  "nom": "Battarrée phalloïde",
+  "latin": "Battarrea phalloides",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt ; rare et protégée.",
+  "criteres": [
+   "Grand pied écailleux et fibreux (jusqu'à 30 cm)",
+   "Tête brune couverte de poudre de spores",
+   "Sols secs et sableux"
+  ],
+  "habitat": "Sols secs, sableux, bords de chemins",
+  "saison": "Mai à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "phalle",
+   "chapeau": "#8a6a3a",
+   "forme": "fin",
+   "pied": "#c9b08a"
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "geastrum-fimbriatum",
+  "nom": "Géastre sessile",
+  "latin": "Geastrum fimbriatum",
+  "autres_noms": [
+   "Géastre frangé"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petite étoile crème à 5-8 bras",
+   "Pas de collerette autour de la boule",
+   "Dans la litière des conifères"
+  ],
+  "habitat": "Litière de conifères et feuillus",
+  "saison": "Juillet à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "etoile",
+   "chapeau": "#d9c49a",
+   "chapeau2": "#e8dcc4"
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Geastrum fimbriatum » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Geastrum_fimbriatum"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "astraeus-hygrometricus",
+  "nom": "Géastre hygrométrique",
+  "latin": "Astraeus hygrometricus",
+  "autres_noms": [
+   "Astrée hygrométrique"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Étoile à bras épais, craquelés en mosaïque",
+   "Les bras se referment au sec, s'ouvrent à l'humidité",
+   "Sols sableux"
+  ],
+  "habitat": "Sols sableux, landes, bois clairs",
+  "saison": "Toute l'année",
+  "sporee": "Brune",
+  "schema": {
+   "type": "etoile",
+   "chapeau": "#6a5a4a",
+   "chapeau2": "#a8987a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Astraeus hygrometricus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Astraeus_hygrometricus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "cyathus-olla",
+  "nom": "Cyathe en vase",
+  "latin": "Cyathus olla",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Petit nid en forme de vase évasé",
+   "Intérieur lisse gris, sans stries",
+   "Œufs gris ; sur débris végétaux"
+  ],
+  "habitat": "Champs, jardins, débris végétaux",
+  "saison": "Juin à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "nid",
+   "chapeau": "#9a8a72"
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "crucibulum-laeve",
+  "nom": "Crucibule lisse",
+  "latin": "Crucibulum laeve",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Petite coupe jaune-crème puis grise",
+   "Œufs blancs à l'intérieur",
+   "Sur brindilles et débris de bois"
+  ],
+  "habitat": "Brindilles, bois mort",
+  "saison": "Juin à décembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "nid",
+   "chapeau": "#c9a86a"
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "sparassis-brevipes",
+  "nom": "Sparassis lamelleux",
+  "latin": "Sparassis brevipes",
+  "autres_noms": [
+   "Sparassis laminosa"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Bien nettoyer et bien cuire ; seulement jeune et ferme.",
+  "toxicite": null,
+  "criteres": [
+   "Grosse rosette de larges lames plates et ondulées",
+   "Crème à ocre pâle",
+   "Au pied des chênes ou des sapins"
+  ],
+  "habitat": "Pied des chênes et des sapins",
+  "saison": "Août à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "sparassis",
+   "chapeau": "#e0cc9a",
+   "aiguilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "sparassis-crispa"
+  ],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "sparassis-crispa": "Le sparassis crépu a des lames frisées serrées, au pied des pins ; le sparassis lamelleux a de larges lames plates, au pied des chênes ou sapins."
+  }
+ },
+ {
+  "id": "artomyces-pyxidatus",
+  "nom": "Clavaire à pyxides",
+  "latin": "Artomyces pyxidatus",
+  "autres_noms": [
+   "Clavicorona pyxidata"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible médiocre ; sans intérêt.",
+  "criteres": [
+   "Rameaux crème à ocre, en candélabre",
+   "Chaque rameau finit en petite couronne",
+   "Sur bois pourri de feuillus"
+  ],
+  "habitat": "Bois très pourri, peupliers, saules",
+  "saison": "Juin à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "corail",
+   "chapeau": "#e0c890",
+   "chapeau2": "#ecdcb0",
+   "feuilles": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Artomyces pyxidatus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Artomyces_pyxidatus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lentoramaria-stricta",
+  "nom": "Clavaire droite",
+  "latin": "Lentoramaria stricta",
+  "autres_noms": [
+   "Ramaria stricta"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Amère ; sans intérêt.",
+  "criteres": [
+   "Rameaux ocre très nombreux, serrés",
+   "Dressés en parallèle, pointes jaunes",
+   "Sur bois ou débris de bois"
+  ],
+  "habitat": "Bois mort, souches enterrées",
+  "saison": "Juillet à novembre",
+  "sporee": "Ocre",
+  "schema": {
+   "type": "corail",
+   "chapeau": "#c9a060",
+   "chapeau2": "#e8d070",
+   "feuilles": true
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Clavaire droite » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Clavaire_droite"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "clavulina-rugosa",
+  "nom": "Clavaire rugueuse",
+  "latin": "Clavulina rugosa",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Massue blanche à crème, ridée",
+   "Peu ou pas ramifiée",
+   "Au sol, dans les bois"
+  ],
+  "habitat": "Bois de feuillus et de conifères",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#efe8d8",
+   "pied": "#efe8d8",
+   "forme": "massue"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Clavulina rugosa » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Clavulina_rugosa"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "naematelia-aurantia",
+  "nom": "Trémelle orangée",
+  "latin": "Naematelia aurantia",
+  "autres_noms": [
+   "Tremella aurantia"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Masse plissée orange vif, assez ferme",
+   "Pousse sur la stérée hirsute (un champignon croûte)",
+   "Sur branches mortes de feuillus"
+  ],
+  "habitat": "Branches mortes portant Stereum hirsutum",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#ef8a1e"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [
+   "tremella-mesenterica"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tremella aurantia » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tremella_aurantia"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "tremella-mesenterica": "La trémelle mésentérique est jaune d'or et molle ; la trémelle orangée est orange vif, ferme, et pousse sur la stérée hirsute."
+  }
+ },
+ {
+  "id": "calocera-cornea",
+  "nom": "Calocère cornée",
+  "latin": "Calocera cornea",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petites cornes jaunes de 1 cm, non ramifiées",
+   "En groupes, gélatineuses",
+   "Sur bois mort de feuillus"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "doigts",
+   "chapeau": "#ecb83a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Calocère cornue » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Calocère_cornue"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "exidia-truncata",
+  "nom": "Exidie tronquée",
+  "latin": "Exidia truncata",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petits disques noirs en forme de toupie",
+   "Dessus lisse, dessous velouté",
+   "Sur branches mortes de chênes"
+  ],
+  "habitat": "Branches mortes de chênes",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#1e1a1a"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Exidia truncata » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Exidia_truncata"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "myxarium-nucleatum",
+  "nom": "Exidie à noyaux",
+  "latin": "Myxarium nucleatum",
+  "autres_noms": [
+   "Exidia nucleata"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Masse gélatineuse incolore, translucide",
+   "Petits grains blancs à l'intérieur",
+   "Sur bois mort de feuillus"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#dcd8d2"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "favolaschia-claudopus",
+  "nom": "Favolaschia orangée",
+  "latin": "Favolaschia claudopus",
+  "autres_noms": [
+   "Favolaschia calocera (sens large)"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petit éventail orange vif, gélatineux",
+   "Larges pores en dessous",
+   "Sur bois mort ; espèce venue d'Asie qui se répand"
+  ],
+  "habitat": "Bois mort de feuillus, régions humides",
+  "saison": "Toute l'année",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#f07a1e",
+   "forme": "oreille"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "cordyceps-militaris",
+  "nom": "Cordyceps militaire",
+  "latin": "Cordyceps militaris",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petite massue orange vif (2 à 6 cm)",
+   "Surface finement granuleuse",
+   "Sort du sol depuis une chrysalide de papillon enterrée"
+  ],
+  "habitat": "Sol des bois et des prés",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#ef7a2a",
+   "pied": "#ef9a4a",
+   "forme": "massue"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Cordyceps militaris » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Cordyceps_militaris"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "mitrula-paludosa",
+  "nom": "Mitrule des marais",
+  "latin": "Mitrula paludosa",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Petite tête jaune-orangé en massue",
+   "Pied blanc translucide",
+   "Dans l'eau des marais et des fossés, sur débris"
+  ],
+  "habitat": "Marais, fossés, feuilles immergées",
+  "saison": "Avril à juillet",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "gelee",
+   "chapeau": "#f2a82a",
+   "pied": "#f2ede2",
+   "forme": "massue"
+  },
+  "mois": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Mitrula paludosa » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Mitrula_paludosa"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "asterophora-lycoperdoides",
+  "nom": "Nyctalis porteur d'étoiles",
+  "latin": "Asterophora lycoperdoides",
+  "autres_noms": [
+   "Nyctalis asterophora"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Petit chapeau blanc couvert de poudre brune",
+   "Lames très réduites",
+   "Pousse sur une russule ou un lactaire pourri"
+  ],
+  "habitat": "Sur Russula nigricans et voisines",
+  "saison": "Août à novembre",
+  "sporee": "Brune",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#d9c8a8",
+   "hymenium": "#efe8d8",
+   "pied": "#efe8d8",
+   "feuilles": true,
+   "largeur": 0.5,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Asterophora lycoperdoides » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Asterophora_lycoperdoides"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "xylaria-longipes",
+  "nom": "Xylaire à long pied",
+  "latin": "Xylaria longipes",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Doigt noir rugueux",
+   "Long pied fin bien distinct",
+   "Sur bois mort d'érable"
+  ],
+  "habitat": "Bois mort d'érables",
+  "saison": "Toute l'année",
+  "sporee": "Noire",
+  "schema": {
+   "type": "doigts",
+   "chapeau": "#2a2622"
+  },
+  "mois": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Xylaria longipes » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Xylaria_longipes"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lentinus-tigrinus",
+  "nom": "Lentin tigré",
+  "latin": "Lentinus tigrinus",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible jeune mais coriace ; sans intérêt.",
+  "criteres": [
+   "Chapeau blanc moucheté de petites écailles noires",
+   "Lames décurrentes, à arête dentelée",
+   "En touffes sur saules et peupliers, souvent près de l'eau"
+  ],
+  "habitat": "Bois de saules et peupliers, bords de rivières",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#ece6dc",
+   "hymenium": "#f4efe4",
+   "pied": "#ece6dc",
+   "feuilles": true,
+   "decurrent": true,
+   "bois": true,
+   "ornement": "meches",
+   "chapeau2": "#2a2622"
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lentin tigré » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lentin_tigré"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "neolentinus-lepideus",
+  "nom": "Lentin écailleux",
+  "latin": "Neolentinus lepideus",
+  "autres_noms": [
+   "Lentinus lepideus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible jeune mais coriace ; sans intérêt.",
+  "criteres": [
+   "Gros chapeau crème à larges écailles brunes",
+   "Lames dentelées, odeur d'anis",
+   "Sur bois de pin, souvent poteaux et traverses"
+  ],
+  "habitat": "Bois de conifères, souvent travaillé",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e0d0b0",
+   "hymenium": "#f2ead8",
+   "pied": "#e8dcc4",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#7a5a3a",
+   "bois": true,
+   "largeur": 1.0
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "pleurotus-dryinus",
+  "nom": "Pleurote du chêne",
+  "latin": "Pleurotus dryinus",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Seulement jeune ; vieux, il devient coriace.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau blanc à gris, floconneux",
+   "Lames décurrentes ; reste de voile en anneau sur le pied",
+   "Isolé, sur troncs de chênes et autres feuillus"
+  ],
+  "habitat": "Troncs de feuillus, surtout chênes",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "pleurote",
+   "chapeau": "#e8e2d6",
+   "hymenium": "#f3efe6"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pleurotus dryinus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pleurotus_dryinus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "pleurotus-pulmonarius",
+  "nom": "Pleurote pulmonaire",
+  "latin": "Pleurotus pulmonarius",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": null,
+  "criteres": [
+   "Chapeau crème pâle en éventail, mince",
+   "Lames décurrentes blanches",
+   "En été, en étages sur feuillus"
+  ],
+  "habitat": "Bois de feuillus",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "pleurote",
+   "chapeau": "#ece2cc",
+   "hymenium": "#f6f2e8"
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "pleurotus-ostreatus"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pleurotus pulmonarius » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pleurotus_pulmonarius"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "pleurotus-ostreatus": "Le pleurote en huître est plus gris et pousse surtout en hiver ; le pleurote pulmonaire est crème pâle et pousse en été."
+  }
+ },
+ {
+  "id": "pseudoclitocybe-cyathiformis",
+  "nom": "Clitocybe en coupe",
+  "latin": "Pseudoclitocybe cyathiformis",
+  "autres_noms": [
+   "Clitocybe cyathiformis"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Comestible médiocre ; sans intérêt.",
+  "criteres": [
+   "Chapeau gris-brun en coupe profonde",
+   "Lames crème décurrentes",
+   "En fin d'automne, sur bois pourri ou dans l'herbe"
+  ],
+  "habitat": "Bois pourri, prairies, haies",
+  "saison": "Octobre à janvier",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#5a4a40",
+   "hymenium": "#e8dcc4",
+   "pied": "#6a5a4e",
+   "feuilles": true
+  },
+  "mois": [
+   10,
+   11,
+   12,
+   1
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Clitocybe en coupe » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Clitocybe_en_coupe"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "rickenella-fibula",
+  "nom": "Omphale bibelot",
+  "latin": "Rickenella fibula",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Minuscule chapeau orange (0,5 à 1 cm), ombiliqué",
+   "Lames décurrentes espacées",
+   "Pied très fin ; dans les mousses"
+  ],
+  "habitat": "Mousses humides, pelouses",
+  "saison": "Mai à décembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#ef9a3a",
+   "hymenium": "#f6dcb0",
+   "pied": "#f0b86a",
+   "feuilles": true,
+   "largeur": 0.4,
+   "epaisseur": 0.2,
+   "herbe": true
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Omphale épingle » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Omphale_épingle"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "arrhenia-rickenii",
+  "nom": "Omphale de Ricken",
+  "latin": "Arrhenia rickenii",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Minuscule chapeau gris-brun en entonnoir",
+   "Lames décurrentes grises",
+   "Dans les mousses des sols sableux et des pelouses rases"
+  ],
+  "habitat": "Mousses, pelouses sableuses",
+  "saison": "Octobre à avril",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#6a5a4e",
+   "hymenium": "#8a7a6e",
+   "pied": "#7a6a5e",
+   "feuilles": true,
+   "largeur": 0.4,
+   "epaisseur": 0.2,
+   "herbe": true
+  },
+  "mois": [
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Arrhenia rickenii » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Arrhenia_rickenii"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hygrophorus-eburneus",
+  "nom": "Hygrophore blanc d'ivoire",
+  "latin": "Hygrophorus eburneus",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Ne pas confondre avec les amanites et clitocybes blancs : vérifier lames espacées et absence de volve.",
+  "toxicite": null,
+  "criteres": [
+   "Entièrement blanc ivoire, très visqueux",
+   "Lames épaisses et espacées, un peu décurrentes",
+   "Sous les hêtres"
+  ],
+  "habitat": "Hêtraies",
+  "saison": "Septembre à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#f4f0e6",
+   "hymenium": "#fbf8f0",
+   "pied": "#f4f0e6",
+   "feuilles": true
+  },
+  "mois": [
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "clitocybe-rivulosa"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Hygrophorus eburneus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Hygrophorus_eburneus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "clitocybe-rivulosa": "Le clitocybe blanchâtre, toxique, a des lames serrées et minces et pousse dans l'herbe ; l'hygrophore ivoire a des lames épaisses, espacées, et un chapeau très visqueux sous les hêtres."
+  }
+ },
+ {
+  "id": "mycena-inclinata",
+  "nom": "Mycène inclinée",
+  "latin": "Mycena inclinata",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petite cloche gris-brun à marge dentelée",
+   "Pied orangé à roux vers le bas",
+   "En touffes sur souches de chênes"
+  ],
+  "habitat": "Souches de chênes",
+  "saison": "Septembre à décembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#8a7a6a",
+   "hymenium": "#efe2dc",
+   "pied": "#c97a3a",
+   "feuilles": true,
+   "touffe": true,
+   "bois": true,
+   "largeur": 0.5,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Mycène incliné » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Mycène_incliné"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "mycena-renati",
+  "nom": "Mycène à pied jaune",
+  "latin": "Mycena renati",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petit chapeau rose-brun en cloche",
+   "Pied jaune vif",
+   "En groupes sur bois de feuillus (hêtres)"
+  ],
+  "habitat": "Bois mort de feuillus",
+  "saison": "Mai à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#c98a8a",
+   "hymenium": "#f2e0dc",
+   "pied": "#ecd04a",
+   "feuilles": true,
+   "bois": true,
+   "largeur": 0.5,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Mycène à pied jaune » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Mycène_à_pied_jaune"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "collybiopsis-ramealis",
+  "nom": "Marasme des rameaux",
+  "latin": "Collybiopsis ramealis",
+  "autres_noms": [
+   "Marasmiellus ramealis"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Minuscule ; sans intérêt.",
+  "criteres": [
+   "Minuscule chapeau crème rosé (1 cm)",
+   "Pied court, poudré",
+   "En troupes sur brindilles et ronces"
+  ],
+  "habitat": "Brindilles, ronces, débris",
+  "saison": "Juin à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e8d4c0",
+   "hymenium": "#f4ece0",
+   "pied": "#c9a88a",
+   "feuilles": true,
+   "largeur": 0.35,
+   "epaisseur": 0.2,
+   "bois": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "tricholomopsis-decora",
+  "nom": "Tricholome décoré",
+  "latin": "Tricholomopsis decora",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau jaune vif couvert de fines mèches brunes",
+   "Lames jaune d'or",
+   "Sur bois pourri de conifères, en montagne"
+  ],
+  "habitat": "Bois pourri de conifères",
+  "saison": "Août à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e0b83a",
+   "hymenium": "#ecc84a",
+   "pied": "#e0b84a",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#6a4a2a",
+   "bois": true
+  },
+  "mois": [
+   8,
+   9,
+   10
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tricholomopsis decora » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tricholomopsis_decora"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "mycetinis-alliaceus",
+  "nom": "Marasme à odeur d'ail",
+  "latin": "Mycetinis alliaceus",
+  "autres_noms": [
+   "Marasmius alliaceus"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Sert surtout de condiment (goût d'ail).",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-crème, mince",
+   "Forte odeur d'ail",
+   "Pied long, noir et velouté ; sur débris de hêtre"
+  ],
+  "habitat": "Hêtraies, débris de bois",
+  "saison": "Juillet à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "mamelon",
+   "chapeau": "#c9b08a",
+   "hymenium": "#efe6d6",
+   "pied": "#2a2420",
+   "feuilles": true,
+   "largeur": 0.6,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Mycetinis alliaceus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Mycetinis_alliaceus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "collybiopsis-peronata",
+  "nom": "Collybie guêtrée",
+  "latin": "Collybiopsis peronata",
+  "autres_noms": [
+   "Gymnopus peronatus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Âcre ; sans intérêt.",
+  "criteres": [
+   "Chapeau brun-jaune pâle, coriace",
+   "Pied à base jaune couverte de poils (guêtre)",
+   "Saveur brûlante ; dans la litière"
+  ],
+  "habitat": "Litière de feuillus",
+  "saison": "Juillet à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#c9a46a",
+   "hymenium": "#e8d4a8",
+   "pied": "#d9b86a",
+   "feuilles": true,
+   "largeur": 0.6,
+   "epaisseur": 0.35
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "tricholoma-scalpturatum",
+  "nom": "Tricholome gravé",
+  "latin": "Tricholoma scalpturatum",
+  "autres_noms": [
+   "Tricholoma argyraceum (sens large)"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Confusion possible avec des tricholomes toxiques (tigré) : faire vérifier.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau gris couvert de fines fibrilles",
+   "Lames blanches jaunissant avec l'âge",
+   "Odeur de farine ; sous feuillus et dans les parcs"
+  ],
+  "habitat": "Feuillus, parcs, bords de chemins",
+  "saison": "Septembre à décembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "mamelon",
+   "chapeau": "#8a8480",
+   "hymenium": "#f2eee4",
+   "pied": "#ece6dc",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#6a6460"
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [
+   "tricholoma-pardinum"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Tricholome jaunissant » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Tricholome_jaunissant"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "tricholoma-pardinum": "Le tricholome tigré, toxique, est plus grand et trapu, à mèches sombres en écailles ; le tricholome gravé a de fines fibrilles et des lames qui jaunissent."
+  }
+ },
+ {
+  "id": "armillaria-gallica",
+  "nom": "Armillaire bulbeuse",
+  "latin": "Armillaria gallica",
+  "autres_noms": [
+   "Armillaria bulbosa",
+   "Armillaria lutea"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toxique crue. Ne consommer que des chapeaux jeunes, blanchis puis bien cuits ; des intoxications digestives sont fréquentes.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau brun-jaune à petites mèches",
+   "Pied renflé en bulbe à la base, anneau cotonneux",
+   "Isolé ou en petits groupes, au sol sur racines"
+  ],
+  "habitat": "Racines et souches de feuillus",
+  "saison": "Septembre à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#b8904e",
+   "hymenium": "#efe6d0",
+   "pied": "#d9c49a",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#6a4a2a",
+   "anneau": true,
+   "pied_forme": "bulbeux"
+  },
+  "mois": [
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "armillaria-mellea"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Armillaria gallica » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Armillaria_gallica"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "armillaria-mellea": "L'armillaire couleur de miel pousse en grosses touffes sur les souches ; l'armillaire bulbeuse pousse isolée ou en petits groupes, avec un pied renflé."
+  }
+ },
+ {
+  "id": "gliophorus-psittacinus",
+  "nom": "Hygrophore perroquet",
+  "latin": "Gliophorus psittacinus",
+  "autres_noms": [
+   "Hygrocybe psittacina"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau vert perroquet, très visqueux",
+   "Vire au jaune-orangé avec l'âge",
+   "Pied visqueux vert en haut ; dans les prés"
+  ],
+  "habitat": "Prés, pelouses",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#6aa84a",
+   "hymenium": "#c9d86a",
+   "pied": "#9ac85a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.55,
+   "epaisseur": 0.35
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Hygrophore perroquet » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Hygrophore_perroquet"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hygrocybe-chlorophana",
+  "nom": "Hygrophore jaune soufre",
+  "latin": "Hygrocybe chlorophana",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau jaune citron, visqueux",
+   "Lames jaunes, pied jaune",
+   "Dans les prés et pelouses"
+  ],
+  "habitat": "Prés, pelouses",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#f0d02a",
+   "hymenium": "#f4e070",
+   "pied": "#f0d84a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.6,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hygrocybe-ceracea",
+  "nom": "Hygrophore céracé",
+  "latin": "Hygrocybe ceracea",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petit chapeau jaune orangé, cireux",
+   "Lames un peu décurrentes",
+   "Dans les prés"
+  ],
+  "habitat": "Prés, pelouses",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#f0b83a",
+   "hymenium": "#f4d070",
+   "pied": "#f0c84a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.45,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "hygrocybe-acutoconica",
+  "nom": "Hygrophore pointu",
+  "latin": "Hygrocybe acutoconica",
+  "autres_noms": [
+   "Hygrocybe persistens"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau jaune conique pointu, visqueux",
+   "Ne noircit pas (contrairement à l'hygrocybe conique)",
+   "Dans les prés et pelouses"
+  ],
+  "habitat": "Prés, pelouses, dunes",
+  "saison": "Juillet à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "conique",
+   "chapeau": "#f0c02a",
+   "hymenium": "#f4dc70",
+   "pied": "#f0d04a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.55,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "hygrocybe-conica"
+  ],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "hygrocybe-conica": "L'hygrocybe conique noircit en vieillissant ; l'hygrophore pointu reste jaune."
+  }
+ },
+ {
+  "id": "hygrocybe-coccinea",
+  "nom": "Hygrocybe cochenille",
+  "latin": "Hygrocybe coccinea",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt ; espèce des prairies anciennes, à préserver.",
+  "criteres": [
+   "Chapeau rouge vif, convexe, sec (non visqueux)",
+   "Lames rouges à base jaune",
+   "Dans les prés"
+  ],
+  "habitat": "Prés, pelouses",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#d82a2a",
+   "hymenium": "#e8603a",
+   "pied": "#e0582a",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.6,
+   "epaisseur": 0.4
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "hygrocybe-punicea"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Hygrocybe cochenille » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Hygrocybe_cochenille"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "hygrocybe-punicea": "L'hygrocybe ponceau est grand et visqueux ; l'hygrocybe cochenille est plus petit, à chapeau sec."
+  }
+ },
+ {
+  "id": "mycena-crocata",
+  "nom": "Mycène à lait orangé",
+  "latin": "Mycena crocata",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Petit chapeau conique gris-brun",
+   "Pied orange qui laisse couler un lait orange",
+   "Sur débris de hêtre"
+  ],
+  "habitat": "Hêtraies, débris de bois",
+  "saison": "Août à novembre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#9a7a62",
+   "hymenium": "#efe2d6",
+   "pied": "#e8803a",
+   "feuilles": true,
+   "bois": true,
+   "largeur": 0.5,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lactarius-blennius",
+  "nom": "Lactaire muqueux",
+  "latin": "Lactarius blennius",
+  "autres_noms": [
+   "Lactaire visqueux"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Âcre ; non comestible.",
+  "criteres": [
+   "Chapeau gris-vert très visqueux, zoné de gouttes",
+   "Lait blanc, très âcre, devenant gris",
+   "Sous les hêtres"
+  ],
+  "habitat": "Hêtraies",
+  "saison": "Août à novembre",
+  "sporee": "Crème",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#8a9a7a",
+   "hymenium": "#ece6d6",
+   "pied": "#b8b8a0",
+   "feuilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lactarius blennius var. viridis » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lactarius_blennius_var._viridis"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "lactarius-controversus",
+  "nom": "Lactaire renversé",
+  "latin": "Lactarius controversus",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Âcre ; non comestible.",
+  "criteres": [
+   "Grand chapeau blanc taché de rose ou de vineux",
+   "Lames rosées ; lait blanc âcre",
+   "Sous peupliers et saules"
+  ],
+  "habitat": "Sous peupliers et saules",
+  "saison": "Août à novembre",
+  "sporee": "Crème rosé",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#ece4dc",
+   "hymenium": "#e8c8bc",
+   "pied": "#ece4dc",
+   "feuilles": true,
+   "largeur": 1.0
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "lactifluus-piperatus"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Lactarius controversus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Lactarius_controversus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "lactifluus-piperatus": "Le lactaire poivré a des lames blanches très serrées ; le lactaire renversé a des lames rosées et un chapeau taché de rose, sous peupliers."
+  }
+ },
+ {
+  "id": "russula-sanguinea",
+  "nom": "Russule sanguine",
+  "latin": "Russula sanguinea",
+  "autres_noms": [
+   "Russula rosacea"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Troubles digestifs (vomissements, diarrhée) quelques heures après le repas.",
+  "criteres": [
+   "Chapeau rouge sang",
+   "Lames crème un peu décurrentes ; pied rosé",
+   "Saveur âcre ; sous les pins"
+  ],
+  "habitat": "Sous les pins",
+  "saison": "Août à novembre",
+  "sporee": "Crème",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#b8202a",
+   "hymenium": "#efe2c8",
+   "pied": "#e8b8b0",
+   "feuilles": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "russula-parazurea",
+  "nom": "Russule presque bleue",
+  "latin": "Russula parazurea",
+  "autres_noms": [],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Ne goûter que de loin : bien distinguer des russules âcres.",
+  "toxicite": null,
+  "criteres": [
+   "Chapeau gris-bleu à vert-bleu, comme poudré (pruineux)",
+   "Lames crème, cassantes",
+   "Saveur douce ; sous feuillus, parcs"
+  ],
+  "habitat": "Feuillus, parcs",
+  "saison": "Juin à octobre",
+  "sporee": "Crème",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#6a7a88",
+   "hymenium": "#efe4c8",
+   "pied": "#f2ede4",
+   "feuilles": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "russula-cyanoxantha"
+  ],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "russula-cyanoxantha": "La charbonnière a des lames souples grasses au toucher et un chapeau non poudré ; la russule presque bleue a un chapeau gris-bleu pruineux et des lames cassantes."
+  }
+ },
+ {
+  "id": "amanita-ceciliae",
+  "nom": "Amanite impériale",
+  "latin": "Amanita ceciliae",
+  "autres_noms": [
+   "Amanita inaurata"
+  ],
+  "statut": "comestible",
+  "rang": "secondaire",
+  "precaution": "Toxique crue ou mal cuite : toujours bien cuire. Confusion possible avec des amanites mortelles : réservée aux connaisseurs.",
+  "toxicite": null,
+  "criteres": [
+   "Grand chapeau brun doré à marge striée",
+   "Restes de volve gris en plaques sur le chapeau",
+   "Volve grise friable, pas d'anneau"
+  ],
+  "habitat": "Feuillus et conifères, sols riches",
+  "saison": "Juillet à octobre",
+  "sporee": "Blanche",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#9a6a3a",
+   "hymenium": "#f4f0e6",
+   "pied": "#d8d0c4",
+   "feuilles": true,
+   "volve": "sac",
+   "volve_couleur": "#8a8480",
+   "ornement": "verrues",
+   "chapeau2": "#7a7470"
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "confusions": [
+   "amanita-vaginata"
+  ],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Amanita ceciliae » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Amanita_ceciliae"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ],
+  "distinguer": {
+   "amanita-vaginata": "L'amanite vaginée a une volve blanche en sac et un chapeau gris sans plaques ; l'amanite impériale a une volve grise friable qui laisse des plaques grises."
+  }
+ },
+ {
+  "id": "rhodotus-palmatus",
+  "nom": "Rhodotus réticulé",
+  "latin": "Rhodotus palmatus",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Amer ; sans intérêt.",
+  "criteres": [
+   "Chapeau rose saumon veiné en réseau",
+   "Peut perler de gouttes orange",
+   "Sur bois mort d'orme, parfois d'autres feuillus"
+  ],
+  "habitat": "Bois mort d'ormes",
+  "saison": "Septembre à décembre",
+  "sporee": "Rose",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e8907a",
+   "hymenium": "#f2c8b8",
+   "pied": "#f2d8cc",
+   "feuilles": true,
+   "bois": true,
+   "ornement": "veines",
+   "chapeau2": "#c96a5a"
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Rhodotus palmatus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Rhodotus_palmatus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "cortinarius-bolaris",
+  "nom": "Cortinaire rougeâtre",
+  "latin": "Cortinarius bolaris",
+  "autres_noms": [],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Troubles digestifs (vomissements, diarrhée) quelques heures après le repas.",
+  "criteres": [
+   "Chapeau couvert de mèches rouge-cuivré sur fond jaune pâle",
+   "Pied jaunâtre chiné de rouge",
+   "Sous hêtres et chênes, sols acides"
+  ],
+  "habitat": "Feuillus, sols acides",
+  "saison": "Août à novembre",
+  "sporee": "Brun rouille",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e0c08a",
+   "hymenium": "#b8804a",
+   "pied": "#ecd8b0",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#b8402a"
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [
+   "cortinarius-orellanus"
+  ],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ],
+  "distinguer": {
+   "cortinarius-orellanus": "Le cortinaire des montagnes, mortel, est fauve orangé uni ; le cortinaire rougeâtre est couvert de mèches rouge-cuivré sur fond pâle."
+  }
+ },
+ {
+  "id": "cortinarius-trivialis",
+  "nom": "Cortinaire trivial",
+  "latin": "Cortinarius trivialis",
+  "autres_noms": [],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Suspect ; les cortinaires sont à rejeter.",
+  "criteres": [
+   "Chapeau brun-jaune très visqueux",
+   "Pied visqueux à bracelets de voile",
+   "Sous saules, peupliers et chênes humides"
+  ],
+  "habitat": "Feuillus humides",
+  "saison": "Août à novembre",
+  "sporee": "Brun rouille",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#b8803a",
+   "hymenium": "#b8945a",
+   "pied": "#e8dcc0",
+   "feuilles": true,
+   "bracelets": true
+  },
+  "mois": [
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "hemipholiota-populnea",
+  "nom": "Pholiote destructrice",
+  "latin": "Hemipholiota populnea",
+  "autres_noms": [
+   "Pholiota populnea",
+   "Pholiota destruens"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Grand chapeau blanc-crème couvert de mèches laineuses",
+   "Lames brunes ; anneau laineux",
+   "Sur peupliers vivants ou abattus"
+  ],
+  "habitat": "Peupliers",
+  "saison": "Septembre à décembre",
+  "sporee": "Brun rouille",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#ece4d4",
+   "hymenium": "#8a6a4a",
+   "pied": "#ece4d4",
+   "feuilles": true,
+   "ornement": "meches",
+   "chapeau2": "#c9b08a",
+   "bois": true,
+   "anneau": true,
+   "largeur": 1.0
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Pholiote destructrice » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Pholiote_destructrice"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "bolbitius-titubans",
+  "nom": "Bolbitie jaune d'œuf",
+  "latin": "Bolbitius titubans",
+  "autres_noms": [
+   "Bolbitius vitellinus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau jaune d'œuf très visqueux, puis gris pâle",
+   "Très fragile, marge striée",
+   "Prés, fumier, paille"
+  ],
+  "habitat": "Prés amendés, fumier, compost",
+  "saison": "Mai à novembre",
+  "sporee": "Brun rouille",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#f0d02a",
+   "hymenium": "#d9a05a",
+   "pied": "#f4ecd0",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.6,
+   "epaisseur": 0.3
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Bolbitie jaune-d'œuf » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Bolbitie_jaune-d'œuf"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "tapinella-atrotomentosa",
+  "nom": "Paxille à pied noir",
+  "latin": "Tapinella atrotomentosa",
+  "autres_noms": [
+   "Paxillus atrotomentosus"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Amer ; signalé comme toxique (troubles digestifs). À rejeter.",
+  "criteres": [
+   "Gros chapeau brun velouté, marge enroulée",
+   "Lames décurrentes crème se détachant facilement",
+   "Pied court couvert de velours noir ; sur souches de pins"
+  ],
+  "habitat": "Souches de conifères",
+  "saison": "Juillet à novembre",
+  "sporee": "Brun",
+  "schema": {
+   "type": "agaric",
+   "forme": "entonnoir",
+   "chapeau": "#6a4a2e",
+   "hymenium": "#e0c890",
+   "pied": "#2a2420",
+   "feuilles": true,
+   "decurrent": true,
+   "bois": true,
+   "largeur": 1.0
+  },
+  "mois": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Paxille à pied noir » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Paxille_à_pied_noir"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "coprinopsis-lagopus",
+  "nom": "Coprin pied-de-lièvre",
+  "latin": "Coprinopsis lagopus",
+  "autres_noms": [
+   "Coprinus lagopus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Éphémère ; sans intérêt.",
+  "criteres": [
+   "Petit chapeau gris couvert de poils blancs",
+   "Pied fin, velu",
+   "S'ouvre et se liquéfie en quelques heures"
+  ],
+  "habitat": "Débris végétaux, bois pourri",
+  "saison": "Mai à novembre",
+  "sporee": "Noire",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#9a9490",
+   "hymenium": "#3a3634",
+   "pied": "#f2ede4",
+   "feuilles": true,
+   "largeur": 0.5,
+   "epaisseur": 0.3,
+   "ornement": "verrues",
+   "chapeau2": "#f2ede4"
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "stropharia-caerulea",
+  "nom": "Strophaire bleutée",
+  "latin": "Stropharia caerulea",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt ; suspect.",
+  "criteres": [
+   "Chapeau bleu-vert pâle, visqueux, taché de jaune",
+   "Lames brun-violacé ; anneau fugace",
+   "Jardins, bords de chemins, copeaux"
+  ],
+  "habitat": "Jardins, haies, bords de chemins",
+  "saison": "Juin à novembre",
+  "sporee": "Brun pourpre",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#6aa8a0",
+   "hymenium": "#6a5a5e",
+   "pied": "#c9d8d0",
+   "feuilles": true,
+   "anneau": true
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "stropharia-coronilla",
+  "nom": "Strophaire coronille",
+  "latin": "Stropharia coronilla",
+  "autres_noms": [],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt ; suspect.",
+  "criteres": [
+   "Petit chapeau jaune paille",
+   "Anneau strié violet-noir",
+   "Dans les pelouses et prés"
+  ],
+  "habitat": "Pelouses, prés",
+  "saison": "Juin à novembre",
+  "sporee": "Brun pourpre",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e0c46a",
+   "hymenium": "#6a5a5e",
+   "pied": "#f2ead8",
+   "feuilles": true,
+   "anneau": true,
+   "herbe": true,
+   "largeur": 0.6
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "leratiomyces-ceres",
+  "nom": "Strophaire orangée",
+  "latin": "Leratiomyces ceres",
+  "autres_noms": [
+   "Stropharia aurantiaca"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau orange vif, visqueux",
+   "Petits restes de voile blancs à la marge",
+   "Sur copeaux et paillages"
+  ],
+  "habitat": "Copeaux de bois, paillages",
+  "saison": "Septembre à décembre",
+  "sporee": "Brun pourpre",
+  "schema": {
+   "type": "agaric",
+   "forme": "convexe",
+   "chapeau": "#e8582a",
+   "hymenium": "#6a5a5e",
+   "pied": "#e8c8a0",
+   "feuilles": true,
+   "largeur": 0.7
+  },
+  "mois": [
+   9,
+   10,
+   11,
+   12
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Strophaire orangée » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Strophaire_orangée"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   }
+  ]
+ },
+ {
+  "id": "panaeolus-papilionaceus",
+  "nom": "Panéole papilionacé",
+  "latin": "Panaeolus papilionaceus",
+  "autres_noms": [
+   "Panaeolus campanulatus",
+   "Panaeolus sphinctrinus"
+  ],
+  "statut": "toxique",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Toxique : troubles digestifs et nerveux signalés.",
+  "criteres": [
+   "Chapeau gris-brun en cloche",
+   "Marge dentelée de petits restes blancs",
+   "Sur crottin et dans les prés pâturés"
+  ],
+  "habitat": "Prés pâturés, crottin",
+  "saison": "Mai à novembre",
+  "sporee": "Noire",
+  "schema": {
+   "type": "agaric",
+   "forme": "cloche",
+   "chapeau": "#8a7a6e",
+   "hymenium": "#4a4440",
+   "pied": "#c9bcb0",
+   "feuilles": true,
+   "herbe": true,
+   "largeur": 0.5,
+   "epaisseur": 0.35
+  },
+  "mois": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Wikipédia FR : « Panaeolus sphinctrinus » (statut vérifié le 27/11/2026)",
+    "url": "https://fr.wikipedia.org/wiki/Panaeolus_sphinctrinus"
+   },
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
+   },
+   {
+    "titre": "ANSES / centres antipoison : alertes annuelles sur les intoxications par les champignons (anses.fr)"
+   }
+  ]
+ },
+ {
+  "id": "parasola-conopilea",
+  "nom": "Psathyrelle conique",
+  "latin": "Parasola conopilea",
+  "autres_noms": [
+   "Psathyrella conopilus"
+  ],
+  "statut": "sans-interet",
+  "rang": "secondaire",
+  "precaution": null,
+  "toxicite": "Sans intérêt.",
+  "criteres": [
+   "Chapeau conique brun-roux, pâlissant en séchant",
+   "Pied blanc très long et fragile",
+   "Bords de chemins, débris"
+  ],
+  "habitat": "Bords de chemins, débris végétaux",
+  "saison": "Juin à novembre",
+  "sporee": "Noire",
+  "schema": {
+   "type": "agaric",
+   "forme": "conique",
+   "chapeau": "#9a6a4a",
+   "hymenium": "#4a4440",
+   "pied": "#f2ede4",
+   "feuilles": true,
+   "largeur": 0.5,
+   "epaisseur": 0.35
+  },
+  "mois": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "confusions": [],
+  "sources": [
+   {
+    "titre": "Eyssartier G. & Roux P., Le guide des champignons France et Europe, 5e éd., Belin, 2024 (ouvrage de référence)"
+   },
+   {
+    "titre": "Courtecuisse R., Duhem B. & Vincenot P., Champignons de France et d'Europe, Delachaux et Niestlé (ouvrage de référence)"
    }
   ]
  }

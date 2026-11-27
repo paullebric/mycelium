@@ -129,6 +129,12 @@
                      "suite": {
                       "espece": "amanita-crocea"
                      }
+                    },
+                    {
+                     "reponse": "Brun doré, grand ; volve grise friable ; plaques grises sur le chapeau",
+                     "suite": {
+                      "espece": "amanita-ceciliae"
+                     }
                     }
                    ]
                   }
@@ -328,8 +334,26 @@
                         "suite": {
                          "espece": "lactarius-turpis"
                         }
+                       },
+                       {
+                        "reponse": "Gris-vert visqueux, zoné de gouttes ; sous les hêtres",
+                        "suite": {
+                         "espece": "lactarius-blennius"
+                        }
+                       },
+                       {
+                        "reponse": "Blanc taché de rose ; lames rosées ; sous peupliers et saules",
+                        "suite": {
+                         "espece": "lactarius-controversus"
+                        }
                        }
                       ]
+                     }
+                    },
+                    {
+                     "reponse": "Lait orange, sur un petit champignon conique poussant sur bois",
+                     "suite": {
+                      "espece": "mycena-crocata"
                      }
                     }
                    ]
@@ -412,6 +436,12 @@
                         "suite": {
                          "espece": "russula-olivacea"
                         }
+                       },
+                       {
+                        "reponse": "Rouge sang ; lames un peu décurrentes ; saveur âcre ; sous pins",
+                        "suite": {
+                         "espece": "russula-sanguinea"
+                        }
                        }
                       ]
                      }
@@ -468,6 +498,12 @@
                         }
                        }
                       ]
+                     }
+                    },
+                    {
+                     "reponse": "Gris-bleu, comme poudré (pruineux) ; saveur douce",
+                     "suite": {
+                      "espece": "russula-parazurea"
                      }
                     }
                    ]
@@ -629,6 +665,12 @@
                            "suite": {
                             "espece": "oudemansiella-mucida"
                            }
+                          },
+                          {
+                           "reponse": "Brun-jaune ; pied renflé à la base ; isolé ou en petits groupes, au sol",
+                           "suite": {
+                            "espece": "armillaria-gallica"
+                           }
                           }
                          ]
                         }
@@ -703,6 +745,30 @@
                               "reponse": "Jaune miel, en touffes ; sans anneau ; dans le Midi",
                               "suite": {
                                "espece": "desarmillaria-tabescens"
+                              }
+                             },
+                             {
+                              "reponse": "Chapeau blanc moucheté d'écailles noires ; lames dentelées ; sur saules",
+                              "suite": {
+                               "espece": "lentinus-tigrinus"
+                              }
+                             },
+                             {
+                              "reponse": "Gros, crème à écailles brunes ; odeur d'anis ; sur bois de pin",
+                              "suite": {
+                               "espece": "neolentinus-lepideus"
+                              }
+                             },
+                             {
+                              "reponse": "Blanc floconneux ; reste de voile sur le pied ; sur feuillus",
+                              "suite": {
+                               "espece": "pleurotus-dryinus"
+                              }
+                             },
+                             {
+                              "reponse": "Crème pâle en éventail ; en été, sur feuillus",
+                              "suite": {
+                               "espece": "pleurotus-pulmonarius"
                               }
                              }
                             ]
@@ -816,6 +882,39 @@
                               "suite": {
                                "espece": "pleurotus-eryngii"
                               }
+                             },
+                             {
+                              "reponse": "Aucune de ces descriptions (autres espèces)",
+                              "suite": {
+                               "id": "clitocybes-plus",
+                               "question": "Aspect ?",
+                               "options": [
+                                {
+                                 "reponse": "Gris-brun en coupe profonde ; lames crème ; fin d'automne",
+                                 "suite": {
+                                  "espece": "pseudoclitocybe-cyathiformis"
+                                 }
+                                },
+                                {
+                                 "reponse": "Minuscule, orange ; pied très fin ; dans les mousses",
+                                 "suite": {
+                                  "espece": "rickenella-fibula"
+                                 }
+                                },
+                                {
+                                 "reponse": "Minuscule, gris-brun ; dans les mousses des sols sableux",
+                                 "suite": {
+                                  "espece": "arrhenia-rickenii"
+                                 }
+                                },
+                                {
+                                 "reponse": "Blanc ivoire très visqueux ; lames espacées ; sous les hêtres",
+                                 "suite": {
+                                  "espece": "hygrophorus-eburneus"
+                                 }
+                                }
+                               ]
+                              }
                              }
                             ]
                            }
@@ -904,6 +1003,39 @@
                               "suite": {
                                "espece": "megacollybia-platyphylla"
                               }
+                             },
+                             {
+                              "reponse": "Aucune de ces descriptions (autres espèces)",
+                              "suite": {
+                               "id": "tricho-bois-autres",
+                               "question": "Aspect ?",
+                               "options": [
+                                {
+                                 "reponse": "Cloche grise ; pied orangé en bas ; en touffes sur souches de chênes",
+                                 "suite": {
+                                  "espece": "mycena-inclinata"
+                                 }
+                                },
+                                {
+                                 "reponse": "Petit chapeau rose-brun ; pied jaune ; sur bois de feuillus",
+                                 "suite": {
+                                  "espece": "mycena-renati"
+                                 }
+                                },
+                                {
+                                 "reponse": "Minuscule chapeau crème ; sur brindilles, en troupes",
+                                 "suite": {
+                                  "espece": "collybiopsis-ramealis"
+                                 }
+                                },
+                                {
+                                 "reponse": "Jaune vif à fines mèches brunes ; sur bois de conifères",
+                                 "suite": {
+                                  "espece": "tricholomopsis-decora"
+                                 }
+                                }
+                               ]
+                              }
                              }
                             ]
                            }
@@ -970,6 +1102,12 @@
                                  "suite": {
                                   "espece": "hygrophorus-marzuolus"
                                  }
+                                },
+                                {
+                                 "reponse": "Gris à fibrilles ; lames jaunissant ; odeur de farine",
+                                 "suite": {
+                                  "espece": "tricholoma-scalpturatum"
+                                 }
                                 }
                                ]
                               }
@@ -1033,6 +1171,12 @@
                                  "suite": {
                                   "espece": "hygrophorus-russula"
                                  }
+                                },
+                                {
+                                 "reponse": "Rouge vif, chapeau convexe sec ; lames rouges ; dans les prés",
+                                 "suite": {
+                                  "espece": "hygrocybe-coccinea"
+                                 }
                                 }
                                ]
                               }
@@ -1065,6 +1209,51 @@
                                  "reponse": "Chapeau brun-roux visqueux ; lames se tachant de roux ; sous les hêtres",
                                  "suite": {
                                   "espece": "tricholoma-ustale"
+                                 }
+                                },
+                                {
+                                 "reponse": "Forte odeur d'ail ; pied long noir velouté",
+                                 "suite": {
+                                  "espece": "mycetinis-alliaceus"
+                                 }
+                                },
+                                {
+                                 "reponse": "Pied velu à base jaune ; saveur brûlante",
+                                 "suite": {
+                                  "espece": "collybiopsis-peronata"
+                                 }
+                                }
+                               ]
+                              }
+                             },
+                             {
+                              "reponse": "Jaune ou vert, cireux et luisant ; dans les prés",
+                              "suite": {
+                               "id": "hygrocybes-jaunes",
+                               "question": "Couleur ?",
+                               "options": [
+                                {
+                                 "reponse": "Vert perroquet, très visqueux, puis jaune-orangé",
+                                 "suite": {
+                                  "espece": "gliophorus-psittacinus"
+                                 }
+                                },
+                                {
+                                 "reponse": "Jaune citron, visqueux ; pied jaune",
+                                 "suite": {
+                                  "espece": "hygrocybe-chlorophana"
+                                 }
+                                },
+                                {
+                                 "reponse": "Jaune orangé, petit ; lames un peu décurrentes",
+                                 "suite": {
+                                  "espece": "hygrocybe-ceracea"
+                                 }
+                                },
+                                {
+                                 "reponse": "Jaune, conique pointu ; ne noircit pas",
+                                 "suite": {
+                                  "espece": "hygrocybe-acutoconica"
                                  }
                                 }
                                ]
@@ -1148,6 +1337,12 @@
                   "suite": {
                    "espece": "pluteus-cervinus"
                   }
+                 },
+                 {
+                  "reponse": "Chapeau rose saumon veiné en réseau ; sur bois d'orme",
+                  "suite": {
+                   "espece": "rhodotus-palmatus"
+                  }
                  }
                 ]
                }
@@ -1210,6 +1405,12 @@
                      "suite": {
                       "espece": "agrocybe-cylindracea"
                      }
+                    },
+                    {
+                     "reponse": "Grand, blanc-crème à mèches ; sur peupliers vivants",
+                     "suite": {
+                      "espece": "hemipholiota-populnea"
+                     }
                     }
                    ]
                   }
@@ -1264,6 +1465,18 @@
                      "reponse": "Très grand (10 à 20 cm), brun-violacé ; marge givrée de voile blanc",
                      "suite": {
                       "espece": "cortinarius-praestans"
+                     }
+                    },
+                    {
+                     "reponse": "Chapeau couvert de mèches rouge-cuivré sur fond jaune",
+                     "suite": {
+                      "espece": "cortinarius-bolaris"
+                     }
+                    },
+                    {
+                     "reponse": "Visqueux, brun-jaune ; pied à bracelets ; sous saules et peupliers",
+                     "suite": {
+                      "espece": "cortinarius-trivialis"
                      }
                     }
                    ]
@@ -1365,6 +1578,18 @@
                   "suite": {
                    "espece": "gymnopilus-penetrans"
                   }
+                 },
+                 {
+                  "reponse": "Jaune d'œuf très visqueux, fragile ; prés et fumier",
+                  "suite": {
+                   "espece": "bolbitius-titubans"
+                  }
+                 },
+                 {
+                  "reponse": "Lames décurrentes ; pied court couvert de velours noir ; sur souches de pins",
+                  "suite": {
+                   "espece": "tapinella-atrotomentosa"
+                  }
                  }
                 ]
                }
@@ -1420,6 +1645,12 @@
                      "reponse": "Minuscule parapluie gris plissé ; dans les pelouses",
                      "suite": {
                       "espece": "parasola-plicatilis"
+                     }
+                    },
+                    {
+                     "reponse": "Petit, gris couvert de poils blancs ; pied fin velu ; vit quelques heures",
+                     "suite": {
+                      "espece": "coprinopsis-lagopus"
                      }
                     }
                    ]
@@ -1606,6 +1837,45 @@
                     }
                    ]
                   }
+                 },
+                 {
+                  "reponse": "Aucune de ces descriptions (autres espèces)",
+                  "suite": {
+                   "id": "noire-plus",
+                   "question": "Aspect ?",
+                   "options": [
+                    {
+                     "reponse": "Bleu-vert pâle, visqueux ; anneau fugace ; jardins et bords de chemins",
+                     "suite": {
+                      "espece": "stropharia-caerulea"
+                     }
+                    },
+                    {
+                     "reponse": "Petit, jaune paille ; anneau strié ; dans les pelouses",
+                     "suite": {
+                      "espece": "stropharia-coronilla"
+                     }
+                    },
+                    {
+                     "reponse": "Orange vif ; voile blanc à la marge ; sur copeaux",
+                     "suite": {
+                      "espece": "leratiomyces-ceres"
+                     }
+                    },
+                    {
+                     "reponse": "Gris-brun, marge dentelée de blanc ; sur crottin",
+                     "suite": {
+                      "espece": "panaeolus-papilionaceus"
+                     }
+                    },
+                    {
+                     "reponse": "Conique, brun-roux pâlissant ; pied très long et fragile",
+                     "suite": {
+                      "espece": "parasola-conopilea"
+                     }
+                    }
+                   ]
+                  }
                  }
                 ]
                }
@@ -1642,6 +1912,18 @@
             "reponse": "Jaune d'or à orange ; sous les mélèzes",
             "suite": {
              "espece": "suillus-grevillei"
+            }
+           },
+           {
+            "reponse": "Gris-blanchâtre très gluant ; sous les mélèzes",
+            "suite": {
+             "espece": "suillus-viscidus"
+            }
+           },
+           {
+            "reponse": "Brun fibrilleux, peu gluant ; pied creux ; sous les mélèzes",
+            "suite": {
+             "espece": "suillus-cavipes"
             }
            }
           ]
@@ -1687,6 +1969,24 @@
                   "reponse": "Brun-rouge orangé ; sous les chênes",
                   "suite": {
                    "espece": "leccinum-quercinum"
+                  }
+                 },
+                 {
+                  "reponse": "Brun-gris bosselé ; sous les charmes ; chair noircissant",
+                  "suite": {
+                   "espece": "leccinellum-pseudoscabrum"
+                  }
+                 },
+                 {
+                  "reponse": "Jaune, cuticule craquelée ; sous chênes, sol calcaire",
+                  "suite": {
+                   "espece": "leccinellum-crocipodium"
+                  }
+                 },
+                 {
+                  "reponse": "Orange vif ; pied blanc à mèches blanches ; sous trembles",
+                  "suite": {
+                   "espece": "leccinum-leucopodium"
                   }
                  }
                 ]
@@ -1799,6 +2099,33 @@
                      "reponse": "Chapeau blanchâtre à centre brun, gluant ; pied court ; pins du Midi",
                      "suite": {
                       "espece": "suillus-bellinii"
+                     }
+                    },
+                    {
+                     "reponse": "Aucune de ces descriptions (autres espèces)",
+                     "suite": {
+                      "id": "bolets-immuables-plus",
+                      "question": "Aspect ?",
+                      "options": [
+                       {
+                        "reponse": "Chapeau gluant brun ; base du pied rose ; sous pins",
+                        "suite": {
+                         "espece": "suillus-collinitus"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau brun-gris velouté ; pores gris-brun ; sporée rouge-pourpre",
+                        "suite": {
+                         "espece": "porphyrellus-porphyrosporus"
+                        }
+                       },
+                       {
+                        "reponse": "Petit, jaune-olive ; pousse sur un scléroderme",
+                        "suite": {
+                         "espece": "pseudoboletus-parasiticus"
+                        }
+                       }
+                      ]
                      }
                     }
                    ]
@@ -1914,6 +2241,27 @@
                      "suite": {
                       "espece": "butyriboletus-regius"
                      }
+                    },
+                    {
+                     "reponse": "Aucune de ces descriptions (autres espèces)",
+                     "suite": {
+                      "id": "bolets-bleus-plus",
+                      "question": "Aspect ?",
+                      "options": [
+                       {
+                        "reponse": "Petit chapeau rouge framboise ; pores jaunes ; pied taché de rouge",
+                        "suite": {
+                         "espece": "hortiboletus-rubellus"
+                        }
+                       },
+                       {
+                        "reponse": "Chapeau brun-pourpre pruineux, non craquelé ; pores jaunes",
+                        "suite": {
+                         "espece": "xerocomellus-pruinatus"
+                        }
+                       }
+                      ]
+                     }
                     }
                    ]
                   }
@@ -1922,6 +2270,33 @@
                }
               }
              ]
+            }
+           }
+          ]
+         }
+        },
+        {
+         "reponse": "Chair coriace qui ne se casse pas ; pied dur, souvent sur bois (polypore à pied)",
+         "suite": {
+          "id": "polypores-pied",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Chapeau crème couvert d'écailles brunes ; pousse d'une grosse boule souterraine",
+            "suite": {
+             "espece": "polyporus-tuberaster"
+            }
+           },
+           {
+            "reponse": "Chapeau brun-roux lisse ; pied noir à la base",
+            "suite": {
+             "espece": "picipes-badius"
+            }
+           },
+           {
+            "reponse": "Petit chapeau brun velouté ; pores blancs ; en hiver sur branches",
+            "suite": {
+             "espece": "lentinus-brumalis"
             }
            }
           ]
@@ -1971,6 +2346,18 @@
             "reponse": "Minuscule, brun, pied latéral ; sur cônes de pin",
             "suite": {
              "espece": "auriscalpium-vulgare"
+            }
+           },
+           {
+            "reponse": "Chapeau noir-bleuté à marge pâle ; aiguillons gris ; chair noire et dure",
+            "suite": {
+             "espece": "phellodon-niger"
+            }
+           },
+           {
+            "reponse": "Chapeau bleu pâle bosselé ; aiguillons bruns ; chair zonée de bleu",
+            "suite": {
+             "espece": "hydnellum-caeruleum"
             }
            }
           ]
@@ -2026,6 +2413,12 @@
                "reponse": "Jaune très pâle, givré de blanc ; jaunit à orangé au toucher",
                "suite": {
                 "espece": "cantharellus-pallens"
+               }
+              },
+              {
+               "reponse": "Petite trompette gris-noir ; plis gris marqués ; odeur fruitée",
+               "suite": {
+                "espece": "craterellus-cinereus"
                }
               }
              ]
@@ -2137,6 +2530,18 @@
          "suite": {
           "espece": "gyromitra-infula"
          }
+        },
+        {
+         "reponse": "Petit dé à coudre LISSE, entièrement libre du pied",
+         "suite": {
+          "espece": "verpa-conica"
+         }
+        },
+        {
+         "reponse": "Coupe gris-noir sur un court pied blanc ; au printemps, sur sol sableux",
+         "suite": {
+          "espece": "dissingia-leucomelaena"
+         }
         }
        ]
       }
@@ -2220,6 +2625,45 @@
            }
           ]
          }
+        },
+        {
+         "reponse": "Aucune de ces descriptions (autres espèces)",
+         "suite": {
+          "id": "boules-plus",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Couvert de longues épines brunes qui tombent en laissant un réseau",
+            "suite": {
+             "espece": "lycoperdon-echinatum"
+            }
+           },
+           {
+            "reponse": "Petite boule blanche des pelouses ; base séparée par une cloison",
+            "suite": {
+             "espece": "lycoperdon-pratense"
+            }
+           },
+           {
+            "reponse": "Grosse poire crème puis brune, surface en mosaïque",
+            "suite": {
+             "espece": "lycoperdon-utriforme"
+            }
+           },
+           {
+            "reponse": "Petite boule blanchâtre sur un pied fin et dur ; sol sableux",
+            "suite": {
+             "espece": "tulostoma-brumale"
+            }
+           },
+           {
+            "reponse": "Grand pied écailleux portant une tête poudreuse brune ; sols secs",
+            "suite": {
+             "espece": "battarrea-phalloides"
+            }
+           }
+          ]
+         }
         }
        ]
       }
@@ -2275,6 +2719,24 @@
             "suite": {
              "espece": "calocera-viscosa"
             }
+           },
+           {
+            "reponse": "Rameaux crème terminés en petites couronnes ; sur bois pourri",
+            "suite": {
+             "espece": "artomyces-pyxidatus"
+            }
+           },
+           {
+            "reponse": "Rameaux ocre très serrés, dressés en parallèle ; sur bois",
+            "suite": {
+             "espece": "lentoramaria-stricta"
+            }
+           },
+           {
+            "reponse": "Massue blanche ridée, peu ramifiée ; au sol",
+            "suite": {
+             "espece": "clavulina-rugosa"
+            }
            }
           ]
          }
@@ -2286,6 +2748,12 @@
       "reponse": "Une massue unique jaune-ocre (sans rameaux)",
       "suite": {
        "espece": "clavariadelphus-pistillaris"
+      }
+     },
+     {
+      "reponse": "Rosette de larges lames plates crème-ocre ; au pied des chênes",
+      "suite": {
+       "espece": "sparassis-brevipes"
       }
      }
     ]
@@ -2357,6 +2825,45 @@
             "suite": {
              "espece": "bjerkandera-adusta"
             }
+           },
+           {
+            "reponse": "Aucune de ces descriptions (autres espèces)",
+            "suite": {
+             "id": "consoles-molles-autres",
+             "question": "Aspect ?",
+             "options": [
+              {
+               "reponse": "Grande rosette brun-roux à bord jaune vif ; au pied des pins",
+               "suite": {
+                "espece": "phaeolus-schweinitzii"
+               }
+              },
+              {
+               "reponse": "Blanchâtre à rosé, rougissant au toucher ; souvent au sol, sur racines",
+               "suite": {
+                "espece": "abortiporus-biennis"
+               }
+              },
+              {
+               "reponse": "Gros coussin brun pleurant des gouttes ambrées ; au pied des chênes",
+               "suite": {
+                "espece": "pseudoinonotus-dryadeus"
+               }
+              },
+              {
+               "reponse": "Brun-roux velouté ; uniquement sur tamaris",
+               "suite": {
+                "espece": "inocutis-tamaricis"
+               }
+              },
+              {
+               "reponse": "Blanc, ramifié comme un corail, aiguillons courts",
+               "suite": {
+                "espece": "hericium-coralloides"
+               }
+              }
+             ]
+            }
            }
           ]
          }
@@ -2402,6 +2909,51 @@
             "suite": {
              "espece": "daedalea-quercina"
             }
+           },
+           {
+            "reponse": "Aucune de ces descriptions (autres espèces)",
+            "suite": {
+             "id": "consoles-dures-autres",
+             "question": "Aspect ?",
+             "options": [
+              {
+               "reponse": "Pores allongés qui rougissent au toucher ; sur saules et aulnes",
+               "suite": {
+                "espece": "daedaleopsis-confragosa"
+               }
+              },
+              {
+               "reponse": "Petit sabot gris fendillé ; sur pruniers et cerisiers",
+               "suite": {
+                "espece": "phellinus-pomaceus"
+               }
+              },
+              {
+               "reponse": "Brun-rouge laqué, sans vrai pied ; à la base des chênes",
+               "suite": {
+                "espece": "ganoderma-resinaceum"
+               }
+              },
+              {
+               "reponse": "Pores très larges en nid d'abeilles ; sur chênes du Midi",
+               "suite": {
+                "espece": "hexagonia-nitida"
+               }
+              },
+              {
+               "reponse": "Brun sombre ridé, pores jaunâtres ; sur pins vivants",
+               "suite": {
+                "espece": "porodaedalea-pini"
+               }
+              },
+              {
+               "reponse": "Brun-noir laqué avec un pied ; sur sapins",
+               "suite": {
+                "espece": "ganoderma-carnosum"
+               }
+              }
+             ]
+            }
            }
           ]
          }
@@ -2428,6 +2980,57 @@
             "reponse": "Jaune-orange velu ; dessous lisse, sans pores",
             "suite": {
              "espece": "stereum-hirsutum"
+            }
+           },
+           {
+            "reponse": "Aucune de ces descriptions (autres espèces)",
+            "suite": {
+             "id": "consoles-minces-autres",
+             "question": "Aspect ?",
+             "options": [
+              {
+               "reponse": "Gris-blanc très velu, zones discrètes ; pores crème",
+               "suite": {
+                "espece": "trametes-hirsuta"
+               }
+              },
+              {
+               "reponse": "Zoné de gris, dessous à lames (et non à pores) ; sur bouleaux",
+               "suite": {
+                "espece": "lenzites-betulina"
+               }
+              },
+              {
+               "reponse": "Entièrement rouge-orangé vif",
+               "suite": {
+                "espece": "trametes-cinnabarina"
+               }
+              },
+              {
+               "reponse": "Zones ocre et brun-roux ; pores crème",
+               "suite": {
+                "espece": "trametes-ochracea"
+               }
+              },
+              {
+               "reponse": "Brun-roux à marge jaune, lames dessous ; sur bois de conifères travaillé",
+               "suite": {
+                "espece": "gloeophyllum-sepiarium"
+               }
+              },
+              {
+               "reponse": "Petites consoles grises à pores violets ; sur conifères",
+               "suite": {
+                "espece": "trichaptum-abietinum"
+               }
+              },
+              {
+               "reponse": "Rosettes brun chocolat à bord frangé ; au sol, sous les pins",
+               "suite": {
+                "espece": "thelephora-terrestris"
+               }
+              }
+             ]
             }
            }
           ]
@@ -2493,6 +3096,45 @@
       "suite": {
        "espece": "leotia-lubrica"
       }
+     },
+     {
+      "reponse": "Aucune de ces descriptions (autres espèces)",
+      "suite": {
+       "id": "gelatineux-autres",
+       "question": "Forme et couleur ?",
+       "options": [
+        {
+         "reponse": "Masse plissée orange vif, ferme ; sur la stérée hirsute",
+         "suite": {
+          "espece": "naematelia-aurantia"
+         }
+        },
+        {
+         "reponse": "Petites cornes jaunes non ramifiées, en groupes sur bois",
+         "suite": {
+          "espece": "calocera-cornea"
+         }
+        },
+        {
+         "reponse": "Petits disques noirs en toupie, surface lisse ; sur chênes",
+         "suite": {
+          "espece": "exidia-truncata"
+         }
+        },
+        {
+         "reponse": "Masse translucide incolore avec des grains blancs",
+         "suite": {
+          "espece": "myxarium-nucleatum"
+         }
+        },
+        {
+         "reponse": "Petit éventail orange vif à larges pores ; sur bois mort",
+         "suite": {
+          "espece": "favolaschia-claudopus"
+         }
+        }
+       ]
+      }
      }
     ]
    }
@@ -2552,6 +3194,33 @@
          "suite": {
           "espece": "peziza-vesiculosa"
          }
+        },
+        {
+         "reponse": "Aucune de ces descriptions (autres espèces)",
+         "suite": {
+          "id": "coupes-autres",
+          "question": "Aspect ?",
+          "options": [
+           {
+            "reponse": "Coupe orange-jaune qui bleuit par endroits ; au printemps, sous conifères",
+            "suite": {
+             "espece": "caloscypha-fulgens"
+            }
+           },
+           {
+            "reponse": "Coupe enterrée, crème dedans, brune et velue dehors ; sous les cèdres",
+            "suite": {
+             "espece": "geopora-sumneriana"
+            }
+           },
+           {
+            "reponse": "Grosse coupe violacée qui s'ouvre en couronne ; au printemps",
+            "suite": {
+             "espece": "sarcosphaera-coronaria"
+            }
+           }
+          ]
+         }
         }
        ]
       }
@@ -2592,13 +3261,55 @@
      {
       "reponse": "Une étoile brune portant une boule au centre",
       "suite": {
-       "espece": "geastrum-triplex"
+       "id": "etoiles",
+       "question": "Aspect de l'étoile ?",
+       "options": [
+        {
+         "reponse": "Grande étoile à collerette autour de la boule",
+         "suite": {
+          "espece": "geastrum-triplex"
+         }
+        },
+        {
+         "reponse": "Petite étoile sans collerette ; boule pâle",
+         "suite": {
+          "espece": "geastrum-fimbriatum"
+         }
+        },
+        {
+         "reponse": "Bras épais craquelés qui se referment au sec ; sol sableux",
+         "suite": {
+          "espece": "astraeus-hygrometricus"
+         }
+        }
+       ]
       }
      },
      {
       "reponse": "Un petit nid contenant des « œufs »",
       "suite": {
-       "espece": "cyathus-striatus"
+       "id": "nids",
+       "question": "Aspect du nid ?",
+       "options": [
+        {
+         "reponse": "Intérieur strié, extérieur velu brun",
+         "suite": {
+          "espece": "cyathus-striatus"
+         }
+        },
+        {
+         "reponse": "Intérieur lisse gris ; en forme de vase",
+         "suite": {
+          "espece": "cyathus-olla"
+         }
+        },
+        {
+         "reponse": "Petite coupe jaune-crème, œufs blancs",
+         "suite": {
+          "espece": "crucibulum-laeve"
+         }
+        }
+       ]
       }
      },
      {
@@ -2624,8 +3335,41 @@
          "suite": {
           "espece": "daldinia-concentrica"
          }
+        },
+        {
+         "reponse": "Doigt noir sur un long pied fin ; sur bois d'érable",
+         "suite": {
+          "espece": "xylaria-longipes"
+         }
         }
        ]
+      }
+     },
+     {
+      "reponse": "Une petite massue colorée sur un pied (orange, jaune)",
+      "suite": {
+       "id": "massues",
+       "question": "Couleur et habitat ?",
+       "options": [
+        {
+         "reponse": "Massue orange vif sortant du sol (sur une chrysalide enterrée)",
+         "suite": {
+          "espece": "cordyceps-militaris"
+         }
+        },
+        {
+         "reponse": "Tête jaune-orangé sur un pied blanc ; dans l'eau des marais",
+         "suite": {
+          "espece": "mitrula-paludosa"
+         }
+        }
+       ]
+      }
+     },
+     {
+      "reponse": "Un petit champignon poudreux poussant sur une russule pourrie",
+      "suite": {
+       "espece": "asterophora-lycoperdoides"
       }
      }
     ]
